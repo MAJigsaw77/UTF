@@ -24,7 +24,7 @@ class Main extends Sprite
 			// Run the garbage colector...
 			System.gc();
 		});
-		FlxG.signals.postStateCreate.add(System.gc);
+		FlxG.signals.postStateSwitch.add(System.gc);
 
 		addChild(new FlxGame(640, 480, MainState, 60, 60));
 
