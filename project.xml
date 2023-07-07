@@ -3,9 +3,9 @@
 
 	<!--Application Settings -->
 
-	<app title="Friday Night Funkin'" packageName="com.ninjamuffin99.funkin" package="com.ninjamuffin99.funkin" version="0.2.8" company="ninjamuffin99" />
+	<app title="UNDERTALE" packageName="com.majigsaw.undertale" package="com.majigsaw.undertale" version="0.2.8" company="MAJigsaw" />
 
-	<app file="Funkin" main="Main" preloader="flixel.system.FlxPreloader" />
+	<app file="UNDERTALE" main="Main" preloader="flixel.system.FlxPreloader" />
 
 	<!--Window Settings -->
 
@@ -18,9 +18,7 @@
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
 
-	<assets path="assets/preload" rename="assets" />
-	<assets path="assets/songs" library="songs" />
-	<assets path="assets/shared" library="shared" />
+	<assets path="assets" />
 
 	<source name="src" />
 
