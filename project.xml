@@ -13,12 +13,6 @@
 
 	<window if="mobile || switch" orientation="landscape" fullscreen="true" resizable="false" />
 
-	<!--Icons-->
-
-	<icon path="icons/icon16.png" size="16" />
-	<icon path="icons/icon32.png" size="32" />
-	<icon path="icons/icon64.png" size="64" />
-
 	<!--Path Settings-->
 
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
@@ -30,16 +24,11 @@
 
 	<source name="src" />
 
-	<!--Defines-->
-
-	<define name="DISCORD" if="desktop" />
-
 	<!--Libraries-->
 
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
-	<haxelib name="hxdiscord_rpc" if="DISCORD" />
 
 	<!--HaxeDefines-->
 
