@@ -17,7 +17,7 @@ class Main extends Sprite
 		FlxG.signals.preStateCreate.add(function(state:FlxState)
 		{
 			// Clear the loaded graphics if they are no longer in flixel cache...
-			for (key in Assets.cache.bitmapData.keys())
+			for (key in Assets.cache.getBitmapKeys())
 				if (!FlxG.bitmap.checkCache(key))
 					Assets.cache.removeBitmapData(key);
 
