@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+
+	<!--Application Settings -->
+
+	<app title="Friday Night Funkin'" packageName="com.ninjamuffin99.funkin" package="com.ninjamuffin99.funkin" version="0.2.8" company="ninjamuffin99" />
+
+	<app file="Funkin" main="Main" preloader="flixel.system.FlxPreloader" />
+
+	<!--Window Settings -->
+
+	<window width="1280" height="720" fps="60" orientation="landscape" background="#000000" hardware="true" vsync="false" />
+
+	<window if="mobile || switch" orientation="landscape" fullscreen="true" resizable="false" />
+
+	<!--Icons-->
+
+	<icon path="icons/icon16.png" size="16" />
+	<icon path="icons/icon32.png" size="32" />
+	<icon path="icons/icon64.png" size="64" />
+
+	<!--Path Settings-->
+
+	<set name="BUILD_DIR" value="export/debug" if="debug" />
+	<set name="BUILD_DIR" value="export/release" unless="debug" />
+
+	<assets path="assets/preload" rename="assets" />
+	<assets path="assets/songs" library="songs" />
+	<assets path="assets/shared" library="shared" />
+
+	<source name="src" />
+
+	<!--Defines-->
+
+	<define name="DISCORD" if="desktop" />
+
+	<!--Libraries-->
+
+	<haxelib name="flixel" />
+	<haxelib name="flixel-addons" />
+	<haxelib name="flixel-ui" />
+	<haxelib name="hxdiscord_rpc" if="DISCORD" />
+
+	<!--HaxeDefines-->
+
+	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
+	<haxedef name="FLX_NO_DEBUG" unless="debug" />
+	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
+
+</project>
