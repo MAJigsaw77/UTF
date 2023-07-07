@@ -29,7 +29,7 @@ class Main extends Sprite
 		addChild(new FlxGame(640, 480, MainState, 60, 60));
 
 		var fpsCounter:FPS = new FPS(10, 10, 0xFFFFFF);
-		fpsCounter.showMemory = #if debug true #else false #end;
+		fpsCounter.showRam= #if debug true #else false #end;
 		addChild(fpsCounter);
 	}
 }
