@@ -3,7 +3,7 @@
 
 	<!--Application Settings -->
 
-	<app title="UNDERTALE" packageName="com.majigsaw.undertale" package="com.majigsaw.undertale" version="0.2.8" company="MAJigsaw" />
+	<app title="UNDERTALE" packageName="com.majigsaw.undertale" package="com.majigsaw.undertale" version="1.0.0" company="MAJigsaw" />
 
 	<app file="UNDERTALE" main="Main" preloader="flixel.system.FlxPreloader" />
 
