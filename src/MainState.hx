@@ -9,7 +9,8 @@ class PlayState extends FlxState
     {
         super.create();
 
-        var text = new FlxText(0, 0, 0, 'wanna have a\nbad time?', 32);
+        var text:FlxText = new FlxText(0, 0, 0, 'wanna have a\nbad time?', 32);
+        text.font = 'assets/fonts/DTM-Sans.ttf';
         text.screenCenter();
         add(text);
     }
