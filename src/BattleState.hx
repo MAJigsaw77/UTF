@@ -23,12 +23,12 @@ class BattleState extends FlxState
         hpBar.scrollFactor.set();
         add(hpBar);
 
-        hpInfo = new FlxText(290 + Global.maxhp * 1.2, 400, 0, Global.hp + ' / ' + Global.maxhp, 32);
+        hpInfo = new FlxText(290 + Global.maxhp * 1.2, 400, 0, Global.hp + ' / ' + Global.maxhp, 12);
         hpInfo.font = Paths.font('DTM-Sans.otf');
         hpInfo.scrollFactor.set();
         add(hpInfo);
 
-        stats = new FlxText(30, 400, 0, Global.charname + "   LV " + Global.lv, 32);
+        stats = new FlxText(30, 400, 0, Global.charname + "   LV " + Global.lv, 12);
         stats.font = Paths.font('DTM-Sans.otf');
         stats.scrollFactor.set();
         add(stats);

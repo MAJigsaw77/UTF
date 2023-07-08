@@ -26,7 +26,7 @@ class DialogueBox extends FlxSpriteGroup
 		box.screenCenter(X);
 		add(box);
 
-		writer = new FlxTypeText(0, 0, 0, '', 32);
+		writer = new FlxTypeText(0, 0, 0, '', 24);
 		writer.font = font;
 		writer.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		add(writer);

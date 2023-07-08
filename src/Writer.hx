@@ -17,7 +17,7 @@ class Writer extends FlxTypeText
 
 	public function new(X:Float = 0, Y:Float = 0, Width:Int = 0):Void
 	{
-		super(X, Y, Width, msgList[page].text, 32, true);
+		super(X, Y, Width, msgList[page].text, 24, true);
 
 		skipKeys = ['ESCAPE'];
 		sounds = [FlxG.sound.load(Paths.sound('voices/uifont'))];

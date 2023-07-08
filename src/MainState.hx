@@ -9,7 +9,7 @@ class MainState extends FlxState
     {
         super.create();
 
-        var text:FlxText = new FlxText(0, 0, 0, 'wanna have a\nbad time?', 32);
+        var text:FlxText = new FlxText(0, 0, 0, 'wanna have a\nbad time?', 24);
         text.font = Paths.font('DTM-Mono.otf');
         text.screenCenter();
         add(text);
