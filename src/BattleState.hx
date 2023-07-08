@@ -18,7 +18,7 @@ class BattleState extends FlxState
 
     override public function create():Void
     {
-        hpBar = new FlxBar(275, 400, LEFT_TO_RIGHT, 275 + Global.maxhp * 1.2, 420, Global, "hp", 0, Global.maxhp);
+        hpBar = new FlxBar(275, 400, LEFT_TO_RIGHT, Std.int(275 + Global.maxhp * 1.2), 420, Global, "hp", 0, Global.maxhp);
         hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
         hpBar.scrollFactor.set();
         add(hpBar);
