@@ -4,6 +4,8 @@ import flixel.text.FlxText;
 import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
 import flixel.FlxState;
+import openfl.display.BitmapData;
+import openfl.display.Shape;
 
 class BattleState extends FlxState
 {
@@ -37,10 +39,10 @@ class BattleState extends FlxState
 	private function createBox():BitmapData
 	{
 		var shape:Shape = new Shape();
-		shape.graphics.beginFill(0xFFFFFFFF);
+		shape.graphics.beginFill(FlxColor.WHITE);
 		shape.graphics.drawRect(0, 0, 304, 235);
 		shape.graphics.endFill();
-		shape.graphics.beginFill(0);
+		shape.graphics.beginFill(FlxColor.BLACK);
 		shape.graphics.drawRect(3, 3, 301, 232);
 		shape.graphics.endFill();
 
