@@ -22,7 +22,7 @@ class Writer extends FlxTypeText
 		skipKeys = ['ESCAPE'];
 		sounds = [FlxG.sound.load(Paths.sound('voices/uifont'))];
 		font = Paths.font('DTM-Mono.otf');
-		completeCallback = function()
+		/*completeCallback = function()
 		{
 			page += 1;
 
@@ -33,6 +33,6 @@ class Writer extends FlxTypeText
 			}
 			else
 				resetText('');
-		}
+		}*/
 	}
 }
