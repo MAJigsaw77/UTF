@@ -26,7 +26,7 @@ class Main extends Sprite
 		});
 		FlxG.signals.postStateSwitch.add(System.gc);
 
-		addChild(new FlxGame(640, 480, MainState, 60, 60));
+		addChild(new FlxGame(640, 480, BattleState, 60, 60));
 
 		var fpsCounter:FPS = new FPS(10, 10, 0xFFFFFF);
 		fpsCounter.showRAM = #if debug true #else false #end;
