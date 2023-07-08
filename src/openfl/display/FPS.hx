@@ -7,6 +7,7 @@ import openfl.events.Event;
 import openfl.system.System;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
+import openfl.utils.Assets;
 
 class FPS extends TextField
 {
@@ -34,10 +35,10 @@ class FPS extends TextField
 		selectable = mouseEnabled = false;
 
 		#if mobile
-		defaultTextFormat = new TextFormat('_sans',
+		defaultTextFormat = new TextFormat(Assets.getFont(Paths.font('DTM-Sans.otf')).fontName,
 			Std.int(14 * Math.min(Lib.current.stage.stageWidth / FlxG.width, Lib.current.stage.stageHeight / FlxG.height)), color);
 		#else
-		defaultTextFormat = new TextFormat('_sans', 14, color);
+		defaultTextFormat = new TextFormat(Assets.getFont(Paths.font('DTM-Sans.otf')).fontName, 14, color);
 		#end
 
 		currentTime = 0;
