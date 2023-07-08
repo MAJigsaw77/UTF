@@ -1,5 +1,6 @@
 package;
 
+import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
@@ -10,8 +11,8 @@ import openfl.display.Shape;
 
 class BattleState extends FlxState
 {
-    final choices:Array<String> = ['Fight', 'Act', 'Items', 'Mercy'];
-    final choicesItems:Array<String> = ['Fight', 'Act', 'Items', 'Mercy'];
+    final choices:Array<String> = ['Fight', 'Act', 'Item', 'Mercy'];
+    final choicesItems:FlxTypedGroup<FlxSprite>;
 
     var hpBar:FlxBar;
     var hpInfo:FlxText;
@@ -19,16 +20,39 @@ class BattleState extends FlxState
 
     override public function create():Void
     {
-	var battlebg:FlxSprite = new FlxSprite(0, 0, Paths.sprite('ui/battle/battlebg_0'));
-	battlebg.screenCenter(X);
+        var battlebg:FlxSprite = new FlxSprite(0, 0, Paths.sprite('ui/battle/battlebg_0'));
+        battlebg.screenCenter(X);
         battlebg.scrollFactor.set();
         add(battlebg);
 
-	var hpName:FlxSprite = new FlxSprite(240, 400, Paths.sprite('ui/battle/hpname'));
+        choicesItems = new FlxTypedGroup<FlxSprite>();
+        add(choicesItems);
+
+        for (i in choices.length)
+        {
+            var bt:FlxSprite = new FlxSprite(0, 432, Paths.sprite('ui/buttons/' + choices[i].toLowerCase() + 'bt_0'));
+
+            switch (choices[i])
+            {
+                case 'Fight':
+                    bt.x = 32;
+                case 'Act':
+                    bt.x = 185;
+                case 'Item':
+                    bt.x = 345;
+                case 'Mercy':
+                    bt.x = 500;
+            }
+
+            bt.scrollFactor.set();
+            choicesItems.add(bt);
+        }
+
+        var hpName:FlxSprite = new FlxSprite(240, 400, Paths.sprite('ui/battle/hpname'));
         hpName.scrollFactor.set();
         add(hpName);
 
-	hpBar = new FlxBar(275, 400, LEFT_TO_RIGHT, Std.int(Global.maxhp * 1.2), 20, Global, "hp", 0, Global.maxhp);
+        hpBar = new FlxBar(275, 400, LEFT_TO_RIGHT, Std.int(Global.maxhp * 1.2), 20, Global, "hp", 0, Global.maxhp);
         hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
         hpBar.scrollFactor.set();
         add(hpBar);
