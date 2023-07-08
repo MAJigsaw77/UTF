@@ -12,8 +12,8 @@ import openfl.display.Shape;
 class BattleState extends FlxState
 {
     final choices:Array<String> = ['Fight', 'Act', 'Item', 'Mercy'];
-    final choicesItems:FlxTypedGroup<FlxSprite>;
 
+    var choicesItems:FlxTypedGroup<FlxSprite>;
     var hpBar:FlxBar;
     var hpInfo:FlxText;
     var stats:FlxText;
