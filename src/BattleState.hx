@@ -25,8 +25,8 @@ class BattleState extends FlxState
         add(battlebg);
 
 	var hpName:FlxSprite = new FlxSprite(240, 400, Paths.sprite('ui/battle/hpname'));
-        hpBar.scrollFactor.set();
-        add(hpBar);
+        hpName.scrollFactor.set();
+        add(hpName);
 
 	hpBar = new FlxBar(275, 400, LEFT_TO_RIGHT, Std.int(Global.maxhp * 1.2), 20, Global, "hp", 0, Global.maxhp);
         hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
