@@ -28,7 +28,7 @@ class BattleState extends FlxState
         choicesItems = new FlxTypedGroup<FlxSprite>();
         add(choicesItems);
 
-        for (i in choices.length)
+        for (i in 0...choices.length)
         {
             var bt:FlxSprite = new FlxSprite(0, 432, Paths.sprite('ui/buttons/' + choices[i].toLowerCase() + 'bt_0'));
 
