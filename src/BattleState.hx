@@ -19,7 +19,12 @@ class BattleState extends FlxState
 
     override public function create():Void
     {
-        var hpName:FlxSprite = new FlxSprite(240, 400, Paths.sprite('ui/battle/hpname'));
+	var battlebg:FlxSprite = new FlxSprite(0, 0, Paths.sprite('ui/battle/battlebg_0'));
+	battlebg.screenCenter(X);
+        battlebg.scrollFactor.set();
+        add(battlebg);
+
+	var hpName:FlxSprite = new FlxSprite(240, 400, Paths.sprite('ui/battle/hpname'));
         hpBar.scrollFactor.set();
         add(hpBar);
 
