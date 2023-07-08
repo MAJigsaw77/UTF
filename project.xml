@@ -9,7 +9,7 @@
 
 	<!--Window Settings -->
 
-	<window width="1280" height="720" fps="60" orientation="landscape" background="#000000" hardware="true" vsync="false" />
+	<window width="1280" height="720" fps="30" orientation="landscape" background="#000000" hardware="true" vsync="false" />
 
 	<window if="mobile || switch" orientation="landscape" fullscreen="true" resizable="false" />
 
