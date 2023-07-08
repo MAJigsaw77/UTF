@@ -3,6 +3,7 @@ package;
 import flixel.text.FlxText;
 import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
+import flixel.FlxSprite;
 import flixel.FlxState;
 import openfl.display.BitmapData;
 import openfl.display.Shape;
@@ -18,7 +19,11 @@ class BattleState extends FlxState
 
     override public function create():Void
     {
-        hpBar = new FlxBar(275, 400, LEFT_TO_RIGHT, Std.int(Global.maxhp * 1.2), 20, Global, "hp", 0, Global.maxhp);
+        var hpName:FlxSprite = new FlxSprite(240, 400, Paths.sprite('ui/battle/hpname_0'));
+        hpBar.scrollFactor.set();
+        add(hpBar);
+
+	hpBar = new FlxBar(275, 400, LEFT_TO_RIGHT, Std.int(Global.maxhp * 1.2), 20, Global, "hp", 0, Global.maxhp);
         hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
         hpBar.scrollFactor.set();
         add(hpBar);
