@@ -23,16 +23,16 @@ class Writer extends FlxTypeText
 		sounds = [FlxG.sound.load(Paths.sound('voices/uifont'))];
 		font = Paths.font('DTM-Mono.otf');
 		/*completeCallback = function()
-		{
-			page += 1;
-
-			if (page != msgList.length)
 			{
-				resetText(msgList[page].text);
-				start(msgList[page].text, true);
-			}
-			else
-				resetText('');
+				page += 1;
+
+				if (page != msgList.length)
+				{
+					resetText(msgList[page].text);
+					start(msgList[page].text, true);
+				}
+				else
+					resetText('');
 		}*/
 	}
 }

@@ -5,33 +5,32 @@ import flixel.FlxState;
 
 class MainState extends FlxState
 {
-    override public function create():Void
-    {
-        super.create();
-
-        var text:FlxText = new FlxText(0, 0, 0, 'wanna have a\nbad time?', 24);
-        text.font = Paths.font('DTM-Mono.otf');
-        text.screenCenter();
-        add(text);
-    }
-
-    override public function update(elapsed:Float):Void
-    {
-        super.update(elapsed);
-    }
-
-	/*private function createDBGraphic():BitmapData
+	override public function create():Void
 	{
-		var shape:Shape = new Shape();
-		shape.graphics.beginFill(0xFFFFFFFF);
-		shape.graphics.drawRect(0, 0, 304, 235);
-		shape.graphics.endFill();
-		shape.graphics.beginFill(0);
-		shape.graphics.drawRect(3, 3, 301, 232);
-		shape.graphics.endFill();
+		super.create();
 
-		var bitmap:BitmapData = new BitmapData(304, 235, true, 0);
-		bitmap.draw(shape, true);
-		return bitmap;
+		var text:FlxText = new FlxText(0, 0, 0, 'wanna have a\nbad time?', 24);
+		text.font = Paths.font('DTM-Mono.otf');
+		text.screenCenter();
+		add(text);
+	}
+
+	override public function update(elapsed:Float):Void
+	{
+		super.update(elapsed);
+	}
+	/*private function createDBGraphic():BitmapData
+		{
+			var shape:Shape = new Shape();
+			shape.graphics.beginFill(0xFFFFFFFF);
+			shape.graphics.drawRect(0, 0, 304, 235);
+			shape.graphics.endFill();
+			shape.graphics.beginFill(0);
+			shape.graphics.drawRect(3, 3, 301, 232);
+			shape.graphics.endFill();
+
+			var bitmap:BitmapData = new BitmapData(304, 235, true, 0);
+			bitmap.draw(shape, true);
+			return bitmap;
 	}*/
 }

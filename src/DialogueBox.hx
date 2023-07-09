@@ -85,7 +85,8 @@ class DialogueBox extends FlxSpriteGroup
 		writer.resetText(dialogueList[0]);
 		writer.start(0.04);
 		writer.completeCallback = function()
-		{;
+		{
+			;
 			dialogueEnded = true;
 		};
 		dialogueEnded = false;
@@ -106,7 +107,6 @@ class DialogueBox extends FlxSpriteGroup
 		return bitmap;
 	}
 }
-
 
 class Story extends FroggitState
 {
