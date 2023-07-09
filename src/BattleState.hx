@@ -73,7 +73,7 @@ class BattleState extends FlxTransitionableState
 		changeChoice();
 
 		var writer:Writer = new Writer(0, 0, 0, [
-			{text: "* The wind is hooling", speed: 0.04},
+			{text: '* The wind is howling...', speed: 0.04},
 		]);
 		writer.scrollFactor.set();
 		writer.start(0.04, true);
