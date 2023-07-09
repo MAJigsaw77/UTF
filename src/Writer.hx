@@ -33,13 +33,13 @@ class Writer extends FlxTypeText
 		{
 			completeCallback = function()
 			{
-				if (page <= msgList.length)
+				if (page <= msg.length)
 				{
 					page += 1;
 	
-					resetText(msgList[page].text);
+					resetText(msg[page].text);
 
-					start(msgList[page].text, true);
+					start(msg[page].text, true);
 				}
 				else
 				{
@@ -55,13 +55,13 @@ class Writer extends FlxTypeText
 	{
 		if (FlxG.keys.justPressed.ENTER && !finished && !autoContinue)
 		{
-			if (page <= msgList.length)
+			if (page <= msg.length)
 			{
 				page += 1;
 	
-				resetText(msgList[page].text);
+				resetText(msg[page].text);
 
-				start(msgList[page].text, true);
+				start(msg[page].text, true);
 			}
 			else
 			{
