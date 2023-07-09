@@ -19,10 +19,6 @@
 		{
 			"name":"flixel-addons",
 			"type":"haxelib"
-		},
-		{
-			"name":"flixel-ui",
-			"type":"haxelib"
 		}
 	]
 }
