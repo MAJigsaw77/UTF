@@ -19,7 +19,7 @@ class FPS extends TextField
 	/**
 		Whether to show the ram usage or not.
 	**/
-	public var showRAM:Bool = true;
+	public var showMemoryUsage:Bool = true;
 
 	@:noCompletion private var currentTime:Float;
 	@:noCompletion private var times:Array<Float>;
@@ -77,7 +77,7 @@ class FPS extends TextField
 		final stats:Array<String> = [];
 		stats.push('FPS: ' + currentFPS);
 
-		if (showRAM)
+		if (showMemoryUsage)
 			stats.push('Memory: ' + FlxStringUtil.formatBytes(System.totalMemory));
 
 		stats.push(''); // adding this to not hide the last line.

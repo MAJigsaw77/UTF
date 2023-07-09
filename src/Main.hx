@@ -35,7 +35,7 @@ class Main extends Sprite
 		addChild(new FlxGame(640, 480, BattleState, 30, 30));
 
 		var fpsCounter:FPS = new FPS(10, 10, FlxColor.WHITE);
-		fpsCounter.showRAM = #if debug true #else false #end;
+		fpsCounter.showMemoryUsage = #if debug true #else false #end;
 		addChild(fpsCounter);
 	}
 }
