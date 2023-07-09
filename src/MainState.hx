@@ -1,9 +1,9 @@
 package;
 
+import flixel.addons.transition.FlxTransitionableState;
 import flixel.text.FlxText;
-import flixel.FlxState;
 
-class MainState extends FlxState
+class MainState extends FlxTransitionableState
 {
 	override public function create():Void
 	{
