@@ -25,7 +25,9 @@ class Writer extends FlxTypeText
 
 		super(x, y, width, msg[page].text, 24, true);
 
-		skipKeys = ['ESCAPE'];
+		if (!autoContinue)
+			skipKeys = ['ESCAPE'];
+
 		sounds = [FlxG.sound.load(Paths.sound('voices/uifont'))];
 		font = Paths.font('DTM-Mono.otf');
 
