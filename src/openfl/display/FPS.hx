@@ -1,7 +1,7 @@
 package openfl.display;
 
 import flixel.FlxG;
-import flixel.math.FlxMath;
+import flixel.util.FlxStringUtil;
 import openfl.Lib;
 import openfl.events.Event;
 import openfl.system.System;
@@ -78,23 +78,9 @@ class FPS extends TextField
 		stats.push('FPS: ' + currentFPS);
 
 		if (showRAM)
-			stats.push('RAM: ' + getMemorySize(System.totalMemory));
+			stats.push('Memory: ' + FlxStringUtil.formatBytes(System.totalMemory));
 
 		stats.push(''); // adding this to not hide the last line.
 		text = stats.join('\n');
-	}
-
-	public function getMemorySize(size:Float):String
-	{
-		final labels:Array<String> = ['B', 'KB', 'MB', 'GB']; // I don't think a mod can use more lol
-
-		var label:Int = 0;
-		while (size >= 1000 && (label < labels.length - 1))
-		{
-			size /= 1000;
-			label++;
-		}
-
-		return '${Math.abs(FlxMath.roundDecimal(size, 2))} ${labels[label]}';
 	}
 }
