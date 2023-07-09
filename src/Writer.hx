@@ -11,28 +11,66 @@ typedef Dialogue =
 
 class Writer extends FlxTypeText
 {
-	public var msg:Array<Dialogue> = [];
+	public var finishedCallback:Void->Void;
 
+	private var msg:Array<Dialogue> = [];
+	private var autoContinue:Bool = false;
+	private var finished:Bool = false;
 	private var page:Int = 0;
 
-	public function new(X:Float = 0, Y:Float = 0, Width:Int = 0):Void
+	public function new(x:Float = 0, y:Float = 0, width:Int = 0, msg:Array<Dialogue>, autoContinue:Bool = false):Void
 	{
-		super(X, Y, Width, msgList[page].text, 24, true);
+		this.msg = msg;
+		this.autoContinue = autoContinue;
+
+		super(x, y, width, msg[page].text, 24, true);
 
 		skipKeys = ['ESCAPE'];
 		sounds = [FlxG.sound.load(Paths.sound('voices/uifont'))];
 		font = Paths.font('DTM-Mono.otf');
-		/*completeCallback = function()
-			{
-				page += 1;
 
-				if (page != msgList.length)
+		if (autoContinue)
+		{
+			completeCallback = function()
+			{
+				if (page <= msgList.length)
 				{
+					page += 1;
+	
 					resetText(msgList[page].text);
+
 					start(msgList[page].text, true);
 				}
 				else
-					resetText('');
-		}*/
+				{
+					finished = true;
+					if (finishedCallback != null)
+						finishedCallback();
+				}
+			}
+		}
+	}
+
+	public override function update(elapsed:Float):Void
+	{
+		if (FlxG.keys.justPressed.ENTER && !finished && !autoContinue)
+		{
+			if (page <= msgList.length)
+			{
+				page += 1;
+	
+				resetText(msgList[page].text);
+
+				start(msgList[page].text, true);
+			}
+			else
+			{
+				finished = true;
+				if (finishedCallback != null)
+					finishedCallback();
+			}
+		}
+
+		super.update(elapsed);
 	}
 }
