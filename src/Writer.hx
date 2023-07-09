@@ -35,7 +35,7 @@ class Writer extends FlxTypeText
 			{
 				if (page <= msg.length)
 				{
-					page += 1;
+					page++;
 	
 					resetText(msg[page].text);
 
@@ -57,7 +57,7 @@ class Writer extends FlxTypeText
 		{
 			if (page <= msg.length)
 			{
-				page += 1;
+				page++;
 	
 				resetText(msg[page].text);
 
