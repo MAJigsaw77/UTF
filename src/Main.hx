@@ -1,5 +1,8 @@
 package;
 
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.addons.transition.TransitionData;
+import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
@@ -26,9 +29,12 @@ class Main extends Sprite
 		});
 		FlxG.signals.postStateSwitch.add(System.gc);
 
+		FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.5);
+		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.5);
+
 		addChild(new FlxGame(640, 480, BattleState, 30, 30));
 
-		var fpsCounter:FPS = new FPS(10, 10, 0xFFFFFF);
+		var fpsCounter:FPS = new FPS(10, 10, FlxColor.WHITE);
 		fpsCounter.showRAM = #if debug true #else false #end;
 		addChild(fpsCounter);
 	}
