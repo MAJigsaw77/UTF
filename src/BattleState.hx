@@ -1,5 +1,6 @@
 package;
 
+import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.ui.FlxBar;
@@ -9,7 +10,7 @@ import flixel.FlxState;
 import openfl.display.BitmapData;
 import openfl.display.Shape;
 
-class BattleState extends FlxState
+class BattleState extends FlxTransitionableState
 {
 	final choices:Array<String> = ['Fight', 'Act', 'Item', 'Mercy'];
 
@@ -80,7 +81,7 @@ class BattleState extends FlxState
 
 		if (curSelected >= choicesItems.length)
 			curSelected = 0;
-		if (curSelected < 0)
+		else if (curSelected < 0)
 			curSelected = choicesItems.length - 1;
 
 		choicesItems.forEach(function(spr:FlxSprite)
