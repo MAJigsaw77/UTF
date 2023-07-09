@@ -41,7 +41,7 @@ class Writer extends FlxTypeText
 	
 					resetText(msg[page].text);
 
-					start(msg[page].text, true);
+					start(0.04, true);
 				}
 				else
 				{
@@ -63,7 +63,7 @@ class Writer extends FlxTypeText
 	
 				resetText(msg[page].text);
 
-				start(msg[page].text, true);
+				start(0.04, true);
 			}
 			else
 			{
