@@ -74,7 +74,7 @@ class BattleState extends FlxState
 		super.create();
 	}
 
-	private function changeChoice(num:Int = 0):BitmapData
+	private function changeChoice(num:Int = 0):Void
 	{
 		curSelected += num;
 
@@ -85,7 +85,7 @@ class BattleState extends FlxState
 
 		choicesItems.forEach(function(spr:FlxSprite)
 		{
-			spr.loadGraphic(Paths.sprite('ui/buttons/' + choices[spr.ID].toLowerCase() + 'bt_' + spr.ID == curSelected ? 1 : 0));
+			spr.loadGraphic(Paths.sprite('ui/buttons/' + choices[spr.ID].toLowerCase() + 'bt_' + Std.string(spr.ID == curSelected ? 1 : 0)));
 		});
 	}
 
