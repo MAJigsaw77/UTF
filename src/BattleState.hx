@@ -85,7 +85,7 @@ class BattleState extends FlxState
 
 		choicesItems.forEach(function(spr:FlxSprite)
 		{
-			spr.loadGraphic(Paths.sprite('ui/buttons/' + choices[i].toLowerCase() + 'bt_' + spr.ID == curSelected ? 1 : 0));
+			spr.loadGraphic(Paths.sprite('ui/buttons/' + choices[spr.ID].toLowerCase() + 'bt_' + spr.ID == curSelected ? 1 : 0));
 		});
 	}
 
