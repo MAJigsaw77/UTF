@@ -14,6 +14,7 @@ class BattleState extends FlxState
     final choices:Array<String> = ['Fight', 'Act', 'Item', 'Mercy'];
 
     var choicesItems:FlxTypedGroup<FlxSprite>;
+	var curSelected:Int = 0;
     var hpBar:FlxBar;
     var hpInfo:FlxText;
     var stats:FlxText;
@@ -45,6 +46,7 @@ class BattleState extends FlxState
             }
 
             bt.scrollFactor.set();
+		bt.ID = i;
             choicesItems.add(bt);
         }
 
@@ -67,8 +69,25 @@ class BattleState extends FlxState
         stats.scrollFactor.set();
         add(stats);
 
+	changeChoice();
+
         super.create();
     }
+	
+	private function changeChoice(num:Int = 0):BitmapData
+	{
+		curSelected += num;
+
+		if (curSelected >= choicesItems.length)
+			curSelected = 0;
+		if (curSelected < 0)
+			curSelected = choicesItems.length - 1;
+
+		choicesItems.forEach(function(spr:FlxSprite)
+		{
+			spr.loadGraphic(Paths.sprite('ui/buttons/' + choices[i].toLowerCase() + 'bt_' + spr.ID == curSelected ? 1 : 0));
+		});
+	}
 
 	private function createBox():BitmapData
 	{
