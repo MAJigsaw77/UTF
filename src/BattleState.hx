@@ -39,11 +39,11 @@ class BattleState extends FlxTransitionableState
 			{
 				case 'Fight':
 					bt.x = 32;
-				case 'Act':
+				case 'Talk':
 					bt.x = 185;
 				case 'Item':
 					bt.x = 345;
-				case 'Mercy':
+				case 'Spare':
 					bt.x = 500;
 			}
 
