@@ -3,6 +3,7 @@ package;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.transition.TransitionData;
+import flixel.graphics.FlxGraphic;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -34,8 +35,8 @@ class Main extends Sprite
 		diamond.persist = true;
 		diamond.destroyOnNoUse = false;
 
-		FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.5, new FlxPoint(0, 0), {asset: diamond, width: 32, height: 32});
-		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.5, new FlxPoint(0, 0), {asset: diamond, width: 32, height: 32});
+		FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.5, {asset: diamond, width: 32, height: 32});
+		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.5, {asset: diamond, width: 32, height: 32});
 
 		addChild(new FlxGame(640, 480, BattleState, 30, 30));
 
