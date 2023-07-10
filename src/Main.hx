@@ -1,9 +1,7 @@
 package;
 
-import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.transition.TransitionData;
-import flixel.graphics.FlxGraphic;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -19,6 +17,7 @@ class Main extends Sprite
 	{
 		super();
 
+		FlxG.signals.gameResized.add(onResizeGame);
 		FlxG.signals.preStateCreate.add(function(state:FlxState)
 		{
 			// Clear the loaded graphics if they are no longer in flixel cache...
@@ -31,17 +30,36 @@ class Main extends Sprite
 		});
 		FlxG.signals.postStateSwitch.add(System.gc);
 
-		var diamond:FlxGraphic = FlxGraphic.fromClass(GraphicTransTileDiamond);
-		diamond.persist = true;
-		diamond.destroyOnNoUse = false;
-
-		FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.5, {asset: diamond, width: 32, height: 32});
-		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.5, {asset: diamond, width: 32, height: 32});
+		FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.5);
+		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.5);
 
 		addChild(new FlxGame(640, 480, BattleState, 30, 30));
 
 		var fpsCounter:FPS = new FPS(10, 10, FlxColor.WHITE);
 		fpsCounter.showMemoryUsage = #if debug true #else false #end;
 		addChild(fpsCounter);
+	}
+
+	private function onResizeGame(width:Int, height:Int):Void
+	{
+		if (FlxG.cameras == null)
+			return;
+
+		for (cam in FlxG.cameras.list)
+		{
+			@:privateAccess
+			if (cam != null && (cam._filters != null && cam._filters.length > 0))
+			{
+				var sprite:Sprite = cam.flashSprite; // Shout out to Ne_Eo for bringing this to my attention
+				if (sprite != null)
+				{
+					sprite.__cacheBitmap = null;
+					sprite.__cacheBitmapData = null;
+					sprite.__cacheBitmapData2 = null;
+					sprite.__cacheBitmapData3 = null;
+					sprite.__cacheBitmapColorTransform = null;
+				}
+			}
+		}
 	}
 }
