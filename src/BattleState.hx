@@ -12,17 +12,18 @@ import openfl.display.Shape;
 
 class BattleState extends FlxTransitionableState
 {
-	final choices:Array<String> = ['Fight', 'Act', 'Item', 'Mercy'];
+	final choices:Array<String> = ['Fight', 'Talk', 'Item', 'Spare'];
 
 	var choicesItems:FlxTypedGroup<FlxSprite>;
 	var curSelected:Int = 0;
+
 	var hpBar:FlxBar;
 	var hpInfo:FlxText;
 	var stats:FlxText;
 
 	override public function create():Void
 	{
-		var battlebg:FlxSprite = new FlxSprite(0, 0, Paths.sprite('ui/battle/battlebg_0'));
+		var battlebg:FlxSprite = new FlxSprite(0, 0, Paths.sprite('battlebg_0'));
 		battlebg.screenCenter(X);
 		battlebg.scrollFactor.set();
 		add(battlebg);
@@ -32,7 +33,7 @@ class BattleState extends FlxTransitionableState
 
 		for (i in 0...choices.length)
 		{
-			var bt:FlxSprite = new FlxSprite(0, 432, Paths.sprite('ui/buttons/' + choices[i].toLowerCase() + 'bt_0'));
+			var bt:FlxSprite = new FlxSprite(0, 432, Paths.sprite(choices[i].toLowerCase() + 'bt_1'));
 
 			switch (choices[i])
 			{
@@ -51,7 +52,7 @@ class BattleState extends FlxTransitionableState
 			choicesItems.add(bt);
 		}
 
-		var hpName:FlxSprite = new FlxSprite(240, 400, Paths.sprite('ui/battle/hpname'));
+		var hpName:FlxSprite = new FlxSprite(240, 400, Paths.sprite('hpname'));
 		hpName.scrollFactor.set();
 		add(hpName);
 
@@ -93,7 +94,7 @@ class BattleState extends FlxTransitionableState
 
 		choicesItems.forEach(function(spr:FlxSprite)
 		{
-			spr.loadGraphic(Paths.sprite('ui/buttons/' + choices[spr.ID].toLowerCase() + 'bt_' + Std.string(spr.ID == curSelected ? 1 : 0)));
+			spr.loadGraphic(Paths.sprite(choices[spr.ID].toLowerCase() + 'bt_' + Std.string(spr.ID == curSelected ? 0 : 1)));
 		});
 	}
 
