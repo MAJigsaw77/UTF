@@ -1,5 +1,6 @@
 package;
 
+import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
@@ -7,8 +8,6 @@ import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.FlxState;
-import openfl.display.BitmapData;
-import openfl.display.Shape;
 
 class BattleState extends FlxTransitionableState
 {
@@ -23,7 +22,7 @@ class BattleState extends FlxTransitionableState
 	var hpInfo:FlxText;
 	var stats:FlxText;
 
-	var box:FlxSprite;
+	var box:FlxShapeBox;
 	var writer:Writer;
 
 	override public function create():Void
@@ -61,12 +60,12 @@ class BattleState extends FlxTransitionableState
 		hpName.scrollFactor.set();
 		add(hpName);
 
-		hpBar = new FlxBar(275, 400, LEFT_TO_RIGHT, Std.int(Global.maxhp * 1.2), 20, Global, "hp", 0, Global.maxhp);
+		hpBar = new FlxBar(hpName.x + 35, 400, LEFT_TO_RIGHT, Std.int(Global.maxhp * 1.2), 20, Global, "hp", 0, Global.maxhp);
 		hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
 		hpBar.scrollFactor.set();
 		add(hpBar);
 
-		hpInfo = new FlxText(290 + Global.maxhp * 1.2, 400, 0, Global.hp + ' / ' + Global.maxhp, 14);
+		hpInfo = new FlxText((hpBar.x + 15) + Global.maxhp * 1.2, 400, 0, Global.hp + ' / ' + Global.maxhp, 14);
 		hpInfo.font = Paths.font('Small.otf');
 		hpInfo.scrollFactor.set();
 		add(hpInfo);
@@ -82,7 +81,11 @@ class BattleState extends FlxTransitionableState
 		box.scrollFactor.set();
 		add(box);
 
-		writer = new Writer(48, 250, 0, [
+		box = new FlxShapeBox(32, 250, 135, {thickness: 8, color: FlxColor.WHITE}, FlxColor.BLACK);
+		box.scrollFactor.set();
+		add(box);
+
+		writer = new Writer(48, 258, 0, [
 			{text: '* The wind is howling...', speed: 0.04},
 		]);
 		writer.scrollFactor.set();
@@ -105,20 +108,5 @@ class BattleState extends FlxTransitionableState
 		{
 			spr.loadGraphic(Paths.sprite(choices[spr.ID].toLowerCase() + 'bt_' + Std.string(spr.ID == curSelected ? 0 : 1)));
 		});
-	}
-
-	private function createBox():BitmapData
-	{
-		var shape:Shape = new Shape();
-		shape.graphics.beginFill(FlxColor.WHITE);
-		shape.graphics.drawRect(0, 0, 570, 135);
-		shape.graphics.endFill();
-		shape.graphics.beginFill(FlxColor.BLACK);
-		shape.graphics.drawRect(3, 3, 567, 132);
-		shape.graphics.endFill();
-
-		var bitmap:BitmapData = new BitmapData(570, 135, true, 0);
-		bitmap.draw(shape, true);
-		return bitmap;
 	}
 }
