@@ -75,9 +75,6 @@ class BattleState extends FlxTransitionableState
 		stats.scrollFactor.set();
 		add(stats);
 
-		box = new FlxSprite(32, 250, createBox());
-		box.scrollFactor.set();
-		add(box);
 
 		box = new FlxShapeBox(32, 250, 135, {thickness: 8, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.scrollFactor.set();
