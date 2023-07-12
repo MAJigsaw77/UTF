@@ -112,13 +112,13 @@ class BattleState extends FlxTransitionableState
 	{
 		var shape:Shape = new Shape();
 		shape.graphics.beginFill(FlxColor.WHITE);
-		shape.graphics.drawRect(0, 0, 304, 235);
+		shape.graphics.drawRect(0, 0, 570, 135);
 		shape.graphics.endFill();
 		shape.graphics.beginFill(FlxColor.BLACK);
-		shape.graphics.drawRect(3, 3, 301, 232);
+		shape.graphics.drawRect(3, 3, 567, 132);
 		shape.graphics.endFill();
 
-		var bitmap:BitmapData = new BitmapData(304, 235, true, 0);
+		var bitmap:BitmapData = new BitmapData(570, 135, true, 0);
 		bitmap.draw(shape, true);
 		return bitmap;
 	}
