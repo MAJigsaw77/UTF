@@ -78,12 +78,11 @@ class BattleState extends FlxTransitionableState
 
 		changeChoice();
 
-		box = new FlxSprite(16, 160, createBox());
+		box = new FlxSprite(32, 385, createBox());
 		box.scrollFactor.set();
-		box.screenCenter(X);
 		add(box);
 
-		writer = new Writer(68, 150, 0, [
+		writer = new Writer(32, 385, 0, [
 			{text: '* The wind is howling...', speed: 0.04},
 		]);
 		writer.scrollFactor.set();
