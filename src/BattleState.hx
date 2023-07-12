@@ -21,6 +21,9 @@ class BattleState extends FlxTransitionableState
 	var hpInfo:FlxText;
 	var stats:FlxText;
 
+	var box:FlxSprite;
+	var writer:Writer;
+
 	override public function create():Void
 	{
 		var battlebg:FlxSprite = new FlxSprite(0, 0, Paths.sprite('battlebg_0'));
@@ -73,7 +76,12 @@ class BattleState extends FlxTransitionableState
 
 		changeChoice();
 
-		var writer:Writer = new Writer(0, 0, 0, [
+		box = new FlxSprite(0, 0, createDialogBox());
+		box.scrollFactor.set();
+		box.screenCenter(X);
+		add(box);
+
+		writer = new Writer(68, 150, 0, [
 			{text: '* The wind is howling...', speed: 0.04},
 		]);
 		writer.scrollFactor.set();
