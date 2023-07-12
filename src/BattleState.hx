@@ -17,6 +17,8 @@ class BattleState extends FlxTransitionableState
 	var choicesItems:FlxTypedGroup<FlxSprite>;
 	var curSelected:Int = 0;
 
+	var bg:FlxSprite;
+
 	var hpBar:FlxBar;
 	var hpInfo:FlxText;
 	var stats:FlxText;
@@ -26,10 +28,10 @@ class BattleState extends FlxTransitionableState
 
 	override public function create():Void
 	{
-		var battlebg:FlxSprite = new FlxSprite(0, 0, Paths.sprite('battlebg_0'));
-		battlebg.screenCenter(X);
-		battlebg.scrollFactor.set();
-		add(battlebg);
+		bg = new FlxSprite(0, 0, Paths.sprite('battlebg_0'));
+		bg.screenCenter(X);
+		bg.scrollFactor.set();
+		add(bg);
 
 		choicesItems = new FlxTypedGroup<FlxSprite>();
 		add(choicesItems);
@@ -76,7 +78,7 @@ class BattleState extends FlxTransitionableState
 
 		changeChoice();
 
-		box = new FlxSprite(0, 0, createDialogBox());
+		box = new FlxSprite(16, 160, createDialogBox());
 		box.scrollFactor.set();
 		box.screenCenter(X);
 		add(box);
