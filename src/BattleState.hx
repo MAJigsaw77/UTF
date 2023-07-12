@@ -75,8 +75,6 @@ class BattleState extends FlxTransitionableState
 		stats.scrollFactor.set();
 		add(stats);
 
-		changeChoice();
-
 		box = new FlxSprite(32, 250, createBox());
 		box.scrollFactor.set();
 		add(box);
@@ -91,6 +89,8 @@ class BattleState extends FlxTransitionableState
 		writer.scrollFactor.set();
 		writer.start(0.04, true);
 		add(writer);
+
+		changeChoice();
 
 		super.create();
 	}
