@@ -78,7 +78,7 @@ class BattleState extends FlxTransitionableState
 
 		changeChoice();
 
-		box = new FlxSprite(16, 160, createDialogBox());
+		box = new FlxSprite(16, 160, createBox());
 		box.scrollFactor.set();
 		box.screenCenter(X);
 		add(box);
