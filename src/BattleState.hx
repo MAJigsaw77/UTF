@@ -56,7 +56,7 @@ class BattleState extends FlxTransitionableState
 			choicesItems.add(bt);
 		}
 
-		var hpName:FlxSprite = new FlxSprite(240, 410, Paths.sprite('hpname'));
+		var hpName:FlxSprite = new FlxSprite(240, 415, Paths.sprite('hpname'));
 		hpName.scrollFactor.set();
 		add(hpName);
 
