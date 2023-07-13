@@ -5,65 +5,43 @@ import flixel.addons.text.FlxTypeText;
 
 typedef Dialogue = {
 	var text:String;
-	var speed:Float;
+	var delay:Float;
 }
 
 class Writer extends FlxTypeText
 {
+	public var msg(default, set):Array<Dialogue> = [{text: 'Error!', delay: 0.04}];
+
+	private function set_msg(value:Array<Dialogue>):Array<Dialogue>
+	{
+		page = 0;
+		resetText(value[page].text);
+		return value;
+	}
+
 	public var finishedCallback:Void->Void;
 
-	private var msg:Array<Dialogue> = [];
-	private var autoContinue:Bool = false;
-	private var finished:Bool = false;
 	private var page:Int = 0;
+	private var finished:Bool = false;
 
-	public function new(x:Float = 0, y:Float = 0, width:Int = 0, msg:Array<Dialogue>, autoContinue:Bool = false):Void
+	public function new(x:Float = 0, y:Float = 0, width:Int = 0):Void
 	{
-		this.msg = msg;
-		this.autoContinue = autoContinue;
+		super(x, y, width, '', 24, true);
 
-		super(x, y, width, msg[page].text, 24, true);
-
-		if (!autoContinue)
-			skipKeys = ['ESCAPE'];
-
-		sounds = [FlxG.sound.load(Paths.sound('voices/uifont'))];
-
+		skipKeys = ['ESCAPE'];
 		font = Paths.font('DTM-Mono.otf');
-
-		if (autoContinue)
-		{
-			completeCallback = function()
-			{
-				if (page <= msg.length)
-				{
-					page++;
-	
-					resetText(msg[page].text);
-
-					start(0.04, true);
-				}
-				else
-				{
-					finished = true;
-					if (finishedCallback != null)
-						finishedCallback();
-				}
-			}
-		}
+		sounds = [FlxG.sound.load(Paths.sound('voices/uifont'))];
 	}
 
 	override public function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justPressed.ENTER && !finished && !autoContinue)
+		if (FlxG.keys.justPressed.ENTER && !finished)
 		{
 			if (page <= msg.length)
 			{
 				page++;
-	
 				resetText(msg[page].text);
-
-				start(0.04, true);
+				start(msg[page].delay, true);
 			}
 			else
 			{
