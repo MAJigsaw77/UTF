@@ -6,6 +6,7 @@ import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 
@@ -80,7 +81,7 @@ class BattleState extends FlxTransitionableState
 		add(box);
 
 		writer = new Writer(box.x + 16, box.y + 14, 0, [
-			['* The wind is howling...', 0.04]
+			{text: '* The wind is howling...', speed: 0.04}
 		]);
 		writer.scrollFactor.set();
 		writer.start(0.04, true);
