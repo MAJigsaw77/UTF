@@ -80,7 +80,7 @@ class BattleState extends FlxTransitionableState
 		add(box);
 
 		writer = new Writer(box.x + 16, box.y + 14, 0, [
-			{'* The wind is howling...', 0.04},
+			['* The wind is howling...', 0.04]
 		]);
 		writer.scrollFactor.set();
 		writer.start(0.04, true);
