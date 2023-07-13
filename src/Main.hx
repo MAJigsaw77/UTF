@@ -6,16 +6,22 @@ import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
+import lime.system.System;
+import lime.utils.Log;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.system.System;
 import openfl.utils.Assets;
+import openfl.events.UncaughtErrorEvent;
+import openfl.Lib;
 
 class Main extends Sprite
 {
 	public function new():Void
 	{
 		super();
+
+		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onError);
 
 		FlxG.signals.gameResized.add(onResizeGame);
 		FlxG.signals.preStateCreate.add(function(state:FlxState)
@@ -61,5 +67,37 @@ class Main extends Sprite
 				}
 			}
 		}
+	}
+
+	private static function onError(e:UncaughtErrorEvent):Void
+	{
+		final stack:Array<String> = [];
+
+		stack.push(e.error);
+
+		for (stackItem in CallStack.exceptionStack(true))
+		{
+			switch (stackItem)
+			{
+				case CFunction:
+					stack.push('C Function');
+				case Module(m):
+					stack.push('Module ($m)');
+				case FilePos(s, file, line, column):
+					stack.push('$file (line $line)');
+				case Method(classname, method):
+					stack.push('$classname (method $method)');
+				case LocalFunction(name):
+					stack.push('Local Function ($name)');
+			}
+		}
+
+		e.preventDefault();
+		e.stopPropagation();
+		e.stopImmediatePropagation();
+
+		Log.println(stack.join('\n'));
+		Lib.application.window.alert(stack.join('\n'), 'Error!');
+		System.exit(1);
 	}
 }
