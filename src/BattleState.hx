@@ -94,21 +94,18 @@ class BattleState extends FlxTransitionableState
 	override public function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justPressed.RIGHT)
-		{
-			 FlxG.sound.play(Paths.sound(''));
 			 changeChoice(1);
-		}
 		else if (FlxG.keys.justPressed.LEFT)
-		{
-			 FlxG.sound.play(Paths.sound(''));
 			 changeChoice(-1);
-		}
 
 		super.update(elapsed);
 	}
 
 	private function changeChoice(num:Int = 0):Void
 	{
+		if (num != 0)
+			FlxG.sound.play(Paths.sound('menumove'));
+
 		curSelected += num;
 
 		if (curSelected >= choicesItems.length)
