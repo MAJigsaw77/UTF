@@ -24,6 +24,7 @@ class Writer extends FlxTypeText
 		return value;
 	}
 
+	public var interactable:Bool = true;
 	public var finishedCallback:Void->Void;
 
 	private var page:Int = 0;
@@ -40,7 +41,7 @@ class Writer extends FlxTypeText
 
 	override public function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justPressed.ENTER && !finished)
+		if (FlxG.keys.justPressed.ENTER && interactable && !finished)
 		{
 			if (page <= msg.length)
 			{
