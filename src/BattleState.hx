@@ -80,7 +80,7 @@ class BattleState extends FlxTransitionableState
 		add(box);
 
 		writer = new Writer(box.x + 16, box.y + 14, 0, [
-			{text: '* The wind is howling...', speed: 0.04},
+			{'* The wind is howling...', 0.04}
 		]);
 		writer.scrollFactor.set();
 		writer.start(0.04, true);
@@ -89,6 +89,22 @@ class BattleState extends FlxTransitionableState
 		changeChoice();
 
 		super.create();
+	}
+
+	override public function update(elapsed:Float):Void
+	{
+		if (FlxG.keys.justPressed.RIGHT)
+		{
+			 FlxG.sound.play(Paths.sound(''));
+			 changeChoice(1);
+		}
+		else if (FlxG.keys.justPressed.LEFT)
+		{
+			 FlxG.sound.play(Paths.sound(''));
+			 changeChoice(-1);
+		}
+
+		super.update(elapsed);
 	}
 
 	private function changeChoice(num:Int = 0):Void
