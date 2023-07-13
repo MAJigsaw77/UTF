@@ -57,21 +57,21 @@ class BattleState extends FlxTransitionableState
 			choicesItems.add(bt);
 		}
 
-		var hpName:FlxSprite = new FlxSprite(240, 415, Paths.sprite('hpname'));
+		var hpName:FlxSprite = new FlxSprite(240, 405, Paths.sprite('hpname'));
 		hpName.scrollFactor.set();
 		add(hpName);
 
-		hpBar = new FlxBar(hpName.x + 35, 400, LEFT_TO_RIGHT, Std.int(Global.maxhp * 1.2), 20, Global, "hp", 0, Global.maxhp);
+		hpBar = new FlxBar(hpName.x + 35, hpName.y - 5, LEFT_TO_RIGHT, Std.int(Global.maxhp * 1.2), 20, Global, "hp", 0, Global.maxhp);
 		hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
 		hpBar.scrollFactor.set();
 		add(hpBar);
 
-		hpInfo = new FlxText((hpBar.x + 15) + Global.maxhp * 1.2, 400, 0, Global.hp + ' / ' + Global.maxhp, 14);
+		hpInfo = new FlxText((hpBar.x + 15) + Global.maxhp * 1.2, hpBar.y, 0, Global.hp + ' / ' + Global.maxhp, 14);
 		hpInfo.font = Paths.font('Small.otf');
 		hpInfo.scrollFactor.set();
 		add(hpInfo);
 
-		stats = new FlxText(30, 400, 0, Global.charname + "   LV " + Global.lv, 14);
+		stats = new FlxText(30, hpBar.y, 0, Global.charname + "   LV " + Global.lv, 14);
 		stats.font = Paths.font('Small.otf');
 		stats.scrollFactor.set();
 		add(stats);
