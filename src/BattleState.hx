@@ -57,12 +57,18 @@ class BattleState extends FlxTransitionableState
 			choicesItems.add(bt);
 		}
 
-		var hpName:FlxSprite = new FlxSprite(240, 405, Paths.sprite('hpname'));
+		stats = new FlxText(30, 400, 0, Global.charname + "   LV " + Global.lv, 14);
+		stats.font = Paths.font('Small.otf');
+		stats.scrollFactor.set();
+		add(stats);
+
+		var hpName:FlxSprite = new FlxSprite(stats.x + 210, stats.y + 5, Paths.sprite('hpname'));
 		hpName.scrollFactor.set();
 		add(hpName);
 
 		hpBar = new FlxBar(hpName.x + 35, hpName.y - 5, LEFT_TO_RIGHT, Std.int(Global.maxhp * 1.2), 20, Global, "hp", 0, Global.maxhp);
 		hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
+		hpBar.emptyCallback = () -> trace('GAME OVER');
 		hpBar.scrollFactor.set();
 		add(hpBar);
 
@@ -71,17 +77,12 @@ class BattleState extends FlxTransitionableState
 		hpInfo.scrollFactor.set();
 		add(hpInfo);
 
-		stats = new FlxText(30, hpBar.y, 0, Global.charname + "   LV " + Global.lv, 14);
-		stats.font = Paths.font('Small.otf');
-		stats.scrollFactor.set();
-		add(stats);
-
 		box = new FlxShapeBox(32, 250, 570, 135, {thickness: 6, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.scrollFactor.set();
 		add(box);
 
 		writer = new Writer(box.x + 16, box.y + 14, 0, [
-			{text: '* The wind is howling...', speed: 0.04}
+			{text: '* The wind is howling...', delay: 0.04}
 		]);
 		writer.scrollFactor.set();
 		writer.start(0.04, true);
