@@ -19,6 +19,10 @@
 		{
 			"name":"flixel-addons",
 			"type":"haxelib"
+		},
+		{
+			"name":"hscript",
+			"type":"haxelib"
 		}
 	]
 }
