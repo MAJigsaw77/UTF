@@ -56,7 +56,7 @@ class BattleState extends FlxTransitionableState
 			choicesItems.add(bt);
 		}
 
-		var hpName:FlxSprite = new FlxSprite(240, 400, Paths.sprite('hpname'));
+		var hpName:FlxSprite = new FlxSprite(240, 410, Paths.sprite('hpname'));
 		hpName.scrollFactor.set();
 		add(hpName);
 
@@ -75,11 +75,11 @@ class BattleState extends FlxTransitionableState
 		stats.scrollFactor.set();
 		add(stats);
 
-		box = new FlxShapeBox(32, 250, 570, 135, {thickness: 8, color: FlxColor.WHITE}, FlxColor.BLACK);
+		box = new FlxShapeBox(32, 250, 570, 135, {thickness: 6, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.scrollFactor.set();
 		add(box);
 
-		writer = new Writer(box.x + 16, box.y + 10, 0, [
+		writer = new Writer(box.x + 16, box.y + 14, 0, [
 			{text: '* The wind is howling...', speed: 0.04},
 		]);
 		writer.scrollFactor.set();
