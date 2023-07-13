@@ -10,25 +10,12 @@ typedef Dialogue = {
 
 class Writer extends FlxTypeText
 {
-	public var msg(default, set):Array<Dialogue> = [{text: 'Error!', delay: 0.04}];
-
-	private function set_msg(value:Array<Dialogue>):Array<Dialogue>
-	{
-		if (value.length > 0)
-		{
-			page = 0;
-			resetText(value[page].text);
-			start(value[page].delay, true);
-		}
-
-		return value;
-	}
-
 	public var interactable:Bool = true;
+	public var msg(default, set):Array<Dialogue> = [{text: 'Error!', delay: 0.04}];
 	public var finishedCallback:Void->Void;
 
-	private var page:Int = 0;
-	private var finished:Bool = false;
+	var page:Int = 0;
+	var finished:Bool = false;
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0):Void
 	{
@@ -58,5 +45,17 @@ class Writer extends FlxTypeText
 		}
 
 		super.update(elapsed);
+	}
+
+	private function set_msg(value:Array<Dialogue>):Array<Dialogue>
+	{
+		if (value.length > 0)
+		{
+			page = 0;
+			resetText(value[page].text);
+			start(value[page].delay, true);
+		}
+
+		return value;
 	}
 }
