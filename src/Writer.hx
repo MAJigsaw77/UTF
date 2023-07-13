@@ -3,7 +3,10 @@ package;
 import flixel.FlxG;
 import flixel.addons.text.FlxTypeText;
 
-typedef Dialogue = { text:String, speed:Float }
+typedef Dialogue = {
+	var text:String;
+	var speed:Float;
+}
 
 class Writer extends FlxTypeText
 {
