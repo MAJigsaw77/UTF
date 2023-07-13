@@ -12,23 +12,23 @@ import flixel.FlxState;
 
 class BattleState extends FlxTransitionableState
 {
-	final choices:Array<String> = ['Fight', 'Talk', 'Item', 'Spare'];
+	var bg:FlxSprite;
 
+	final choices:Array<String> = ['Fight', 'Talk', 'Item', 'Spare'];
 	var choicesItems:FlxTypedGroup<FlxSprite>;
 	var curSelected:Int = 0;
 
-	var bg:FlxSprite;
-
+	var stats:FlxText;
+	var hpName:FlxSprite;
 	var hpBar:FlxBar;
 	var hpInfo:FlxText;
-	var stats:FlxText;
 
 	var box:FlxShapeBox;
 	var writer:Writer;
 
 	override public function create():Void
 	{
-		bg = new FlxSprite(0, 0, Paths.sprite('battlebg_0'));
+		bg = new FlxSprite(0, 0, Paths.sprite('battlebg_1'));
 		bg.screenCenter(X);
 		bg.scrollFactor.set();
 		add(bg);
@@ -62,7 +62,7 @@ class BattleState extends FlxTransitionableState
 		stats.scrollFactor.set();
 		add(stats);
 
-		var hpName:FlxSprite = new FlxSprite(stats.x + 210, stats.y + 5, Paths.sprite('hpname'));
+		hpName = new FlxSprite(stats.x + 210, stats.y + 5, Paths.sprite('hpname'));
 		hpName.scrollFactor.set();
 		add(hpName);
 
@@ -82,6 +82,7 @@ class BattleState extends FlxTransitionableState
 		add(box);
 
 		writer = new Writer(box.x + 14, box.y + 14, 0);
+		writer.interactable = false;
 		writer.msg = [{text: '* The wind is howling...', delay: 0.04}];
 		writer.scrollFactor.set();
 		add(writer);
