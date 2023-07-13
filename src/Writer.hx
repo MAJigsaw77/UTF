@@ -3,11 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.addons.text.FlxTypeText;
 
-typedef Dialogue =
-{
-	var text:String;
-	var speed:Float;
-}
+typedef Dialogue = { text:String, speed:Float }
 
 class Writer extends FlxTypeText
 {
@@ -29,6 +25,7 @@ class Writer extends FlxTypeText
 			skipKeys = ['ESCAPE'];
 
 		sounds = [FlxG.sound.load(Paths.sound('voices/uifont'))];
+
 		font = Paths.font('DTM-Mono.otf');
 
 		if (autoContinue)
@@ -53,7 +50,7 @@ class Writer extends FlxTypeText
 		}
 	}
 
-	public override function update(elapsed:Float):Void
+	override public function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justPressed.ENTER && !finished && !autoContinue)
 		{
