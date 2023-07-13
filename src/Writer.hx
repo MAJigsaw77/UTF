@@ -14,8 +14,13 @@ class Writer extends FlxTypeText
 
 	private function set_msg(value:Array<Dialogue>):Array<Dialogue>
 	{
-		page = 0;
-		resetText(value[page].text);
+		if (value.length > 0)
+		{
+			page = 0;
+			resetText(value[page].text);
+			start(value[page].delay, true);
+		}
+
 		return value;
 	}
 
