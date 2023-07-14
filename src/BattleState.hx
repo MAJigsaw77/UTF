@@ -104,13 +104,13 @@ class BattleState extends FlxTransitionableState
 			switch (choices[curSelected])
 			{
 				case 'Fight':
-					writer.msg = {text: '* Fight Selected...', delay: 0};
+					writer.msg = {text: '* Fight Selected...', delay: 0.04};
 				case 'Talk':
-					writer.msg = {text: '* Act Selected...', delay: 0};
+					writer.msg = {text: '* Act Selected...', delay: 0.04};
 				case 'Item':
-					writer.msg = {text: '* Item Selected...', delay: 0};
+					writer.msg = {text: '* Item Selected...', delay: 0.04};
 				case 'Spare':
-					writer.msg = {text: '* Mercy Selected...', delay: 0};
+					writer.msg = {text: '* Mercy Selected...', delay: 0.04};
 			}
 		}
 
