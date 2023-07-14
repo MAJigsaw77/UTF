@@ -12,9 +12,9 @@ import flixel.FlxState;
 
 class BattleState extends FlxTransitionableState
 {
-	var bg:FlxSprite;
-
 	final choices:Array<String> = ['Fight', 'Talk', 'Item', 'Spare'];
+
+	var bg:FlxSprite;
 	var choicesItems:FlxTypedGroup<FlxSprite>;
 	var curSelected:Int = 0;
 
@@ -82,8 +82,7 @@ class BattleState extends FlxTransitionableState
 		add(box);
 
 		writer = new Writer(box.x + 14, box.y + 14, 0);
-		writer.interactable = false;
-		writer.msg = [{text: '* The wind is howling...', delay: 0.04}];
+		writer.msg = {text: '* The wind is howling...', delay: 0.04};
 		writer.scrollFactor.set();
 		add(writer);
 
@@ -129,13 +128,13 @@ class BattleState extends FlxTransitionableState
 		switch (choices[curSelected])
 		{
 			case 'Fight':
-				writer.msg = [{text: '* Fight Selected...', delay: 0}];
+				writer.msg = {text: '* Fight Selected...', delay: 0};
 			case 'Talk':
-				writer.msg = [{text: '* Act Selected...', delay: 0}];
+				writer.msg = {text: '* Act Selected...', delay: 0};
 			case 'Item':
-				writer.msg = [{text: '* Item Selected...', delay: 0}];
+				writer.msg = {text: '* Item Selected...', delay: 0};
 			case 'Spare':
-				writer.msg = [{text: '* Mercy Selected...', delay: 0}];
+				writer.msg = {text: '* Mercy Selected...', delay: 0};
 		}
 	}
 }
