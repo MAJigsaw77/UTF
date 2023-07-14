@@ -98,6 +98,8 @@ class BattleState extends FlxTransitionableState
 			 changeChoice(1);
 		else if (FlxG.keys.justPressed.LEFT)
 			 changeChoice(-1);
+		else if (FlxG.keys.justPressed.ENTER)
+			 selectedChoice();
 
 		super.update(elapsed);
 	}
@@ -118,5 +120,22 @@ class BattleState extends FlxTransitionableState
 		{
 			spr.loadGraphic(Paths.sprite(choices[spr.ID].toLowerCase() + 'bt_' + Std.string(spr.ID == curSelected ? 0 : 1)));
 		});
+	}
+
+	private function selectedChoice():Void
+	{
+		FlxG.sound.play(Paths.sound('menuconfirm'));
+
+		switch (choices[curSelected])
+		{
+			case 'Fight':
+				writer.msg = [{text: '* Fight Selected...', delay: 0}];
+			case 'Talk':
+				writer.msg = [{text: '* Act Selected...', delay: 0}];
+			case 'Item':
+				writer.msg = [{text: '* Item Selected...', delay: 0}];
+			case 'Spare':
+				writer.msg = [{text: '* Mercy Selected...', delay: 0}];
+		}
 	}
 }
