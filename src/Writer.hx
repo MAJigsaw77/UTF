@@ -10,50 +10,22 @@ typedef Dialogue = {
 
 class Writer extends FlxTypeText
 {
-	public var interactable:Bool = true;
-	public var msg(default, set):Array<Dialogue> = [{text: 'Error!', delay: 0.04}];
-	public var finishedCallback:Void->Void;
-
-	var page:Int = 0;
-	var finished:Bool = false;
+	public var msg(default, set):Dialogue = {text: 'Error!', delay: 0.04};
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0):Void
 	{
 		super(x, y, width, '', 24, true);
 
-		skipKeys = ['ESCAPE'];
 		font = Paths.font('DTM-Mono.otf');
 		sounds = [FlxG.sound.load(Paths.sound('voices/uifont'))];
 	}
 
-	override public function update(elapsed:Float):Void
+	private function set_msg(value:Dialogue):Dialogue
 	{
-		if (FlxG.keys.justPressed.ENTER && interactable && !finished)
+		if (value.text != null)
 		{
-			if (page <= msg.length)
-			{
-				page++;
-				resetText(msg[page].text);
-				start(msg[page].delay, true);
-			}
-			else
-			{
-				finished = true;
-				if (finishedCallback != null)
-					finishedCallback();
-			}
-		}
-
-		super.update(elapsed);
-	}
-
-	private function set_msg(value:Array<Dialogue>):Array<Dialogue>
-	{
-		if (value.length > 0)
-		{
-			page = 0;
-			resetText(value[page].text);
-			start(value[page].delay, true);
+			resetText(value.text);
+			start(value.delay, true);
 		}
 
 		return value;
