@@ -9,8 +9,6 @@ import hscript.Parser;
 import openfl.utils.Assets;
 import openfl.Lib;
 
-using StringTools;
-
 class Script extends FlxBasic
 {
 	var parser:Parser;
@@ -47,9 +45,9 @@ class Script extends FlxBasic
 			if (Assets.exists(file))
 				interp.execute(parser.parseString(Assets.getText(content)));
 			else
-				throw 'Script $file' + "doesn't exist!";
+				throw 'script $file' + "doesn't exist!";
 
-			trace('Script $file Loaded Succesfully!');
+			trace('script $file Loaded Succesfully!');
 		}
 		catch (e:Dynamic)
 			Lib.application.window.alert(e, 'Hscript Error!');
