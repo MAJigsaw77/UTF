@@ -1,0 +1,9 @@
+{
+	"name": "Undyne the Undying",
+	"hp": 23000,
+	"maxHp": 23000,
+	"attack": 12,
+	"defense": 8,
+	"xpReward": 0,
+	"goldReward": 0
+}
