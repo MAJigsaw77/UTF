@@ -26,7 +26,7 @@ class BattleState extends FlxTransitionableState
 	var box:FlxShapeBox;
 	var writer:Writer;
 
-	override public function create():Void
+	public override function create():Void
 	{
 		bg = new FlxSprite(0, 0, Paths.sprite('battlebg_1'));
 		bg.screenCenter(X);
@@ -91,7 +91,7 @@ class BattleState extends FlxTransitionableState
 		super.create();
 	}
 
-	override public function update(elapsed:Float):Void
+	public override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justPressed.RIGHT)
 			 changeChoice(1);
