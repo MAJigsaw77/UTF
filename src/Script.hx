@@ -1,6 +1,11 @@
 package;
 
 import flixel.FlxBasic;
+#if macro
+import haxe.macro.Context;
+import haxe.macro.Compiler;
+import haxe.macro.Expr;
+#end
 import hscript.Interp;
 import hscript.Parser;
 import openfl.Lib;
@@ -72,4 +77,13 @@ class Script extends FlxBasic
 
 		return null;
 	}
+
+	/*private static macro function getDefaultDefines()
+	{
+		#if display
+		return macro $v{[]};
+		#else
+		return macro $v{Context.getDefines()};
+		#end
+	}*/
 }
