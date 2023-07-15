@@ -44,9 +44,9 @@ class Script extends FlxBasic
 		try
 		{
 			if (Assets.exists(file))
-				interp.execute(parser.parseString(content));
+				interp.execute(parser.parseString(Assets.getText(content)));
 			else
-				throw "Script $file doesn't exist!";
+				throw 'Script $file' + "doesn't exist!";
 
 			trace('Script $file Loaded Succesfully!');
 		}
