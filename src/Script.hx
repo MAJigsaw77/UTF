@@ -16,6 +16,11 @@ class Script extends FlxBasic
 	{
 		super();
 
+		parser = new Parser();
+		parser.allowJSON = true;
+		parser.allowTypes = true;
+		parser.allowMetadata = true;
+
 		interp = new Interp();
 
 		set('Date', Date);
@@ -32,59 +37,39 @@ class Script extends FlxBasic
 	{
 		try
 		{
-			parser = new Parser();
-			parser.allowJSON = true;
-			parser.allowTypes = true;
-			parser.allowMetadata = true;
-
 			interp.execute(parser.parseString(content));
+
+			trace('Script $file Loaded Succesfully!');
 		}
 		catch (e:Dynamic)
 			Lib.application.window.alert(e, 'Hscript Error!');
-
-		trace('Script $file Loaded Succesfully!');
 	}
 
 	public function set(name:String, val:Dynamic):Void
 	{
-		if (interp == null)
-			return;
-
 		interp.variables.set(name, val);
 	}
 
 	public function get(name:String):Dynamic
 	{
-		if (interp == null)
-			return null;
-
 		return interp.variables.get(name);
 	}
 
 	public function exists(name:String):Bool
 	{
-		if (interp == null)
-			return false;
-
 		return interp.variables.exists(name);
 	}
 
-	public function call(method:String, ?args:Array<Dynamic>):Dynamic
+	public function call(fname:String, ?args:Array<Dynamic>):Dynamic
 	{
-		if (interp == null)
-			return null;
-
-		if (exists(method) && Reflect.isFunction(get(method)))
-			return Reflect.callMethod(null, get(funcName), args == null ? [] : args);
+		try
+		{
+			if (interp.variables.exists(fname) && Reflect.isFunction(get(fname)))
+				return Reflect.callMethod(null, get(fname), args == null ? [] : args);
+		}
+		catch (e:Dynamic)
+			Lib.application.window.alert(e, 'Hscript Error!');
 
 		return null;
-	}
-
-	override function destroy():Void
-	{
-		super.destroy();
-
-		parser = null;
-		interp = null;
 	}
 }
