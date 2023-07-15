@@ -1,10 +1,8 @@
 package;
 
 import flixel.FlxBasic;
-#if macro
+#if !display
 import haxe.macro.Context;
-import haxe.macro.Compiler;
-import haxe.macro.Expr;
 #end
 import hscript.Interp;
 import hscript.Parser;
@@ -23,6 +21,9 @@ class Script extends FlxBasic
 		super();
 
 		parser = new Parser();
+		#if !display
+		parser.preprocesorValues = Context.getDefines();
+		#end
 		parser.allowJSON = true;
 		parser.allowTypes = true;
 		parser.allowMetadata = true;
@@ -89,13 +90,4 @@ class Script extends FlxBasic
 		parser = null;
 		interp = null;
 	}
-
-	/*private static macro function getDefaultDefines()
-	{
-		#if display
-		return macro $v{[]};
-		#else
-		return macro $v{Context.getDefines()};
-		#end
-	}*/
 }
