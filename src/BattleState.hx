@@ -28,7 +28,7 @@ class BattleState extends FlxTransitionableState
 
 	public override function create():Void
 	{
-		bg = new FlxSprite(0, 0, Paths.sprite('battlebg_1'));
+		bg = new FlxSprite(0, 0, AssetPaths.sprite('battlebg_1'));
 		bg.screenCenter(X);
 		bg.scrollFactor.set();
 		add(bg);
@@ -38,7 +38,7 @@ class BattleState extends FlxTransitionableState
 
 		for (i in 0...choices.length)
 		{
-			var bt:FlxSprite = new FlxSprite(0, 432, Paths.sprite(choices[i].toLowerCase() + 'bt_1'));
+			var bt:FlxSprite = new FlxSprite(0, 432, AssetPaths.sprite(choices[i].toLowerCase() + 'bt_1'));
 
 			switch (choices[i])
 			{
@@ -58,11 +58,11 @@ class BattleState extends FlxTransitionableState
 		}
 
 		stats = new FlxText(30, 400, 0, Global.charname + "   LV " + Global.lv, 14);
-		stats.font = Paths.font('Small.otf');
+		stats.font = AssetPaths.font('Small.otf');
 		stats.scrollFactor.set();
 		add(stats);
 
-		hpName = new FlxSprite(stats.x + 210, stats.y + 5, Paths.sprite('hpname'));
+		hpName = new FlxSprite(stats.x + 210, stats.y + 5, AssetPaths.sprite('hpname'));
 		hpName.scrollFactor.set();
 		add(hpName);
 
@@ -73,7 +73,7 @@ class BattleState extends FlxTransitionableState
 		add(hpBar);
 
 		hpInfo = new FlxText((hpBar.x + 15) + Global.maxhp * 1.2, hpBar.y, 0, Global.hp + ' / ' + Global.maxhp, 14);
-		hpInfo.font = Paths.font('Small.otf');
+		hpInfo.font = AssetPaths.font('Small.otf');
 		hpInfo.scrollFactor.set();
 		add(hpInfo);
 
@@ -99,7 +99,7 @@ class BattleState extends FlxTransitionableState
 			 changeChoice(-1);
 		else if (FlxG.keys.justPressed.ENTER)
 		{
-			FlxG.sound.play(Paths.sound('menuconfirm'));
+			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 
 			switch (choices[curSelected])
 			{
@@ -120,7 +120,7 @@ class BattleState extends FlxTransitionableState
 	private function changeChoice(num:Int = 0):Void
 	{
 		if (num != 0)
-			FlxG.sound.play(Paths.sound('menumove'));
+			FlxG.sound.play(AssetPaths.sound('menumove'));
 
 		curSelected += num;
 
@@ -131,7 +131,7 @@ class BattleState extends FlxTransitionableState
 
 		choicesItems.forEach(function(spr:FlxSprite)
 		{
-			spr.loadGraphic(Paths.sprite(choices[spr.ID].toLowerCase() + 'bt_' + Std.string(spr.ID == curSelected ? 0 : 1)));
+			spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_' + Std.string(spr.ID == curSelected ? 0 : 1)));
 		});
 	}
 }

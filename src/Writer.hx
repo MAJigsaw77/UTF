@@ -16,8 +16,8 @@ class Writer extends FlxTypeText
 	{
 		super(x, y, width, '', 24, true);
 
-		font = Paths.font('DTM-Mono.otf');
-		sounds = [FlxG.sound.load(Paths.sound('voices/uifont'))];
+		font = AssetPaths.font('DTM-Mono.otf');
+		sounds = [FlxG.sound.load(AssetPaths.sound('voices/uifont'))];
 	}
 
 	private function set_msg(value:Dialogue):Dialogue
