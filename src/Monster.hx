@@ -6,8 +6,8 @@ import openfl.utils.Assets;
 
 typedef MonsterData = {
 	var name:String;
-	var maxHp:Int;
 	var hp:Int;
+	var maxHp:Int;
 	var attack:Float;
 	var defense:Float:
 	var xpReward:Int;
