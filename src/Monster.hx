@@ -6,6 +6,12 @@ import openfl.utils.Assets;
 
 typedef MonsterData = {
 	var name:String;
+	var maxHp:Int;
+	var hp:Int;
+	var attack:Float;
+	var defense:Float:
+	var xpReward:Int;
+	var goldReward:Int;
 }
 
 class Monster extends FlxSpriteGroup
