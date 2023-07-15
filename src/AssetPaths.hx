@@ -2,7 +2,7 @@ package;
 
 import openfl.utils.Assets;
 
-class Paths
+class AssetPaths
 {
 	public static inline function data(key:String):String
 		return 'assets/data/$key.json';
@@ -18,6 +18,9 @@ class Paths
 
 	public static inline function music(key:String):String
 		return 'assets/music/$key.ogg';
+
+	public static inline function shader(key:String):String
+		return 'assets/shaders/$key';
 
 	public static inline function font(key:String):String
 		return 'assets/fonts/$key';
