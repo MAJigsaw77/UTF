@@ -8,6 +8,7 @@ import haxe.macro.Expr;
 #end
 import hscript.Interp;
 import hscript.Parser;
+import openfl.utils.Assets;
 import openfl.Lib;
 
 using StringTools;
@@ -38,11 +39,14 @@ class Script extends FlxBasic
 		set('Type', Type);
 	}
 
-	public function execute(content:String):Void
+	public function execute(file:String):Void
 	{
 		try
 		{
-			interp.execute(parser.parseString(content));
+			if (Assets.exists(file))
+				interp.execute(parser.parseString(content));
+			else
+				throw "Script $file doesn't exist!";
 
 			trace('Script $file Loaded Succesfully!');
 		}
@@ -76,6 +80,14 @@ class Script extends FlxBasic
 			Lib.application.window.alert(e, 'Hscript Error!');
 
 		return null;
+	}
+
+	public override function destroy():Void
+	{
+		super.destroy();
+
+		parser = null;
+		interp = null;
 	}
 
 	/*private static macro function getDefaultDefines()
