@@ -17,6 +17,7 @@ typedef MonsterData = {
 class Monster extends FlxSpriteGroup
 {
 	public var data:MonsterData;
+	public var script:Script;
 
 	public function new(name:String):Void
 	{
