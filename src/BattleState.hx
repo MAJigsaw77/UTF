@@ -13,25 +13,38 @@ import flixel.FlxState;
 class BattleState extends FlxTransitionableState
 {
 	final choices:Array<String> = ['Fight', 'Talk', 'Item', 'Spare'];
-
-	var bg:FlxSprite;
-	var choicesItems:FlxTypedGroup<FlxSprite>;
 	var curSelected:Int = 0;
 
 	var stats:FlxText;
 	var hpName:FlxSprite;
 	var hpBar:FlxBar;
 	var hpInfo:FlxText;
-
+	var choicesItems:FlxTypedGroup<FlxSprite>;
+	var monster:Monster;
 	var box:FlxShapeBox;
 	var writer:Writer;
 
 	public override function create():Void
 	{
-		bg = new FlxSprite(0, 0, AssetPaths.sprite('battlebg_1'));
-		bg.screenCenter(X);
-		bg.scrollFactor.set();
-		add(bg);
+		stats = new FlxText(30, 400, 0, Global.charname + "   LV " + Global.lv, 14);
+		stats.font = AssetPaths.font('Small.otf');
+		stats.scrollFactor.set();
+		add(stats);
+
+		hpName = new FlxSprite(stats.x + 210, stats.y + 5, AssetPaths.sprite('hpname'));
+		hpName.scrollFactor.set();
+		add(hpName);
+
+		hpBar = new FlxBar(hpName.x + 35, hpName.y - 5, LEFT_TO_RIGHT, Std.int(Global.maxhp * 1.2), 20, Global, "hp", 0, Global.maxhp);
+		hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
+		hpBar.emptyCallback = () -> trace('GAME OVER');
+		hpBar.scrollFactor.set();
+		add(hpBar);
+
+		hpInfo = new FlxText((hpBar.x + 15) + Global.maxhp * 1.2, hpBar.y, 0, Global.hp + ' / ' + Global.maxhp, 14);
+		hpInfo.font = AssetPaths.font('Small.otf');
+		hpInfo.scrollFactor.set();
+		add(hpInfo);
 
 		choicesItems = new FlxTypedGroup<FlxSprite>();
 		add(choicesItems);
@@ -57,25 +70,10 @@ class BattleState extends FlxTransitionableState
 			choicesItems.add(bt);
 		}
 
-		stats = new FlxText(30, 400, 0, Global.charname + "   LV " + Global.lv, 14);
-		stats.font = AssetPaths.font('Small.otf');
-		stats.scrollFactor.set();
-		add(stats);
-
-		hpName = new FlxSprite(stats.x + 210, stats.y + 5, AssetPaths.sprite('hpname'));
-		hpName.scrollFactor.set();
-		add(hpName);
-
-		hpBar = new FlxBar(hpName.x + 35, hpName.y - 5, LEFT_TO_RIGHT, Std.int(Global.maxhp * 1.2), 20, Global, "hp", 0, Global.maxhp);
-		hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
-		hpBar.emptyCallback = () -> trace('GAME OVER');
-		hpBar.scrollFactor.set();
-		add(hpBar);
-
-		hpInfo = new FlxText((hpBar.x + 15) + Global.maxhp * 1.2, hpBar.y, 0, Global.hp + ' / ' + Global.maxhp, 14);
-		hpInfo.font = AssetPaths.font('Small.otf');
-		hpInfo.scrollFactor.set();
-		add(hpInfo);
+		monster = new Monster(0, 140, 'undyne-ex');
+		monster.screenCenter(X);
+		monster.scrollFactor.set();
+		add(monster);
 
 		box = new FlxShapeBox(32, 250, 570, 135, {thickness: 6, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.scrollFactor.set();
@@ -112,6 +110,10 @@ class BattleState extends FlxTransitionableState
 				case 'Spare':
 					writer.msg = {text: '* Mercy Selected...', delay: 0.04};
 			}
+		}
+		else if (FlxG.keys.justPressed.ESCAPE)
+		{
+			writer.msg = {text: '* The wind is howling...', delay: 0.04};
 		}
 
 		super.update(elapsed);
