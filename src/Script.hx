@@ -40,7 +40,8 @@ class Script extends FlxBasic
 		set('Sys', Sys);
 		set('Type', Type);
 
-		// Engine's Classes from Flixel
+		// Engine's Classes...
+		set('AssetPaths', AssetPaths);
 		set('Object', FlxBasic);
 		set('SpriteGroup', FlxSpriteGroup);
 		set('Sprite', FlxSprite);
