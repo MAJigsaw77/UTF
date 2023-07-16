@@ -1,6 +1,8 @@
 package;
 
+import flixel.group.FlxSpriteGroup;
 import flixel.FlxBasic;
+import flixel.FlxSprite;
 #if !display
 import haxe.macro.Context;
 #end
@@ -28,6 +30,7 @@ class Script extends FlxBasic
 
 		interp = new Interp();
 
+		// Some Haxe Tools...
 		set('Date', Date);
 		set('DateTools', DateTools);
 		set('Math', Math);
@@ -36,6 +39,11 @@ class Script extends FlxBasic
 		set('StringTools', StringTools);
 		set('Sys', Sys);
 		set('Type', Type);
+
+		// Engine's Classes from Flixel
+		set('Object', FlxBasic);
+		set('SpriteGroup', FlxSpriteGroup);
+		set('Sprite', FlxSprite);
 	}
 
 	public function execute(file:String):Void
