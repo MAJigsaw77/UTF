@@ -4,9 +4,7 @@ import flixel.group.FlxSpriteGroup;
 import flixel.FlxG;
 import flixel.FlxBasic;
 import flixel.FlxSprite;
-#if !display
 import haxe.macro.Context;
-#end
 import hscript.Interp;
 import hscript.Parser;
 import openfl.utils.Assets;
@@ -22,9 +20,7 @@ class Script extends FlxBasic
 		super();
 
 		parser = new Parser();
-		#if !display
 		parser.preprocesorValues = Context.getDefines();
-		#end
 		parser.allowJSON = true;
 		parser.allowTypes = true;
 		parser.allowMetadata = true;
