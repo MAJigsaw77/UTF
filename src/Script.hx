@@ -47,7 +47,7 @@ class Script extends FlxBasic
 			else
 				throw 'script $file' + "doesn't exist!";
 
-			trace('script $file Loaded Succesfully!');
+			trace('script $file loaded succesfully!');
 		}
 		catch (e:Dynamic)
 			Lib.application.window.alert(e, 'Hscript Error!');
