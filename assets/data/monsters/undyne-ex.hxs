@@ -13,9 +13,13 @@ function create()
 	add(legs);
 
 	pants = new Sprite(0, 0, AssetPaths.sprite("anim/pants"));
+	pants.origin.x = 0.6;
+	pants.origin.y = 0.8;
 	add(pants);
 
 	torso = new Sprite(-53, 120, AssetPaths.sprite("anim/torso"));
+	torso.origin.x = 0.15;
+	torso.origin.y = 0.6;
 	add(torso);
 
 	larm = new Sprite(0, 0, AssetPaths.sprite("anim/larm"));
@@ -28,9 +32,13 @@ function create()
 	add(head);
 
 	hair = new Sprite(0, 0, AssetPaths.sprite("anim/hair"));
+	hair.origin.x = 0.92;
+	hair.origin.y = 0.02;
 	add(hair);
 
 	beam = new Sprite(9, 0, AssetPaths.sprite("anim/beam"));
+	hair.origin.x = 0;
+	hair.origin.y = 0.5;
 	beam.alpha = 0;
 	add(beam);
 }
