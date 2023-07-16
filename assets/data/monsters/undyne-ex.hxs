@@ -47,7 +47,7 @@ function create()
 	add(beam);
 }
 
-var timeElapsed:Int;
+var timeElapsed:Int = 0;
 
 function update(elapsed)
 {
@@ -61,7 +61,7 @@ function update(elapsed)
 	larm.offset.set(-58 + (Math.sin(timeElapsed * 6.5) * 5), 40 + (Math.sin(0 - timeElapsed * 6.5) * 5));
 
 	hair.angle = 60 - (Math.sin(timeElapsed * 6.5) * 10);
-	hair.offset.set(-12, head.y + 22);
+	hair.offset.set(-12, hair.offset.y + 22);
 
 	beam.angle = Math.sin(timeElapsed * 3) * 35;
 
