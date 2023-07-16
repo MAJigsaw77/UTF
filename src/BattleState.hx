@@ -100,7 +100,7 @@ class BattleState extends FlxTransitionableState
 		{
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 
-			switch (choices[curSelected])
+			switch (choices[curChoice])
 			{
 				case 'Fight':
 					writer.msg = {text: '* ${monster.data.name}', delay: 0.04};
