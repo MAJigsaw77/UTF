@@ -14,6 +14,8 @@ import openfl.Lib;
 
 class Script extends FlxBasic
 {
+	public var path(default, null):String;
+	
 	var parser:Parser;
 	var interp:Interp;
 
@@ -54,7 +56,9 @@ class Script extends FlxBasic
 		try
 		{
 			if (Assets.exists(file))
+			{
 				interp.execute(parser.parseString(Assets.getText(file)));
+			}
 			else
 				throw 'script $file' + "doesn't exist!";
 
