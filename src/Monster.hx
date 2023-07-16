@@ -9,7 +9,7 @@ typedef MonsterData = {
 	var hp:Int;
 	var maxHp:Int;
 	var attack:Float;
-	var defense:Float:
+	var defense:Float;
 	var xpReward:Int;
 	var goldReward:Int;
 }
