@@ -12,14 +12,15 @@ import flixel.FlxState;
 
 class BattleState extends FlxTransitionableState
 {
+	var curChoice:Int = 0;
 	final choices:Array<String> = ['Fight', 'Talk', 'Item', 'Spare'];
-	var curSelected:Int = 0;
+	var choicesItems:FlxTypedGroup<FlxSprite>;
 
 	var stats:FlxText;
 	var hpName:FlxSprite;
 	var hpBar:FlxBar;
 	var hpInfo:FlxText;
-	var choicesItems:FlxTypedGroup<FlxSprite>;
+
 	var monster:Monster;
 	var box:FlxShapeBox;
 	var writer:Writer;
@@ -112,9 +113,7 @@ class BattleState extends FlxTransitionableState
 			}
 		}
 		else if (FlxG.keys.justPressed.ESCAPE)
-		{
 			writer.msg = {text: '* The wind is howling...', delay: 0.04};
-		}
 
 		super.update(elapsed);
 	}
@@ -124,16 +123,16 @@ class BattleState extends FlxTransitionableState
 		if (num != 0)
 			FlxG.sound.play(AssetPaths.sound('menumove'));
 
-		curSelected += num;
+		curChoice += num;
 
-		if (curSelected >= choicesItems.length)
-			curSelected = 0;
-		else if (curSelected < 0)
-			curSelected = choicesItems.length - 1;
+		if (curChoice >= choicesItems.length)
+			curChoice = 0;
+		else if (curChoice < 0)
+			curChoice = choicesItems.length - 1;
 
 		choicesItems.forEach(function(spr:FlxSprite)
 		{
-			spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_' + Std.string(spr.ID == curSelected ? 0 : 1)));
+			spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_' + Std.string(spr.ID == curChoice ? 0 : 1)));
 		});
 	}
 }
