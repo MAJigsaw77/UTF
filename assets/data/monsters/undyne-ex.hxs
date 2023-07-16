@@ -16,7 +16,7 @@ function create()
 	pants.origin.set(0.6, 0.8);
 	add(pants);
 
-	torso = new Sprite(-53, 120, AssetPaths.sprite("anim/torso"));
+	torso = new Sprite(0, 0, AssetPaths.sprite("anim/torso"));
 	torso.origin.set(0.15, 0.6);
 	add(torso);
 
@@ -33,7 +33,7 @@ function create()
 	hair.origin.set(0.92, 0.02);
 	add(hair);
 
-	beam = new Sprite(9, 0, AssetPaths.sprite("anim/beam"));
+	beam = new Sprite(0, 0, AssetPaths.sprite("anim/beam"));
 	beam.origin.set(0, 0.5);
 	beam.alpha = 0;
 	add(beam);
@@ -70,4 +70,9 @@ function update(elapsed)
 	}
 
 	timeElapsed++;
+}
+
+function changeAnim(name)
+{
+	head.loadGraphic(AssetPaths.sprite('anim/$face'));
 }
