@@ -27,7 +27,7 @@ class BattleState extends FlxTransitionableState
 
 	public override function create():Void
 	{
-		stats = new FlxText(30, 400, 0, Global.charname + "   LV " + Global.lv, 14);
+		stats = new FlxText(30, 400, 0, Global.name + "   LV " + Global.lv, 14);
 		stats.font = AssetPaths.font('Small.otf');
 		stats.scrollFactor.set();
 		add(stats);
