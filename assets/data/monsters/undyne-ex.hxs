@@ -1,0 +1,69 @@
+var legs:Sprite;
+var pants:Sprite;
+var torso:Sprite;
+var larm:Sprite;
+var rarm:Sprite;
+var head:Sprite;
+var hair:Sprite;
+var beam:Sprite;
+
+function create()
+{
+	legs = new Sprite(0, 274, Paths.sprite("anim/legs"));
+	add(legs);
+
+	pants = new Sprite(0, 0, Paths.sprite("anim/pants"));
+	add(pants);
+
+	torso = new Sprite(-53, 120, Paths.sprite("anim/torso"));
+	add(torso);
+
+	larm = new Sprite(0, 0, Paths.sprite("anim/larm"));
+	add(larm);
+
+	rarm = new Sprite(0, 0, Paths.sprite("anim/rarm"));
+	add(rarm);
+
+	head = new Sprite(0, 0, Paths.sprite("anim/face"));
+	add(head);
+
+	hair = new Sprite(0, 0, Paths.sprite("anim/hair"));
+	add(hair);
+
+	beam = new Sprite(9, 0, Paths.sprite("anim/beam"));
+	beam.alpha = 0;
+	add(beam);
+}
+
+var timeElapsed:Int;
+
+function update(elapsed)
+{
+	pants.angle = Math.sin(timeElapsed * 6.5) * 3;
+	pants.setPosition(10, 54 + (Math.sin(0 - timeElapsed * 6.5)));
+
+	torso.angle = 0 - Math.sin(timeElapsed * 6.5) * 4;
+
+	head.setPosition(2, 160 + (Math.sin(0 - timeElapsed * 6.5)) * 3);
+	rarm.setPosition(48 + (Math.sin(0 - (timeElapsed * 6.5) * 2) * 4), 75 + (Math.sin(0 - timeElapsed * 6.5)) * 7);
+	larm.setPosition(-58 + (Math.sin(timeElapsed * 6.5) * 5), 40 + (Math.sin(0 - timeElapsed * 6.5) * 5));
+
+	hair.angle = 60 - (Math.sin(timeElapsed * 6.5) * 10);
+	hair.setPosition(-12, head.y + 22);
+
+	beam.angle = Math.sin(timeElapsed * 3) * 35;
+
+	if (timeElapsed % 150 == 0)
+	{
+		beam.alpha = 1;
+		beam.scale.x = 0.5;
+	}
+
+	if (beam.alpha > 0)
+	{
+		beam.alpha -= 0.015;
+		beam.scale.x += 0.05;
+	}
+
+	timeElapsed++;
+}

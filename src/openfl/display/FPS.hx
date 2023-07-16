@@ -28,8 +28,8 @@ class FPS extends TextField
 	{
 		super();
 
-		this.x = x;
-		this.y = y;
+		x = x;
+		y = y;
 
 		autoSize = LEFT;
 		selectable = mouseEnabled = false;

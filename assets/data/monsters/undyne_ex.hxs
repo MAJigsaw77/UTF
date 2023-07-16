@@ -1,4 +1,0 @@
-function create()
-{
-	trace("Hello from hscript");
-}
