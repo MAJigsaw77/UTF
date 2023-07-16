@@ -19,9 +19,12 @@ class Monster extends FlxSpriteGroup
 	public var data:MonsterData;
 	public var script:Script;
 
-	public function new(name:String):Void
+	public function new(x:Float = 0, y:Float = 0, name:String):Void
 	{
-		super();
+		super(x, y);
+
+		if (Assets.exists(AssetPaths.data('monsters/$name')))
+			data = Json.parse(Assets.getText(AssetPaths.data('monsters/$name')));
 	}
 
 	public override function update(elapsed:Float):Void
