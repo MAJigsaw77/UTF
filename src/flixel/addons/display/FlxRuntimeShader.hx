@@ -21,8 +21,8 @@ class FlxRuntimeShader extends FlxShader
 	/**
 	 * Constructs a GLSL shader.
 	 *
-	 * @param fragmentSource The fragment shader path.
-	 * @param vertexSource The vertex shader path.
+	 * @param fragmentPath The fragment shader path.
+	 * @param vertexPath The vertex shader path.
 	 */
 	public function new(fragmentPath:String, vertexPath:String):Void
 	{
