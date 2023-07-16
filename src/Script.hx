@@ -1,6 +1,7 @@
 package;
 
 import flixel.group.FlxSpriteGroup;
+import flixel.FlxG;
 import flixel.FlxBasic;
 import flixel.FlxSprite;
 #if !display
@@ -42,6 +43,7 @@ class Script extends FlxBasic
 
 		// Engine's Classes...
 		set('AssetPaths', AssetPaths);
+		set('Global', FlxG);
 		set('Object', FlxBasic);
 		set('SpriteGroup', FlxSpriteGroup);
 		set('Sprite', FlxSprite);
