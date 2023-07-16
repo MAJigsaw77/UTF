@@ -62,9 +62,6 @@ class Main extends Sprite
 				{
 					sprite.__cacheBitmap = null;
 					sprite.__cacheBitmapData = null;
-					sprite.__cacheBitmapData2 = null;
-					sprite.__cacheBitmapData3 = null;
-					sprite.__cacheBitmapColorTransform = null;
 				}
 			}
 		}
