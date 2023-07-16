@@ -193,7 +193,7 @@ class FlxRuntimeShader extends FlxShader
 	 * @param fragmentSource The fragment shader source.
 	 * @param vertexSource The vertex shader source.
 	 */
-	public function new(fragmentPath:String = null, vertexPath:String = null):Void
+	public function new(fragmentPath:String, vertexPath:String):Void
 	{
 		if (Assets.exists(fragmentPath))
 			glFragmentSource = processFragmentSource(Assets.getText(fragmentPath));
