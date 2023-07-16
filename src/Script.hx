@@ -4,6 +4,7 @@ import flixel.group.FlxSpriteGroup;
 import flixel.FlxG;
 import flixel.FlxBasic;
 import flixel.FlxSprite;
+import haxe.io.Path;
 #if display
 import haxe.macro.Context;
 #end
@@ -14,7 +15,7 @@ import openfl.Lib;
 
 class Script extends FlxBasic
 {
-	public var path(default, null):String;
+	public var name(default, null):String;
 	
 	var parser:Parser;
 	var interp:Interp;
@@ -57,6 +58,8 @@ class Script extends FlxBasic
 		{
 			if (Assets.exists(file))
 			{
+				name = Path.withoutDirectory(file);
+
 				interp.execute(parser.parseString(Assets.getText(file)));
 			}
 			else
