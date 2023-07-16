@@ -205,8 +205,6 @@ class FlxRuntimeShader extends FlxShader
 		else
 			glVertexSource = processVertexSource(DEFAULT_VERTEX_SOURCE);
 
-		__glSourceDirty = true;
-
 		super();
 	}
 
