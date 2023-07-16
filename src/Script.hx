@@ -50,7 +50,7 @@ class Script extends FlxBasic
 			trace('script $file loaded succesfully!');
 		}
 		catch (e:Dynamic)
-			Lib.application.window.alert(e, 'Hscript Error!');
+			FlxG.log.error(e);
 	}
 
 	public function set(name:String, val:Dynamic):Void
@@ -76,7 +76,7 @@ class Script extends FlxBasic
 				return Reflect.callMethod(null, get(fname), args == null ? [] : args);
 		}
 		catch (e:Dynamic)
-			Lib.application.window.alert(e, 'Hscript Error!');
+			FlxG.log.error(e);
 
 		return null;
 	}

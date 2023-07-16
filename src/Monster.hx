@@ -34,6 +34,8 @@ class Monster extends FlxSpriteGroup
 
 		if (Assets.exists(AssetPaths.script('monsters/$name')))
 			script.execute(AssetPaths.script('monsters/$name'));
+
+		script.call('create');
 	}
 
 	public override function update(elapsed:Float):Void

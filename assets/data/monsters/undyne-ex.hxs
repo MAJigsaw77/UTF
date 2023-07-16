@@ -9,28 +9,28 @@ var beam:Sprite;
 
 function create()
 {
-	legs = new Sprite(0, 274, Paths.sprite("anim/legs"));
+	legs = new Sprite(0, 274, AssetPaths.sprite("anim/legs"));
 	add(legs);
 
-	pants = new Sprite(0, 0, Paths.sprite("anim/pants"));
+	pants = new Sprite(0, 0, AssetPaths.sprite("anim/pants"));
 	add(pants);
 
-	torso = new Sprite(-53, 120, Paths.sprite("anim/torso"));
+	torso = new Sprite(-53, 120, AssetPaths.sprite("anim/torso"));
 	add(torso);
 
-	larm = new Sprite(0, 0, Paths.sprite("anim/larm"));
+	larm = new Sprite(0, 0, AssetPaths.sprite("anim/larm"));
 	add(larm);
 
-	rarm = new Sprite(0, 0, Paths.sprite("anim/rarm"));
+	rarm = new Sprite(0, 0, AssetPaths.sprite("anim/rarm"));
 	add(rarm);
 
-	head = new Sprite(0, 0, Paths.sprite("anim/face"));
+	head = new Sprite(0, 0, AssetPaths.sprite("anim/face"));
 	add(head);
 
-	hair = new Sprite(0, 0, Paths.sprite("anim/hair"));
+	hair = new Sprite(0, 0, AssetPaths.sprite("anim/hair"));
 	add(hair);
 
-	beam = new Sprite(9, 0, Paths.sprite("anim/beam"));
+	beam = new Sprite(9, 0, AssetPaths.sprite("anim/beam"));
 	beam.alpha = 0;
 	add(beam);
 }
