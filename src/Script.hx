@@ -70,11 +70,6 @@ class Script extends FlxBasic
 		return interp.variables.get(name);
 	}
 
-	public function exists(name:String):Bool
-	{
-		return interp.variables.exists(name);
-	}
-
 	public function call(fname:String, ?args:Array<Dynamic>):Dynamic
 	{
 		try
