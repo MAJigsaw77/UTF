@@ -33,6 +33,7 @@
 	<!--HaxeDefines-->
 
 	<haxedef name="hscriptPos" />
+	<haxeflag name="-dce" value="no" />
 
 	<haxedef name="HXCPP_CHECK_POINTER" />
 	<haxedef name="HXCPP_STACK_LINE" />
