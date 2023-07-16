@@ -7,87 +7,40 @@ import openfl.display.ShaderParameter;
 import openfl.utils.Assets;
 
 /**
- * An wrapper for Flixel/OpenFL's shaders, which takes fragment and vertex source
- * in the constructor instead of using macros, so it can be provided data
- * at runtime (for example, when using mods).
+ * An wrapper for Flixel/OpenFL's shaders, which takes fragment and vertex path and gets
+ * the content in the constructor instead of using macros, so it can be provided data at runtime.
  *
  * @author MasterEric
+ * @edit MAJigsaw77
  *
  * @see https://github.com/openfl/openfl/blob/develop/src/openfl/utils/_internal/ShaderMacro.hx
  * @see https://dixonary.co.uk/blog/shadertoy
  */
 class FlxRuntimeShader extends FlxShader
 {
-	#if FLX_DRAW_QUADS
-	static final DEFAULT_FRAGMENT_SOURCE:String = "
-		#pragma header
-
-		void main(void)
-		{
-			gl_FragColor = flixel_texture2D(bitmap, openfl_TextureCoordv);
-		}
-	";
-	#else
-	static final DEFAULT_FRAGMENT_SOURCE:String = "
-		#pragma header
-
-		void main(void)
-		{
-			#pragma body
-		}
-	";
-	#end
-
-	#if FLX_DRAW_QUADS
-	static final DEFAULT_VERTEX_SOURCE:String = "
-		#pragma header
-		
-		attribute float alpha;
-		attribute vec4 colorMultiplier;
-		attribute vec4 colorOffset;
-		uniform bool hasColorTransform;
-		
-		void main(void)
-		{
-			#pragma body
-			
-			openfl_Alphav = openfl_Alpha * alpha;
-			
-			if (hasColorTransform)
-			{
-				openfl_ColorOffsetv = colorOffset / 255.0;
-				openfl_ColorMultiplierv = colorMultiplier;
-			}
-		}
-	";
-	#else
-	static final DEFAULT_VERTEX_SOURCE:String = "
-		#pragma header
-
-		void main(void)
-		{
-			#pragma body
-		}
-	";
-	#end
-
 	/**
 	 * Constructs a GLSL shader.
 	 *
-	 * @param fragmentSource The fragment shader source.
-	 * @param vertexSource The vertex shader source.
+	 * @param fragmentSource The fragment shader path.
+	 * @param vertexSource The vertex shader path.
 	 */
 	public function new(fragmentPath:String, vertexPath:String):Void
 	{
 		if (Assets.exists(fragmentPath))
-			glFragmentSource = Assets.getText(fragmentPath).replace("#pragma header", glFragmentHeader).replace("#pragma body", glFragmentBody);
-		else
-			glFragmentSource = DEFAULT_FRAGMENT_SOURCE.replace("#pragma header", glFragmentHeader).replace("#pragma body", glFragmentBody);
+		{
+			if (glFragmentHeader != null && glFragmentBody != null)
+				glFragmentSource = Assets.getText(fragmentPath).replace("#pragma header", glFragmentHeader).replace("#pragma body", glFragmentBody);
+			else
+				glFragmentSource = Assets.getText(fragmentPath);
+		}
 
 		if (Assets.exists(vertexPath))
-			glVertexSource = Assets.getText(vertexPath).replace("#pragma header", glVertexHeader).replace("#pragma body", glVertexBody);
-		else
-			glVertexSource = DEFAULT_VERTEX_SOURCE.replace("#pragma header", glVertexHeader).replace("#pragma body", glVertexBody);
+		{
+			if (glFragmentHeader != null && glFragmentBody != null)
+				glVertexSource = Assets.getText(vertexPath).replace("#pragma header", glVertexHeader).replace("#pragma body", glVertexBody);
+			else
+				glVertexSource = Assets.getText(vertexPath);
+		}
 
 		super();
 	}
