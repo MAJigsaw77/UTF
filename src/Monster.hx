@@ -25,10 +25,30 @@ class Monster extends FlxSpriteGroup
 
 		if (Assets.exists(AssetPaths.data('monsters/$name')))
 			data = Json.parse(Assets.getText(AssetPaths.data('monsters/$name')));
+
+		script = new Script();
+		script.set('this', this);
+		script.set('add', add);
+		script.set('insert', insert);
+		script.set('remove', remove);
+
+		if (Assets.exists(AssetPaths.script('monsters/$name')))
+			script.execute(AssetPaths.script('monsters/$name'));
 	}
 
 	public override function update(elapsed:Float):Void
 	{
+		script.call('update', [elapsed]);
+
 		super.update(elapsed);
+	}
+
+	public override function destroy():Void
+	{
+		script.call('destroy');
+
+		super.destroy();
+
+		script.destroy();
 	}
 }
