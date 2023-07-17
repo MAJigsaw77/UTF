@@ -10,4 +10,5 @@ class Global
 	public static var gold:Int = 0;
 	public static var xp:Int = 0;
 	public static var lv:Int = 1;
+	public static var items:Array<String> = [];
 }
