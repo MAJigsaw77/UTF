@@ -12,7 +12,7 @@ function create()
 	legs = new Sprite(0, 0, AssetPaths.sprite("anim/legs"));
 	add(legs);
 
-	pants = new Sprite(0, 0, AssetPaths.sprite("anim/pants"));
+	pants = new Sprite(10, 54, AssetPaths.sprite("anim/pants"));
 	pants.origin.set(0.6, 0.8);
 	add(pants);
 
@@ -20,16 +20,16 @@ function create()
 	torso.origin.set(0.15, 0.6);
 	add(torso);
 
-	larm = new Sprite(0, 0, AssetPaths.sprite("anim/larm"));
+	larm = new Sprite(-58, 40, AssetPaths.sprite("anim/larm"));
 	add(larm);
 
-	rarm = new Sprite(0, 0, AssetPaths.sprite("anim/rarm"));
+	rarm = new Sprite(48, 75, AssetPaths.sprite("anim/rarm"));
 	add(rarm);
 
-	head = new Sprite(0, 0, AssetPaths.sprite("anim/face"));
+	head = new Sprite(2, 0, AssetPaths.sprite("anim/face"));
 	add(head);
 
-	hair = new Sprite(0, 0, AssetPaths.sprite("anim/hair"));
+	hair = new Sprite(-12, 22, AssetPaths.sprite("anim/hair"));
 	hair.origin.set(0.92, 0.02);
 	add(hair);
 
@@ -44,17 +44,16 @@ var timeElapsed:Int = 0;
 function update(elapsed)
 {
 	pants.angle = Math.sin(timeElapsed * 6.5) * 3;
-	// pants.setPosition(10, 54 + (Math.sin(0 - timeElapsed * 6.5)));
+	// pants.y = 54 + (Math.sin(0 - timeElapsed * 6.5));
 
 	torso.angle = 0 - Math.sin(timeElapsed * 6.5) * 4;
 
-	// head.setPosition(2, 160 + (Math.sin(0 - timeElapsed * 6.5)) * 3);
+	// head.y = 160 + (Math.sin(0 - timeElapsed * 6.5)) * 3);
+
 	// rarm.setPosition(48 + (Math.sin(0 - (timeElapsed * 6.5) * 2) * 4), 75 + (Math.sin(0 - timeElapsed * 6.5)) * 7);
 	// larm.setPosition(-58 + (Math.sin(timeElapsed * 6.5) * 5), 40 + (Math.sin(0 - timeElapsed * 6.5) * 5));
 
 	hair.angle = 60 - (Math.sin(timeElapsed * 6.5) * 10);
-	// hair.setPosition(-12, hair.y + 22);
-
 	beam.angle = Math.sin(timeElapsed * 3) * 35;
 
 	if (timeElapsed % 150 == 0)
