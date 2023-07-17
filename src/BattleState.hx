@@ -96,6 +96,8 @@ class BattleState extends FlxTransitionableState
 		super.create();
 	}
 
+	var choiceSelected:Bool = false;
+
 	public override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justPressed.RIGHT)
@@ -106,20 +108,36 @@ class BattleState extends FlxTransitionableState
 		{
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 
-			switch (choices[curChoice])
+			if (choiceSelected)
 			{
-				case 'Fight':
-					writer.msg = {text: '* ${monster.data.name}', delay: 0.04};
-				case 'Talk':
-					writer.msg = {text: '* ${monster.data.name}', delay: 0.04};
-				case 'Item':
-					writer.msg = {text: '* Item Selected...', delay: 0.04};
-				case 'Spare':
-					writer.msg = {text: '* Mercy Selected...', delay: 0.04};
+				switch (choices[curChoice])
+				{
+					case 'Fight' | 'Talk':
+						writer.msg = {text: '* ${monster.data.name}', delay: 0.04};
+					case 'Item':
+						writer.msg = {text: '* Item Selected...', delay: 0.04};
+					case 'Spare':
+						writer.msg = {text: '* Mercy Selected...', delay: 0.04};
+				}
+			}
+			else
+			{
+				switch (choices[curChoice])
+				{
+					case 'Fight' | 'Talk':
+						writer.msg = {text: '* ${monster.data.name}', delay: 0.04};
+					case 'Item':
+						writer.msg = {text: '* Item Selected...', delay: 0.04};
+					case 'Spare':
+						writer.msg = {text: '* Mercy Selected...', delay: 0.04};
+				}
 			}
 		}
 		else if (FlxG.keys.justPressed.ESCAPE)
+		{
+			choiceSelected = false;
 			writer.msg = {text: '* The wind is howling...', delay: 0.04};
+		}
 
 		super.update(elapsed);
 	}
@@ -140,9 +158,9 @@ class BattleState extends FlxTransitionableState
 		{
 			if (spr.ID == curChoice)
 			{
-				heart.setPosition(spr.x + 8, spr.y + 14);
-
 				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_0'));
+
+				heart.setPosition(spr.x + 8, spr.y + 14);
 			}
 			else
 				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_1'));
