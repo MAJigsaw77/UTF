@@ -53,7 +53,7 @@ class Script
 	public function execute(file:String):Void
 	{
 		if (interp == null)
-			return null;
+			return;
 
 		try
 		{
@@ -71,7 +71,7 @@ class Script
 	public function set(name:String, val:Dynamic):Void
 	{
 		if (interp == null)
-			return null;
+			return;
 
 		interp.variables.set(name, val);
 	}
