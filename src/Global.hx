@@ -1,20 +1,30 @@
 package;
 
-typedef Dialogue = {
+typedef DialogueData = {
 	var text:String;
 	var delay:Float;
 }
 
-typedef Weapon = {
+typedef WeaponData = {
 	var name:String;
 	var attack:Float;
 	var description:String;
 }
 
-typedef Armor = {
+typedef ArmorData = {
 	var name:String;
 	var defense:Float;
 	var description:String;
+}
+
+typedef MonsterData = {
+	var name:String;
+	var hp:Int;
+	var maxHp:Int;
+	var attack:Float;
+	var defense:Float;
+	var xpReward:Int;
+	var goldReward:Int;
 }
 
 class Global
