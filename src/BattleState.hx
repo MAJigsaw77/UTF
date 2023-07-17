@@ -140,7 +140,7 @@ class BattleState extends FlxTransitionableState
 		{
 			if (spr.ID == curChoice)
 			{
-				heart.setPosition(spr.x + 8, spr.y + 16);
+				heart.setPosition(spr.x + 8, spr.y + 14);
 
 				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_0'));
 			}
