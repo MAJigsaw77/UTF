@@ -23,6 +23,7 @@ class BattleState extends FlxTransitionableState
 
 	var monster:Monster;
 	var box:FlxShapeBox;
+	var heart:FlxSprite;
 	var writer:Writer;
 
 	public override function create():Void
@@ -80,6 +81,11 @@ class BattleState extends FlxTransitionableState
 		box.scrollFactor.set();
 		add(box);
 
+		heart = new FlxSprite(0, 0, AssetPaths.sprite('heart'));
+		heart.color = FlxColor.RED;
+		heart.scrollFactor.set();
+		add(heart);
+
 		writer = new Writer(box.x + 14, box.y + 14, 0);
 		writer.msg = {text: '* The wind is howling...', delay: 0.04};
 		writer.scrollFactor.set();
@@ -132,7 +138,14 @@ class BattleState extends FlxTransitionableState
 
 		choicesItems.forEach(function(spr:FlxSprite)
 		{
-			spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_' + Std.string(spr.ID == curChoice ? 0 : 1)));
+			if (spr.ID == curChoice)
+			{
+				heart.setPosition(spr.x + 8, spr.y + 8);
+
+				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_0');
+			}
+			else
+				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_1');
 		});
 	}
 }
