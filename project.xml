@@ -17,8 +17,7 @@
 
 	<!--Path Settings-->
 
-	<set name="BUILD_DIR" value="export/debug" if="debug" />
-	<set name="BUILD_DIR" value="export/release" unless="debug" />
+	<set name="BUILD_DIR" value="export" />
 
 	<assets path="assets" />
 
@@ -30,7 +29,7 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="hscript" />
 
-	<!--HaxeDefines-->
+	<!--Defines/Flags-->
 
 	<haxedef name="hscriptPos" />
 	<haxeflag name="-dce" value="no" />
