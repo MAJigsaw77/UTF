@@ -7,6 +7,7 @@ import flixel.FlxSprite;
 #if display
 import haxe.macro.Context;
 #end
+import haxe.Exception;
 import hscript.Interp;
 import hscript.Parser;
 import openfl.utils.Assets;
@@ -14,7 +15,7 @@ import openfl.Lib;
 
 class Script
 {
-	public var path(default, null):String;
+	public var file(default, null):String;
 	
 	var parser:Parser;
 	var interp:Interp;
@@ -62,13 +63,11 @@ class Script
 				interp.execute(parser.parseString(Assets.getText(file)));
 			else
 				throw 'script $file' + "doesn't exist!";
-
-			trace('script $file loaded succesfully!');
 		}
-		catch (e:Dynamic)
-			FlxG.log.error(e);
+		catch (e:Exception)
+			FlxG.log.error(StringTools.replace(e.message, 'hscript', file);
 
-		path = file;
+		this.file = file;
 	}
 
 	public function set(name:String, val:Dynamic):Void
@@ -97,8 +96,8 @@ class Script
 			if (interp.variables.exists(fname) && Reflect.isFunction(get(fname)))
 				return Reflect.callMethod(null, get(fname), args == null ? [] : args);
 		}
-		catch (e:Dynamic)
-			FlxG.log.error(e);
+		catch (e:Exception)
+			FlxG.log.error(StringTools.replace(e.message, 'hscript', file);
 
 		return null;
 	}
