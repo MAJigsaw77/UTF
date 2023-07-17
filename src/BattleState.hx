@@ -110,18 +110,27 @@ class BattleState extends FlxTransitionableState
 
 			if (choiceSelected)
 			{
-				switch (choices[curChoice])
+				if (choices[curChoice] == 'Talk')
 				{
-					case 'Fight' | 'Talk':
-						writer.msg = {text: '* ${monster.data.name}', delay: 0.04};
-					case 'Item':
-						writer.msg = {text: '* Item Selected...', delay: 0.04};
-					case 'Spare':
-						writer.msg = {text: '* Mercy Selected...', delay: 0.04};
+					// TODO
+				}
+				else
+				{
+					switch (choices[curChoice])
+					{
+						case 'Fight':
+							writer.msg = {text: '* ${monster.data.name}', delay: 0.04};
+						case 'Item':
+							writer.msg = {text: '* Item Selected...', delay: 0.04};
+						case 'Spare':
+							writer.msg = {text: '* Mercy Selected...', delay: 0.04};
+					}
 				}
 			}
 			else
 			{
+				choiceSelected = true;
+
 				switch (choices[curChoice])
 				{
 					case 'Fight' | 'Talk':
