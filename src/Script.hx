@@ -22,8 +22,6 @@ class Script
 
 	public function new():Void
 	{
-		super();
-
 		parser = new Parser();
 		#if display
 		parser.preprocesorValues = Context.getDefines();
