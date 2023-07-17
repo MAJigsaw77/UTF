@@ -97,7 +97,7 @@ class Script
 				return Reflect.callMethod(null, get(fname), args == null ? [] : args);
 		}
 		catch (e:Exception)
-			FlxG.log.error(StringTools.replace(e.message, 'hscript', file)(;
+			FlxG.log.error(StringTools.replace(e.message, 'hscript', file));
 
 		return null;
 	}
