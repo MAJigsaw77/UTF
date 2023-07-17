@@ -5,7 +5,7 @@ import flixel.addons.text.FlxTypeText;
 
 class Writer extends FlxTypeText
 {
-	public var msg(default, set):Dialogue = {text: 'Error!', delay: 0.04};
+	public var msg(default, set):DialogueData = {text: 'Error!', delay: 0.04};
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0):Void
 	{
@@ -15,7 +15,7 @@ class Writer extends FlxTypeText
 		sounds = [FlxG.sound.load(AssetPaths.sound('txt2'), 0.76)];
 	}
 
-	private function set_msg(value:Dialogue):Dialogue
+	private function set_msg(value:DialogueData):DialogueData
 	{
 		if (value.text != null)
 		{
