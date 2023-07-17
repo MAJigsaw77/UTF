@@ -3,11 +3,6 @@ package;
 import flixel.FlxG;
 import flixel.addons.text.FlxTypeText;
 
-typedef Dialogue = {
-	var text:String;
-	var delay:Float;
-}
-
 class Writer extends FlxTypeText
 {
 	public var msg(default, set):Dialogue = {text: 'Error!', delay: 0.04};
