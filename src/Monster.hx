@@ -16,8 +16,8 @@ typedef MonsterData = {
 
 class Monster extends FlxSpriteGroup
 {
-	public var data:MonsterData;
-	public var script:Script;
+	public var data(default, null):MonsterData;
+	public var script(default, null):Script;
 
 	public function new(x:Float = 0, y:Float = 0, name:String):Void
 	{
@@ -25,7 +25,19 @@ class Monster extends FlxSpriteGroup
 
 		if (Assets.exists(AssetPaths.data('monsters/$name')))
 			data = Json.parse(Assets.getText(AssetPaths.data('monsters/$name')));
-
+		else
+		{
+			data = {
+				name: "Dummy",
+				hp: 15,
+				maxHp: 15,
+				attack: 0,
+				defense: -5,
+				xpReward: 0,
+				goldReward: 0
+			};
+		}
+    
 		script = new Script();
 		script.set('this', this);
 		script.set('add', add);
