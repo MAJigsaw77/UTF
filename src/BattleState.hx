@@ -142,10 +142,10 @@ class BattleState extends FlxTransitionableState
 			{
 				heart.setPosition(spr.x + 8, spr.y + 8);
 
-				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_0');
+				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_0'));
 			}
 			else
-				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_1');
+				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_1'));
 		});
 	}
 }
