@@ -41,52 +41,52 @@ class Global
 
 	public static function levelUp():Bool
 	{
-		final currentLevel:Int = Global.lv;
+		final love:Int = Global.lv;
 
 		switch (Global.xp)
 		{
-			case value if (value >= 99999)
+			case value if (value >= 99999):
 				Global.lv = 20;
 				Global.xp = 99999;
-			case value if (value >= 50000)
+			case value if (value >= 50000):
 				Global.lv = 19;
-			case value if (value >= 25000)
+			case value if (value >= 25000):
 				Global.lv = 18;
-			case value if (value >= 15000)
+			case value if (value >= 15000):
 				Global.lv = 17;
-			case value if (value >= 10000)
+			case value if (value >= 10000):
 				Global.lv = 16;
-			case value if (value >= 7000)
+			case value if (value >= 7000):
 				Global.lv = 15;
-			case value if (value >= 5000)
+			case value if (value >= 5000):
 				Global.lv = 14;
-			case value if (value >= 3500)
+			case value if (value >= 3500):
 				Global.lv = 13;
-			case value if (value >= 2500)
+			case value if (value >= 2500):
 				Global.lv = 12;
-			case value if (value >= 1700)
+			case value if (value >= 1700):
 				Global.lv = 11;
-			case value if (value >= 1200)
+			case value if (value >= 1200):
 				Global.lv = 10;
-			case value if (value >= 800)
+			case value if (value >= 800):
 				Global.lv = 9;
-			case value if (value >= 500)
+			case value if (value >= 500):
 				Global.lv = 8;
-			case value if (value >= 300)
+			case value if (value >= 300):
 				Global.lv = 7;
-			case value if (value >= 200)
+			case value if (value >= 200):
 				Global.lv = 6;
-			case value if (value >= 120)
+			case value if (value >= 120):
 				Global.lv = 5;
-			case value if (value >= 70)
+			case value if (value >= 70):
 				Global.lv = 4;
-			case value if (value >= 30)
+			case value if (value >= 30):
 				Global.lv = 3;
-			case value if (value >= 10)
+			case value if (value >= 10):
 				Global.lv = 2;
 		}
 				
-		if (Global.xp != currentlevel)
+		if (Global.xp != love)
 		{
 			Global.maxHp = 16 + Global.lv * 4;
 			Global.attack = 8 + Global.lv * 2;
