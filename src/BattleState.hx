@@ -43,7 +43,7 @@ class BattleState extends FlxTransitionableState
 		hpBar.scrollFactor.set();
 		add(hpBar);
 
-		hpInfo = new FlxText((hpBar.x + 15) + Global.maxHp * 1.2, hpBar.y, 0, Global.hp + ' / ' + Global.maxHp, 14);
+		hpInfo = new FlxText((hpBar.x + 15) + hpBar.width, hpBar.y, 0, Global.hp + ' / ' + Global.maxHp, 14);
 		hpInfo.font = AssetPaths.font('Small.otf');
 		hpInfo.scrollFactor.set();
 		add(hpInfo);
@@ -53,7 +53,7 @@ class BattleState extends FlxTransitionableState
 
 		for (i in 0...choices.length)
 		{
-			var bt:FlxSprite = new FlxSprite(0, 432, AssetPaths.sprite(choices[i].toLowerCase() + 'bt_1'));
+			var bt:FlxSprite = new FlxSprite(0, hpBar.y + 32, AssetPaths.sprite(choices[i].toLowerCase() + 'bt_1'));
 
 			switch (choices[i])
 			{
