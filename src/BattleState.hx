@@ -116,19 +116,14 @@ class BattleState extends FlxTransitionableState
 				}
 				else
 				{
-					switch (choices[curChoice])
-					{
-						case 'Fight':
-							writer.msg = {text: '* ${monster.data.name}', delay: 0.04};
-						case 'Item':
-							writer.msg = {text: '* Item Selected...', delay: 0.04};
-						case 'Spare':
-							writer.msg = {text: '* Mercy Selected...', delay: 0.04};
-					}
+					// TODO
 				}
 			}
 			else
 			{
+				if (choices[curChoice] == 'Item' && Global.items.length <= 0)
+					return;
+
 				choiceSelected = true;
 
 				switch (choices[curChoice])
