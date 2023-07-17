@@ -1,5 +1,10 @@
 package;
 
+typedef Dialogue = {
+	var text:String;
+	var delay:Float;
+}
+
 typedef Weapon = {
 	var name:String;
 	var attack:Float;
