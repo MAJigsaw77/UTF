@@ -4,7 +4,6 @@ import flixel.group.FlxSpriteGroup;
 import flixel.FlxG;
 import flixel.FlxBasic;
 import flixel.FlxSprite;
-import haxe.io.Path;
 #if display
 import haxe.macro.Context;
 #end
@@ -13,9 +12,9 @@ import hscript.Parser;
 import openfl.utils.Assets;
 import openfl.Lib;
 
-class Script extends FlxBasic
+class Script
 {
-	public var name(default, null):String;
+	public var path(default, null):String;
 	
 	var parser:Parser;
 	var interp:Interp;
@@ -54,14 +53,13 @@ class Script extends FlxBasic
 
 	public function execute(file:String):Void
 	{
+		if (interp == null)
+			return null;
+
 		try
 		{
 			if (Assets.exists(file))
-			{
-				name = Path.withoutDirectory(file);
-
 				interp.execute(parser.parseString(Assets.getText(file)));
-			}
 			else
 				throw 'script $file' + "doesn't exist!";
 
@@ -69,20 +67,31 @@ class Script extends FlxBasic
 		}
 		catch (e:Dynamic)
 			FlxG.log.error(e);
+
+		path = file;
 	}
 
 	public function set(name:String, val:Dynamic):Void
 	{
+		if (interp == null)
+			return null;
+
 		interp.variables.set(name, val);
 	}
 
 	public function get(name:String):Dynamic
 	{
+		if (interp == null)
+			return null;
+
 		return interp.variables.get(name);
 	}
 
 	public function call(fname:String, ?args:Array<Dynamic>):Dynamic
 	{
+		if (interp == null)
+			return null;
+
 		try
 		{
 			if (interp.variables.exists(fname) && Reflect.isFunction(get(fname)))
@@ -94,10 +103,8 @@ class Script extends FlxBasic
 		return null;
 	}
 
-	public override function destroy():Void
+	public function destroy():Void
 	{
-		super.destroy();
-
 		parser = null;
 		interp = null;
 	}
