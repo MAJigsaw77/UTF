@@ -37,6 +37,8 @@ class Global
 	public static var gold:Int = 0;
 	public static var xp:Int = 0;
 	public static var lv:Int = 1;
+	public static var weapon:WeaponData;
+	public static var armor:ArmorData;
 	public static var items:Array<String> = [];
 
 	public static function levelUp():Bool
