@@ -14,6 +14,7 @@ import openfl.system.System;
 import openfl.utils.Assets;
 import openfl.events.UncaughtErrorEvent;
 import openfl.Lib;
+import polymod.Polymod;
 
 class Main extends Sprite
 {
