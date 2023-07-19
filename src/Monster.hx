@@ -18,11 +18,11 @@ class Monster extends FlxSpriteGroup
 		else
 		{
 			data = {
-				name: "Dummy",
-				hp: 15,
-				maxHp: 15,
+				name: "Error",
+				hp: 50,
+				maxHp: 50,
 				attack: 0,
-				defense: -5,
+				defense: 0,
 				xpReward: 0,
 				goldReward: 0
 			};
@@ -33,6 +33,7 @@ class Monster extends FlxSpriteGroup
 		script.set('add', add);
 		script.set('insert', insert);
 		script.set('remove', remove);
+
 		if (Assets.exists(AssetPaths.script('monsters/$name')))
 			script.execute(AssetPaths.script('monsters/$name'));
 	}
