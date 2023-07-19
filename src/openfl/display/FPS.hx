@@ -19,7 +19,7 @@ class FPS extends TextField
 	/**
 		Whether to show the ram usage or not.
 	**/
-	public var showMemoryUsage:Bool = true;
+	public var showMemoryUsage:Bool = #if debug true #else false #end;
 
 	@:noCompletion private var currentTime:Float;
 	@:noCompletion private var times:Array<Float>;
