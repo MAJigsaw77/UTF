@@ -47,7 +47,6 @@
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
 	<!--Polymod Settings-->
-	<haxedef name="POLYMOD_DEBUG" if="debug" />
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="meta" />
 	<haxedef name="POLYMOD_MOD_PACK_FILE" value="pack" />
 	<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon" />
