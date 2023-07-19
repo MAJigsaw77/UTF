@@ -48,7 +48,7 @@
 
 	<!--Polymod Settings-->
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="meta.json" />
-	<haxedef name="POLYMOD_MOD_PACK_FILE" value="pac.txt" />
+	<haxedef name="POLYMOD_MOD_PACK_FILE" value="pack.txt" />
 	<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon.png" />
 
 	<!--Dce Settings-->
