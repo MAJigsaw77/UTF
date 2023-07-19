@@ -27,7 +27,11 @@
 
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
+
 	<haxelib name="hscript" />
+	<haxelib name="polymod" />
+
+	<haxelib name="extension-androidtools" if="android" />
 
 	<!--Defines/Flags-->
 
