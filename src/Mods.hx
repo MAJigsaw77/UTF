@@ -10,16 +10,20 @@ import sys.FileSystem;
 
 class Mods
 {
-	public static var MOD_DIR(default, null):String = #if android Context.getExternalFilesDir() + #end
+	#if android
+	public static var MOD_DIR(default, null):String = Context.getExternalFilesDir() + '/mods';
+	#else
+	public static var MOD_DIR(default, null):String = 'mods';
+	#end
 
-	'mods';
 	public static function load():Void
 	{
 		Polymod.onError = (error:PolymodError) -> FlxG.log.error(error.message);
 
-		if (!FileSystem.exists(MOD_DIR) FileSystem.createDirectory(MOD_DIR);
+		if (!FileSystem.exists(MOD_DIR))
+			FileSystem.createDirectory(MOD_DIR);
 
-			Polymod.init({modRoot: MOD_DIR, dirs: getModDirs(), framework: OPENFL});
+		Polymod.init({modRoot: MOD_DIR, dirs: getModDirs(), framework: OPENFL});
 	}
 
 	private static function getModDirs():Array<String>
