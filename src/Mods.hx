@@ -4,7 +4,6 @@ package;
 import android.content.Context;
 #end
 import flixel.FlxG;
-import openfl.Lib;
 import polymod.backends.PolymodAssets;
 import polymod.Polymod;
 import sys.FileSystem;
@@ -39,8 +38,8 @@ class Mods
 			modRoot: MOD_DIR,
 			dirs: getModDirs(),
 			framework: OPENFL,
-			extensionMap: ['frag' => TEXT, 'vert' => TEXT],
-			ignoredFiles: Polymod.getDefaultIgnoreList()
+			ignoredFiles: Polymod.getDefaultIgnoreList(),
+			extensionMap: ['frag' => TEXT, 'vert' => TEXT]
 		});
 	}
 
