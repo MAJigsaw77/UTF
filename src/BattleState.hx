@@ -86,7 +86,6 @@ class BattleState extends FlxTransitionableState
 
 		heart = new FlxSprite(0, 0, AssetPaths.sprite('heart'));
 		heart.color = FlxColor.RED;
-		heart.alpha = 0.0001;
 		heart.scrollFactor.set();
 		add(heart);
 
@@ -182,12 +181,9 @@ class BattleState extends FlxTransitionableState
 		{
 			if (spr.ID == curChoice)
 			{
-				heart.setPosition(spr.x + 8, spr.y + 14);
-
-				if (heart.alpha <= 0)
-					heart.alpha = 1;
-
 				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_0'));
+
+				heart.setPosition(spr.x + 8, spr.y + 14);
 			}
 			else
 				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_1'));
