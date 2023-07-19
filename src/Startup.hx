@@ -6,7 +6,7 @@ import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxState;
 
-class Startup
+class Startup extends FlxState
 {
 	override function create():Void
 	{
