@@ -6,6 +6,7 @@ import android.content.Context;
 import flixel.FlxG;
 import openfl.Lib;
 import polymod.Polymod;
+import sys.FileSystem;
 
 class Mods
 {
@@ -14,6 +15,9 @@ class Mods
 	public static function load():Void
 	{
 		Polymod.onError = (error:PolymodError) -> FlxG.log.error(error.message);
+
+		if (!FileSystem.exists(MOD_DIR)
+			FileSystem.createDirectory(MOD_DIR);
 
 		Polymod.init({modRoot: MOD_DIR, dirs: getModDirs(), framework: OPENFL});
 	}
