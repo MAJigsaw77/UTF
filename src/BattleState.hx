@@ -27,6 +27,8 @@ class BattleState extends FlxTransitionableState
 	var heart:FlxSprite;
 	var writer:Writer;
 
+	var bullets:FlxTypedGroup<FlxSprite>;
+
 	override function create():Void
 	{
 		stats = new FlxText(30, 400, 0, Global.name + "   LV " + Global.lv, 14);
@@ -92,6 +94,9 @@ class BattleState extends FlxTransitionableState
 		writer.msg = {text: '* The wind is howling...', speed: 4};
 		writer.scrollFactor.set();
 		add(writer);
+
+		bullets = new FlxTypedGroup<FlxSprite>();
+		add(bullets);
 
 		changeChoice();
 
