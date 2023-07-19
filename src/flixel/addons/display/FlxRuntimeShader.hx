@@ -189,8 +189,8 @@ class FlxRuntimeShader extends FlxShader
 	/**
 	 * Constructs a GLSL shader.
 	 *
-	 * @param fragmentSource The fragment shader source.
-	 * @param vertexSource The vertex shader source.
+	 * @param fragmentPath The fragment shader source.
+	 * @param vertexPath The vertex shader source.
 	 */
 	public function new(fragmentPath:String = null, vertexPath:String = null):Void
 	{
@@ -203,8 +203,6 @@ class FlxRuntimeShader extends FlxShader
 			glVertexSource = processVertexSource(Assets.getText(vertexPath));
 		else
 			glVertexSource = processVertexSource(DEFAULT_VERTEX_SOURCE);
-
-		__glSourceDirty = true;
 
 		super();
 	}
