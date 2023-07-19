@@ -31,7 +31,7 @@ class Main extends Sprite
 					Assets.cache.removeBitmapData(key);
 
 			// Clear the loaded assets from polymod...
-			// Polymod.clearCache();
+			Polymod.clearCache();
 
 			// Run the garbage colector...
 			System.gc();
