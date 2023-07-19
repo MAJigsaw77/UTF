@@ -16,7 +16,7 @@ import openfl.Lib;
 class Script
 {
 	public var file(default, null):String;
-	
+
 	var parser:Parser;
 	var interp:Interp;
 

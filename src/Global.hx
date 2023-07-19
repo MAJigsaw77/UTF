@@ -1,23 +1,27 @@
 package;
 
-typedef DialogueData = {
+typedef DialogueData =
+{
 	var text:String;
 	var speed:Float;
 }
 
-typedef WeaponData = {
+typedef WeaponData =
+{
 	var name:String;
 	var attack:Float;
 	var description:String;
 }
 
-typedef ArmorData = {
+typedef ArmorData =
+{
 	var name:String;
 	var defense:Float;
 	var description:String;
 }
 
-typedef MonsterData = {
+typedef MonsterData =
+{
 	var name:String;
 	var hp:Int;
 	var maxHp:Int;

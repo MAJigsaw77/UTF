@@ -27,7 +27,7 @@ class Monster extends FlxSpriteGroup
 				goldReward: 0
 			};
 		}
-    
+
 		script = new Script();
 		script.set('this', this);
 		script.set('add', add);

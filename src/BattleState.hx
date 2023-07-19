@@ -102,9 +102,9 @@ class BattleState extends FlxTransitionableState
 	override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justPressed.RIGHT && !choiceSelected)
-			 changeChoice(1);
+			changeChoice(1);
 		else if (FlxG.keys.justPressed.LEFT && !choiceSelected)
-			 changeChoice(-1);
+			changeChoice(-1);
 		else if (FlxG.keys.justPressed.ENTER)
 		{
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
@@ -136,7 +136,8 @@ class BattleState extends FlxTransitionableState
 					case 'Fight' | 'Talk':
 						writer.msg = {text: '* ${monster.data.name}', speed: 4};
 
-						var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + monster.data.name.length * 16, box.y + 30, LEFT_TO_RIGHT, Std.int(monster.data.hp / monster.data.maxHp * 100), 48, monster.data, "hp", 0, monster.data.maxHp);
+						var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + monster.data.name.length * 16, box.y + 30, LEFT_TO_RIGHT,
+							Std.int(monster.data.hp / monster.data.maxHp * 100), 48, monster.data, "hp", 0, monster.data.maxHp);
 						monsterHpBar.createFilledBar(FlxColor.RED, FlxColor.LIME);
 						monsterHpBar.emptyCallback = () -> trace('YOU WON!');
 						monsterHpBar.scrollFactor.set();
