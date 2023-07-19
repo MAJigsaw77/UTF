@@ -26,7 +26,7 @@ class Mods
 	{
 		final modIds:Array<String> = [];
 
-		for (mod in Polymod.scan())
+		for (mod in Polymod.scan({modRoot: MOD_DIR}))
 			modIds.push(mod.id);
 
 		return modIds;
