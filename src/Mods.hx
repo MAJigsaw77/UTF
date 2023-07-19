@@ -9,7 +9,7 @@ import polymod.Polymod;
 
 class Mods
 {
-	public static var MOD_DIR(default, null):String = #if android Context.getExternalStorageDirectory(null) + #end 'mods';
+	public static var MOD_DIR(default, null):String = #if android Context.getExternalFilesDir() + #end 'mods';
 
 	public static function load():Void
 	{
