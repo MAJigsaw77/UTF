@@ -12,13 +12,13 @@ import openfl.utils.Assets;
 class FPS extends TextField
 {
 	/**
-		The current frame rate, expressed using frames-per-second
-	**/
+	 * The current frame rate, expressed using frames-per-second.
+	 */
 	public var currentFPS(default, null):Int = 0;
 
 	/**
-		Whether to show the ram usage or not.
-	**/
+	 * Whether to show the memory usage or not.
+	 */
 	public var showMemoryUsage:Bool = #if debug true #else false #end;
 
 	@:noCompletion private var currentTime:Float;
@@ -36,9 +36,9 @@ class FPS extends TextField
 
 		#if mobile
 		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans.otf')).fontName,
-			Std.int(14 * Math.min(Lib.current.stage.stageWidth / FlxG.width, Lib.current.stage.stageHeight / FlxG.height)), color);
+			Std.int(15 * Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height)), color);
 		#else
-		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans.otf')).fontName, 14, color);
+		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans.otf')).fontName, 15, color);
 		#end
 
 		currentTime = 0;
@@ -53,7 +53,7 @@ class FPS extends TextField
 		#if mobile
 		addEventListener(Event.RESIZE, function(e:Event)
 		{
-			final daSize:Int = Std.int(14 * Math.min(Lib.current.stage.stageWidth / FlxG.width, Lib.current.stage.stageHeight / FlxG.height));
+			final daSize:Int = Std.int(15 * Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height));
 			if (defaultTextFormat.size != daSize)
 				defaultTextFormat.size = daSize;
 		});
