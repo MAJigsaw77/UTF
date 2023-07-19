@@ -23,6 +23,14 @@
 		{
 			"name":"hscript",
 			"type":"haxelib"
+		},
+		{
+			"name":"polymod",
+			"type":"haxelib"
+		},
+		{
+			"name":"extension-androidtools",
+			"type":"haxelib"
 		}
 	]
 }
