@@ -8,7 +8,6 @@ import flixel.FlxGame;
 import flixel.FlxState;
 import haxe.CallStack;
 import lime.system.System;
-import lime.utils.Log;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.system.System;
@@ -32,6 +31,9 @@ class Main extends Sprite
 				if (!FlxG.bitmap.checkCache(key))
 					Assets.cache.removeBitmapData(key);
 
+			// Clear the loaded assets from polymod...
+			Polymod.clearCache();
+
 			// Run the garbage colector...
 			System.gc();
 		});
@@ -40,11 +42,8 @@ class Main extends Sprite
 		// FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.5);
 		// FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.5);
 
-		addChild(new FlxGame(640, 480, BattleState, 30, 30));
-
-		var fpsCounter:FPS = new FPS(10, 10, FlxColor.WHITE);
-		fpsCounter.showMemoryUsage = #if debug true #else false #end;
-		addChild(fpsCounter);
+		addChild(new FlxGame(640, 480, BattleState, 30, 30, false, false));
+		addChild(new FPS(10, 10, FlxColor.WHITE));
 	}
 
 	private function onResizeGame(width:Int, height:Int):Void
@@ -94,7 +93,7 @@ class Main extends Sprite
 		e.stopPropagation();
 		e.stopImmediatePropagation();
 
-		Log.println(stack.join('\n'));
+		Sys.println(stack.join('\n'));
 		Lib.application.window.alert(stack.join('\n'), 'Error!');
 		System.exit(1);
 	}
