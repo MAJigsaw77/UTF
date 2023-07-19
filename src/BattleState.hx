@@ -3,6 +3,7 @@ package;
 import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
+import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
@@ -87,7 +88,7 @@ class BattleState extends FlxTransitionableState
 		add(heart);
 
 		writer = new Writer(box.x + 14, box.y + 14, 0);
-		writer.msg = {text: '* The wind is howling...', delay: 0.04};
+		writer.msg = {text: '* The wind is howling...', speed: 4};
 		writer.scrollFactor.set();
 		add(writer);
 
@@ -129,18 +130,18 @@ class BattleState extends FlxTransitionableState
 				switch (choices[curChoice])
 				{
 					case 'Fight' | 'Talk':
-						writer.msg = {text: '* ${monster.data.name}', delay: 0.04};
+						writer.msg = {text: '* ${monster.data.name}', speed: 4};
 					case 'Item':
-						writer.msg = {text: '* Item Selected...', delay: 0.04};
+						writer.msg = {text: '* Item Selected...', speed: 4};
 					case 'Spare':
-						writer.msg = {text: '* Mercy Selected...', delay: 0.04};
+						writer.msg = {text: '* Mercy Selected...', speed: 4};
 				}
 			}
 		}
 		else if (FlxG.keys.justPressed.ESCAPE)
 		{
 			choiceSelected = false;
-			writer.msg = {text: '* The wind is howling...', delay: 0.04};
+			writer.msg = {text: '* The wind is howling...', speed: 4};
 		}
 
 		super.update(elapsed);
@@ -162,9 +163,9 @@ class BattleState extends FlxTransitionableState
 		{
 			if (spr.ID == curChoice)
 			{
-				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_0'));
+				heart.setPosition(FlxMath.lerp(heart.x, spr.x + 8, 0.3), FlxMath.lerp(heart.y, spr.y + 14, 0.3));
 
-				heart.setPosition(spr.x + 8, spr.y + 14);
+				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_0'));
 			}
 			else
 				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_1'));
