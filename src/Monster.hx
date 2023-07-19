@@ -33,25 +33,35 @@ class Monster extends FlxSpriteGroup
 		script.set('add', add);
 		script.set('insert', insert);
 		script.set('remove', remove);
-
 		if (Assets.exists(AssetPaths.script('monsters/$name')))
 			script.execute(AssetPaths.script('monsters/$name'));
-
-		script.call('create');
 	}
 
 	public override function update(elapsed:Float):Void
 	{
-		script.call('update', [elapsed]);
+		script.call('preUpdate', [elapsed]);
 
 		super.update(elapsed);
+
+		script.call('postUpdate', [elapsed]);
+	}
+
+	public override function draw():Void
+	{
+		script.call('preDraw');
+
+		super.draw();
+
+		script.call('postDraw');
 	}
 
 	public override function destroy():Void
 	{
-		script.call('destroy');
+		script.call('preDestroy');
 
 		super.destroy();
+
+		script.call('postDestroy');
 
 		script.destroy();
 	}
