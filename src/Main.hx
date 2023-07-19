@@ -38,7 +38,7 @@ class Main extends Sprite
 		});
 		FlxG.signals.postStateSwitch.add(System.gc);
 
-		addChild(new FlxGame(640, 480, BattleState, 30, 30, false, false));
+		addChild(new FlxGame(640, 480, Startup, 30, 30, false, false));
 		addChild(new FPS(10, 10, FlxColor.WHITE));
 	}
 
