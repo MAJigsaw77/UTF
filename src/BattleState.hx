@@ -100,9 +100,9 @@ class BattleState extends FlxTransitionableState
 
 	public override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justPressed.RIGHT)
+		if (FlxG.keys.justPressed.RIGHT && !choiceSelected)
 			 changeChoice(1);
-		else if (FlxG.keys.justPressed.LEFT)
+		else if (FlxG.keys.justPressed.LEFT && !choiceSelected)
 			 changeChoice(-1);
 		else if (FlxG.keys.justPressed.ENTER)
 		{
