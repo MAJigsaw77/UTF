@@ -22,10 +22,10 @@ class Mods
 		{
 			switch (error.severity)
 			{
-				case ERROR:
-					FlxG.log.error(error.message);
-				case ERROR:
-					FlxG.log.error(error.message);
+				case NOTICE:
+					FlxG.log.notice(error.message);
+				case WARNING:
+					FlxG.log.warn(error.message);
 				case ERROR:
 					FlxG.log.error(error.message);
 			}
