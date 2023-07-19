@@ -2,7 +2,7 @@ package;
 
 typedef DialogueData = {
 	var text:String;
-	var delay:Float;
+	var speed:Float;
 }
 
 typedef WeaponData = {
