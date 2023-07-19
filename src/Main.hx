@@ -1,7 +1,5 @@
 package;
 
-import flixel.addons.transition.FlxTransitionableState;
-import flixel.addons.transition.TransitionData;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -39,9 +37,6 @@ class Main extends Sprite
 			System.gc();
 		});
 		FlxG.signals.postStateSwitch.add(System.gc);
-
-		FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.5);
-		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.5);
 
 		addChild(new FlxGame(640, 480, BattleState, 30, 30, false, false));
 		addChild(new FPS(10, 10, FlxColor.WHITE));
