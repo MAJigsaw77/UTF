@@ -1,5 +1,6 @@
 package;
 
+import flixel.addons.display.FlxRuntimeShader;
 import flixel.group.FlxSpriteGroup;
 import flixel.FlxG;
 import flixel.FlxBasic;
@@ -46,6 +47,7 @@ class Script
 		set('AssetPaths', AssetPaths);
 		set('Global', FlxG);
 		set('Object', FlxBasic);
+		set('Shader', FlxRuntimeShader);
 		set('SpriteGroup', FlxSpriteGroup);
 		set('Sprite', FlxSprite);
 	}
