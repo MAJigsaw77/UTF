@@ -23,11 +23,11 @@ class Mods
 			switch (error.severity)
 			{
 				case NOTICE:
-					FlxG.log.notice('(${Std.string(error.code).toUpperCase()}): ${error.message}');
+					FlxG.log.notice('(${error.code.toUpperCase()}): ${error.message}');
 				case WARNING:
-					FlxG.log.warn('(${Std.string(error.code).toUpperCase()}): ${error.message}');
+					FlxG.log.warn('(${error.code.toUpperCase()}): ${error.message}');
 				case ERROR:
-					FlxG.log.error('(${Std.string(error.code).toUpperCase()}): ${error.message}');
+					FlxG.log.error('(${error.code.toUpperCase()}): ${error.message}');
 			}
 		}
 
