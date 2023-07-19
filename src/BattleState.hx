@@ -22,7 +22,7 @@ class BattleState extends FlxTransitionableState
 	var hpBar:FlxBar;
 	var hpInfo:FlxText;
 
-	var monster:Array<Monster> = [];
+	var monster:Monster;
 	var box:FlxShapeBox;
 	var heart:FlxSprite;
 	var writer:Writer;
@@ -75,10 +75,10 @@ class BattleState extends FlxTransitionableState
 			choicesItems.add(bt);
 		}
 
-		monster[0] = new Monster(0, 140, 'undyne-ex');
-		monster[0].screenCenter(X);
-		monster[0].scrollFactor.set();
-		add(monster[0]);
+		monster = new Monster(0, 140, 'undyne-ex');
+		monster.screenCenter(X);
+		monster.scrollFactor.set();
+		add(monster);
 
 		box = new FlxShapeBox(32, 250, 570, 135, {thickness: 6, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.scrollFactor.set();
@@ -140,10 +140,10 @@ class BattleState extends FlxTransitionableState
 				switch (choices[curChoice])
 				{
 					case 'Fight' | 'Talk':
-						writer.msg = {text: '* ${monster[0].data.name}', speed: 4};
+						writer.msg = {text: '* ${monster.data.name}', speed: 4};
 
-						var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + (monster[0].data.name.length * 16), box.y + 30, LEFT_TO_RIGHT,
-							Std.int(monster[0].data.hp / monster[0].data.maxHp * 100), 48, monster[0].data, "hp", 0, monster[0].data.maxHp);
+						var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + (monster.data.name.length * 16), box.y + 30, LEFT_TO_RIGHT,
+							Std.int(monster.data.hp / monster.data.maxHp * 100), 48, monster.data, "hp", 0, monster.data.maxHp);
 						monsterHpBar.createFilledBar(FlxColor.RED, FlxColor.LIME);
 						monsterHpBar.emptyCallback = () -> trace('YOU WON!');
 						monsterHpBar.scrollFactor.set();
