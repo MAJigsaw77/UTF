@@ -3,6 +3,7 @@ package;
 import flixel.group.FlxSpriteGroup;
 import haxe.Json;
 import openfl.utils.Assets;
+import Global;
 
 class Monster extends FlxSpriteGroup
 {
