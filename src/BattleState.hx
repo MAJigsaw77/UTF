@@ -27,7 +27,7 @@ class BattleState extends FlxTransitionableState
 	var heart:FlxSprite;
 	var writer:Writer;
 
-	private override function create():Void
+	override function create():Void
 	{
 		stats = new FlxText(30, 400, 0, Global.name + "   LV " + Global.lv, 14);
 		stats.font = AssetPaths.font('Small.otf');
@@ -99,7 +99,7 @@ class BattleState extends FlxTransitionableState
 
 	var choiceSelected:Bool = false;
 
-	private override function update(elapsed:Float):Void
+	override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justPressed.RIGHT && !choiceSelected)
 			 changeChoice(1);
@@ -124,6 +124,8 @@ class BattleState extends FlxTransitionableState
 			}
 			else
 			{
+				writer.visible = true;
+
 				if (choices[curChoice] == 'Item' && Global.items.length <= 0)
 					return;
 
