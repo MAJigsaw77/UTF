@@ -10,12 +10,8 @@ class Mods
 
 	public static function load():Void
 	{
-		Polymod.init({
-			modRoot: MOD_DIR,
-			dirs: [],
-			framework: OPENFL,
-			apiVersion: Lib.application.meta.get('version'),
-			errorCallback: (error:PolymodError) -> FlxG.log.error(error.message)
-		});
+		Polymod.onError = (error:PolymodError) -> FlxG.log.error(error.message);
+
+		Polymod.init({modRoot: MOD_DIR, dirs: [], framework: OPENFL});
 	}
 }
