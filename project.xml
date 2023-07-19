@@ -33,24 +33,26 @@
 
 	<haxelib name="extension-androidtools" if="android" />
 
-	<!--hxcpp Config-->
+	<!--hxcpp Settings-->
 	<haxedef name="HXCPP_CHECK_POINTER" />
 	<haxedef name="HXCPP_STACK_LINE" />
 	<haxedef name="HXCPP_STACK_TRACE" />
 
-	<!--Hscript Config-->
+	<!--Hscript Settings-->
 	<haxedef name="hscriptPos" />
-	<haxeflag name="-dce" value="no" />
 
-	<!--Flixel Config-->
+	<!--Flixel Settings-->
 	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
-	<!--Polymod Config-->
+	<!--Polymod Settings-->
 	<haxedef name="POLYMOD_DEBUG" if="debug" />
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="meta" />
 	<haxedef name="POLYMOD_MOD_PACK_FILE" value="pack" />
 	<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon" />
+
+	<!--Dce Settings-->
+	<haxeflag name="-dce" value="no" />
 
 </project>
