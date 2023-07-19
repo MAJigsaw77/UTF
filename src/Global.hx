@@ -1,5 +1,7 @@
 package;
 
+import flixel.FlxG;
+
 typedef DialogueData =
 {
 	var text:String;
