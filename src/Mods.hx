@@ -18,7 +18,18 @@ class Mods
 
 	public static function load():Void
 	{
-		Polymod.onError = (error:PolymodError) -> FlxG.log.error(error.message);
+		Polymod.onError = function(error:PolymodError)
+		{
+			switch (error.severity)
+			{
+				case ERROR:
+					FlxG.log.error(error.message);
+				case ERROR:
+					FlxG.log.error(error.message);
+				case ERROR:
+					FlxG.log.error(error.message);
+			}
+		}
 
 		if (!FileSystem.exists(MOD_DIR))
 			FileSystem.createDirectory(MOD_DIR);
