@@ -22,7 +22,7 @@ class BattleState extends FlxTransitionableState
 	var hpBar:FlxBar;
 	var hpInfo:FlxText;
 
-	var monster:Monster;
+	var monster:Array<Monster> = [];
 	var box:FlxShapeBox;
 	var heart:FlxSprite;
 	var writer:Writer;
@@ -73,10 +73,10 @@ class BattleState extends FlxTransitionableState
 			choicesItems.add(bt);
 		}
 
-		monster = new Monster(0, 140, 'undyne-ex');
-		monster.screenCenter(X);
-		monster.scrollFactor.set();
-		add(monster);
+		monster[0] = new Monster(0, 140, 'undyne-ex');
+		monster[0].screenCenter(X);
+		monster[0].scrollFactor.set();
+		add(monster[0]);
 
 		box = new FlxShapeBox(32, 250, 570, 135, {thickness: 6, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.scrollFactor.set();
@@ -84,6 +84,7 @@ class BattleState extends FlxTransitionableState
 
 		heart = new FlxSprite(0, 0, AssetPaths.sprite('heart'));
 		heart.color = FlxColor.RED;
+		heart.alpha = 0.0001;
 		heart.scrollFactor.set();
 		add(heart);
 
@@ -136,7 +137,7 @@ class BattleState extends FlxTransitionableState
 					case 'Fight' | 'Talk':
 						writer.msg = {text: '* ${monster.data.name}', speed: 4};
 
-						var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + monster.data.name.length * 16, box.y + 30, LEFT_TO_RIGHT,
+						var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + (monster.data.name.length * 16), box.y + 30, LEFT_TO_RIGHT,
 							Std.int(monster.data.hp / monster.data.maxHp * 100), 48, monster.data, "hp", 0, monster.data.maxHp);
 						monsterHpBar.createFilledBar(FlxColor.RED, FlxColor.LIME);
 						monsterHpBar.emptyCallback = () -> trace('YOU WON!');
@@ -152,6 +153,7 @@ class BattleState extends FlxTransitionableState
 		else if (FlxG.keys.justPressed.ESCAPE)
 		{
 			choiceSelected = false;
+			writer.visible = true;
 			writer.msg = {text: '* The wind is howling...', speed: 4};
 		}
 
@@ -175,6 +177,9 @@ class BattleState extends FlxTransitionableState
 			if (spr.ID == curChoice)
 			{
 				heart.setPosition(spr.x + 8, spr.y + 14);
+
+				if (heart.alpha <= 0)
+					heart.alpha = 1;
 
 				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_0'));
 			}
