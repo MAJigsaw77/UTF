@@ -5,7 +5,7 @@ import flixel.addons.text.FlxTypeText;
 
 class Writer extends FlxTypeText
 {
-	public var msg(default, set):DialogueData = {text: 'Error!', delay: 0.04};
+	public var msg(default, set):DialogueData = {text: 'Error!', speed: 4};
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0):Void
 	{
@@ -20,7 +20,7 @@ class Writer extends FlxTypeText
 		if (value.text != null)
 		{
 			resetText(value.text);
-			start(value.delay, true);
+			start(value.speed / 100, true);
 		}
 
 		return value;
