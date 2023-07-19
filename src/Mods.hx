@@ -15,6 +15,16 @@ class Mods
 	{
 		Polymod.onError = (error:PolymodError) -> FlxG.log.error(error.message);
 
-		Polymod.init({modRoot: MOD_DIR, dirs: [], framework: OPENFL});
+		Polymod.init({modRoot: MOD_DIR, dirs: getModDirs(), framework: OPENFL});
+	}
+
+	private static function getModDirs():Array<String>
+	{
+		final modIds:Array<String> = [];
+
+		for (mod in Polymod.scan())
+			modIds.push(mod.id);
+
+		return modIds;
 	}
 }
