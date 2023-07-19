@@ -23,18 +23,18 @@ class Mods
 			switch (error.severity)
 			{
 				case NOTICE:
-					FlxG.log.notice(error.message);
+					FlxG.log.notice('(${Std.string(error.code).toUpperCase()}): ${error.message}');
 				case WARNING:
-					FlxG.log.warn(error.message);
+					FlxG.log.warn('(${Std.string(error.code).toUpperCase()}): ${error.message}');
 				case ERROR:
-					FlxG.log.error(error.message);
+					FlxG.log.error('(${Std.string(error.code).toUpperCase()}): ${error.message}');
 			}
 		}
 
 		if (!FileSystem.exists(MOD_DIR))
 			FileSystem.createDirectory(MOD_DIR);
 
-		Polymod.init({modRoot: MOD_DIR, dirs: getModDirs(), framework: OPENFL});
+		Polymod.init({modRoot: MOD_DIR, dirs: getModDirs(), framework: OPENFL, ignoredFiles: Polymod.getDefaultIgnoreList()});
 	}
 
 	private static function getModDirs():Array<String>
