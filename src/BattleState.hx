@@ -153,6 +153,7 @@ class BattleState extends FlxTransitionableState
 		else if (FlxG.keys.justPressed.ESCAPE)
 		{
 			choiceSelected = false;
+
 			writer.visible = true;
 			writer.msg = {text: '* The wind is howling...', speed: 4};
 		}
