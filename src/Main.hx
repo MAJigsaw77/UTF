@@ -40,8 +40,6 @@ class Main extends Sprite
 		});
 		FlxG.signals.postStateSwitch.add(System.gc);
 
-		Mods.load();
-
 		FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.5);
 		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.5);
 
