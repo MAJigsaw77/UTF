@@ -87,7 +87,7 @@ class Global
 			case value if (value >= 10):
 				Global.lv = 2;
 		}
-				
+
 		if (Global.xp != love)
 		{
 			Global.maxHp = 16 + Global.lv * 4;
@@ -105,5 +105,51 @@ class Global
 		}
 
 		return false;
+	}
+
+	public static function save():Void
+	{
+		FlxG.save.data.name = name;
+		FlxG.save.data.hp = hp;
+		FlxG.save.data.maxHp = maxHp;
+		FlxG.save.data.attack = attack;
+		FlxG.save.data.defense = defense;
+		FlxG.save.data.gold = gold;
+		FlxG.save.data.xp = xp;
+		FlxG.save.data.lv = lv;
+		FlxG.save.flush();
+	}
+
+	public static function load():Void
+	{
+		if (FlxG.save.data.name != null)
+			name = FlxG.save.data.name;
+
+		if (FlxG.save.data.hp != null)
+			hp = FlxG.save.data.hp;
+
+		if (FlxG.save.data.maxHp != null)
+			maxHp = FlxG.save.data.maxHp;
+
+		if (FlxG.save.data.attack != null)
+			attack = FlxG.save.data.attack;
+
+		if (FlxG.save.data.defense != null)
+			defense = FlxG.save.data.defense;
+
+		if (FlxG.save.data.gold != null)
+			gold = FlxG.save.data.gold;
+
+		if (FlxG.save.data.xp != null)
+			xp = FlxG.save.data.xp;
+
+		if (FlxG.save.data.lv != null)
+			lv = FlxG.save.data.lv;
+
+		if (FlxG.save.data.volume != null)
+			FlxG.sound.volume = FlxG.save.data.volume;
+
+		if (FlxG.save.data.mute != null)
+			FlxG.sound.muted = FlxG.save.data.mute;
 	}
 }
