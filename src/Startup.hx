@@ -2,6 +2,7 @@ package;
 
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.transition.TransitionData;
+import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxState;
 
