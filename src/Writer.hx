@@ -1,7 +1,8 @@
 package;
 
-import flixel.FlxG;
 import flixel.addons.text.FlxTypeText;
+import flixel.FlxG;
+import Global;
 
 class Writer extends FlxTypeText
 {
