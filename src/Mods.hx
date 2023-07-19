@@ -5,6 +5,7 @@ import android.content.Context;
 #end
 import flixel.FlxG;
 import openfl.Lib;
+import polymod.backends.PolymodAssets;
 import polymod.Polymod;
 import sys.FileSystem;
 
@@ -34,7 +35,13 @@ class Mods
 		if (!FileSystem.exists(MOD_DIR))
 			FileSystem.createDirectory(MOD_DIR);
 
-		Polymod.init({modRoot: MOD_DIR, dirs: getModDirs(), framework: OPENFL, ignoredFiles: Polymod.getDefaultIgnoreList()});
+		Polymod.init({
+			modRoot: MOD_DIR,
+			dirs: getModDirs(),
+			framework: OPENFL,
+			extensionMap: ['frag' => TEXT, 'vert' => TEXT],
+			ignoredFiles: Polymod.getDefaultIgnoreList()
+		});
 	}
 
 	private static function getModDirs():Array<String>
