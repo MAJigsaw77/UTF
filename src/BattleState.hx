@@ -161,6 +161,8 @@ class BattleState extends FlxTransitionableState
 			writer.visible = true;
 			writer.msg = {text: '* The wind is howling...', speed: 4};
 		}
+		else if (FlxG.keys.justPressed.SHIFT)
+			FlxG.switchState(new SettingsState());
 
 		super.update(elapsed);
 	}
