@@ -2,6 +2,8 @@ package;
 
 import flixel.addons.display.FlxRuntimeShader;
 import flixel.group.FlxSpriteGroup;
+import flixel.math.FlxMath;
+import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxBasic;
 import flixel.FlxSprite;
@@ -16,9 +18,21 @@ import openfl.Lib;
 
 class Script
 {
-	public static var classes:Map<String, Dynamic> = [
+	public static var classes(default, null):Map<String, Dynamic> = [
 		'Date' => Date,
-		'Math' => Math
+		'Math' => Math,
+		'Std' => Std,
+		'StringTools' => StringTools,
+		'Sys' => Sys,
+		'FlxG' => FlxG,
+		'FlxSprite' => FlxSprite,
+		'FlxSpriteGroup' => FlxSpriteGroup,
+		'FlxRuntimeShader' => FlxRuntimeShader,
+		'FlxMath' => FlxMath,
+		'FlxTween' => FlxTween,
+		'FlxEase' => FlxEase,
+		'FlxTimer' => FlxTimer,
+		'AssetPaths' => AssetPaths
 	];
 
 	public var file(default, null):String;
@@ -37,25 +51,9 @@ class Script
 		parser.allowMetadata = true;
 
 		interp = new Interp();
-
-		// Some Haxe Tools...
-		set('Date', Date);
-		set('Math', Math);
-		set('Std', Std);
-		set('StringTools', StringTools);
-		set('Sys', Sys);
-
-		// Engine's Classes...
-		set('AssetPaths', AssetPaths);
-
-		set("FlxG", FlxG);
-		set("FlxSprite", FlxSprite);
-		set('FlxSpriteGroup', FlxSpriteGroup);
-		set('FlxRuntimeShader', FlxRuntimeShader);
-		set("FlxMath", FlxMath);
-		set("FlxTween", FlxTween);
-		set("FlxEase", FlxEase);
-		set("FlxTimer", FlxTimer);
+		
+		for (key => value in classes)
+			set(key, value);
 	}
 
 	public function execute(file:String):Void
@@ -107,7 +105,7 @@ class Script
 
 		try
 		{
-			if (interp.variables.exists(fname) && Reflect.isFunction(get(fname)))
+			if (exists(fname) && Reflect.isFunction(get(fname)))
 				return Reflect.callMethod(null, get(fname), args == null ? [] : args);
 		}
 		catch (e:Exception)
