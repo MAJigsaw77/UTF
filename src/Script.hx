@@ -3,6 +3,8 @@ package;
 import flixel.addons.display.FlxRuntimeShader;
 import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxMath;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxBasic;
@@ -29,8 +31,8 @@ class Script
 		'FlxSpriteGroup' => FlxSpriteGroup,
 		'FlxRuntimeShader' => FlxRuntimeShader,
 		'FlxMath' => FlxMath,
-		'FlxTween' => FlxTween,
 		'FlxEase' => FlxEase,
+		'FlxTween' => FlxTween,
 		'FlxTimer' => FlxTimer,
 		'AssetPaths' => AssetPaths
 	];
