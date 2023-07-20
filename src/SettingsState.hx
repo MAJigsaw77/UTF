@@ -1,9 +1,15 @@
 package;
 
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.group.FlxGroup;
+import flixel.text.FlxText;
 
 class SettingsState extends FlxTransitionableState
 {
+	var curOption:Int = 0;
+	final options:Array<String> = ['Exit', 'Key Binds'];
+	var optionsItems:FlxTypedGroup<FlxText>;
+
 	override function create():Void
 	{
 		switch (Date.now().getMonth() + 1)
@@ -16,6 +22,17 @@ class SettingsState extends FlxTransitionableState
 				FlxG.sound.playMusic(AssetPaths.music('options/summer'));
 			case 9 | 10 | 11: // Autumn
 				FlxG.sound.playMusic(AssetPaths.music('options/fall'));
+		}
+
+		optionsItems = new FlxTypedGroup<FlxText>();
+		add(optionsItems);
+
+		for (i in 0...options.length)
+		{
+			var opt:FlxText = new FlxText(0, i * 24, 0, options[i]);
+			opt.font = AssetPaths.font('DTM-Sans.otf');
+			opt.ID = i;
+			optionsItems.add(opt);
 		}
 	}
 }
