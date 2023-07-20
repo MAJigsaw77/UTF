@@ -16,6 +16,11 @@ import openfl.Lib;
 
 class Script
 {
+	public static var classes:Map<String, Dynamic> = [
+		'Date' => Date,
+		'Math' => Math
+	];
+
 	public var file(default, null):String;
 
 	var parser:Parser;
@@ -35,21 +40,22 @@ class Script
 
 		// Some Haxe Tools...
 		set('Date', Date);
-		set('DateTools', DateTools);
 		set('Math', Math);
-		set('Reflect', Reflect);
 		set('Std', Std);
 		set('StringTools', StringTools);
 		set('Sys', Sys);
-		set('Type', Type);
 
 		// Engine's Classes...
 		set('AssetPaths', AssetPaths);
-		set('Global', FlxG);
-		set('Object', FlxBasic);
-		set('Shader', FlxRuntimeShader);
-		set('SpriteGroup', FlxSpriteGroup);
-		set('Sprite', FlxSprite);
+
+		set("FlxG", FlxG);
+		set("FlxSprite", FlxSprite);
+		set('FlxSpriteGroup', FlxSpriteGroup);
+		set('FlxRuntimeShader', FlxRuntimeShader);
+		set("FlxMath", FlxMath);
+		set("FlxTween", FlxTween);
+		set("FlxEase", FlxEase);
+		set("FlxTimer", FlxTimer);
 	}
 
 	public function execute(file:String):Void
@@ -84,6 +90,14 @@ class Script
 			return null;
 
 		return interp.variables.get(name);
+	}
+
+	public function exists(name:String):Bool
+	{
+		if (interp == null)
+			return false;
+
+		return interp.variables.exists(name);
 	}
 
 	public function call(fname:String, ?args:Array<Dynamic>):Dynamic
