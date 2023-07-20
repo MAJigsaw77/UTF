@@ -3,6 +3,7 @@ package;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
+import flixel.FlxG;
 
 class SettingsState extends FlxTransitionableState
 {
