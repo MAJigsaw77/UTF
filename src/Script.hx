@@ -51,7 +51,6 @@ class Script
 		parser.allowMetadata = true;
 
 		interp = new Interp();
-		
 		for (key => value in classes)
 			set(key, value);
 	}
