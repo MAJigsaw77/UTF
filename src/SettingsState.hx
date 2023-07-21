@@ -2,6 +2,7 @@ package;
 
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
+import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
@@ -41,6 +42,11 @@ class SettingsState extends FlxTransitionableState
 			}
 		});
 
+		// Maybe I'll change to centerScreen(X) instead of using 100 as x
+		var settings:FlxText = new FlxText(100, 10, 0, options[i].toUpperCase(), 48);
+		settings.font = AssetPaths.font('DTM-Sans.otf');
+		add(settings);
+
 		optionsItems = new FlxTypedGroup<FlxText>();
 		add(optionsItems);
 
@@ -59,9 +65,9 @@ class SettingsState extends FlxTransitionableState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justPressed.UP && curOption <= optionsItems.length)
+		if (FlxG.keys.justPressed.UP)
 			changeOption(1);
-		else if (FlxG.keys.justPressed.DOWN && curOption > 0)
+		else if (FlxG.keys.justPressed.DOWN)
 			changeOption(-1);
 		else if (FlxG.keys.justPressed.ESCAPE && (FlxG.sound.music != null && FlxG.sound.music.playing))
 		{
@@ -75,7 +81,7 @@ class SettingsState extends FlxTransitionableState
 
 	private function changeOption(num:Int = 0):Void
 	{
-		curOption += num;
+		curOption = FlxMath.wrap(curOption + num, 0, options.length - 1);
 
 		optionsItems.forEach(function(spr:FlxText)
 		{
