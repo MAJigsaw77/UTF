@@ -11,9 +11,9 @@
 
 	<!--Window Settings -->
 
-	<window width="640" height="480" fps="30" orientation="landscape" background="#000000" hardware="true" vsync="false" />
+	<window width="640" height="480" fps="30" orientation="landscape" background="#000000" hardware="true" vsync="false" resizable="false" />
 
-	<window if="mobile || switch" orientation="landscape" fullscreen="true" resizable="false" />
+	<window if="mobile || switch" fullscreen="true" />
 
 	<!--Path Settings-->
 
