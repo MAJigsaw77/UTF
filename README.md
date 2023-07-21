@@ -1,16 +1,16 @@
-# UTF (WIP)
+## UTF (WIP)
 
 ![](https://img.shields.io/github/repo-size/MAJigsaw77/UTF) ![](https://badgen.net/github/open-issues/MAJigsaw77/UTF) ![](https://badgen.net/badge/license/Apache-2.0/green)
 
 A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://haxeflixel.com)
 
-## Download
+### Download
 
 > Latest builds for the engine can be found in the [Actions](https://github.com/MAJigsaw77/UTF/actions) tab.
 
-## Compiling
+### Compiling
 
-### Windows
+#### Windows
 
 1. Install [`Haxe`](https://haxe.org/download).
 2. Download [`Visual Studio Build Tools`](https://aka.ms/vs/17/release/vs_BuildTools.exe)
@@ -26,7 +26,8 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 8. Open up a `Command Prompt/PowerShell` window in `UTF` folder and type `haxelib install hmm` after it finishes, simply type `haxelib run hmm install` in order to install all the needed libraries.
 9. Run `haxelib run lime test windows` to compile and launch the game.
     - You can run `haxelib run lime setup` to make the lime command global, allowing you to execute `lime test windows` directly.
-### Linux
+
+#### Linux
 
 1. Install [`Haxe`](https://haxe.org/download).
 2. Install `g++`, if not present already.
@@ -35,7 +36,7 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 5. Run `haxelib run lime test linux` to compile and launch the game.
     - You can run `haxelib run lime setup` to make the lime command global, allowing you to execute `lime test linux` directly.
 
-### MacOS
+#### MacOS
 
 1. Install [`Haxe`](https://haxe.org/download).
 2. Install `XCode` to allow C++ app building.
@@ -43,3 +44,7 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 4. Open up a `Terminal` window in `UTF` folder and type `haxelib install hmm` after it finishes, simply type `haxelib run hmm install` in order to install all the needed libraries.
 5. Run `haxelib run lime test mac` to compile and launch the game.
    - You can run `haxelib run lime setup` to make the lime command global, allowing you to execute `lime test mac` directly.
+ 
+### Licensing
+
+**UTF** is made available under the **Apache 2.0 License**. Check [LICENSE](./LICENSE) for more information.
