@@ -28,7 +28,7 @@ jobs:
           haxe-version: 4.3.1
 
       - name: Restore Previous Cache
-        id: cache-build-android-restore
+        id: cache-build-restore
         uses: actions/cache/restore@main
         with:
           path: |
@@ -84,7 +84,7 @@ jobs:
             }
 
       - name: Save Current Cache
-        id: cache-build-android-save
+        id: cache-build-save
         uses: actions/cache/save@main
         with:
           path: |
