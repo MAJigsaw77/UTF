@@ -30,6 +30,10 @@ class Main extends Sprite
 				if (!FlxG.bitmap.checkCache(key))
 					Assets.cache.removeBitmapData(key);
 
+			// Clear all the loaded sounds from the cache...
+			for (key in Assets.cache.getSoundKeys())
+				Assets.cache.removeSound(key);
+
 			// Clear the loaded assets from polymod...
 			Polymod.clearCache();
 
@@ -75,19 +79,15 @@ class Main extends Sprite
 				case CFunction:
 					stack.push('C Function');
 				case Module(m):
-					stack.push('Module ($m)');
+					stack.push('Module [$m]');
 				case FilePos(s, file, line, column):
-					stack.push('$file (line $line)');
+					stack.push('$file [l$line]');
 				case Method(classname, method):
-					stack.push('$classname (method $method)');
+					stack.push('$classname [m$method]');
 				case LocalFunction(name):
-					stack.push('Local Function ($name)');
+					stack.push('Local Function [$name]');
 			}
 		}
-
-		e.preventDefault();
-		e.stopPropagation();
-		e.stopImmediatePropagation();
 
 		Sys.println(stack.join('\n'));
 		Lib.application.window.alert(stack.join('\n'), 'Error!');
