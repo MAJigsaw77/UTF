@@ -13,8 +13,6 @@ class Startup extends FlxState
 		Global.load();
 		Mods.load();
 
-		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
-
 		FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.5);
 		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.5);
 
