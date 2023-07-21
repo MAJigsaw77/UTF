@@ -13,16 +13,26 @@ class SettingsState extends FlxTransitionableState
 
 	override function create():Void
 	{
+		var weather:Int = 0;
+		
 		switch (Date.now().getMonth() + 1)
 		{
 			case 12 | 1 | 2: // Winter
-				FlxG.sound.playMusic(AssetPaths.music('options/winter'));
+				FlxG.sound.playMusic(AssetPaths.music('options_winter'));
 			case 3 | 4 | 5: // Spring
-				FlxG.sound.playMusic(AssetPaths.music('options/fall'));
+				FlxG.sound.playMusic(AssetPaths.music('options_fall'));
 			case 6 | 7 | 8: // Summer
-				FlxG.sound.playMusic(AssetPaths.music('options/summer'));
+				FlxG.sound.playMusic(AssetPaths.music('options_summer'));
 			case 9 | 10 | 11: // Autumn
-				FlxG.sound.playMusic(AssetPaths.music('options/fall'));
+				FlxG.sound.playMusic(AssetPaths.music('options_fall'));
+		}
+
+		FlxG.sound.play(AssetPaths.music('harpnoise'), function()
+		{
+			switch (weather)
+			{
+				
+			}
 		}
 
 		optionsItems = new FlxTypedGroup<FlxText>();
