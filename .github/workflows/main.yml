@@ -1,4 +1,4 @@
-name: Android Build
+name: Building
 on: workflow_dispatch
 jobs:
   Build:
