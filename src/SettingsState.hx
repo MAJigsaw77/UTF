@@ -43,8 +43,9 @@ class SettingsState extends FlxTransitionableState
 		});
 
 		// Maybe I'll change to centerScreen(X) instead of using 100 as x
-		var settings:FlxText = new FlxText(100, 10, 0, "SETTINGS", 48);
+		var settings:FlxText = new FlxText(100, 10, 0, "SETTINGS", 24);
 		settings.font = AssetPaths.font('DTM-Mono.otf');
+		settings.scale.set(2, 2);
 		add(settings);
 
 		optionsItems = new FlxTypedGroup<FlxText>();
