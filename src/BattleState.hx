@@ -172,12 +172,7 @@ class BattleState extends FlxTransitionableState
 		if (num != 0)
 			FlxG.sound.play(AssetPaths.sound('menumove'));
 
-		curChoice += num;
-
-		if (curChoice >= choicesItems.length)
-			curChoice = 0;
-		else if (curChoice < 0)
-			curChoice = choicesItems.length - 1;
+		curChoice = FlxMath.wrap(curChoice + num, 0, choices.length - 1);
 
 		choicesItems.forEach(function(spr:FlxSprite)
 		{
