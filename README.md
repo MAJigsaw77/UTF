@@ -23,7 +23,7 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 6. Once the installation is done, close Visual Studio Installer.
 7. Download and install [`git-scm`](https://git-scm.com/download/win).
     - Leave all installation options as default.
-8. Once the libraries are installed, run `haxelib run lime test windows` to compile and launch the game (may take a long time)
+8. Run `haxelib run lime test windows` to compile and launch the game.
     - You can run `haxelib run lime setup` to make the lime command global, allowing you to execute `lime test windows` directly.
 
 ### Linux
@@ -39,6 +39,5 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 1. Install [Haxe](https://haxe.org/download).
 2. Install `XCode` to allow C++ app building.
 3. Download and install [`git-scm`](https://git-scm.com/download/mac).
-4. Open a terminal in the Codename Engine source folder, and run `update.sh`.
-5. Run `haxelib run lime test mac` to compile and launch the game.
+4. Run `haxelib run lime test mac` to compile and launch the game.
    - You can run `haxelib run lime setup` to make the lime command global, allowing you to execute `lime test mac` directly.
