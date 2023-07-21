@@ -44,7 +44,7 @@ class SettingsState extends FlxTransitionableState
 
 		// Maybe I'll change to centerScreen(X) instead of using 100 as x
 		var settings:FlxText = new FlxText(100, 10, 0, "SETTINGS", 48);
-		settings.font = AssetPaths.font('DTM-Sans.otf');
+		settings.font = AssetPaths.font('DTM-Mono.otf');
 		add(settings);
 
 		optionsItems = new FlxTypedGroup<FlxText>();
@@ -53,7 +53,7 @@ class SettingsState extends FlxTransitionableState
 		for (i in 0...options.length)
 		{
 			var opt:FlxText = new FlxText(20, 40 + (i > 0 ? 20 + i * 15 : 0), 0, options[i].toUpperCase(), 24);
-			opt.font = AssetPaths.font('DTM-Sans.otf');
+			opt.font = AssetPaths.font('DTM-Mono.otf');
 			opt.ID = i;
 			optionsItems.add(opt);
 		}
