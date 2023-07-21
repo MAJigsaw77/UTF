@@ -57,7 +57,7 @@ class SettingsState extends FlxTransitionableState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justPressed.UP && curOption <= choicesItems.length)
+		if (FlxG.keys.justPressed.UP && curOption <= optionsItems.length)
 			changeChoice(1);
 		else if (FlxG.keys.justPressed.DOWN && curOption > 0)
 			changeChoice(-1);
