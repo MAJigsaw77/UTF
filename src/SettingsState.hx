@@ -30,7 +30,7 @@ class SettingsState extends FlxTransitionableState
 
 		for (i in 0...options.length)
 		{
-			var opt:FlxText = new FlxText(20, 40 + (i * 20), 0, options[i].toUpperCase(), 24);
+			var opt:FlxText = new FlxText(20, 40 + (i < 1 ? 20 + i * 15 : 0), 0, options[i].toUpperCase(), 24);
 			opt.font = AssetPaths.font('DTM-Sans.otf');
 			opt.ID = i;
 			optionsItems.add(opt);
