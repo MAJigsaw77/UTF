@@ -142,7 +142,7 @@ class BattleState extends FlxTransitionableState
 						writer.msg = {text: '* ${monster.data.name}', speed: 4};
 
 						var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + (monster.data.name.length * 16), box.y + 30, LEFT_TO_RIGHT,
-							Std.int(monster.data.hp / monster.data.maxHp * 100), 48, monster.data, "hp", 0, monster.data.maxHp);
+							Std.int(monster.data.hp / monster.data.maxHp * 100), 16, monster.data, "hp", 0, monster.data.maxHp);
 						monsterHpBar.createFilledBar(FlxColor.RED, FlxColor.LIME);
 						monsterHpBar.emptyCallback = () -> trace('YOU WON!');
 						monsterHpBar.scrollFactor.set();
