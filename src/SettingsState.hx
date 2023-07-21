@@ -52,16 +52,18 @@ class SettingsState extends FlxTransitionableState
 			optionsItems.add(opt);
 		}
 
+		changeOption();
+
 		super.create();
 	}
 
 	override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justPressed.UP && curOption <= optionsItems.length)
-			changeChoice(1);
+			changeOption(1);
 		else if (FlxG.keys.justPressed.DOWN && curOption > 0)
-			changeChoice(-1);
-		else if (FlxG.keys.justPressed.ESCAPE && (FlxG.sound.music != null && FlxG.sound.music.isPlaying))
+			changeOption(-1);
+		else if (FlxG.keys.justPressed.ESCAPE && (FlxG.sound.music != null && FlxG.sound.music.playing))
 		{
 			FlxG.sound.music.stop();
 
@@ -71,7 +73,7 @@ class SettingsState extends FlxTransitionableState
 		super.update(elapsed);
 	}
 
-	private function changeChoice(num:Int = 0):Void
+	private function changeOption(num:Int = 0):Void
 	{
 		if (num != 0)
 			FlxG.sound.play(AssetPaths.sound('menumove'));
