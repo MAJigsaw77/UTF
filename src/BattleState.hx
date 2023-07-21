@@ -75,7 +75,7 @@ class BattleState extends FlxTransitionableState
 			choicesItems.add(bt);
 		}
 
-		monster = new Monster(0, 140, 'undyne-ex');
+		monster = new Monster(0, 140, 'default');
 		monster.screenCenter(X);
 		monster.scrollFactor.set();
 		add(monster);
