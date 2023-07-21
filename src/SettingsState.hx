@@ -38,7 +38,7 @@ class SettingsState extends FlxTransitionableState
 				default:
 					FlxG.sound.playMusic(AssetPaths.music('options_fall'));
 			}
-		}
+		});
 
 		optionsItems = new FlxTypedGroup<FlxText>();
 		add(optionsItems);
