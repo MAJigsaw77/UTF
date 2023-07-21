@@ -3,6 +3,7 @@ package;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
+import flixel.util.FlxColor;
 import flixel.FlxG;
 
 class SettingsState extends FlxTransitionableState
@@ -52,5 +53,37 @@ class SettingsState extends FlxTransitionableState
 		}
 
 		super.create();
+	}
+
+	override function update(elapsed:Float):Void
+	{
+		if (FlxG.keys.justPressed.UP && curOption <= choicesItems.length)
+			changeChoice(1);
+		else if (FlxG.keys.justPressed.DOWN && curOption > 0)
+			changeChoice(-1);
+		else if (FlxG.keys.justPressed.ESCAPE && (FlxG.sound.music != null && FlxG.sound.music.isPlaying))
+		{
+			FlxG.sound.music.stop();
+
+			FlxG.switchState(new BattleState());
+		}
+
+		super.update(elapsed);
+	}
+
+	private function changeChoice(num:Int = 0):Void
+	{
+		if (num != 0)
+			FlxG.sound.play(AssetPaths.sound('menumove'));
+
+		curOption += num;
+
+		optionsItems.forEach(function(spr:FlxText)
+		{
+			if (spr.ID == curOption)
+				spr.color = FlxColor.YELLOW;
+			else
+				spr.color = FlxColor.WHITE;
+		});
 	}
 }
