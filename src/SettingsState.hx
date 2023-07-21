@@ -75,9 +75,6 @@ class SettingsState extends FlxTransitionableState
 
 	private function changeOption(num:Int = 0):Void
 	{
-		if (num != 0)
-			FlxG.sound.play(AssetPaths.sound('menumove'));
-
 		curOption += num;
 
 		optionsItems.forEach(function(spr:FlxText)
