@@ -2,6 +2,7 @@ package;
 
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.math.FlxPoint;
 import flixel.FlxG;
 import openfl.utils.Assets;
 
@@ -46,7 +47,7 @@ class AssetPaths
 
 	public static function spritesheet(key:String, numFrames:Int = 0):FlxAtlasFrames
 	{
-		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(key));
+		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(key), FlxPoint.weak(0, 0));
 
 		for (i in 0...numFrames)
 		{
