@@ -8,7 +8,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 
-class SettingsState extends FlxTransitionableState
+class Settings extends FlxTransitionableState
 {
 	var curOption:Int = 0;
 	final options:Array<String> = ['Exit', 'Key Binds'];
@@ -64,7 +64,7 @@ class SettingsState extends FlxTransitionableState
 		{
 			weatherMusic.destroy();
 
-			FlxG.switchState(new BattleState());
+			FlxG.switchState(new Battle());
 		}
 
 		super.update(elapsed);

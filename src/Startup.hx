@@ -18,6 +18,6 @@ class Startup extends FlxState
 
 		super.create();
 
-		FlxG.switchState(new BattleState());
+		FlxG.switchState(new Title());
 	}
 }

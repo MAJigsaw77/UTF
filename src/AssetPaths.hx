@@ -6,8 +6,6 @@ import flixel.math.FlxPoint;
 import flixel.FlxG;
 import openfl.utils.Assets;
 
-using StringTools;
-
 class AssetPaths
 {
 	public static inline function data(key:String):String

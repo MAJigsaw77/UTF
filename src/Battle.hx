@@ -11,7 +11,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 
-class BattleState extends FlxTransitionableState
+class Battle extends FlxTransitionableState
 {
 	var curChoice:Int = 0;
 	final choices:Array<String> = ['Fight', 'Talk', 'Item', 'Spare'];
@@ -162,7 +162,7 @@ class BattleState extends FlxTransitionableState
 			writer.msg = {text: '* The wind is howling...', speed: 4};
 		}
 		else if (FlxG.keys.justPressed.SHIFT)
-			FlxG.switchState(new SettingsState());
+			FlxG.switchState(new Settings());
 
 		super.update(elapsed);
 	}
