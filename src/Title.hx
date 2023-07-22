@@ -28,11 +28,7 @@ class Title extends FlxState
 		titleText.scrollFactor.set();
 		add(titleText);
 
-		FlxG.sound.play(AssetPaths.music('intronoise'), function()
-		{
-			if (titleText != null)
-				titleText.alpha = 1;
-		});
+		FlxG.sound.play(AssetPaths.music('intronoise'), () -> titleText.alpha = 1);
 
 		super.create();
 	}
