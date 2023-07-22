@@ -2,7 +2,6 @@ package;
 
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
-import haxe.io.Path;
 import openfl.utils.Assets;
 
 using StringTools;
@@ -46,7 +45,7 @@ class AssetPaths
 
 	public static function spritesheet(key:String):FlxAtlasFrames
 	{
-		var atlas:FlxAtlas = new FlxAtlas('assets/images/$key');
+		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(key));
 
 		for (i in 0...Assets.list(IMAGE).filter(n -> n.startsWith('assets/images/$key').length)
 			atlas.addNode('assets/images/$key_$i.png', '$key$i');
