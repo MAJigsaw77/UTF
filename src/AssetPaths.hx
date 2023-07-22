@@ -4,8 +4,6 @@ import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
 import openfl.utils.Assets;
 
-using StringTools;
-
 class AssetPaths
 {
 	public static inline function data(key:String):String
