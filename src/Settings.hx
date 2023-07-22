@@ -28,10 +28,9 @@ class Settings extends FlxTransitionableState
 				weatherMusic = FlxG.sound.load(AssetPaths.music('options_fall'), 1.0, true);
 		}
 
-		FlxG.sound.play(AssetPaths.music('harpnoise'), () -> weatherMusic.play());
+		FlxG.sound.list.add(weatherMusic);
 
-		// Maybe I'll change to centerScreen(X) instead of using 100 as x
-		var settings:FlxText = new FlxText(100, 10, 0, "SETTINGS", 48);
+		var settings:FlxText = new FlxText(0, 10, 0, "SETTINGS", 48);
 		settings.font = AssetPaths.font('DTM-Mono.otf');
 		settings.screenCenter(X);
 		settings.scrollFactor.set();
@@ -42,7 +41,7 @@ class Settings extends FlxTransitionableState
 
 		for (i in 0...options.length)
 		{
-			var opt:FlxText = new FlxText(20, 60 + i * 15, 0, options[i].toUpperCase(), 24);
+			var opt:FlxText = new FlxText(20, 60 + i * 30, 0, options[i].toUpperCase(), 24);
 			opt.font = AssetPaths.font('DTM-Mono.otf');
 			opt.ID = i;
 			opt.scrollFactor.set();
@@ -50,6 +49,8 @@ class Settings extends FlxTransitionableState
 		}
 
 		changeOption();
+
+		FlxG.sound.play(AssetPaths.music('harpnoise'), () -> weatherMusic.play());
 
 		super.create();
 	}
@@ -62,7 +63,7 @@ class Settings extends FlxTransitionableState
 			changeOption(-1);
 		else if (FlxG.keys.justPressed.ESCAPE && (weatherMusic != null && weatherMusic.playing))
 		{
-			weatherMusic.destroy();
+			weatherMusic.stop();
 
 			FlxG.switchState(new Battle());
 		}
