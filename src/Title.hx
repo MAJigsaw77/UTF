@@ -14,13 +14,15 @@ class Title extends FlxState
 	override function create():Void
 	{
 		titleImage = new FlxSprite(0, 0, AssetPaths.sprite('titleimage'));
-		titleImage.screenCenter();
+		titleImage.scale.set(2, 2);
 		titleImage.scrollFactor.set();
 		add(titleImage);
 
-		titleText = new FlxText(120, 180, 0, "[PRESS Z OR ENTER]", 14);
+		titleText = new FlxText(0, 360, 0, "[PRESS Z OR ENTER]", 6);
 		titleText.font = AssetPaths.font('Small.otf');
+		titleText.color = FlxColor.GRAY;
 		titleText.alpha = 0.0001;
+		titleText.screenCenter(X);
 		titleText.scrollFactor.set();
 		add(titleText);
 
