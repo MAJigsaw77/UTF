@@ -106,8 +106,9 @@ class Script
 
 		try
 		{
+			@:privateAccess
 			if (exists(fname) && Reflect.isFunction(get(fname)))
-				return Reflect.callMethod(null, get(fname), args == null ? [] : args);
+				return interp.call(null, get(fname), args == null ? [] : args);
 		}
 		catch (e:Exception)
 			FlxG.log.error(StringTools.replace(e.message, 'hscript', file));
