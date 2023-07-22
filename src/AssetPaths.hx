@@ -48,14 +48,8 @@ class AssetPaths
 	{
 		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(key));
 
-		for (i in 0...Assets.list(IMAGE).filter(name -> name.startsWith('assets/images/$key')).length)
-		{
-			var file:String = AssetPaths.sprite(key + '_' + i);
-			if (Assets.exists(file))
-				atlas.addNode(file, key.substring(0, key.lastIndexOf('/') + 1) + i);
-			else
-				FlxG.log.error("Couldn't find frame " + file);
-		}
+		for (i in 0...Assets.list(IMAGE).filter(name -> name.startsWith('assets/images/${key}_')).length)
+			atlas.addNode(AssetPaths.sprite('${key}_$i'), key.substring(0, key.lastIndexOf('/') + 1) + i);
 
 		return atlas.getAtlasFrames();
 	}
