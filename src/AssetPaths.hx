@@ -2,7 +2,10 @@ package;
 
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.FlxG;
 import openfl.utils.Assets;
+
+using StringTools;
 
 class AssetPaths
 {
