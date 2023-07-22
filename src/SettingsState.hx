@@ -54,7 +54,7 @@ class SettingsState extends FlxTransitionableState
 
 		for (i in 0...options.length)
 		{
-			var opt:FlxText = new FlxText(20, 60 + i * 15, 0, options[i].toUpperCase(), 28);
+			var opt:FlxText = new FlxText(20, 60 + i * 15, 0, options[i].toUpperCase(), 24);
 			opt.font = AssetPaths.font('DTM-Mono.otf');
 			opt.ID = i;
 			opt.scrollFactor.set();
