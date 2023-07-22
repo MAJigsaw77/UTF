@@ -113,6 +113,23 @@ class Global
 		return false;
 	}
 
+	public static function getWeather():Int
+	{
+		switch (Date.now().getMonth() + 1)
+		{
+			case 12 | 1 | 2: // Winter
+				return 1;
+			case 3 | 4 | 5: // Spring
+				return 2;
+			case 6 | 7 | 8: // Summer
+				return 3;
+			case 9 | 10 | 11: // Autumn
+				return 4;
+		}
+
+		return 0;
+	}
+
 	public static function save():Void
 	{
 		FlxG.save.data.name = name;

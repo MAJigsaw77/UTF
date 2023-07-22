@@ -18,7 +18,7 @@ class SettingsState extends FlxTransitionableState
 
 	override function create():Void
 	{
-		switch (getWeather())
+		switch (Global.getWeather())
 		{
 			case 1:
 				weatherMusic = FlxG.sound.load(AssetPaths.music('options_winter'), 1.0, true);
@@ -68,23 +68,6 @@ class SettingsState extends FlxTransitionableState
 		}
 
 		super.update(elapsed);
-	}
-
-	private function getWeather():Int
-	{
-		switch (Date.now().getMonth() + 1)
-		{
-			case 12 | 1 | 2: // Winter
-				return 1;
-			case 3 | 4 | 5: // Spring
-				return 2;
-			case 6 | 7 | 8: // Summer
-				return 3;
-			case 9 | 10 | 11: // Autumn
-				return 4;
-		}
-
-		return 0;
 	}
 
 	private function changeOption(num:Int = 0):Void
