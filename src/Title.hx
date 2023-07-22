@@ -3,7 +3,7 @@ package;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
-import flxiel.FlxSprite;
+import flixel.FlxSprite;
 import flixel.FlxState;
 
 class Title extends FlxState
