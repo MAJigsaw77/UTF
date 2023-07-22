@@ -47,8 +47,8 @@ class AssetPaths
 	{
 		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(key));
 
-		for (i in 0...Assets.list(IMAGE).filter(n -> n.startsWith('assets/images/$key').length)
-			atlas.addNode('assets/images/$key_$i.png', '$key$i');
+		for (i in 0...Assets.list(IMAGE).filter(name -> name.startsWith('assets/images/$key').length)
+			atlas.addNode(AssetPaths.sprite(key + '_' + i), key.substring(0, key.lastIndexOf('/') + 1) + i);
 
 		return atlas.getAtlasFrames();
 	}
