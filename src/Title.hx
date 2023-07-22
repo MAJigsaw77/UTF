@@ -15,6 +15,8 @@ class Title extends FlxState
 	{
 		titleImage = new FlxSprite(0, 0, AssetPaths.sprite('titleimage'));
 		titleImage.scale.set(2, 2);
+		titleImage.updateHitbox();
+		titleImage.screenCenter();
 		titleImage.scrollFactor.set();
 		add(titleImage);
 
