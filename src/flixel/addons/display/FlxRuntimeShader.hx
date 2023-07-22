@@ -14,6 +14,7 @@ using StringTools;
  * at runtime (for example, when using mods).
  * 
  * @author MasterEric
+ * @edit MAJigsaw77
  * 
  * @see https://github.com/openfl/openfl/blob/develop/src/openfl/utils/_internal/ShaderMacro.hx
  * @see https://dixonary.co.uk/blog/shadertoy
@@ -249,7 +250,7 @@ class FlxRuntimeShader extends FlxShader
 	{
 		var prop:ShaderParameter<Float> = Reflect.field(this.data, name);
 
-		if (prop == null || (prop != null && prop.value.length <= 0))
+		if (prop == null)
 		{
 			FlxG.log.warn('Shader float property ${name} not found.');
 			return null;
@@ -319,7 +320,7 @@ class FlxRuntimeShader extends FlxShader
 	{
 		var prop:ShaderParameter<Int> = Reflect.field(this.data, name);
 
-		if (prop == null || (prop != null && prop.value.length <= 0))
+		if (prop == null)
 		{
 			FlxG.log.warn('Shader int property ${name} not found.');
 			return null;
@@ -389,7 +390,7 @@ class FlxRuntimeShader extends FlxShader
 	{
 		var prop:ShaderParameter<Bool> = Reflect.field(this.data, name);
 
-		if (prop == null || (prop != null && prop.value.length <= 0))
+		if (prop == null)
 		{
 			FlxG.log.warn('Shader bool property ${name} not found.');
 			return null;
