@@ -3,6 +3,7 @@ package;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
+import flixel.sound.FlxSound;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
@@ -13,34 +14,21 @@ class SettingsState extends FlxTransitionableState
 	final options:Array<String> = ['Exit', 'Key Binds'];
 	var optionsItems:FlxTypedGroup<FlxText>;
 
+	var weatherMusic:FlxSound;
+
 	override function create():Void
 	{
-		var weather:Int = 0;
-		
-		switch (Date.now().getMonth() + 1)
+		switch (getWeather())
 		{
-			case 12 | 1 | 2: // Winter
-				weather = 1;
-			case 3 | 4 | 5: // Spring
-				weather = 2;
-			case 6 | 7 | 8: // Summer
-				weather = 3;
-			case 9 | 10 | 11: // Autumn
-				weather = 4;
+			case 1:
+				weatherMusic = FlxG.sound.load(AssetPaths.music('options_winter'), 1.0, true);
+			case 3:
+				weatherMusic = FlxG.sound.load(AssetPaths.music('options_summer'), 1.0, true);
+			default:
+				weatherMusic = FlxG.sound.load(AssetPaths.music('options_fall'), 1.0, true);
 		}
 
-		FlxG.sound.play(AssetPaths.music('harpnoise'), function()
-		{
-			switch (weather)
-			{
-				case 1:
-					FlxG.sound.playMusic(AssetPaths.music('options_winter'));
-				case 3:
-					FlxG.sound.playMusic(AssetPaths.music('options_summer'));
-				default:
-					FlxG.sound.playMusic(AssetPaths.music('options_fall'));
-			}
-		});
+		FlxG.sound.play(AssetPaths.music('harpnoise'), () -> weatherMusic.play());
 
 		// Maybe I'll change to centerScreen(X) instead of using 100 as x
 		var settings:FlxText = new FlxText(100, 10, 0, "SETTINGS", 48);
@@ -72,14 +60,31 @@ class SettingsState extends FlxTransitionableState
 			changeOption(1);
 		else if (FlxG.keys.justPressed.DOWN)
 			changeOption(-1);
-		else if (FlxG.keys.justPressed.ESCAPE && (FlxG.sound.music != null && FlxG.sound.music.playing))
+		else if (FlxG.keys.justPressed.ESCAPE && (weatherMusic != null && weatherMusic.playing))
 		{
-			FlxG.sound.music.stop();
+			weatherMusic.destroy();
 
 			FlxG.switchState(new BattleState());
 		}
 
 		super.update(elapsed);
+	}
+
+	private function getWeather():Int
+	{
+		switch (Date.now().getMonth() + 1)
+		{
+			case 12 | 1 | 2: // Winter
+				return 1;
+			case 3 | 4 | 5: // Spring
+				return 2;
+			case 6 | 7 | 8: // Summer
+				return 3;
+			case 9 | 10 | 11: // Autumn
+				return 4;
+		}
+
+		return 0;
 	}
 
 	private function changeOption(num:Int = 0):Void
