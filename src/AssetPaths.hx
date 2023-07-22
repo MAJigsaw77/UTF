@@ -47,7 +47,7 @@ class AssetPaths
 	{
 		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(key));
 
-		for (i in 0...Assets.list(IMAGE).filter(name -> name.startsWith('assets/images/$key').length)
+		for (i in 0...Assets.list(IMAGE).filter(name -> name.startsWith('assets/images/$key')).length)
 		{
 			var file:String = AssetPaths.sprite(key + '_' + i);
 			if (Assets.exists(file))
