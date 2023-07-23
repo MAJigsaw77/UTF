@@ -1,6 +1,8 @@
 package;
 
+#if FLX_DRAW_QUADS
 import flixel.addons.display.FlxRuntimeShader;
+#end
 import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxMath;
 import flixel.tweens.FlxEase;
@@ -29,7 +31,9 @@ class Script
 		'FlxG' => FlxG,
 		'FlxSprite' => FlxSprite,
 		'FlxSpriteGroup' => FlxSpriteGroup,
+		#if FLX_DRAW_QUADS
 		'FlxRuntimeShader' => FlxRuntimeShader,
+		#end
 		'FlxMath' => FlxMath,
 		'FlxEase' => FlxEase,
 		'FlxTween' => FlxTween,
