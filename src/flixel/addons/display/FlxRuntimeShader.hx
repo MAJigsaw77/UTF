@@ -23,10 +23,6 @@ using StringTools;
 class FlxRuntimeShader extends FlxGraphicsShader
 {
 	private static final BASE_VERTEX_HEADER:String = "
-		#pragma version
-
-		#pragma precision
-
 		attribute float openfl_Alpha;
 		attribute vec4 openfl_ColorMultiplier;
 		attribute vec4 openfl_ColorOffset;
@@ -80,10 +76,6 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	";
 
 	private static final BASE_FRAGMENT_HEADER:String = "
-		#pragma version
-
-		#pragma precision
-
 		varying float openfl_Alphav;
 		varying vec4 openfl_ColorMultiplierv;
 		varying vec4 openfl_ColorOffsetv;
