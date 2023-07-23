@@ -241,7 +241,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function setFloat(name:String, value:Float):Void
 	{
-		var prop:ShaderParameter<Float> = Reflect.field(this.data, name);
+		var prop:ShaderParameter<Float> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -258,7 +258,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function getFloat(name:String):Null<Float>
 	{
-		var prop:ShaderParameter<Float> = Reflect.field(this.data, name);
+		var prop:ShaderParameter<Float> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -276,7 +276,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function setFloatArray(name:String, value:Array<Float>):Void
 	{
-		var prop:ShaderParameter<Float> = Reflect.field(this.data, name);
+		var prop:ShaderParameter<Float> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -293,7 +293,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function getFloatArray(name:String):Null<Array<Float>>
 	{
-		var prop:ShaderParameter<Float> = Reflect.field(this.data, name);
+		var prop:ShaderParameter<Float> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -311,7 +311,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function setInt(name:String, value:Int):Void
 	{
-		var prop:ShaderParameter<Int> = Reflect.field(this.data, name);
+		var prop:ShaderParameter<Int> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -328,7 +328,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function getInt(name:String):Null<Int>
 	{
-		var prop:ShaderParameter<Int> = Reflect.field(this.data, name);
+		var prop:ShaderParameter<Int> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -346,7 +346,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function setIntArray(name:String, value:Array<Int>):Void
 	{
-		var prop:ShaderParameter<Int> = Reflect.field(this.data, name);
+		var prop:ShaderParameter<Int> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -363,7 +363,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function getIntArray(name:String):Null<Array<Int>>
 	{
-		var prop:ShaderParameter<Int> = Reflect.field(this.data, name);
+		var prop:ShaderParameter<Int> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -381,7 +381,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function setBool(name:String, value:Bool):Void
 	{
-		var prop:ShaderParameter<Bool> = Reflect.field(this.data, name);
+		var prop:ShaderParameter<Bool> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -398,7 +398,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function getBool(name:String):Null<Bool>
 	{
-		var prop:ShaderParameter<Bool> = Reflect.field(this.data, name);
+		var prop:ShaderParameter<Bool> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -416,7 +416,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function setBoolArray(name:String, value:Array<Bool>):Void
 	{
-		var prop:ShaderParameter<Bool> = Reflect.field(this.data, name);
+		var prop:ShaderParameter<Bool> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -433,7 +433,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function getBoolArray(name:String):Null<Array<Bool>>
 	{
-		var prop:ShaderParameter<Bool> = Reflect.field(this.data, name);
+		var prop:ShaderParameter<Bool> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -451,7 +451,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function setSampler2D(name:String, value:BitmapData):Void
 	{
-		var prop:ShaderInput<BitmapData> = Reflect.field(this.data, name);
+		var prop:ShaderInput<BitmapData> = Reflect.field(data, name);
 
 		if (prop == null)
 		{
@@ -469,7 +469,7 @@ class FlxRuntimeShader extends FlxShader
 	 */
 	public function getSampler2D(name:String):Null<BitmapData>
 	{
-		var prop:ShaderInput<BitmapData> = Reflect.field(this.data, name);
+		var prop:ShaderInput<BitmapData> = Reflect.field(data, name);
 
 		if (prop == null)
 		{

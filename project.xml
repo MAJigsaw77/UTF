@@ -34,9 +34,9 @@
 	<haxelib name="extension-androidtools" if="android" />
 
 	<!--hxcpp Settings-->
-	<haxedef name="HXCPP_CHECK_POINTER" unless="hl" />
-	<haxedef name="HXCPP_STACK_LINE" unless="hl" />
-	<haxedef name="HXCPP_STACK_TRACE" unless="hl" />
+	<haxedef name="HXCPP_CHECK_POINTER" unless="hl || debug" />
+	<haxedef name="HXCPP_STACK_LINE" unless="hl || debug" />
+	<haxedef name="HXCPP_STACK_TRACE" unless="hl || debug" />
 
 	<!--Hscript Settings-->
 	<haxedef name="hscriptPos" />
