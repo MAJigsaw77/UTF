@@ -11,8 +11,7 @@ using StringTools;
 
 /**
  * An wrapper for Flixel/OpenFL's shaders, which takes fragment and vertex source
- * in the constructor instead of using macros, so it can be provided data
- * at runtime (for example, when using mods).
+ * in the constructor instead of using macros, so it can be provided data at runtime.
  * 
  * @author MasterEric
  * @author MAJigsaw77
@@ -175,7 +174,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	 * @param fragmentSource The fragment shader source.
 	 * @param vertexSource The vertex shader source.
 	 */
-	public function new(fragmentSource:String = null, vertexSource:String = null):Void
+	public function new(?fragmentSource:String, ?vertexSource:String):Void
 	{
 		if (fragmentSource != null)
 		{
