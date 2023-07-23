@@ -17,5 +17,5 @@ void main(void)
 
   vec3 colour = vec3(random(fract(openfl_TextureCoordv * fract(sin(iTime * speed))).xy)) * maxStrength;
 
-  gl_FragColor = vec4(vec3(flixel_texture2D(bitmap, openfl_TextureCoordv)) - colour, 1.0);
+  gl_FragColor = vec4(vec3(texture2D(bitmap, openfl_TextureCoordv)) - colour, 1.0);
 }
