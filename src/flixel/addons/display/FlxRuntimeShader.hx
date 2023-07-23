@@ -232,8 +232,6 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return;
 		}
 
-		var Reflect.field(data, name):ShaderParameter<Float> = Reflect.field(data, name);
-
 		Reflect.field(data, name).value = [value];
 	}
 
@@ -248,8 +246,6 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			FlxG.log.warn('Shader float property $name not found.');
 			return null;
 		}
-
-		var Reflect.field(data, name):ShaderParameter<Float> = Reflect.field(data, name);
 
 		return Reflect.field(data, name).value[0];
 	}
