@@ -1,6 +1,6 @@
 package flixel.addons.display;
 
-import flixel.system.FlxAssets.FlxShader;
+import flixel.system.FlxAssets;
 import openfl.display.BitmapData;
 import openfl.display.ShaderInput;
 import openfl.display.ShaderParameter;
@@ -190,18 +190,28 @@ class FlxRuntimeShader extends FlxShader
 	/**
 	 * Constructs a GLSL shader.
 	 *
-	 * @param fragmentPath The fragment shader source.
-	 * @param vertexPath The vertex shader source.
+	 * @param fragmentSource The fragment shader source.
+	 * @param vertexSource The vertex shader source.
 	 */
-	public function new(fragmentPath:String = null, vertexPath:String = null):Void
+	public function new(fragmentSource:String = null, vertexSource:String = null):Void
 	{
-		if (Assets.exists(fragmentPath))
-			glFragmentSource = processFragmentSource(Assets.getText(fragmentPath));
+		if (fragmentSource != null)
+		{
+			if (Assets.exists(fragmentSource))
+				glFragmentSource = processFragmentSource(Assets.getText(fragmentSource));
+			else
+				glFragmentSource = processFragmentSource(fragmentSource);
+		}
 		else
 			glFragmentSource = processFragmentSource(DEFAULT_FRAGMENT_SOURCE);
 
-		if (Assets.exists(vertexPath))
-			glVertexSource = processVertexSource(Assets.getText(vertexPath));
+		if (vertexSource != null)
+		{
+			if (Assets.exists(vertexSource))
+				glVertexSource = processVertexSource(Assets.getText(vertexSource));
+			else
+				glVertexSource = processVertexSource(vertexSource);
+		}
 		else
 			glVertexSource = processVertexSource(DEFAULT_VERTEX_SOURCE);
 
