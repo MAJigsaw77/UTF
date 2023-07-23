@@ -12,7 +12,6 @@ float random(vec2 noise)
 
 void main(void)
 {
-  //--- Strength animate ---
   maxStrength = clamp(sin(iTime / 2.0), minStrength, maxStrength);
 
   vec3 colour = vec3(random(fract(openfl_TextureCoordv * fract(sin(iTime * speed))).xy)) * maxStrength;
