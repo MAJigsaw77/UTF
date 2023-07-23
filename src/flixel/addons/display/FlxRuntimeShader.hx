@@ -167,7 +167,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 		}
 	";
 
-	private static final BASE_FRAGMENT_BODY:String = "
+	private static final BASE_FRAGMENT_SOURCE:String = "
 		#pragma header
 		
 		void main(void)
