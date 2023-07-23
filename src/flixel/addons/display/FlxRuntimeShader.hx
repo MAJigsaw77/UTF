@@ -233,7 +233,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return;
 		}
 
-		Reflect.field(data, name).value = [value];
+		cast(Reflect.field(data, name), ShaderParameter<Float>).value = [value];
 	}
 
 	/**
@@ -249,7 +249,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return null;
 		}
 
-		return Reflect.field(data, name).value[0];
+		return cast(Reflect.field(data, name), ShaderParameter<Float>).value[0];
 	}
 
 	/**
@@ -266,7 +266,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return;
 		}
 
-		Reflect.field(data, name).value = value;
+		cast(Reflect.field(data, name), ShaderParameter<Float>).value = value;
 	}
 
 	/**
@@ -282,7 +282,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return null;
 		}
 
-		return Reflect.field(data, name).value;
+		return cast(Reflect.field(data, name), ShaderParameter<Float>).value;
 	}
 
 	/**
@@ -299,7 +299,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return;
 		}
 
-		Reflect.field(data, name).value = [value];
+		cast(Reflect.field(data, name), ShaderParameter<Int>).value = [value];
 	}
 
 	/**
@@ -315,7 +315,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return null;
 		}
 
-		return Reflect.field(data, name).value[0];
+		return cast(Reflect.field(data, name), ShaderParameter<Int>).value[0];
 	}
 
 	/**
@@ -332,7 +332,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return;
 		}
 
-		Reflect.field(data, name).value = value;
+		cast(Reflect.field(data, name), ShaderParameter<Int>).value = value;
 	}
 
 	/**
@@ -348,7 +348,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return null;
 		}
 
-		return Reflect.field(data, name).value;
+		return cast(Reflect.field(data, name), ShaderParameter<Int>).value;
 	}
 
 	/**
@@ -365,7 +365,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return;
 		}
 
-		Reflect.field(data, name).value = [value];
+		cast(Reflect.field(data, name), ShaderParameter<Bool>).value = [value];
 	}
 
 	/**
@@ -381,7 +381,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return null;
 		}
 
-		return Reflect.field(data, name).value[0];
+		return cast(Reflect.field(data, name), ShaderParameter<Bool>).value[0];
 	}
 
 	/**
@@ -398,7 +398,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return;
 		}
 
-		Reflect.field(data, name).value = value;
+		cast(Reflect.field(data, name), ShaderParameter<Bool>).value = value;
 	}
 
 	/**
@@ -414,7 +414,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return null;
 		}
 
-		return Reflect.field(data, name).value;
+		return cast(Reflect.field(data, name), ShaderParameter<Bool>).value;
 	}
 
 	/**
@@ -431,7 +431,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return;
 		}
 
-		Reflect.field(data, name).input = value;
+		cast(Reflect.field(data, name), ShaderInput<BitmapData>).input = value;
 	}
 
 	/**
@@ -448,7 +448,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return null;
 		}
 
-		return Reflect.field(data, name).input;
+		return cast(Reflect.field(data, name), ShaderInput<BitmapData>).input;
 	}
 }
 #end
