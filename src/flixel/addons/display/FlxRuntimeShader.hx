@@ -221,6 +221,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Modify a float parameter of the shader.
+	 *
 	 * @param name The name of the parameter to modify.
 	 * @param value The new value to use.
 	 */
@@ -228,7 +229,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader float property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return;
 		}
 
@@ -237,13 +238,14 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Retrieve a float parameter of the shader.
+	 *
 	 * @param name The name of the parameter to retrieve.
 	 */
 	public function getFloat(name:String):Null<Float>
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader float property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return null;
 		}
 
@@ -252,16 +254,15 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Modify a float array parameter of the shader.
+	 *
 	 * @param name The name of the parameter to modify.
 	 * @param value The new value to use.
 	 */
 	public function setFloatArray(name:String, value:Array<Float>):Void
 	{
-		var Reflect.field(data, name):ShaderParameter<Float> = Reflect.field(data, name);
-
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader float[] property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return;
 		}
 
@@ -270,13 +271,14 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Retrieve a float array parameter of the shader.
+	 *
 	 * @param name The name of the parameter to retrieve.
 	 */
 	public function getFloatArray(name:String):Null<Array<Float>>
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader float[] property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return null;
 		}
 
@@ -285,6 +287,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Modify an integer parameter of the shader.
+	 *
 	 * @param name The name of the parameter to modify.
 	 * @param value The new value to use.
 	 */
@@ -292,7 +295,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader int property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return;
 		}
 
@@ -301,13 +304,14 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Retrieve an integer parameter of the shader.
+	 *
 	 * @param name The name of the parameter to retrieve.
 	 */
 	public function getInt(name:String):Null<Int>
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader int property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return null;
 		}
 
@@ -316,6 +320,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Modify an integer array parameter of the shader.
+	 *
 	 * @param name The name of the parameter to modify.
 	 * @param value The new value to use.
 	 */
@@ -323,7 +328,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader int[] property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return;
 		}
 
@@ -332,13 +337,14 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Retrieve an integer array parameter of the shader.
+	 *
 	 * @param name The name of the parameter to retrieve.
 	 */
 	public function getIntArray(name:String):Null<Array<Int>>
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader int[] property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return null;
 		}
 
@@ -347,6 +353,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Modify a bool parameter of the shader.
+	 *
 	 * @param name The name of the parameter to modify.
 	 * @param value The new value to use.
 	 */
@@ -354,7 +361,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader bool property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return;
 		}
 
@@ -363,13 +370,14 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Retrieve a bool parameter of the shader.
+	 *
 	 * @param name The name of the parameter to retrieve.
 	 */
 	public function getBool(name:String):Null<Bool>
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader bool property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return null;
 		}
 
@@ -378,6 +386,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Modify a bool array parameter of the shader.
+	 *
 	 * @param name The name of the parameter to modify.
 	 * @param value The new value to use.
 	 */
@@ -385,7 +394,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader bool[] property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return;
 		}
 
@@ -395,12 +404,13 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	/**
 	 * Retrieve a bool array parameter of the shader.
 	 * @param name The name of the parameter to retrieve.
+	 *
 	 */
 	public function getBoolArray(name:String):Null<Array<Bool>>
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader bool[] property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return null;
 		}
 
@@ -409,6 +419,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Modify a bitmap data parameter of the shader.
+	 *
 	 * @param name The name of the parameter to modify.
 	 * @param value The new value to use.
 	 */
@@ -416,7 +427,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader sampler2D property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return;
 		}
 
@@ -425,6 +436,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 	/**
 	 * Retrieve a bitmap data parameter of the shader.
+	 *
 	 * @param name The name of the parameter to retrieve.
 	 * @return The value of the parameter.
 	 */
@@ -432,7 +444,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	{
 		if (!Reflect.hasField(data, name))
 		{
-			FlxG.log.warn('Shader sampler2D property $name not found.');
+			FlxG.log.warn('Shader property $name not found.');
 			return null;
 		}
 
