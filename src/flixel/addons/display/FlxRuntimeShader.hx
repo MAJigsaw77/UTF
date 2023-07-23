@@ -177,7 +177,8 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	";
 
 	/**
-	 * Constructs a GLSL shader.
+	 * Creates a `FlxRuntimeShader` with specified shader sources.
+	 * If none is provided, it will use the default shader sources.
 	 *
 	 * @param fragmentSource The fragment shader source.
 	 * @param vertexSource The vertex shader source.
