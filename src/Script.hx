@@ -41,7 +41,7 @@ class Script
 		'AssetPaths' => AssetPaths
 	];
 
-	public var file(default, null):String;
+	public var file(default, null):String = 'hscript';
 
 	var parser:Parser;
 	var interp:Interp;
