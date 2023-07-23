@@ -1,5 +1,6 @@
 package flixel.addons.display;
 
+#if FLX_DRAW_QUADS
 import flixel.graphics.tile.FlxGraphicsShader;
 import openfl.display.BitmapData;
 import openfl.display.ShaderInput;
@@ -14,7 +15,7 @@ using StringTools;
  * at runtime (for example, when using mods).
  * 
  * @author MasterEric
- * @edit MAJigsaw77
+ * @author MAJigsaw77
  * 
  * @see https://github.com/openfl/openfl/blob/develop/src/openfl/utils/_internal/ShaderMacro.hx
  * @see https://dixonary.co.uk/blog/shadertoy
@@ -468,3 +469,4 @@ class FlxRuntimeShader extends FlxGraphicsShader
 		return prop.input;
 	}
 }
+#end
