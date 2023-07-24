@@ -2,9 +2,13 @@ package flixel.addons.display;
 
 #if FLX_DRAW_QUADS
 import flixel.graphics.tile.FlxGraphicsShader;
+#if lime
+import lime.utils.Float32Array;
+#end
 import openfl.display.BitmapData;
 import openfl.display.ShaderInput;
 import openfl.display.ShaderParameter;
+import openfl.display.ShaderParameterType;
 import openfl.utils.Assets;
 
 using StringTools;
@@ -169,8 +173,6 @@ class FlxRuntimeShader extends FlxGraphicsShader
 		glVertexSource = (vertexSource != null && vertexSource.length > 0) ? vertexSource : BASE_VERTEX_SOURCE;
 
 		super();
-
-		__isGenerated = false;
 	}
 
 	/**
@@ -476,7 +478,6 @@ class FlxRuntimeShader extends FlxGraphicsShader
 				}
 
 				Reflect.setField(__data, name, input);
-				if (__isGenerated) Reflect.setField(this, name, input);
 			}
 			else if (!Reflect.hasField(__data, name) || Reflect.field(__data, name) == null)
 			{
@@ -542,7 +543,6 @@ class FlxRuntimeShader extends FlxGraphicsShader
 						}
 
 						Reflect.setField(__data, name, parameter);
-						if (__isGenerated) Reflect.setField(this, name, parameter);
 
 					case INT, INT2, INT3, INT4:
 						var parameter = new ShaderParameter<Int>();
@@ -554,7 +554,6 @@ class FlxRuntimeShader extends FlxGraphicsShader
 						parameter.__length = length;
 						__paramInt.push(parameter);
 						Reflect.setField(__data, name, parameter);
-						if (__isGenerated) Reflect.setField(this, name, parameter);
 
 					default:
 						var parameter = new ShaderParameter<Float>();
@@ -585,7 +584,6 @@ class FlxRuntimeShader extends FlxGraphicsShader
 						}
 
 						Reflect.setField(__data, name, parameter);
-						if (__isGenerated) Reflect.setField(this, name, parameter);
 				}
 			}
 
