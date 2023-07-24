@@ -562,7 +562,8 @@ class FlxRuntimeShader extends FlxGraphicsShader
 						parameter.type = parameterType;
 						parameter.__arrayLength = arrayLength;
 						#if lime
-						if (arrayLength > 0) parameter.__uniformMatrix = new Float32Array(arrayLength * arrayLength);
+						if (arrayLength > 0)
+							parameter.__uniformMatrix = new Float32Array(arrayLength * arrayLength);
 						#end
 						parameter.__isFloat = true;
 						parameter.__isUniform = isUniform;
@@ -597,7 +598,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	{
 		if (value != null)
 			value = value.replace("#pragma header", BASE_FRAGMENT_HEADER).replace("#pragma body", BASE_FRAGMENT_BODY);
-		
+
 		if (value != __glFragmentSource)
 		{
 			__glSourceDirty = true;
