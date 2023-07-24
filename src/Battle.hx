@@ -131,7 +131,7 @@ class Battle extends FlxTransitionableState
 			{
 				writer.visible = true;
 
-				if (choices[curChoice] == 'Item' && Global.items.length <= 0)
+				if (choices[curChoice] == 'Item' && Global.item.length <= 0)
 					return;
 
 				choiceSelected = true;
@@ -141,12 +141,12 @@ class Battle extends FlxTransitionableState
 					case 'Fight' | 'Talk':
 						writer.msg = {text: '* ${monster.data.name}', speed: 4};
 
-						var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + (monster.data.name.length * 16), writer.y, LEFT_TO_RIGHT,
+						/*var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + (monster.data.name.length * 16), writer.y, LEFT_TO_RIGHT,
 							Std.int(monster.data.hp / monster.data.maxHp * 100), 16, monster.data, "hp", 0, monster.data.maxHp);
 						monsterHpBar.createFilledBar(FlxColor.RED, FlxColor.LIME);
 						monsterHpBar.emptyCallback = () -> trace('YOU WON!');
 						monsterHpBar.scrollFactor.set();
-						add(monsterHpBar);
+						add(monsterHpBar);*/
 					case 'Item':
 						writer.msg = {text: '* Item Selected...', speed: 4};
 					case 'Spare':
