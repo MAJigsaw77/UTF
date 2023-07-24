@@ -11,7 +11,7 @@ import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxBasic;
 import flixel.FlxSprite;
-#if display
+#if macro
 import haxe.macro.Context;
 #end
 import haxe.Exception;
@@ -49,7 +49,7 @@ class Script
 	public function new():Void
 	{
 		parser = new Parser();
-		#if display
+		#if macro
 		parser.preprocesorValues = Context.getDefines();
 		#end
 		parser.allowJSON = true;
