@@ -8,9 +8,9 @@ import haxe.CallStack;
 import lime.system.System;
 import openfl.display.FPS;
 import openfl.display.Sprite;
+import openfl.events.UncaughtErrorEvent;
 import openfl.system.System;
 import openfl.utils.Assets;
-import openfl.events.UncaughtErrorEvent;
 import openfl.Lib;
 import polymod.Polymod;
 
@@ -40,7 +40,6 @@ class Main extends Sprite
 			// Run the garbage colector...
 			System.gc();
 		});
-		FlxG.signals.postStateSwitch.add(System.gc);
 
 		addChild(new FlxGame(640, 480, Startup, 30, 30, false, false));
 		addChild(new FPS(10, 10, FlxColor.WHITE));
@@ -66,8 +65,12 @@ class Main extends Sprite
 		}
 	}
 
-	private static function onError(e:UncaughtErrorEvent):Void
+	private function onError(e:UncaughtErrorEvent):Void
 	{
+		e.preventDefault();
+		e.stopImmediatePropagation();
+		e.stopPropagation();
+
 		final stack:Array<String> = [];
 
 		stack.push(e.error);
@@ -81,9 +84,9 @@ class Main extends Sprite
 				case Module(m):
 					stack.push('Module [$m]');
 				case FilePos(s, file, line, column):
-					stack.push('$file [l$line]');
+					stack.push('$file [line $line]');
 				case Method(classname, method):
-					stack.push('$classname [m$method]');
+					stack.push('$classname [method $method]');
 				case LocalFunction(name):
 					stack.push('Local Function [$name]');
 			}
