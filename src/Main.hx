@@ -20,7 +20,9 @@ class Main extends Sprite
 	{
 		super();
 
+		#if !debug
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onError);
+		#end
 
 		FlxG.signals.gameResized.add(onResizeGame);
 		FlxG.signals.preStateCreate.add(function(state:FlxState)
@@ -55,7 +57,9 @@ class Main extends Sprite
 			@:privateAccess
 			if (cam != null && (cam._filters != null && cam._filters.length > 0))
 			{
-				var sprite:Sprite = cam.flashSprite; // Shout out to Ne_Eo for bringing this to my attention
+				 // Shout out to Ne_Eo for bringing this to my attention.
+				var sprite:Sprite = cam.flashSprite;
+
 				if (sprite != null)
 				{
 					sprite.__cacheBitmap = null;
@@ -71,11 +75,11 @@ class Main extends Sprite
 		e.stopPropagation();
 		e.stopImmediatePropagation();
 
-		final stack:Array<String> = [e.error];
+		final stack:Array<String> = [Std.string(e.error)];
 
-		for (stackItem in CallStack.exceptionStack(true))
+		for (item in CallStack.exceptionStack(true))
 		{
-			switch (stackItem)
+			switch (item)
 			{
 				case CFunction:
 					stack.push('C Function');
