@@ -34,8 +34,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 		uniform mat4 openfl_Matrix;
 		uniform bool openfl_HasColorTransform;
-		uniform vec2 openfl_TextureSize;
-	";
+		uniform vec2 openfl_TextureSize;";
 
 	private static final BASE_VERTEX_BODY:String = "openfl_Alphav = openfl_Alpha;
 		openfl_TextureCoordv = openfl_TextureCoord;
@@ -47,8 +46,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 		}
 
-		gl_Position = openfl_Matrix * openfl_Position;
-	";
+		gl_Position = openfl_Matrix * openfl_Position;";
 
 	private static final BASE_VERTEX_SOURCE:String = "#pragma header
 
@@ -68,8 +66,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 				openfl_ColorOffsetv = colorOffset / 255.0;
 				openfl_ColorMultiplierv = colorMultiplier;
 			}
-		}
-	";
+		}";
 
 	private static final BASE_FRAGMENT_HEADER:String = "varying float openfl_Alphav;
 		varying vec4 openfl_ColorMultiplierv;
@@ -116,8 +113,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 				return vec4(color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
 			}
 			return vec4(0.0, 0.0, 0.0, 0.0);
-		}
-	";
+		}";
 
 	private static final BASE_FRAGMENT_BODY:String = "vec4 color = texture2D (bitmap, openfl_TextureCoordv);
 
@@ -151,16 +147,14 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 			gl_FragColor = color * openfl_Alphav;
 
-		}
-	";
+		}";
 
 	private static final BASE_FRAGMENT_SOURCE:String = "#pragma header
 
 		void main(void)
 		{
 			gl_FragColor = flixel_texture2D(bitmap, openfl_TextureCoordv);
-		}
-	";
+		}";
 
 	/**
 	 * Creates a `FlxRuntimeShader` with specified shader sources.
@@ -174,7 +168,11 @@ class FlxRuntimeShader extends FlxGraphicsShader
 		if (fragmentSource != null)
 		{
 			if (Assets.exists(fragmentSource))
+			{
 				glFragmentSource = processFragmentSource(Assets.getText(fragmentSource));
+
+				FlxG.log.notice('Loading fragment shader from $fragmentSource...');
+			}
 			else
 				glFragmentSource = processFragmentSource(BASE_FRAGMENT_SOURCE);
 		}
@@ -184,7 +182,11 @@ class FlxRuntimeShader extends FlxGraphicsShader
 		if (vertexSource != null)
 		{
 			if (Assets.exists(vertexSource))
+			{
 				glVertexSource = processVertexSource(Assets.getText(vertexSource));
+
+				FlxG.log.notice('Loading vertex shader from $vertexSource...');
+			}
 			else
 				glVertexSource = processVertexSource(BASE_VERTEX_SOURCE);
 		}
