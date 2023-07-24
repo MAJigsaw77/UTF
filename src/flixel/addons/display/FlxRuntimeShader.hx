@@ -165,19 +165,8 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	 */
 	public function new(?fragmentSource:String, ?vertexSource:String):Void
 	{
-		if (Assets.exists(fragmentSource))
-			glFragmentSource = Assets.getText(fragmentSource);
-		else if (fragmentSource != null)
-			glFragmentSource = fragmentSource;
-		else
-			glFragmentSource = BASE_FRAGMENT_SOURCE;
-
-		if (Assets.exists(vertexSource))
-			glVertexSource = Assets.getText(vertexSource);
-		else if (vertexSource != null)
-			glVertexSource = vertexSource;
-		else
-			glVertexSource = BASE_VERTEX_SOURCE;
+		glFragmentSource = (fragmentSource != null && fragmentSource.length > 0) ? fragmentSource : BASE_FRAGMENT_SOURCE;
+		glVertexSource = (vertexSource != null && vertexSource.length > 0) ? vertexSource : BASE_VERTEX_SOURCE;
 
 		super();
 
