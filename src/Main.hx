@@ -6,7 +6,6 @@ import flixel.FlxGame;
 import flixel.FlxState;
 import haxe.CallStack;
 import lime.system.System;
-import lime.utils.Log;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.UncaughtErrorEvent;
@@ -20,11 +19,6 @@ class Main extends Sprite
 	public function new():Void
 	{
 		super();
-
-		Log.throwErrors = false;
-		#if (mobile && debug)
-		FlxG.log.redirectTraces = true;
-		#end
 
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onError);
 
