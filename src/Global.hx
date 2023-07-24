@@ -1,5 +1,6 @@
 package;
 
+import flixel.input.FlxKey;
 import flixel.FlxG;
 
 typedef DialogueData =
@@ -35,6 +36,7 @@ typedef MonsterData =
 
 class Global
 {
+	// OG from Undertale itself.
 	public static var name:String = 'CHARA';
 	public static var hp:Int = 20;
 	public static var maxHp:Int = 20;
@@ -43,9 +45,18 @@ class Global
 	public static var gold:Int = 0;
 	public static var xp:Int = 0;
 	public static var lv:Int = 1;
+
+	// Engine special.
 	public static var weapon:WeaponData;
 	public static var armor:ArmorData;
 	public static var items:Array<String> = [];
+
+	// Keybinds.
+	public static var binds:Map<String, Array<FlxKey>> = [
+		'select' => [Z, ENTER],
+		'back' => [X, ESCAPE],
+		"idk how's named" => [C]
+	];
 
 	public static function levelUp():Bool
 	{
