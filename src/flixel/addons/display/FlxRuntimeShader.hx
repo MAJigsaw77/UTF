@@ -436,7 +436,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	}
 
 	// Overrides
-	@:noCompletion private function __processGLData(source:String, storageType:String):Void
+	@:noCompletion private override function __processGLData(source:String, storageType:String):Void
 	{
 		var lastMatch = 0, position, regex, name, type;
 
