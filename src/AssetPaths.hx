@@ -43,11 +43,11 @@ class AssetPaths
 		return 'assets/images/$key.png';
 	}
 
-	public static function spritesheet(key:String, numFrames:Int = 0):FlxAtlasFrames
+	public static function spritesheet(key:String, frames:Array<Int>):FlxAtlasFrames
 	{
 		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(key), FlxPoint.weak(0, 0));
 
-		for (i in 0...numFrames)
+		for (i in frames)
 		{
 			var file:String = AssetPaths.sprite('${key}_$i');
 			if (Assets.exists(file))
