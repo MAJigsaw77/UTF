@@ -180,6 +180,8 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			glVertexSource = BASE_VERTEX_SOURCE;
 
 		super();
+
+		__isGenerated = false;
 	}
 
 	/**
