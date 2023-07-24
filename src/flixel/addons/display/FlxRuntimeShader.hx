@@ -165,51 +165,21 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	 */
 	public function new(?fragmentSource:String, ?vertexSource:String):Void
 	{
-		if (fragmentSource != null)
-		{
-			if (Assets.exists(fragmentSource))
-			{
-				FlxG.log.notice('Loading fragment shader from $fragmentSource...');
-
-				glFragmentSource = processFragmentSource(Assets.getText(fragmentSource));
-			}
-			else
-				glFragmentSource = processFragmentSource(BASE_FRAGMENT_SOURCE);
-		}
+		if (Assets.exists(fragmentSource))
+			glFragmentSource = Assets.getText(fragmentSource);
+		else if (fragmentSource != null)
+			glFragmentSource = fragmentSource;
 		else
-			glFragmentSource = processFragmentSource(BASE_FRAGMENT_SOURCE);
+			glFragmentSource = BASE_FRAGMENT_SOURCE;
 
-		if (vertexSource != null)
-		{
-			if (Assets.exists(vertexSource))
-			{
-				FlxG.log.notice('Loading vertex shader from $vertexSource...');
-
-				glVertexSource = processVertexSource(Assets.getText(vertexSource));
-			}
-			else
-				glVertexSource = processVertexSource(BASE_VERTEX_SOURCE);
-		}
+		if (Assets.exists(vertexSource))
+			glVertexSource = Assets.getText(vertexSource);
+		else if (vertexSource != null)
+			glVertexSource = vertexSource;
 		else
-			glVertexSource = processVertexSource(BASE_VERTEX_SOURCE);
+			glVertexSource = BASE_VERTEX_SOURCE;
 
 		super();
-	}
-
-	/**
-	 * Replace the `#pragma header` and `#pragma body` with the fragment shader header and body.
-	 */
-	private function processFragmentSource(input:String):String
-	{
-		return input.replace("#pragma header", BASE_FRAGMENT_HEADER).replace("#pragma body", BASE_FRAGMENT_BODY);
-	}
-
-	/**
-	 * Replace the `#pragma header` and `#pragma body` with the vertex shader header and body.
-	 */
-	private function processVertexSource(input:String):String
-	{
-		return input.replace("#pragma header", BASE_VERTEX_HEADER).replace("#pragma body", BASE_VERTEX_BODY);
 	}
 
 	/**
@@ -470,6 +440,33 @@ class FlxRuntimeShader extends FlxGraphicsShader
 		}
 
 		return prop.input;
+	}
+
+	// Get & Set Methods
+	@:noCompletion private function set_glFragmentSource(value:String):String
+	{
+		if (value != null)
+			value = value.replace("#pragma header", BASE_FRAGMENT_HEADER).replace("#pragma body", BASE_FRAGMENT_BODY);
+		
+		if (value != __glFragmentSource)
+		{
+			__glSourceDirty = true;
+		}
+
+		return __glFragmentSource = value;
+	}
+
+	@:noCompletion private function set_glVertexSource(value:String):String
+	{
+		if (value != null)
+			value = value.replace("#pragma header", BASE_VERTEX_HEADER).replace("#pragma body", BASE_VERTEX_BODY);
+
+		if (value != __glVertexSource)
+		{
+			__glSourceDirty = true;
+		}
+
+		return __glVertexSource = value;
 	}
 }
 #end
