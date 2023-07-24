@@ -45,17 +45,17 @@ class Global
 	public static var gold:Int = 0;
 	public static var xp:Int = 0;
 	public static var lv:Int = 1;
+	public static var item:Array<String> = [];
 
 	// Engine special.
 	public static var weapon:WeaponData;
 	public static var armor:ArmorData;
-	public static var item:Array<String> = [];
 
 	// Keybinds.
 	public static var binds:Map<String, Array<FlxKey>> = [
 		'confirm' => [Z, ENTER],
 		'cancel' => [X, SHIFT],
-		"menu" => [C, CTRL]
+		"menu" => [C, CONTROL]
 	];
 
 	public static function levelUp():Bool
