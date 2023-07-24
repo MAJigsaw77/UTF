@@ -22,6 +22,9 @@ class Main extends Sprite
 		super();
 
 		Log.throwErrors = false;
+		#if (mobile && debug)
+		FlxG.log.redirectTraces = true;
+		#end
 
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onError);
 
