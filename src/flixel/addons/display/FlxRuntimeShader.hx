@@ -169,9 +169,9 @@ class FlxRuntimeShader extends FlxGraphicsShader
 		{
 			if (Assets.exists(fragmentSource))
 			{
-				glFragmentSource = processFragmentSource(Assets.getText(fragmentSource));
-
 				FlxG.log.notice('Loading fragment shader from $fragmentSource...');
+
+				glFragmentSource = processFragmentSource(Assets.getText(fragmentSource));
 			}
 			else
 				glFragmentSource = processFragmentSource(BASE_FRAGMENT_SOURCE);
@@ -183,9 +183,9 @@ class FlxRuntimeShader extends FlxGraphicsShader
 		{
 			if (Assets.exists(vertexSource))
 			{
-				glVertexSource = processVertexSource(Assets.getText(vertexSource));
-
 				FlxG.log.notice('Loading vertex shader from $vertexSource...');
+
+				glVertexSource = processVertexSource(Assets.getText(vertexSource));
 			}
 			else
 				glVertexSource = processVertexSource(BASE_VERTEX_SOURCE);
