@@ -68,12 +68,10 @@ class Main extends Sprite
 	private function onError(e:UncaughtErrorEvent):Void
 	{
 		e.preventDefault();
-		e.stopImmediatePropagation();
 		e.stopPropagation();
+		e.stopImmediatePropagation();
 
-		final stack:Array<String> = [];
-
-		stack.push(e.error);
+		final stack:Array<String> = [e.error];
 
 		for (stackItem in CallStack.exceptionStack(true))
 		{
