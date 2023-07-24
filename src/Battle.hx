@@ -110,7 +110,7 @@ class Battle extends FlxTransitionableState
 			changeChoice(1);
 		else if (FlxG.keys.justPressed.LEFT && !choiceSelected)
 			changeChoice(-1);
-		else if (FlxG.keys.justPressed.ENTER)
+		else if (FlxG.keys.anyJustPressed(Global.binds.get('confirm')))
 		{
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 
@@ -154,15 +154,13 @@ class Battle extends FlxTransitionableState
 				}
 			}
 		}
-		else if (FlxG.keys.justPressed.ESCAPE)
+		else if (FlxG.keys.anyJustPressed(Global.binds.get('cancel')))
 		{
 			choiceSelected = false;
 
 			writer.visible = true;
 			writer.msg = {text: '* The wind is howling...', speed: 4};
 		}
-		else if (FlxG.keys.justPressed.SHIFT)
-			FlxG.switchState(new Settings());
 
 		super.update(elapsed);
 	}

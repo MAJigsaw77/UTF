@@ -61,7 +61,7 @@ class Settings extends FlxTransitionableState
 			changeOption(1);
 		else if (FlxG.keys.justPressed.DOWN)
 			changeOption(-1);
-		else if (FlxG.keys.justPressed.ESCAPE && (weatherMusic != null && weatherMusic.playing))
+		else if (FlxG.keys.anyJustPressed(Global.binds.get('cancel')) && (weatherMusic != null && weatherMusic.playing))
 		{
 			weatherMusic.stop();
 
