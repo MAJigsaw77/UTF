@@ -443,7 +443,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	}
 
 	// Get & Set Methods
-	@:noCompletion private function set_glFragmentSource(value:String):String
+	@:noCompletion private override function set_glFragmentSource(value:String):String
 	{
 		if (value != null)
 			value = value.replace("#pragma header", BASE_FRAGMENT_HEADER).replace("#pragma body", BASE_FRAGMENT_BODY);
@@ -456,7 +456,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 		return __glFragmentSource = value;
 	}
 
-	@:noCompletion private function set_glVertexSource(value:String):String
+	@:noCompletion private override function set_glVertexSource(value:String):String
 	{
 		if (value != null)
 			value = value.replace("#pragma header", BASE_VERTEX_HEADER).replace("#pragma body", BASE_VERTEX_BODY);
