@@ -1,6 +1,6 @@
 package;
 
-import flixel.input.FlxKey;
+import flixel.input.keyboard.FlxKey;
 import flixel.FlxG;
 
 typedef DialogueData =
@@ -49,13 +49,13 @@ class Global
 	// Engine special.
 	public static var weapon:WeaponData;
 	public static var armor:ArmorData;
-	public static var items:Array<String> = [];
+	public static var item:Array<String> = [];
 
 	// Keybinds.
 	public static var binds:Map<String, Array<FlxKey>> = [
-		'select' => [Z, ENTER],
-		'back' => [X, ESCAPE],
-		"idk how's named" => [C]
+		'confirm' => [Z, ENTER],
+		'cancel' => [X, SHIFT],
+		"menu" => [C, CTRL]
 	];
 
 	public static function levelUp():Bool
