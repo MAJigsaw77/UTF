@@ -11,7 +11,7 @@ class IntroMenu extends FlxState
 
 	override function create():Void
 	{
-		bg = new FlxSprite(0, -304, AssetPaths.background('flowey_glow'));
+		bg = new FlxSprite(0, -304, AssetPaths.background('floweyglow'));
 		bg.scale.set(2, 2);
 		bg.updateHitbox();
 		add(bg);
