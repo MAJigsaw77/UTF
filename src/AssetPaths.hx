@@ -40,7 +40,7 @@ class AssetPaths
 
 	public static inline function sprite(key:String):String
 	{
-		return 'assets/images/$key.png';
+		return 'assets/sprites/$key.png';
 	}
 
 	public static function spritesheet(key:String, frames:Array<Int>):FlxAtlasFrames
