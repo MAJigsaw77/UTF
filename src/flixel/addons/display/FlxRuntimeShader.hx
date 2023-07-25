@@ -18,7 +18,7 @@ using StringTools;
  * in the constructor instead of using macros, so it can be provided data at runtime.
  * 
  * @author MasterEric
- * @author MAJigsaw77
+ * @author Mihai Alexandru (M.A. Jigsaw)
  * 
  * @see https://github.com/openfl/openfl/blob/develop/src/openfl/utils/_internal/ShaderMacro.hx
  * @see https://dixonary.co.uk/blog/shadertoy
