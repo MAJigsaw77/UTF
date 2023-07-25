@@ -478,10 +478,11 @@ class FlxRuntimeShader extends FlxGraphicsShader
 					default:
 				}
 
+				Reflect.setField(__data, name, input);
+
 				try
 				{
-					Reflect.setField(__data, name, input);
-					if (__isGenerated && Reflect.hasField(this, name))
+					if (__isGenerated)
 						Reflect.setField(this, name, input);
 				}
 			}
@@ -547,11 +548,12 @@ class FlxRuntimeShader extends FlxGraphicsShader
 						{
 							__hasColorTransform = parameter;
 						}
-						
+	
+						Reflect.setField(__data, name, parameter);
+	
 						try
 						{
-							Reflect.setField(__data, name, parameter);
-							if (__isGenerated && Reflect.hasField(this, name))
+							if (__isGenerated)
 								Reflect.setField(this, name, parameter);
 						}
 
@@ -564,11 +566,12 @@ class FlxRuntimeShader extends FlxGraphicsShader
 						parameter.__isUniform = isUniform;
 						parameter.__length = length;
 						__paramInt.push(parameter);
-						
+
+						Reflect.setField(__data, name, parameter);
+
 						try
 						{
-							Reflect.setField(__data, name, parameter);
-							if (__isGenerated && Reflect.hasField(this, name))
+							if (__isGenerated)
 								Reflect.setField(this, name, parameter);
 						}
 
@@ -600,11 +603,12 @@ class FlxRuntimeShader extends FlxGraphicsShader
 								default:
 							}
 						}
-						
+
+						Reflect.setField(__data, name, parameter);
+
 						try
 						{
-							Reflect.setField(__data, name, parameter);
-							if (__isGenerated && Reflect.hasField(this, name))
+							if (__isGenerated)
 								Reflect.setField(this, name, parameter);
 						}
 				}
