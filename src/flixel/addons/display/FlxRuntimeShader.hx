@@ -485,6 +485,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 					if (__isGenerated)
 						Reflect.setField(this, name, input);
 				}
+				catch (e:Dynamic)
 			}
 			else if (!Reflect.hasField(__data, name) || Reflect.field(__data, name) == null)
 			{
@@ -556,6 +557,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 							if (__isGenerated)
 								Reflect.setField(this, name, parameter);
 						}
+						catch (e:Dynamic)
 
 					case INT, INT2, INT3, INT4:
 						var parameter = new ShaderParameter<Int>();
@@ -574,6 +576,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 							if (__isGenerated)
 								Reflect.setField(this, name, parameter);
 						}
+						catch (e:Dynamic)
 
 					default:
 						var parameter = new ShaderParameter<Float>();
@@ -611,6 +614,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 							if (__isGenerated)
 								Reflect.setField(this, name, parameter);
 						}
+						catch (e:Dynamic)
 				}
 			}
 
