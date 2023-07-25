@@ -1,6 +1,6 @@
 package flixel.addons.display;
 
-#if FLX_DRAW_QUADS
+#if (FLX_DRAW_QUADS && !flash)
 import flixel.graphics.tile.FlxGraphicsShader;
 #if lime
 import lime.utils.Float32Array;

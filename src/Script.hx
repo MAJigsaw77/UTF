@@ -1,6 +1,6 @@
 package;
 
-#if FLX_DRAW_QUADS
+#if (FLX_DRAW_QUADS && !flash)
 import flixel.addons.display.FlxRuntimeShader;
 #end
 import flixel.group.FlxSpriteGroup;
@@ -31,7 +31,7 @@ class Script
 		'FlxG' => FlxG,
 		'FlxSprite' => FlxSprite,
 		'FlxSpriteGroup' => FlxSpriteGroup,
-		#if FLX_DRAW_QUADS
+		#if (FLX_DRAW_QUADS && !flash)
 		'FlxRuntimeShader' => FlxRuntimeShader,
 		#end
 		'FlxMath' => FlxMath,
