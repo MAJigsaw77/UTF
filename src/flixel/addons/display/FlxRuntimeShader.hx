@@ -456,9 +456,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			name = regex.matched(2);
 
 			if (StringTools.startsWith(name, "gl_"))
-			{
 				continue;
-			}
 
 			var isUniform = (storageType == "uniform");
 
@@ -629,9 +627,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			value = value.replace("#pragma header", BASE_FRAGMENT_HEADER).replace("#pragma body", BASE_FRAGMENT_BODY);
 
 		if (value != __glFragmentSource)
-		{
 			__glSourceDirty = true;
-		}
 
 		return __glFragmentSource = value;
 	}
@@ -642,9 +638,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			value = value.replace("#pragma header", BASE_VERTEX_HEADER).replace("#pragma body", BASE_VERTEX_BODY);
 
 		if (value != __glVertexSource)
-		{
 			__glSourceDirty = true;
-		}
 
 		return __glVertexSource = value;
 	}
