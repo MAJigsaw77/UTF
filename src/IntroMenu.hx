@@ -27,7 +27,7 @@ class IntroMenu extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.anyJustPressed(Global.binds.get('confirm')) && titleText.alpha == 1)
+		if (FlxG.keys.anyJustPressed(Global.binds.get('confirm')))
 			FlxG.switchState(new Battle());
 
 		super.update(elapsed);
