@@ -14,12 +14,15 @@ class IntroMenu extends FlxState
 		bg = new FlxSprite(0, -240, AssetPaths.background('floweyglow'));
 		bg.scale.set(2, 2);
 		bg.updateHitbox();
+		bg.scrollFactor.set();
 		add(bg);
 
 		flowey = new FlxSprite(294, 338);
 		flowey.frames = AssetPaths.spritesheet('flowey', [1]);
 		flowey.scale.set(2, 2);
 		flowey.updateHitbox();
+		flowey.screenCenter(X);
+		flowey.scrollFactor.set();
 		add(flowey);
 		
 		super.create();
