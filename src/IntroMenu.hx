@@ -6,6 +6,10 @@ import flixel.FlxState;
 
 class IntroMenu extends FlxState
 {
+	var curChoice:Int = 0;
+	final choices:Array<String> = ['Continue', 'Reset', 'Settings'];
+	var choicesItems:FlxTypedGroup<FlxSprite>;
+
 	var bg:FlxSprite;
 	var flowey:FlxSprite;
 
