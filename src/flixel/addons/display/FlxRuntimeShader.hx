@@ -124,7 +124,8 @@ class FlxRuntimeShader extends FlxGraphicsShader
 				return vec4(color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
 			}
 			return vec4(0.0, 0.0, 0.0, 0.0);
-		}";
+		}
+	";
 
 	private static final BASE_FRAGMENT_BODY:String = "
 		vec4 color = texture2D (bitmap, openfl_TextureCoordv);
@@ -490,6 +491,8 @@ class FlxRuntimeShader extends FlxGraphicsShader
 				}
 
 				Reflect.setField(__data, name, input);
+				if (__isGenerated && Reflect.hasField(this, name))
+					Reflect.setField(this, name, input);
 			}
 			else if (!Reflect.hasField(__data, name) || Reflect.field(__data, name) == null)
 			{
@@ -555,6 +558,8 @@ class FlxRuntimeShader extends FlxGraphicsShader
 						}
 
 						Reflect.setField(__data, name, parameter);
+						if (__isGenerated && Reflect.hasField(this, name))
+							Reflect.setField(this, name, parameter);
 
 					case INT, INT2, INT3, INT4:
 						var parameter = new ShaderParameter<Int>();
@@ -566,6 +571,8 @@ class FlxRuntimeShader extends FlxGraphicsShader
 						parameter.__length = length;
 						__paramInt.push(parameter);
 						Reflect.setField(__data, name, parameter);
+						if (__isGenerated && Reflect.hasField(this, name))
+							Reflect.setField(this, name, parameter);
 
 					default:
 						var parameter = new ShaderParameter<Float>();
@@ -597,6 +604,8 @@ class FlxRuntimeShader extends FlxGraphicsShader
 						}
 
 						Reflect.setField(__data, name, parameter);
+						if (__isGenerated && Reflect.hasField(this, name))
+							Reflect.setField(this, name, parameter);
 				}
 			}
 
