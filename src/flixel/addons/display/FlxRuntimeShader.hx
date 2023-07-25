@@ -25,7 +25,8 @@ using StringTools;
  */
 class FlxRuntimeShader extends FlxGraphicsShader
 {
-	private static final BASE_VERTEX_HEADER:String = "attribute float openfl_Alpha;
+	private static final BASE_VERTEX_HEADER:String = "
+		attribute float openfl_Alpha;
 		attribute vec4 openfl_ColorMultiplier;
 		attribute vec4 openfl_ColorOffset;
 		attribute vec4 openfl_Position;
@@ -38,9 +39,11 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 		uniform mat4 openfl_Matrix;
 		uniform bool openfl_HasColorTransform;
-		uniform vec2 openfl_TextureSize;";
+		uniform vec2 openfl_TextureSize;
+	";
 
-	private static final BASE_VERTEX_BODY:String = "openfl_Alphav = openfl_Alpha;
+	private static final BASE_VERTEX_BODY:String = "
+		openfl_Alphav = openfl_Alpha;
 		openfl_TextureCoordv = openfl_TextureCoord;
 
 		if (openfl_HasColorTransform) {
@@ -50,9 +53,11 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 		}
 
-		gl_Position = openfl_Matrix * openfl_Position;";
+		gl_Position = openfl_Matrix * openfl_Position;
+	";
 
-	private static final BASE_VERTEX_SOURCE:String = "#pragma header
+	private static final BASE_VERTEX_SOURCE:String = "
+		#pragma header
 
 		attribute float alpha;
 		attribute vec4 colorMultiplier;
@@ -70,9 +75,11 @@ class FlxRuntimeShader extends FlxGraphicsShader
 				openfl_ColorOffsetv = colorOffset / 255.0;
 				openfl_ColorMultiplierv = colorMultiplier;
 			}
-		}";
+		}
+	";
 
-	private static final BASE_FRAGMENT_HEADER:String = "varying float openfl_Alphav;
+	private static final BASE_FRAGMENT_HEADER:String = "
+		varying float openfl_Alphav;
 		varying vec4 openfl_ColorMultiplierv;
 		varying vec4 openfl_ColorOffsetv;
 		varying vec2 openfl_TextureCoordv;
@@ -119,7 +126,8 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			return vec4(0.0, 0.0, 0.0, 0.0);
 		}";
 
-	private static final BASE_FRAGMENT_BODY:String = "vec4 color = texture2D (bitmap, openfl_TextureCoordv);
+	private static final BASE_FRAGMENT_BODY:String = "
+		vec4 color = texture2D (bitmap, openfl_TextureCoordv);
 
 		if (color.a == 0.0) {
 
@@ -151,14 +159,17 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 			gl_FragColor = color * openfl_Alphav;
 
-		}";
+		}
+	";
 
-	private static final BASE_FRAGMENT_SOURCE:String = "#pragma header
+	private static final BASE_FRAGMENT_SOURCE:String = "
+		#pragma header
 
 		void main(void)
 		{
 			gl_FragColor = flixel_texture2D(bitmap, openfl_TextureCoordv);
-		}";
+		}
+	";
 
 	/**
 	 * Creates a `FlxRuntimeShader` with specified shader sources.
