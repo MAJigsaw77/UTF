@@ -38,7 +38,7 @@ class IntroMenu extends FlxState
 		
 		for (i in 0...choices.length)
 		{
-			var bt:FlxText = new FlxText(0, 0, 0, choices[i], 48);
+			var bt:FlxText = new FlxText(0, 0, 0, choices[i], 28);
 
 			switch (choices[i])
 			{
@@ -59,7 +59,7 @@ class IntroMenu extends FlxState
 			choicesItems.add(bt);
 		}
 
-		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta.get('version')} (c) MAJigsaw77 2023', 12);
+		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta.get('version')} (c) MAJigsaw77 2023', 14);
 		info.alignment = 'center';
 		info.font = AssetPaths.font('Small.ttf');
 		info.color = FlxColor.GRAY;
