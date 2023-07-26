@@ -21,7 +21,7 @@ class Title extends FlxState
 		add(titleImage);
 
 		titleText = new FlxText(0, 360, 0, "[PRESS Z OR ENTER]", 10);
-		titleText.font = AssetPaths.font('Small.otf');
+		titleText.font = AssetPaths.font('Small.ttf');
 		titleText.color = FlxColor.GRAY;
 		titleText.alpha = 0.0001;
 		titleText.screenCenter(X);

@@ -32,7 +32,7 @@ class Battle extends FlxTransitionableState
 	override function create():Void
 	{
 		stats = new FlxText(30, 400, 0, Global.name + "   LV " + Global.lv, 14);
-		stats.font = AssetPaths.font('Small.otf');
+		stats.font = AssetPaths.font('Small.ttf');
 		stats.scrollFactor.set();
 		add(stats);
 
@@ -47,7 +47,7 @@ class Battle extends FlxTransitionableState
 		add(hpBar);
 
 		hpInfo = new FlxText((hpBar.x + 15) + hpBar.width, hpBar.y, 0, Global.hp + ' / ' + Global.maxHp, 14);
-		hpInfo.font = AssetPaths.font('Small.otf');
+		hpInfo.font = AssetPaths.font('Small.ttf');
 		hpInfo.scrollFactor.set();
 		add(hpInfo);
 

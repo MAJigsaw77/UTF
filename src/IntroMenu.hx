@@ -61,7 +61,7 @@ class IntroMenu extends FlxState
 
 		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta.get('version')} (c) MAJigsaw77 2023', 10);
 		info.alignment = 'center';
-		info.font = AssetPaths.font('Small.otf');
+		info.font = AssetPaths.font('Small.ttf');
 		info.color = FlxColor.GRAY;
 		info.screenCenter(X);
 		info.scrollFactor.set();
