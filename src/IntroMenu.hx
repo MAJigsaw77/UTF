@@ -37,7 +37,21 @@ class IntroMenu extends FlxState
 		
 		for (i in 0...choices.length)
 		{
-			var bt:FlxText = new FlxText(150 * i, 220, 0, choices[i].toUpperCase(), 24);
+			var bt:FlxText = new FlxText(0, 0, 0, choices[i], 24);
+
+			switch (choices[i])
+			{
+				case 'Continue':
+					bt.x = 170;
+					bt.y = 220;
+				case 'Reset':
+					bt.x = 350;
+					bt.y = 220;
+				case 'Settings':
+					bt.x = 266;
+					bt.y = 196;
+			}
+	
 			bt.font = AssetPaths.font('DTM-Mono.otf');
 			bt.ID = i;
 			bt.scrollFactor.set();
