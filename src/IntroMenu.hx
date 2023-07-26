@@ -49,7 +49,7 @@ class IntroMenu extends FlxState
 					bt.x = 350;
 					bt.y = 220;
 				case 'Settings':
-					bt.x = 220;
+					bt.x = 260;
 					bt.y = 264;
 			}
 	
@@ -59,7 +59,7 @@ class IntroMenu extends FlxState
 			choicesItems.add(bt);
 		}
 
-		var info:FlxText = new FlxText(0, FlxG.height - 16, 0, 'UTF v${Lib.application.meta.get('version')} (c) MAJigsaw77 2023', 10);
+		var info:FlxText = new FlxText(0, FlxG.height - 180, 0, 'UTF v${Lib.application.meta.get('version')} (c) MAJigsaw77 2023', 10);
 		info.alignment = 'center';
 		info.font = AssetPaths.font('Small.otf');
 		info.color = FlxColor.GRAY;
