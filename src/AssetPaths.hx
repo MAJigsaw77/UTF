@@ -18,14 +18,14 @@ class AssetPaths
 		return 'assets/fonts/$key';
 	}
 
+	public static inline function script(key:String):String
+	{
+		return 'assets/data/$key.hx';
+	}
+
 	public static inline function data(key:String):String
 	{
 		return 'assets/data/$key.json';
-	}
-
-	public static inline function script(key:String):String
-	{
-		return 'assets/data/$key.hxs';
 	}
 
 	public static inline function music(key:String):String
