@@ -38,7 +38,7 @@ class IntroMenu extends FlxState
 		
 		for (i in 0...choices.length)
 		{
-			var bt:FlxText = new FlxText(0, 0, 0, choices[i], 28);
+			var bt:FlxText = new FlxText(0, 0, 0, choices[i], 32);
 
 			switch (choices[i])
 			{

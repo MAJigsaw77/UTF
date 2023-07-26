@@ -10,7 +10,7 @@ class Writer extends FlxTypeText
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0):Void
 	{
-		super(x, y, width, '', 28, true);
+		super(x, y, width, '', 32, true);
 
 		font = AssetPaths.font('DTM-Mono.ttf');
 		sounds = [FlxG.sound.load(AssetPaths.sound('txt2'), 0.76)];
