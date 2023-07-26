@@ -49,7 +49,7 @@ class IntroMenu extends FlxState
 					bt.x = 350;
 					bt.y = 220;
 				case 'Settings':
-					bt.x = 192;
+					bt.x = 220;
 					bt.y = 264;
 			}
 	
