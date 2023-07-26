@@ -51,7 +51,7 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 
 **UTF** is made available under the **Apache 2.0 License**. Check [LICENSE](./LICENSE) for more information.
 
-## Credits
+### Credits
 
 | Avatar | UserName | Involvement |
 | ------ | -------- | ----------- |
