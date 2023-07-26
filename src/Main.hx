@@ -43,7 +43,7 @@ class Main extends Sprite
 			System.gc();
 		});
 
-		addChild(new FlxGame(640, 960, Startup, 30, 30, false, false));
+		addChild(new FlxGame(640, 480, Startup, 30, 30, false, false));
 		addChild(new FPS(10, 10, FlxColor.WHITE));
 	}
 
