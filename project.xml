@@ -7,7 +7,7 @@
 
 	<app file="UNDERTALE" main="Main" preloader="flixel.system.FlxPreloader" />
 
-	<icon path="icon.png" />
+	<icon path="icon.svg" />
 
 	<!--Window Settings -->
 
