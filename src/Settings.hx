@@ -16,6 +16,8 @@ class Settings extends FlxTransitionableState
 
 	override function create():Void
 	{
+		FlxTransitionableState.skipNextTransOut = true;
+
 		var weatherMusic:String = AssetPaths.music('options_fall');
 		
 		switch (Global.getWeather())
