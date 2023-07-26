@@ -62,10 +62,10 @@ class Settings extends FlxTransitionableState
 		else if (FlxG.keys.anyJustPressed(Global.binds.get('confirm'))
 			&& (FlxG.sound.music != null && FlxG.sound.music.playing))
 		{
-			if (choices[curChoice] == 'Exit')
+			if (options[curOption] == 'Exit')
 				FlxG.sound.music.stop();
 
-			switch (choices[curChoice])
+			switch (options[curOption])
 			{
 				case 'Exit':
 					FlxG.switchState(new IntroMenu());
