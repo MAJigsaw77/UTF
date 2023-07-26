@@ -2,6 +2,7 @@ package;
 
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
+import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -11,7 +12,7 @@ class IntroMenu extends FlxState
 {
 	var curChoice:Int = 0;
 	final choices:Array<String> = ['Continue', 'Reset', 'Settings'];
-	var choicesItems:FlxTypedGroup<FlxSprite>;
+	var choicesItems:FlxTypedGroup<FlxText>;
 
 	override function create():Void
 	{
@@ -31,6 +32,9 @@ class IntroMenu extends FlxState
 		flowey.scrollFactor.set();
 		add(flowey);
 
+		choicesItems = new FlxTypedGroup<FlxText>();
+		add(choicesItems);
+		
 		for (i in 0...choices.length)
 		{
 			var bt:FlxText = new FlxText(150 * i, 220, 0, choices[i].toUpperCase(), 24);
