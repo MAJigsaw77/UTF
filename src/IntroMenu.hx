@@ -49,8 +49,8 @@ class IntroMenu extends FlxState
 					bt.x = 350;
 					bt.y = 220;
 				case 'Settings':
-					bt.x = 266;
-					bt.y = 196;
+					bt.x = 192;
+					bt.y = 264;
 			}
 	
 			bt.font = AssetPaths.font('DTM-Mono.otf');
