@@ -59,9 +59,10 @@ class IntroMenu extends FlxState
 			choicesItems.add(bt);
 		}
 
-		var info:FlxText = new FlxText(0, FlxG.height - 16, 0, 'UTF v1.0.0 (c) MAJigsaw77 2023', 24);
+		var info:FlxText = new FlxText(0, FlxG.height - 16, 0, 'UTF v1.0.0 (c) MAJigsaw77 2023', 10);
 		info.alignment = 'center';
-		info.font = AssetPaths.font('DTM-Mono.otf');
+		info.font = AssetPaths.font('Small.otf');
+		info.color = FlxColor.GRAY;
 		info.screenCenter(X);
 		info.scrollFactor.set();
 		add(info);
