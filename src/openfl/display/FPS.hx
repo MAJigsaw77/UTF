@@ -36,9 +36,9 @@ class FPS extends TextField
 
 		#if mobile
 		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans.ttf')).fontName,
-			Std.int(15 * Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height)), color);
+			Std.int(18 * Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height)), color);
 		#else
-		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans.ttf')).fontName, 15, color);
+		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans.ttf')).fontName, 18, color);
 		#end
 
 		currentTime = 0;
@@ -53,7 +53,7 @@ class FPS extends TextField
 		#if mobile
 		addEventListener(Event.RESIZE, function(e:Event)
 		{
-			final daSize:Int = Std.int(15 * Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height));
+			final daSize:Int = Std.int(18 * Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height));
 			if (defaultTextFormat.size != daSize)
 				defaultTextFormat.size = daSize;
 		});
