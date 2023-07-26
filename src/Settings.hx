@@ -57,6 +57,7 @@ class Settings extends FlxTransitionableState
 			case 4: 'sweep a leaf\nsweep away a\ntroubles';
 		}
 		tobdogLine.font = AssetPaths.font('DTM-Mono.ttf');
+		tobdogLine.color = FlxColor.GRAY;
 		tobdogLine.angle = -20;
 		tobdogLine.scrollFactor.set();
 		add(tobdogLine);
