@@ -28,7 +28,7 @@ class Settings extends FlxTransitionableState
 
 		FlxG.sound.cache(weatherMusic);
 
-		var settings:FlxText = new FlxText(0, 20, 0, "SETTINGS", 48);
+		var settings:FlxText = new FlxText(0, 20, 0, "SETTINGS", 96);
 		settings.font = AssetPaths.font('DTM-Mono.ttf');
 		settings.screenCenter(X);
 		settings.scrollFactor.set();
@@ -39,7 +39,7 @@ class Settings extends FlxTransitionableState
 
 		for (i in 0...options.length)
 		{
-			var opt:FlxText = new FlxText(40, 80 + i * 30, 0, options[i].toUpperCase(), 24);
+			var opt:FlxText = new FlxText(40, 80 + i * 30, 0, options[i].toUpperCase(), 96);
 			opt.font = AssetPaths.font('DTM-Mono.ttf');
 			opt.ID = i;
 			opt.scrollFactor.set();
