@@ -60,13 +60,14 @@ class IntroMenu extends FlxState
 		}
 
 		var info:FlxText = new FlxText(0, FlxG.height - 16, 0, 'UTF v1.0.0 (c) MAJigsaw77 2023', 24);
+		info.alignment = 'center';
 		info.font = AssetPaths.font('DTM-Mono.otf');
 		info.screenCenter(X);
 		info.scrollFactor.set();
 		add(info);
 
 		changeOption();
-		
+
 		super.create();
 	}
 
