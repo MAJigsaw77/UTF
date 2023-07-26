@@ -55,7 +55,7 @@ class Settings extends FlxTransitionableState
 			case 2: 'spring time\nback to school';
 			case 3: 'try to withstand\nthe sun\'s life-\ngiving rays';
 			case 4: 'sweep a leaf\nsweep away a\ntroubles';
-			default: 'errors\nmy beloved';
+			default: '';
 		}
 		tobdogLine.font = AssetPaths.font('DTM-Mono.ttf');
 		tobdogLine.color = FlxColor.GRAY;
