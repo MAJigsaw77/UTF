@@ -50,3 +50,10 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 ### Licensing
 
 **UTF** is made available under the **Apache 2.0 License**. Check [LICENSE](./LICENSE) for more information.
+
+## Credits
+
+| Avatar | UserName | Involvement |
+| ------ | -------- | ----------- |
+| ![](https://upload.wikimedia.org/wikipedia/en/a/af/Toby_Fox_dog.jpg?s=64) | [Toby Fox](https://github.com/) | Creator of **Undertale**.
+| ![](https://avatars.githubusercontent.com/u/77043862?s=64) | [MAJigsaw77](https://github.com/MAJigsaw77) | Creator of **UTF**.
