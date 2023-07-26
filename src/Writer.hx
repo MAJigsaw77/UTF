@@ -12,7 +12,7 @@ class Writer extends FlxTypeText
 	{
 		super(x, y, width, '', 24, true);
 
-		font = AssetPaths.font('DTM-Mono.otf');
+		font = AssetPaths.font('DTM-Mono.ttf');
 		sounds = [FlxG.sound.load(AssetPaths.sound('txt2'), 0.76)];
 	}
 

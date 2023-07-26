@@ -53,7 +53,7 @@ class IntroMenu extends FlxState
 					bt.y = 264;
 			}
 	
-			bt.font = AssetPaths.font('DTM-Mono.otf');
+			bt.font = AssetPaths.font('DTM-Mono.ttf');
 			bt.ID = i;
 			bt.scrollFactor.set();
 			choicesItems.add(bt);

@@ -35,10 +35,10 @@ class FPS extends TextField
 		selectable = mouseEnabled = false;
 
 		#if mobile
-		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans.otf')).fontName,
+		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans.ttf')).fontName,
 			Std.int(15 * Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height)), color);
 		#else
-		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans.otf')).fontName, 15, color);
+		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans.ttf')).fontName, 15, color);
 		#end
 
 		currentTime = 0;
