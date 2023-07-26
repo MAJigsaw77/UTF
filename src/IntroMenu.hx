@@ -31,13 +31,13 @@ class IntroMenu extends FlxState
 		flowey.scrollFactor.set();
 		add(flowey);
 
-		for (i in 0...options.length)
+		for (i in 0...choices.length)
 		{
-			var opt:FlxText = new FlxText(150 * i, 220, 0, options[i].toUpperCase(), 24);
-			opt.font = AssetPaths.font('DTM-Mono.otf');
-			opt.ID = i;
-			opt.scrollFactor.set();
-			optionsItems.add(opt);
+			var bt:FlxText = new FlxText(150 * i, 220, 0, choices[i].toUpperCase(), 24);
+			bt.font = AssetPaths.font('DTM-Mono.otf');
+			bt.ID = i;
+			bt.scrollFactor.set();
+			choicesItems.add(bt);
 		}
 
 		changeOption();
@@ -53,10 +53,10 @@ class IntroMenu extends FlxState
 			changeOption(-1);
 		else if (FlxG.keys.anyJustPressed(Global.binds.get('confirm')))
 		{
-			if (choices[curOption] != 'Reset')
+			if (choices[curChoice] != 'Reset')
 				FlxG.sound.music.stop();
 
-			switch (choices[curOption])
+			switch (choices[curChoice])
 			{
 				case 'Continue':
 					FlxG.switchState(new Battle());
@@ -72,11 +72,11 @@ class IntroMenu extends FlxState
 
 	private function changeOption(num:Int = 0):Void
 	{
-		curOption = FlxMath.wrap(curOption + num, 0, options.length - 1);
+		curChoice = FlxMath.wrap(curChoice + num, 0, choices.length - 1);
 
-		optionsItems.forEach(function(spr:FlxText)
+		choicesItems.forEach(function(spr:FlxText)
 		{
-			if (spr.ID == curOption)
+			if (spr.ID == curChoice)
 				spr.color = FlxColor.YELLOW;
 			else
 				spr.color = FlxColor.WHITE;
