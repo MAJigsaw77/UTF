@@ -20,14 +20,16 @@ class Mods
 	{
 		Polymod.onError = function(error:PolymodError)
 		{
+			final code:String = Std.string(error.code).toUpperCase();
+
 			switch (error.severity)
 			{
 				case NOTICE:
-					FlxG.log.notice('(${Std.string(error.code).toUpperCase()}) ${error.message}');
+					FlxG.log.notice('(${code}) ${error.message}');
 				case WARNING:
-					FlxG.log.warn('(${Std.string(error.code).toUpperCase()}) ${error.message}');
+					FlxG.log.warn('(${code}) ${error.message}');
 				case ERROR:
-					FlxG.log.error('(${Std.string(error.code).toUpperCase()}) ${error.message}');
+					FlxG.log.error('(${code}) ${error.message}');
 			}
 		}
 
