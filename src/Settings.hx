@@ -14,21 +14,19 @@ class Settings extends FlxTransitionableState
 	final options:Array<String> = ['Exit', 'Key Binds'];
 	var optionsItems:FlxTypedGroup<FlxText>;
 
-	var weatherMusic:FlxSound;
-
 	override function create():Void
 	{
+		var weatherMusic:String = AssetPaths.music('options_fall');
+		
 		switch (Global.getWeather())
 		{
 			case 1:
-				weatherMusic = FlxG.sound.load(AssetPaths.music('options_winter'), 1.0, true);
+				weatherMusic = AssetPaths.music('options_winter');
 			case 3:
-				weatherMusic = FlxG.sound.load(AssetPaths.music('options_summer'), 1.0, true);
-			default:
-				weatherMusic = FlxG.sound.load(AssetPaths.music('options_fall'), 1.0, true);
+				weatherMusic = AssetPaths.music('options_summer');
 		}
 
-		FlxG.sound.list.add(weatherMusic);
+		FlxG.sound.cache(weatherMusic);
 
 		var settings:FlxText = new FlxText(0, 20, 0, "SETTINGS", 48);
 		settings.font = AssetPaths.font('DTM-Mono.otf');
@@ -50,7 +48,7 @@ class Settings extends FlxTransitionableState
 
 		changeOption();
 
-		FlxG.sound.play(AssetPaths.music('harpnoise'), () -> weatherMusic.play());
+		FlxG.sound.play(AssetPaths.music('harpnoise'), () -> FlxG.sound.playMusic(weatherMusic, 1.0, true));
 
 		super.create();
 	}
@@ -61,11 +59,19 @@ class Settings extends FlxTransitionableState
 			changeOption(1);
 		else if (FlxG.keys.justPressed.DOWN)
 			changeOption(-1);
-		else if (FlxG.keys.anyJustPressed(Global.binds.get('cancel')) && (weatherMusic != null && weatherMusic.playing))
+		else if (FlxG.keys.anyJustPressed(Global.binds.get('confirm'))
+			&& (FlxG.sound.music != null && FlxG.sound.music.playing))
 		{
-			weatherMusic.stop();
+			if (choices[curChoice] == 'Exit')
+				FlxG.sound.music.stop();
 
-			FlxG.switchState(new Battle());
+			switch (choices[curChoice])
+			{
+				case 'Exit':
+					FlxG.switchState(new IntroMenu());
+				case 'Key Binds':
+					// TODO
+			}
 		}
 
 		super.update(elapsed);
