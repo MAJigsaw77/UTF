@@ -138,7 +138,7 @@ class Global
 				return 4;
 		}
 
-		return 1;
+		return 4; // Default
 	}
 
 	public static function save():Void
