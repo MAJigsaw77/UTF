@@ -7,6 +7,7 @@ import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import openfl.Lib;
 
 class IntroMenu extends FlxState
 {
@@ -57,6 +58,12 @@ class IntroMenu extends FlxState
 			bt.scrollFactor.set();
 			choicesItems.add(bt);
 		}
+
+		var info:FlxText = new FlxText(0, FlxG.height - 16, 0, 'UTF v1.0.0 (c) MAJigsaw77 2023', 24);
+		info.font = AssetPaths.font('DTM-Mono.otf');
+		info.screenCenter(X);
+		info.scrollFactor.set();
+		add(info);
 
 		changeOption();
 		
