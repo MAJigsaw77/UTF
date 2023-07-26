@@ -47,19 +47,11 @@ class IntroMenu extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.anyJustPressed(Global.binds.get('confirm')))
-			FlxG.switchState(new Battle());
-
-		super.update(elapsed);
-	}
-
-	override function update(elapsed:Float):Void
-	{
 		if (FlxG.keys.justPressed.RIGHT)
 			changeOption(1);
 		else if (FlxG.keys.justPressed.LEFT)
 			changeOption(-1);
-		else if (FlxG.keys.anyJustPressed(Global.binds.get('continue')))
+		else if (FlxG.keys.anyJustPressed(Global.binds.get('confirm')))
 		{
 			if (choices[curOption] != 'Reset')
 				FlxG.sound.music.stop();
