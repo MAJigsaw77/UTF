@@ -48,6 +48,19 @@ class Settings extends FlxTransitionableState
 			optionsItems.add(opt);
 		}
 
+		var tobdogLine:FlxText = new FlxText(440, 240, 0, '', 32);
+		tobdogLine.text = switch (Global.getWeather())
+		{
+			case 1: 'cold outside\nbut stay warm\ninside of you'
+			case 2: 'spring time\nback to school'
+			case 3: 'try to withstand\nthe sun\'s life-\ngiving rays'
+			case 4: 'sweep a leaf\nsweep away a\ntroubles'
+		};
+		tobdogLine.font = AssetPaths.font('DTM-Mono.ttf');
+		tobdogLine.angle = -20;
+		tobdogLine.scrollFactor.set();
+		add(tobdogLine);
+
 		changeOption();
 
 		FlxG.sound.play(AssetPaths.music('harpnoise'), () -> FlxG.sound.playMusic(weatherMusic, 1.0, true));
