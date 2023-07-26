@@ -59,7 +59,7 @@ class Settings extends FlxTransitionableState
 		}
 		tobdogLine.font = AssetPaths.font('DTM-Mono.ttf');
 		tobdogLine.color = FlxColor.GRAY;
-		tobdogLine.angle = -20;
+		tobdogLine.angle = 20;
 		tobdogLine.scrollFactor.set();
 		add(tobdogLine);
 
