@@ -59,10 +59,10 @@ class AssetPaths
 				atlas.addNode(file, key.substring(key.lastIndexOf('/') + 1, key.length) + i);
 			else
 			{
-				atlas.addNode('flixel/images/logo/default.png', key.substring(key.lastIndexOf('/') + 1, key.length) + i);
-
 				FlxG.log.error("Couldn't find frame " + file);
-			)
+
+				atlas.addNode('flixel/images/logo/default.png', key.substring(key.lastIndexOf('/') + 1, key.length) + i);
+			}
 		}
 
 		return atlas.getAtlasFrames();
