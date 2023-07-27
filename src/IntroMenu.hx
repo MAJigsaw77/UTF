@@ -43,13 +43,13 @@ class IntroMenu extends FlxState
 			switch (choices[i])
 			{
 				case 'Continue':
-					bt.x = 150;
+					bt.x = 155;
 					bt.y = 220;
 				case 'Reset':
 					bt.x = 375;
 					bt.y = 220;
 				case 'Settings':
-					bt.x = 250;
+					bt.x = 255;
 					bt.y = 265;
 			}
 
