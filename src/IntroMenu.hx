@@ -46,7 +46,7 @@ class IntroMenu extends FlxState
 					bt.x = 155;
 					bt.y = 220;
 				case 'Reset':
-					bt.x = 375;
+					bt.x = 385;
 					bt.y = 220;
 				case 'Settings':
 					bt.x = 255;
