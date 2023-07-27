@@ -8,12 +8,11 @@ import flixel.FlxState;
 
 class Title extends FlxState
 {
-	var titleImage:FlxSprite;
 	var titleText:FlxText;
 
 	override function create():Void
 	{
-		titleImage = new FlxSprite(0, 0, AssetPaths.sprite('titleimage'));
+		var titleImage:FlxSprite = new FlxSprite(0, 0, AssetPaths.sprite('titleimage'));
 		titleImage.scale.set(2, 2);
 		titleImage.updateHitbox();
 		titleImage.screenCenter();
