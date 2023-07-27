@@ -59,7 +59,7 @@ class IntroMenu extends FlxState
 			choicesItems.add(bt);
 		}
 
-		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta.get('version')} (c) MAJigsaw77 2023', 14);
+		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta.get('version')} (c) MAJigsaw77 2023', 16);
 		info.alignment = 'center';
 		info.font = AssetPaths.font('Small.ttf');
 		info.color = FlxColor.GRAY;
