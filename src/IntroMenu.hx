@@ -35,7 +35,7 @@ class IntroMenu extends FlxState
 
 		choicesItems = new FlxTypedGroup<FlxText>();
 		add(choicesItems);
-		
+
 		for (i in 0...choices.length)
 		{
 			var bt:FlxText = new FlxText(0, 0, 0, choices[i], 32);
@@ -52,7 +52,7 @@ class IntroMenu extends FlxState
 					bt.x = 270;
 					bt.y = 265;
 			}
-	
+
 			bt.font = AssetPaths.font('DTM-Mono.ttf');
 			bt.ID = i;
 			bt.scrollFactor.set();
@@ -88,7 +88,7 @@ class IntroMenu extends FlxState
 				case 'Continue':
 					FlxG.switchState(new Battle());
 				case 'Reset':
-					// TODO
+				// TODO
 				case 'Settings':
 					FlxG.switchState(new Settings());
 			}

@@ -19,7 +19,7 @@ class Settings extends FlxTransitionableState
 		FlxTransitionableState.skipNextTransOut = true;
 
 		var weatherMusic:String = AssetPaths.music('options_fall');
-		
+
 		switch (Global.getWeather())
 		{
 			case 1:
@@ -76,8 +76,7 @@ class Settings extends FlxTransitionableState
 			changeOption(1);
 		else if (FlxG.keys.justPressed.DOWN)
 			changeOption(-1);
-		else if (FlxG.keys.anyJustPressed(Global.binds.get('confirm'))
-			&& (FlxG.sound.music != null && FlxG.sound.music.playing))
+		else if (FlxG.keys.anyJustPressed(Global.binds.get('confirm')) && (FlxG.sound.music != null && FlxG.sound.music.playing))
 		{
 			if (options[curOption] == 'Exit')
 				FlxG.sound.music.stop();

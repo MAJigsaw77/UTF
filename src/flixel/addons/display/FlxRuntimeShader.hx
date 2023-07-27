@@ -558,9 +558,9 @@ class FlxRuntimeShader extends FlxGraphicsShader
 						{
 							__hasColorTransform = parameter;
 						}
-	
+
 						Reflect.setField(__data, name, parameter);
-	
+
 						try
 						{
 							if (__isGenerated)

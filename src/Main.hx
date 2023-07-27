@@ -57,7 +57,7 @@ class Main extends Sprite
 			@:privateAccess
 			if (cam != null && (cam._filters != null && cam._filters.length > 0))
 			{
-				 // Shout out to Ne_Eo for bringing this to my attention.
+				// Shout out to Ne_Eo for bringing this to my attention.
 				var sprite:Sprite = cam.flashSprite;
 
 				if (sprite != null)
