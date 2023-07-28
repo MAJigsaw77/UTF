@@ -39,7 +39,7 @@ class Title extends FlxState
 	{
 		if (FlxG.keys.anyJustPressed(Global.binds.get('confirm')) && titleText.alpha == 1)
 			FlxG.switchState(new IntroMenu());
-		else if (FlxG.keys.firstJustPressed() != NONE)
+		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
 		{
 			if (letters == 'ball' && letters.length > 3)
 				return;
