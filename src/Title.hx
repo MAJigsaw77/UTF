@@ -48,7 +48,7 @@ class Title extends FlxState
 
 			letters += cast(FlxG.keys.firstJustPressed(), String).toLowerCase();
 
-			if (letters.contains('ball'))
+			if (letters.indexOf('ball') != 0)
 				FlxG.sound.play(AssetPaths.sound('ballchime'));
 		}
 
