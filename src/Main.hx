@@ -5,6 +5,9 @@ import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
 import haxe.CallStack;
+#if (hl && !debug)
+import hl.Api;
+#end
 import lime.system.System;
 import openfl.display.FPS;
 import openfl.display.Sprite;
@@ -21,13 +24,11 @@ class Main extends Sprite
 		super();
 
 		#if !debug
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onError);
-
+		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
 		#if cpp
-		untyped __global__.__hxcpp_set_critical_error_handler(function(message:String)
-		{
-			throw message;
-		});
+		untyped __global__.__hxcpp_set_critical_error_handler(onError);
+		#elseif hl
+		Api.setErrorHandler(onError);
 		#end
 		#end
 
@@ -76,7 +77,7 @@ class Main extends Sprite
 		}
 	}
 
-	private function onError(e:UncaughtErrorEvent):Void
+	private function onUncaughtError(e:UncaughtErrorEvent):Void
 	{
 		e.stopImmediatePropagation();
 
@@ -103,4 +104,11 @@ class Main extends Sprite
 		Lib.application.window.alert(stack.join('\n'), 'Error!');
 		System.exit(1);
 	}
+
+	#if (cpp || hl)
+	private function onError(message:Dynamic):Void
+	{
+		throw Std.string(message);
+	}
+	#end
 }
