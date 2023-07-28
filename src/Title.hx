@@ -41,12 +41,14 @@ class Title extends FlxState
 			FlxG.switchState(new IntroMenu());
 		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
 		{
+			var letter:String = FlxG.keys.firstJustPressed().toString();
+
 			if (letters == 'ball' && letters.length > 3)
 				return;
 			else if (letters.length > 3)
 				letters = '';
 
-			letters += Std.string(FlxG.keys.firstJustPressed()).toLowerCase();
+			letters += letter.toLowerCase();
 
 			#if debug
 			FlxG.log.notice('Typing $letters');
