@@ -50,7 +50,7 @@ class AssetPaths
 
 	public static function spritesheet(key:String, frames:Array<Int>):FlxAtlasFrames
 	{
-		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(key), true, FlxPoint.weak(0, 0), FlxPoint.weak(0, 0));
+		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(key), FlxPoint.weak(0, 0), FlxPoint.weak(0, 0));
 
 		for (i in frames)
 		{
@@ -59,7 +59,7 @@ class AssetPaths
 				atlas.addNode(file, key.substring(key.lastIndexOf('/') + 1, key.length) + i);
 			else
 			{
-				FlxG.log.error("Couldn't find frame " + file);
+				FlxG.log.error('Couldn\'t find frame $file');
 
 				atlas.addNode('flixel/images/logo/default.png', key.substring(key.lastIndexOf('/') + 1, key.length) + i);
 			}
