@@ -22,6 +22,13 @@ class Main extends Sprite
 
 		#if !debug
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onError);
+
+		#if cpp
+		untyped __global__.__hxcpp_set_critical_error_handler(function(message:String)
+		{
+			throw message;
+		});
+		#end
 		#end
 
 		FlxG.signals.gameResized.add(onResizeGame);
