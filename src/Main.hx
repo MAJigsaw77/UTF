@@ -5,7 +5,7 @@ import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
 import haxe.CallStack;
-#if (hl && !debug)
+#if hl
 import hl.Api;
 #end
 import lime.system.System;
@@ -25,11 +25,12 @@ class Main extends Sprite
 
 		#if !debug
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
+		#end
+
 		#if cpp
 		untyped __global__.__hxcpp_set_critical_error_handler(onError);
 		#elseif hl
 		Api.setErrorHandler(onError);
-		#end
 		#end
 
 		FlxG.signals.gameResized.add(onResizeGame);
