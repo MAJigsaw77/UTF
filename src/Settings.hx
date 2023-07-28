@@ -30,7 +30,7 @@ class Settings extends FlxTransitionableState
 
 		FlxG.sound.cache(weatherMusic);
 
-		var settings:FlxText = new FlxText(0, 20, 0, "SETTINGS", 52);
+		var settings:FlxText = new FlxText(0, 20, 0, 'SETTINGS', 52);
 		settings.font = AssetPaths.font('DTM-Mono.ttf');
 		settings.screenCenter(X);
 		settings.scrollFactor.set();

@@ -69,7 +69,7 @@ class Script
 			if (Assets.exists(file))
 				interp.execute(parser.parseString(Assets.getText(file), file));
 			else
-				throw 'script $file' + "doesn't exist!";
+				throw 'script $file doesn\'t exist!';
 		}
 		catch (e:Exception)
 			FlxG.log.error(e.message);

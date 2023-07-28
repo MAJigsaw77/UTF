@@ -34,7 +34,7 @@ class Global
 	public static var item:Array<String> = [];
 
 	// Keybinds.
-	public static var binds:Map<String, Array<FlxKey>> = ['confirm' => [Z, ENTER], 'cancel' => [X, SHIFT], "menu" => [C, CONTROL]];
+	public static var binds:Map<String, Array<FlxKey>> = ['confirm' => [Z, ENTER], 'cancel' => [X, SHIFT], 'menu' => [C, CONTROL]];
 
 	public static function levelUp():Bool
 	{

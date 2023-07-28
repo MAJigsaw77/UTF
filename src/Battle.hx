@@ -31,7 +31,7 @@ class Battle extends FlxTransitionableState
 
 	override function create():Void
 	{
-		stats = new FlxText(30, 400, 0, Global.name + "   LV " + Global.lv, 22);
+		stats = new FlxText(30, 400, 0, Global.name + '   LV ' + Global.lv, 22);
 		stats.font = AssetPaths.font('Small.ttf');
 		stats.scrollFactor.set();
 		add(stats);
@@ -40,7 +40,7 @@ class Battle extends FlxTransitionableState
 		hpName.scrollFactor.set();
 		add(hpName);
 
-		hpBar = new FlxBar(hpName.x + 35, hpName.y - 5, LEFT_TO_RIGHT, Std.int(Global.maxHp * 1.2), 20, Global, "hp", 0, Global.maxHp);
+		hpBar = new FlxBar(hpName.x + 35, hpName.y - 5, LEFT_TO_RIGHT, Std.int(Global.maxHp * 1.2), 20, Global, 'hp', 0, Global.maxHp);
 		hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
 		hpBar.emptyCallback = () -> trace('GAME OVER');
 		hpBar.scrollFactor.set();
@@ -141,7 +141,7 @@ class Battle extends FlxTransitionableState
 						writer.msg = {text: '* ${monster.data.name}', speed: 4};
 
 					/*var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + (monster.data.name.length * 16), writer.y, LEFT_TO_RIGHT,
-							Std.int(monster.data.hp / monster.data.maxHp * 100), 16, monster.data, "hp", 0, monster.data.maxHp);
+							Std.int(monster.data.hp / monster.data.maxHp * 100), 16, monster.data, 'hp', 0, monster.data.maxHp);
 						monsterHpBar.createFilledBar(FlxColor.RED, FlxColor.LIME);
 						monsterHpBar.emptyCallback = () -> trace('YOU WON!');
 						monsterHpBar.scrollFactor.set();

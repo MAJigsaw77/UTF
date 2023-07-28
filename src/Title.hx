@@ -20,7 +20,7 @@ class Title extends FlxState
 		titleImage.scrollFactor.set();
 		add(titleImage);
 
-		titleText = new FlxText(0, 360, 0, "[PRESS Z OR ENTER]", 16);
+		titleText = new FlxText(0, 360, 0, '[PRESS Z OR ENTER]', 16);
 		titleText.font = AssetPaths.font('Small.ttf');
 		titleText.color = FlxColor.GRAY;
 		titleText.alpha = 0.0001;

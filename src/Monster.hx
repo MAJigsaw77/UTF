@@ -19,7 +19,7 @@ class Monster extends FlxSpriteGroup
 		else
 		{
 			data = {
-				name: "Error",
+				name: 'Error',
 				hp: 50,
 				maxHp: 50,
 				attack: 0,
