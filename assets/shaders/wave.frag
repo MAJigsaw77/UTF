@@ -35,8 +35,8 @@ vec2 sineWave(vec2 pt)
   }
   else if (effectType == EFFECT_TYPE_FLAG)
   {
-    y = sin(pt.y * uFrequency + 10.0 * pt.x + uTime * uSpeed) * uWaveAmplitude;
     x = sin(pt.x * uFrequency + 5.0 * pt.y + uTime * uSpeed) * uWaveAmplitude;
+    y = sin(pt.y * uFrequency + 10.0 * pt.x + uTime * uSpeed) * uWaveAmplitude;
   }
 
   return vec2(pt.x + x, pt.y + y);
