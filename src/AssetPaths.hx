@@ -50,7 +50,7 @@ class AssetPaths
 
 	public static function spritesheet(key:String, frames:Array<Int>):FlxAtlasFrames
 	{
-		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(key), FlxPoint.weak(0, 0));
+		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(key), true, FlxPoint.weak(0, 0), FlxPoint.weak(0, 0));
 
 		for (i in frames)
 		{
