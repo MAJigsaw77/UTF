@@ -39,7 +39,7 @@ class Title extends FlxState
 	{
 		if (FlxG.keys.anyJustPressed(Global.binds.get('confirm')) && titleText.alpha == 1)
 			FlxG.switchState(new IntroMenu());
-		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
+		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE && titleText.alpha == 1)
 		{
 			var letter:String = cast(FlxG.keys.firstJustPressed(), FlxKey).toString();
 
