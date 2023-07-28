@@ -41,8 +41,6 @@ class Script
 		'AssetPaths' => AssetPaths
 	];
 
-	public var file(default, null):String = 'hscript';
-
 	var parser:Parser;
 	var interp:Interp;
 
@@ -69,14 +67,12 @@ class Script
 		try
 		{
 			if (Assets.exists(file))
-				interp.execute(parser.parseString(Assets.getText(file)));
+				interp.execute(parser.parseString(Assets.getText(file), file));
 			else
 				throw 'script $file' + "doesn't exist!";
 		}
 		catch (e:Exception)
-			FlxG.log.error(StringTools.replace(e.message, 'hscript', file));
-
-		this.file = file;
+			FlxG.log.error(e.message);
 	}
 
 	public function set(name:String, val:Dynamic):Void
@@ -115,7 +111,7 @@ class Script
 				return interp.call(null, get(fname), args == null ? [] : args);
 		}
 		catch (e:Exception)
-			FlxG.log.error(StringTools.replace(e.message, 'hscript', file));
+			FlxG.log.error(e.message);
 
 		return null;
 	}
