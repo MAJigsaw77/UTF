@@ -56,7 +56,7 @@ class AssetPaths
 		{
 			var file:String = AssetPaths.sprite('${key}_$i');
 			if (Assets.exists(file))
-				atlas.addNode(file, key.substring(key.lastIndexOf('/') + 1, key.length) + i);
+				atlas.addNode(Assets.getBitmapData(file, false), key.substring(key.lastIndexOf('/') + 1, key.length) + i);
 			else
 			{
 				FlxG.log.error('Couldn\'t find frame $file');
