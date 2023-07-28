@@ -1,5 +1,6 @@
 package;
 
+import flixel.input.keyboard.FlxKey;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
@@ -32,10 +33,22 @@ class Title extends FlxState
 		super.create();
 	}
 
+	var letters:String = '';
+
 	override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.anyJustPressed(Global.binds.get('confirm')) && titleText.alpha == 1)
 			FlxG.switchState(new IntroMenu());
+		else if (FlxG.keys.firstJustPressed() != NONE)
+		{
+			if (letters.length > 3)
+				letters = '';
+
+			letters += cast(FlxG.keys.firstJustPressed(), String).toLowerCase();
+
+			if (letters.contains('ball'))
+				FlxG.sound.play(AssetPaths.sound('ballchimie'));
+		}
 
 		super.update(elapsed);
 	}
