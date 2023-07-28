@@ -46,7 +46,7 @@ class Title extends FlxState
 			else if (letters.length > 3)
 				letters = '';
 
-			letters += cast(FlxG.keys.firstJustPressed(), String).toLowerCase();
+			letters += Std.string(FlxG.keys.firstJustPressed()).toLowerCase();
 
 			#if debug
 			FlxG.log.notice('Typing $letters');
