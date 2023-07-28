@@ -41,7 +41,9 @@ class Title extends FlxState
 			FlxG.switchState(new IntroMenu());
 		else if (FlxG.keys.firstJustPressed() != NONE)
 		{
-			if (letters.length > 3)
+			if (letters == 'ball' && letters.length > 3)
+				return;
+			else if (letters.length > 3)
 				letters = '';
 
 			letters += cast(FlxG.keys.firstJustPressed(), String).toLowerCase();
