@@ -5,33 +5,19 @@ import flixel.FlxG;
 
 typedef DialogueData =
 {
-	var text:String;
-	var speed:Float;
-}
-
-typedef WeaponData =
-{
-	var name:String;
-	var attack:Float;
-	var description:String;
-}
-
-typedef ArmorData =
-{
-	var name:String;
-	var defense:Float;
-	var description:String;
+	text:String,
+	speed:Float
 }
 
 typedef MonsterData =
 {
-	var name:String;
-	var hp:Int;
-	var maxHp:Int;
-	var attack:Float;
-	var defense:Float;
-	var xpReward:Int;
-	var goldReward:Int;
+	name:String,
+	hp:Int,
+	maxHp:Int,
+	attack:Float,
+	defense:Float,
+	xpReward:Int,
+	goldReward:Int
 }
 
 class Global
@@ -46,10 +32,6 @@ class Global
 	public static var xp:Int = 0;
 	public static var lv:Int = 1;
 	public static var item:Array<String> = [];
-
-	// Engine special.
-	public static var weapon:WeaponData;
-	public static var armor:ArmorData;
 
 	// Keybinds.
 	public static var binds:Map<String, Array<FlxKey>> = ['confirm' => [Z, ENTER], 'cancel' => [X, SHIFT], "menu" => [C, CONTROL]];
