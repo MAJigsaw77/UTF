@@ -17,6 +17,7 @@ import haxe.macro.Context;
 import haxe.Exception;
 import hscript.Interp;
 import hscript.Parser;
+import openfl.filters.ShaderFilter;
 import openfl.utils.Assets;
 import openfl.Lib;
 
@@ -38,7 +39,10 @@ class Script
 		'FlxEase' => FlxEase,
 		'FlxTween' => FlxTween,
 		'FlxTimer' => FlxTimer,
-		'AssetPaths' => AssetPaths
+		'AssetPaths' => AssetPaths,
+		'Assets' => Assets,
+		'ShaderFilter' => ShaderFilter,
+		'Lib' => Lib
 	];
 
 	var parser:Parser;
