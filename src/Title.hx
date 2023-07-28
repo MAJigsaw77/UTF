@@ -49,7 +49,7 @@ class Title extends FlxState
 			letters += cast(FlxG.keys.firstJustPressed(), String).toLowerCase();
 
 			#if debug
-			FlxG.log.notice('Typing ${letters}');
+			FlxG.log.notice('Typing $letters');
 			#end
 
 			if (letters.indexOf('ball') != -1)
