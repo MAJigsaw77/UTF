@@ -6,7 +6,7 @@ const int EFFECT_TYPE_HEAT_WAVE_HORIZONTAL = 2;
 const int EFFECT_TYPE_HEAT_WAVE_VERTICAL = 3;
 const int EFFECT_TYPE_FLAG = 4;
 
-uniform int uuEffectType;
+uniform int uEffectType;
 uniform float uTime;
 uniform float uSpeed;
 uniform float uFrequency;
