@@ -98,8 +98,12 @@ class Settings extends FlxTransitionableState
 		super.create();
 	}
 
+	var siner:Int = 0;
+	
 	override function update(elapsed:Float):Void
 	{
+		siner++;
+
 		if (FlxG.keys.justPressed.UP)
 			changeOption(1);
 		else if (FlxG.keys.justPressed.DOWN)
@@ -119,6 +123,8 @@ class Settings extends FlxTransitionableState
 		}
 
 		super.update(elapsed);
+
+		tobdogLine.setPosition(440 + Math.sin(siner / 12), 240 + Math.cos(siner / 12));
 	}
 
 	private function changeOption(num:Int = 0):Void
