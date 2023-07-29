@@ -10,6 +10,7 @@ class Startup extends FlxState
 {
 	override function create():Void
 	{
+		Data.load();
 		Global.load();
 		Mods.load();
 
