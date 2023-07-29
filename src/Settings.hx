@@ -14,6 +14,9 @@ class Settings extends FlxTransitionableState
 	final options:Array<String> = ['Exit', 'Key Binds'];
 	var optionsItems:FlxTypedGroup<FlxText>;
 
+	var tobdogWeather:FlxSprite;
+	var tobdogLine:FlxText;
+
 	override function create():Void
 	{
 		FlxTransitionableState.skipNextTransOut = true;
@@ -48,7 +51,27 @@ class Settings extends FlxTransitionableState
 			optionsItems.add(opt);
 		}
 
-		var tobdogLine:FlxText = new FlxText(440, 240, 0, '', 32);
+		tobdogWeather = new FlxSprite(500, 436);
+
+		switch (Global.getWeather())
+		{
+			case 1:
+				tobdogWeather.loadGraphic(AssetPaths.sprite('tobdog_winter'));
+			case 2:
+				tobdogWeather.frames = AssetPaths.spritesheet('tobdog_spring', [0, 1, 2, 3]);
+			case 3:
+				tobdogWeather.frames = AssetPaths.spritesheet('tobdog_summer', [0, 1]);
+				tobdogWeather.y += 14;
+			case 4:
+				tobdogWeather.loadGraphic(AssetPaths.sprite('tobdog_autumn'));
+		}
+
+		tobdogWeather.scale.set(2, 2);
+		tobdogWeather.updateHitbox();
+		tobdogWeather.scrollFactor.set();
+		add(tobdogWeather);
+
+		tobdogLine = new FlxText(440, 240, 0, '', 32);
 		tobdogLine.text = switch (Global.getWeather())
 		{
 			case 1: 'cold outside\nbut stay warm\ninside of you';
