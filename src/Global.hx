@@ -6,6 +6,7 @@ import flixel.FlxG;
 typedef DialogueData =
 {
 	text:String,
+	?face:String,
 	speed:Float
 }
 
