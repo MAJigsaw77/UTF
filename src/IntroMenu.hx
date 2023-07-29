@@ -104,7 +104,7 @@ class IntroMenu extends FlxState
 			changeOption(1);
 		else if (FlxG.keys.justPressed.LEFT)
 			changeOption(-1);
-		else if (FlxG.keys.anyJustPressed(Global.binds.get('confirm')))
+		else if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')))
 		{
 			if (choices[curChoice] != 'Reset')
 				FlxG.sound.music.stop();
