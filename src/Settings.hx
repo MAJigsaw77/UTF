@@ -7,6 +7,7 @@ import flixel.sound.FlxSound;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
+import flixel.FlxSprite;
 
 class Settings extends FlxTransitionableState
 {
