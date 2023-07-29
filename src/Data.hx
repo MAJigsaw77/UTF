@@ -18,7 +18,7 @@ class Data
 
 		save.data.settings = settings;
 		save.data.binds = binds;
-                save.flush();
+                save.close();
 	}
 
 	public static function load():Void
@@ -33,5 +33,7 @@ class Data
 
                 if (save.data.binds != null)
                         binds = save.data.binds;
+
+                save.destroy();
 	}
 }
