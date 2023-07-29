@@ -23,7 +23,7 @@ class Macros
         {
 		try
                 {
-			var proc = new Process('git', ['rev-list', 'HEAD', '--count']);
+			var proc = new Process('git', ['rev-list', '--count', 'HEAD']);
 			proc.exitCode(true);
 			return macro $v{Std.parseInt(proc.stdout.readLine())};
 		}
