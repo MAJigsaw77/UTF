@@ -93,7 +93,7 @@ class Settings extends FlxTransitionableState
 
 		changeOption();
 
-		FlxG.sound.play(AssetPaths.music('harpnoise'), () -> FlxG.sound.playMusic(weatherMusic, 1.0, true));
+		FlxG.sound.play(AssetPaths.music('harpnoise'), () -> FlxG.sound.playMusic(weatherMusic, 0.8, true));
 
 		super.create();
 	}
