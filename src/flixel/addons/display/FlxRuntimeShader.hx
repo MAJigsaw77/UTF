@@ -43,11 +43,10 @@ class FlxRuntimeShader extends FlxGraphicsShader
 	private static final BASE_VERTEX_BODY:String = "openfl_Alphav = openfl_Alpha;
 		openfl_TextureCoordv = openfl_TextureCoord;
 
-		if (openfl_HasColorTransform) {
-
+		if (openfl_HasColorTransform)
+		{
 			openfl_ColorMultiplierv = openfl_ColorMultiplier;
 			openfl_ColorOffsetv = openfl_ColorOffset / 255.0;
-
 		}
 
 		gl_Position = openfl_Matrix * openfl_Position;";
@@ -87,6 +86,7 @@ class FlxRuntimeShader extends FlxGraphicsShader
 		vec4 flixel_texture2D(sampler2D bitmap, vec2 coord)
 		{
 			vec4 color = texture2D(bitmap, coord);
+
 			if (!hasTransform)
 			{
 				return color;
@@ -116,17 +116,18 @@ class FlxRuntimeShader extends FlxGraphicsShader
 			{
 				return vec4(color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
 			}
+
 			return vec4(0.0, 0.0, 0.0, 0.0);
 		}";
 
-	private static final BASE_FRAGMENT_BODY:String = "vec4 color = texture2D (bitmap, openfl_TextureCoordv);
+	private static final BASE_FRAGMENT_BODY:String = "vec4 color = texture2D(bitmap, openfl_TextureCoordv);
 
-		if (color.a == 0.0) {
-
+		if (color.a == 0.0)
+		{
 			gl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);
-
-		} else if (openfl_HasColorTransform) {
-
+		}
+		else if (openfl_HasColorTransform)
+		{
 			color = vec4 (color.rgb / color.a, color.a);
 
 			mat4 colorMultiplier = mat4 (0);
@@ -137,20 +138,18 @@ class FlxRuntimeShader extends FlxGraphicsShader
 
 			color = clamp (openfl_ColorOffsetv + (color * colorMultiplier), 0.0, 1.0);
 
-			if (color.a > 0.0) {
-
+			if (color.a > 0.0)
+			{
 				gl_FragColor = vec4 (color.rgb * color.a * openfl_Alphav, color.a * openfl_Alphav);
-
-			} else {
-
-				gl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);
-
 			}
-
-		} else {
-
+			else
+			{
+				gl_FragColor = vec4 (0.0, 0.0, 0.0, 0.0);
+			}
+		}
+		else
+		{
 			gl_FragColor = color * openfl_Alphav;
-
 		}";
 
 	private static final BASE_FRAGMENT_SOURCE:String = "#pragma header
