@@ -15,7 +15,7 @@ using StringTools;
 
 /**
  * An wrapper for Flixel/OpenFL's shaders, which takes fragment and vertex source
- * in the constructor instead of using macros, so it can be provided data at runtime.
+ * in the constructor instead of using macros so it can be provided at runtime.
  * 
  * @author MasterEric
  * @author Mihai Alexandru (M.A. Jigsaw)
