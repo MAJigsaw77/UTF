@@ -23,7 +23,6 @@ typedef MonsterData =
 
 class Global
 {
-	// OG from Undertale itself.
 	public static var name:String = 'CHARA';
 	public static var hp:Int = 20;
 	public static var maxHp:Int = 20;
@@ -33,9 +32,6 @@ class Global
 	public static var xp:Int = 0;
 	public static var lv:Int = 1;
 	public static var item:Array<String> = [];
-
-	// Keybinds.
-	public static var binds:Map<String, Array<FlxKey>> = ['confirm' => [Z, ENTER], 'cancel' => [X, SHIFT], 'menu' => [C, CONTROL]];
 
 	public static function levelUp():Bool
 	{
@@ -158,11 +154,5 @@ class Global
 
 		if (FlxG.save.data.lv != null)
 			lv = FlxG.save.data.lv;
-
-		if (FlxG.save.data.volume != null)
-			FlxG.sound.volume = FlxG.save.data.volume;
-
-		if (FlxG.save.data.mute != null)
-			FlxG.sound.muted = FlxG.save.data.mute;
 	}
 }
