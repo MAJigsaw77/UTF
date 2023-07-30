@@ -69,8 +69,8 @@ class FPS extends TextField
 			times.shift();
 
 		var currentFrames:Int = times.length;
-		if (currentFrames > Std.int(Lib.current.stage.frameRate))
-			currentFPS = Std.int(Lib.current.stage.frameRate);
+		if (currentFrames > Std.int(FlxG.stage.frameRate))
+			currentFPS = Std.int(FlxG.stage.frameRate);
 		else
 			currentFPS = currentFrames;
 
