@@ -3,7 +3,17 @@ package;
 import flixel.group.FlxSpriteGroup;
 import haxe.Json;
 import openfl.utils.Assets;
-import Global;
+
+typedef MonsterData =
+{
+	name:String,
+	hp:Int,
+	maxHp:Int,
+	attack:Float,
+	defense:Float,
+	xpReward:Int,
+	goldReward:Int
+}
 
 class Monster extends FlxSpriteGroup
 {
