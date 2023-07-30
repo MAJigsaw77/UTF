@@ -80,7 +80,7 @@ class Settings extends FlxTransitionableState
 		{
 			case 1: 'cold outside\nbut stay warm\ninside of you';
 			case 2: 'spring time\nback to school';
-			case 3: "try to withstand\nthe sun's life-\ngiving rays";
+			case 3: 'try to withstand\nthe sun\'s life-\ngiving rays';
 			case 4: 'sweep a leaf\nsweep away a\ntroubles';
 			default: '';
 		}
@@ -161,6 +161,6 @@ class Settings extends FlxTransitionableState
 			Data.save();
 		}
 		else
-			FlxG.log.error("The setting " + '"$name"' + " doesn't exist");
+			FlxG.log.error('The setting "$name" doesn\'t exist');
 	}
 }
