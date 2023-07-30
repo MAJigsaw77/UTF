@@ -31,7 +31,7 @@ class Data
 		if (!save.isEmpty())
 		{
 			if (save.data.settings != null)
-				binds = save.data.settings;
+				settings = save.data.settings;
 
 			if (save.data.binds != null)
 				binds = save.data.binds;
