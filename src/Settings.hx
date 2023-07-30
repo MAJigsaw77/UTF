@@ -161,6 +161,6 @@ class Settings extends FlxTransitionableState
 			Data.save();
 		}
 		else
-			FlxG.log.error("The setting " + name + " doesn't exist");
+			FlxG.log.error("The setting " + '"$name"' + " doesn't exist");
 	}
 }
