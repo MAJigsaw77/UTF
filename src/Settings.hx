@@ -75,7 +75,7 @@ class Settings extends FlxTransitionableState
 		tobdogWeather.scrollFactor.set();
 		add(tobdogWeather);
 
-		tobdogLine = new FlxText(440, 240, 0, '', 32);
+		tobdogLine = new FlxText(430, 260, 0, '', 32);
 		tobdogLine.text = switch (Global.getWeather())
 		{
 			case 1: 'cold outside\nbut stay warm\ninside of you';
@@ -127,7 +127,7 @@ class Settings extends FlxTransitionableState
 
 		super.update(elapsed);
 
-		tobdogLine.setPosition(440 + Math.sin(siner / 12), 240 + Math.cos(siner / 12));
+		tobdogLine.setPosition(430 + Math.sin(siner / 12), 260 + Math.cos(siner / 12));
 	}
 
 	private function changeOption(num:Int = 0):Void
