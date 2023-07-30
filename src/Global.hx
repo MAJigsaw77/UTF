@@ -1,6 +1,8 @@
 package;
 
+import flixel.util.FlxSave;
 import flixel.FlxG;
+import openfl.Lib;
 
 class Global
 {
@@ -13,6 +15,61 @@ class Global
 	public static var xp:Int = 0;
 	public static var lv:Int = 1;
 	public static var item:Array<String> = [];
+
+	public static function save():Void
+	{
+		var save:FlxSave = new FlxSave();
+
+		@:privateAccess
+		save.bind('file', FlxSave.validate(Lib.application.meta.get('file')));
+
+		save.data.name = name;
+		save.data.hp = hp;
+		save.data.maxHp = maxHp;
+		save.data.attack = attack;
+		save.data.defense = defense;
+		save.data.gold = gold;
+		save.data.xp = xp;
+		save.data.lv = lv;
+		save.close();
+	}
+
+	public static function load():Void
+	{
+		var save:FlxSave = new FlxSave();
+
+		@:privateAccess
+		save.bind('file', FlxSave.validate(Lib.application.meta.get('file')));
+
+		if (!save.isEmpty())
+		{
+			if (save.data.name != null)
+				name = save.data.name;
+
+			if (save.data.hp != null)
+				hp = save.data.hp;
+
+			if (save.data.maxHp != null)
+				maxHp = save.data.maxHp;
+
+			if (save.data.attack != null)
+				attack = save.data.attack;
+
+			if (save.data.defense != null)
+				defense = save.data.defense;
+
+			if (save.data.gold != null)
+				gold = save.data.gold;
+
+			if (save.data.xp != null)
+				xp = save.data.xp;
+
+			if (save.data.lv != null)
+				lv = save.data.lv;
+		}
+
+		save.destroy();
+	}
 
 	public static function levelUp():Bool
 	{
@@ -95,45 +152,5 @@ class Global
 		}
 
 		return 0; // Default
-	}
-
-	public static function save():Void
-	{
-		FlxG.save.data.name = name;
-		FlxG.save.data.hp = hp;
-		FlxG.save.data.maxHp = maxHp;
-		FlxG.save.data.attack = attack;
-		FlxG.save.data.defense = defense;
-		FlxG.save.data.gold = gold;
-		FlxG.save.data.xp = xp;
-		FlxG.save.data.lv = lv;
-		FlxG.save.flush();
-	}
-
-	public static function load():Void
-	{
-		if (FlxG.save.data.name != null)
-			name = FlxG.save.data.name;
-
-		if (FlxG.save.data.hp != null)
-			hp = FlxG.save.data.hp;
-
-		if (FlxG.save.data.maxHp != null)
-			maxHp = FlxG.save.data.maxHp;
-
-		if (FlxG.save.data.attack != null)
-			attack = FlxG.save.data.attack;
-
-		if (FlxG.save.data.defense != null)
-			defense = FlxG.save.data.defense;
-
-		if (FlxG.save.data.gold != null)
-			gold = FlxG.save.data.gold;
-
-		if (FlxG.save.data.xp != null)
-			xp = FlxG.save.data.xp;
-
-		if (FlxG.save.data.lv != null)
-			lv = FlxG.save.data.lv;
 	}
 }
