@@ -20,7 +20,7 @@ import openfl.Lib;
 
 class Script
 {
-	public static var classes(default, null):Map<String, Dynamic> = [
+	public static final classes(default, null):Map<String, Dynamic> = [
 		'Date' => Date,
 		'Math' => Math,
 		'Std' => Std,
