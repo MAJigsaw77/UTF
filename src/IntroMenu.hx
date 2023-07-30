@@ -25,7 +25,7 @@ class IntroMenu extends FlxState
 		bg.scrollFactor.set();
 		add(bg);
 
-		var flowey:FlxSprite = new FlxSprite(0, 358);
+		var flowey:FlxSprite = new FlxSprite(0, 348);
 		flowey.frames = AssetPaths.spritesheet('flowey', [1]);
 		flowey.scale.set(2, 2);
 		flowey.updateHitbox();
