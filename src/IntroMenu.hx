@@ -65,14 +65,14 @@ class IntroMenu extends FlxState
 			switch (choices[i])
 			{
 				case 'Continue':
-					bt.x = 155;
-					bt.y = 220;
+					bt.x = 170;
+					bt.y = 200;
 				case 'Reset':
 					bt.x = 385;
-					bt.y = 220;
+					bt.y = 200;
 				case 'Settings':
 					bt.x = 255;
-					bt.y = 265;
+					bt.y = 250;
 			}
 
 			bt.font = AssetPaths.font('DTM-Sans.ttf');
