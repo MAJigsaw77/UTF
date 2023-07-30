@@ -46,7 +46,7 @@ class Settings extends FlxTransitionableState
 		for (i in 0...options.length)
 		{
 			var opt:FlxText = new FlxText(40, 80 + i * 30, 0, options[i].toUpperCase(), 32);
-			opt.font = AssetPaths.font('DTM-Mono.ttf');
+			opt.font = AssetPaths.font('DTM-Sans.ttf');
 			opt.ID = i;
 			opt.scrollFactor.set();
 			optionsItems.add(opt);
@@ -84,7 +84,7 @@ class Settings extends FlxTransitionableState
 			case 4: 'sweep a leaf\nsweep away a\ntroubles';
 			default: '';
 		}
-		tobdogLine.font = AssetPaths.font('DTM-Mono.ttf');
+		tobdogLine.font = AssetPaths.font('DTM-Sans.ttf');
 		tobdogLine.color = FlxColor.GRAY;
 		tobdogLine.angle = 20;
 		tobdogLine.scrollFactor.set();
