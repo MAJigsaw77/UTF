@@ -84,11 +84,12 @@ class Main extends Sprite
 		}
 	}
 
-	private function onUncaughtError(e:UncaughtErrorEvent):Void
+	private function onUncaughtError(event:UncaughtErrorEvent):Void
 	{
-		e.stopImmediatePropagation();
+		event.preventDefault();
+		event.stopImmediatePropagation();
 
-		final stack:Array<String> = [Std.string(e.error)];
+		final stack:Array<String> = [Std.string(event.error)];
 
 		for (item in CallStack.exceptionStack(true))
 		{
