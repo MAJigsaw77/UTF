@@ -5,9 +5,6 @@ import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
 import haxe.CallStack;
-#if hl
-import hl.Api;
-#end
 import lime.system.System;
 import openfl.display.FPS;
 import openfl.display.Sprite;
@@ -27,12 +24,6 @@ class Main extends Sprite
 
 		#if !debug
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
-		#end
-
-		#if cpp
-		untyped __global__.__hxcpp_set_critical_error_handler(onError);
-		#elseif hl
-		Api.setErrorHandler(onError);
 		#end
 
 		FlxG.signals.gameResized.add(onResizeGame);
@@ -62,6 +53,35 @@ class Main extends Sprite
 		addChild(fps);
 	}
 
+	private function onUncaughtError(event:UncaughtErrorEvent):Void
+	{
+		event.preventDefault();
+		event.stopImmediatePropagation();
+
+		var log:Array<String> = [Std.string(event.error)];
+
+		for (item in CallStack.exceptionStack(true))
+		{
+			switch (item)
+			{
+				case CFunction:
+					log.push('C Function');
+				case Module(m):
+					log.push('Module [$m]');
+				case FilePos(s, file, line, column):
+					log.push('$file [line $line]');
+				case Method(classname, method):
+					log.push('$classname [method $method]');
+				case LocalFunction(name):
+					log.push('Local Function [$name]');
+			}
+		}
+
+		Sys.println(log.join('\n'));
+		Lib.application.window.alert(log.join('\n'), 'Error!');
+		System.exit(1);
+	}
+
 	private function onResizeGame(width:Int, height:Int):Void
 	{
 		if (FlxG.cameras == null)
@@ -83,40 +103,4 @@ class Main extends Sprite
 			}
 		}
 	}
-
-	private function onUncaughtError(event:UncaughtErrorEvent):Void
-	{
-		event.preventDefault();
-		event.stopImmediatePropagation();
-
-		final stack:Array<String> = [Std.string(event.error)];
-
-		for (item in CallStack.exceptionStack(true))
-		{
-			switch (item)
-			{
-				case CFunction:
-					stack.push('C Function');
-				case Module(m):
-					stack.push('Module [$m]');
-				case FilePos(s, file, line, column):
-					stack.push('$file [line $line]');
-				case Method(classname, method):
-					stack.push('$classname [method $method]');
-				case LocalFunction(name):
-					stack.push('Local Function [$name]');
-			}
-		}
-
-		Sys.println(stack.join('\n'));
-		Lib.application.window.alert(stack.join('\n'), 'Error!');
-		System.exit(1);
-	}
-
-	#if (cpp || hl)
-	private function onError(message:Dynamic):Void
-	{
-		throw Std.string(message);
-	}
-	#end
 }
