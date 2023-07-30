@@ -84,22 +84,31 @@ class Main extends Sprite
 
 	private inline function onResizeGame(width:Int, height:Int):Void
 	{
-		if (FlxG.cameras == null)
-			return;
+		if (FlxG.cameras != null)
+		{
+			for (cam in FlxG.cameras.list)
+			{
+				@:privateAccess
+				if (cam != null && (cam._filters != null && cam._filters.length > 0))
+				{
+					// Shout out to Ne_Eo for bringing this to my attention.
+					var sprite:Sprite = cam.flashSprite;
+	
+					if (sprite != null)
+					{
+						sprite.__cacheBitmap = null;
+						sprite.__cacheBitmapData = null;
+					}
+				}
+			}
+		}
 
-		for (cam in FlxG.cameras.list)
+		if (FlxG.game != null)
 		{
 			@:privateAccess
-			if (cam != null && (cam._filters != null && cam._filters.length > 0))
 			{
-				// Shout out to Ne_Eo for bringing this to my attention.
-				var sprite:Sprite = cam.flashSprite;
-
-				if (sprite != null)
-				{
-					sprite.__cacheBitmap = null;
-					sprite.__cacheBitmapData = null;
-				}
+				FlxG.game.__cacheBitmap = null;
+				FlxG.game.__cacheBitmapData = null;
 			}
 		}
 	}
