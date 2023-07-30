@@ -12,7 +12,7 @@ import flixel.FlxSprite;
 class Settings extends FlxTransitionableState
 {
 	var curOption:Int = 0;
-	final options:Array<String> = ['Exit', 'Key Binds'];
+	final options:Array<String> = ['Exit', 'FPS Display', 'Key Binds', 'Reset to Default'];
 	var optionsItems:FlxTypedGroup<FlxText>;
 
 	var tobdogWeather:FlxSprite;
@@ -86,7 +86,7 @@ class Settings extends FlxTransitionableState
 		}
 		tobdogLine.font = AssetPaths.font('DTM-Mono.ttf');
 		tobdogLine.color = FlxColor.GRAY;
-		tobdogLine.angle = 20;
+		tobdogLine.angle = 40;
 		tobdogLine.scrollFactor.set();
 		add(tobdogLine);
 
@@ -118,7 +118,17 @@ class Settings extends FlxTransitionableState
 					FlxG.switchState(new IntroMenu());
 				case 'Key Binds':
 					// TODO
+				case 'FPS Display':
+					Data.settings.set('fps', !Data.settings.get('fps'));
+
+					Main.fps.visible = Data.settings.get('fps');
+				case 'Reset to Default':
+					Data.settings.set('fps', #if debug true #else false #end);
+
+					Main.fps.visible = Data.settings.get('fps');
 			}
+
+			Data.save();
 		}
 
 		super.update(elapsed);
