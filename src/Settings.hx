@@ -149,7 +149,7 @@ class Settings extends FlxTransitionableState
 		{
 			switch (name)
 			{
-				case 'fps';
+				case 'fps':
 					if (reset)
 						Data.settings.set('fps', #if debug true #else false #end);
 					else
