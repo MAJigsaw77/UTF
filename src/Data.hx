@@ -6,8 +6,8 @@ import openfl.Lib;
 
 class Data
 {
-	public static var settings:Map<String, Dynamic> = ['fps' => false];
-	public static var binds:Map<String, Array<FlxKey>> = ['confirm' => [Z, ENTER], 'cancel' => [X, SHIFT], 'menu' => [C, CONTROL]];
+	public static final settings:Map<String, Dynamic> = ['fps' => false];
+	public static final binds:Map<String, Array<FlxKey>> = ['confirm' => [Z, ENTER], 'cancel' => [X, SHIFT], 'menu' => [C, CONTROL]];
 
 	public static function save():Void
 	{
