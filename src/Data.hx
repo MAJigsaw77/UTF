@@ -13,19 +13,19 @@ class Data
 	{
 		var save:FlxSave = new FlxSave();
 
-                @:privateAccess
+		@:privateAccess
 		save.bind('data', FlxSave.validate(Lib.application.meta.get('file')));
 
 		save.data.settings = settings;
 		save.data.binds = binds;
-                save.close();
+		save.close();
 	}
 
 	public static function load():Void
 	{
 		var save:FlxSave = new FlxSave();
 
-                @:privateAccess
+		@:privateAccess
 		save.bind('data', FlxSave.validate(Lib.application.meta.get('file')));
 
 		if (!save.isEmpty())
@@ -37,6 +37,6 @@ class Data
 				binds = save.data.binds;
 		}
 
-                save.destroy();
+		save.destroy();
 	}
 }

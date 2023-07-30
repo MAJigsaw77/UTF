@@ -57,7 +57,7 @@ class Main extends Sprite
 
 		addChild(new FlxGame(640, 480, Startup, 30, 30, false, false));
 
-		fps = new FPS(10, 10, FlxColor.WHITE) 
+		fps = new FPS(10, 10, FlxColor.WHITE)
 		fps.visible = Data.settings.get('fps');
 		addChild(new FPS(10, 10, FlxColor.WHITE));
 	}

@@ -98,7 +98,7 @@ class Settings extends FlxTransitionableState
 	}
 
 	var siner:Int = 0;
-	
+
 	override function update(elapsed:Float):Void
 	{
 		siner++;
