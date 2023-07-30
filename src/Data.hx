@@ -14,7 +14,7 @@ class Data
 		var save:FlxSave = new FlxSave();
 
 		@:privateAccess
-		save.bind('data', FlxSave.validate(Lib.application.meta.get('file')));
+		save.bind('data', Lib.application.meta.get('file'));
 
 		save.data.settings = settings;
 		save.data.binds = binds;
@@ -26,7 +26,7 @@ class Data
 		var save:FlxSave = new FlxSave();
 
 		@:privateAccess
-		save.bind('data', FlxSave.validate(Lib.application.meta.get('file')));
+		save.bind('data', Lib.application.meta.get('file'));
 
 		if (!save.isEmpty())
 		{

@@ -21,7 +21,7 @@ class Global
 		var save:FlxSave = new FlxSave();
 
 		@:privateAccess
-		save.bind('file', FlxSave.validate(Lib.application.meta.get('file')));
+		save.bind('file', Lib.application.meta.get('file'));
 
 		save.data.name = name;
 		save.data.hp = hp;
@@ -39,7 +39,7 @@ class Global
 		var save:FlxSave = new FlxSave();
 
 		@:privateAccess
-		save.bind('file', FlxSave.validate(Lib.application.meta.get('file')));
+		save.bind('file', Lib.application.meta.get('file'));
 
 		if (!save.isEmpty())
 		{
