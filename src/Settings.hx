@@ -104,9 +104,9 @@ class Settings extends FlxTransitionableState
 		siner++;
 
 		if (FlxG.keys.justPressed.UP)
-			changeOption(1);
-		else if (FlxG.keys.justPressed.DOWN)
 			changeOption(-1);
+		else if (FlxG.keys.justPressed.DOWN)
+			changeOption(1);
 		else if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')) && (FlxG.sound.music != null && FlxG.sound.music.playing))
 		{
 			if (options[curOption] == 'Exit')
@@ -119,16 +119,10 @@ class Settings extends FlxTransitionableState
 				case 'Key Binds':
 					// TODO
 				case 'FPS Display':
-					Data.settings.set('fps', !Data.settings.get('fps'));
-
-					Main.fps.visible = Data.settings.get('fps');
+					changeSetting('fps', false);
 				case 'Reset to Default':
-					Data.settings.set('fps', #if debug true #else false #end);
-
-					Main.fps.visible = Data.settings.get('fps');
+					changeSetting('fps', true);
 			}
-
-			Data.save();
 		}
 
 		super.update(elapsed);
@@ -147,5 +141,24 @@ class Settings extends FlxTransitionableState
 			else
 				spr.color = FlxColor.WHITE;
 		});
+	}
+
+	private function changeSetting(name:String, reset:Bool):Void
+	{
+		if (Data.settings.exists(name))
+		{
+			switch (name)
+			{
+				case 'fps';
+					if (reset)
+						Data.settings.set('fps', #if debug true #else false #end);
+					else
+						Data.settings.set('fps', !Data.settings.get('fps'));
+
+					Main.fps.visible = Data.settings.get('fps');
+			}
+
+			Data.save();
+		}
 	}
 }
