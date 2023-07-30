@@ -11,7 +11,7 @@ class Data
 
 	public static function save():Void
 	{
-		final save:FlxSave = new FlxSave();
+		var save:FlxSave = new FlxSave();
 
                 @:privateAccess
 		save.bind('data', FlxSave.validate(Lib.application.meta.get('file')));
@@ -23,7 +23,7 @@ class Data
 
 	public static function load():Void
 	{
-		final save:FlxSave = new FlxSave();
+		var save:FlxSave = new FlxSave();
 
                 @:privateAccess
 		save.bind('data', FlxSave.validate(Lib.application.meta.get('file')));
