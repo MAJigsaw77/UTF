@@ -2,7 +2,13 @@ package;
 
 import flixel.addons.text.FlxTypeText;
 import flixel.FlxG;
-import Global;
+
+typedef DialogueData =
+{
+	text:String,
+	?face:String,
+	speed:Float
+}
 
 class Writer extends FlxTypeText
 {
