@@ -34,24 +34,24 @@ class IntroMenu extends FlxState
 		add(flowey);
 
 		var name:FlxText = new FlxText(140, 120, 0, Global.name, 32);
-		name.font = AssetPaths.font('DTM-Mono.ttf');
+		name.font = AssetPaths.font('DTM-Sans.ttf');
 		name.scrollFactor.set();
 		add(name);
 
 		var love:FlxText = new FlxText(280, 120, 0, 'LV ${Global.lv}', 32);
-		love.font = AssetPaths.font('DTM-Mono.ttf');
+		love.font = AssetPaths.font('DTM-Sans.ttf');
 		love.scrollFactor.set();
 		add(love);
 
 		// TODO
 		var time:FlxText = new FlxText(420, 120, 0, '0:0', 32);
-		time.font = AssetPaths.font('DTM-Mono.ttf');
+		time.font = AssetPaths.font('DTM-Sans.ttf');
 		time.scrollFactor.set();
 		add(time);
 
 		// TODO
 		var roomname:FlxText = new FlxText(140, 160, 0, '---', 32);
-		roomname.font = AssetPaths.font('DTM-Mono.ttf');
+		roomname.font = AssetPaths.font('DTM-Sans.ttf');
 		roomname.scrollFactor.set();
 		add(roomname);
 
@@ -75,7 +75,7 @@ class IntroMenu extends FlxState
 					bt.y = 265;
 			}
 
-			bt.font = AssetPaths.font('DTM-Mono.ttf');
+			bt.font = AssetPaths.font('DTM-Sans.ttf');
 			bt.ID = i;
 			bt.scrollFactor.set();
 			choicesItems.add(bt);
