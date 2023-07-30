@@ -14,9 +14,9 @@ class Writer extends FlxTypeText
 {
 	public var msg(default, set):DialogueData = {text: 'Error!', speed: 4};
 
-	public function new(x:Float = 0, y:Float = 0, width:Int = 0):Void
+	public function new(x:Float = 0, y:Float = 0, width:Int = 0, size:Int = 8):Void
 	{
-		super(x, y, width, '', 32, true);
+		super(x, y, width, '', size, true);
 
 		font = AssetPaths.font('DTM-Mono.ttf');
 		sounds = [FlxG.sound.load(AssetPaths.sound('txt2'), 0.76)];
