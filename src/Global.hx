@@ -19,10 +19,7 @@ class Global
 	public static function save():Void
 	{
 		var save:FlxSave = new FlxSave();
-
-		@:privateAccess
 		save.bind('file', Lib.application.meta.get('file'));
-
 		save.data.name = name;
 		save.data.hp = hp;
 		save.data.maxHp = maxHp;
@@ -37,8 +34,6 @@ class Global
 	public static function load():Void
 	{
 		var save:FlxSave = new FlxSave();
-
-		@:privateAccess
 		save.bind('file', Lib.application.meta.get('file'));
 
 		if (!save.isEmpty())
