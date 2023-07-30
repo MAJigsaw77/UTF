@@ -53,7 +53,7 @@ class Main extends Sprite
 		addChild(fps);
 	}
 
-	private function onUncaughtError(event:UncaughtErrorEvent):Void
+	private inline function onUncaughtError(event:UncaughtErrorEvent):Void
 	{
 		event.preventDefault();
 		event.stopImmediatePropagation();
@@ -82,7 +82,7 @@ class Main extends Sprite
 		System.exit(1);
 	}
 
-	private function onResizeGame(width:Int, height:Int):Void
+	private inline function onResizeGame(width:Int, height:Int):Void
 	{
 		if (FlxG.cameras == null)
 			return;
