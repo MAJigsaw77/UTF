@@ -1,25 +1,6 @@
 package;
 
-import flixel.input.keyboard.FlxKey;
 import flixel.FlxG;
-
-typedef DialogueData =
-{
-	text:String,
-	?face:String,
-	speed:Float
-}
-
-typedef MonsterData =
-{
-	name:String,
-	hp:Int,
-	maxHp:Int,
-	attack:Float,
-	defense:Float,
-	xpReward:Int,
-	goldReward:Int
-}
 
 class Global
 {
