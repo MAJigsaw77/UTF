@@ -88,7 +88,7 @@ class Battle extends FlxTransitionableState
 		heart.scrollFactor.set();
 		add(heart);
 
-		writer = new Writer(box.x + 14, box.y + 14, 0);
+		writer = new Writer(box.x + 14, box.y + 14, 0, 32);
 		writer.msg = {text: '* The wind is howling...', speed: 4};
 		writer.scrollFactor.set();
 		add(writer);
