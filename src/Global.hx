@@ -7,6 +7,7 @@ import openfl.Lib;
 class Global
 {
 	public static var name:String = 'CHARA';
+	public static var room:Int = 0;
 	public static var hp:Int = 20;
 	public static var maxHp:Int = 20;
 	public static var attack:Float = 10;
@@ -21,6 +22,7 @@ class Global
 		var save:FlxSave = new FlxSave();
 		save.bind('file', Lib.application.meta.get('file'));
 		save.data.name = name;
+		save.data.room = room;
 		save.data.hp = hp;
 		save.data.maxHp = maxHp;
 		save.data.attack = attack;
@@ -40,6 +42,9 @@ class Global
 		{
 			if (save.data.name != null)
 				name = save.data.name;
+
+			if (save.data.room != null)
+				room = save.data.room;
 
 			if (save.data.hp != null)
 				hp = save.data.hp;
