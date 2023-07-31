@@ -14,8 +14,6 @@ class Room extends FlxTransitionableState
 {
 	var data:Xml = Xml.parse('<room id="0"></room>').firstElement();
 
-	var objects:FlxTypedGroup<ObjectData>;
-
 	public function new(room:Int):Void
 	{
 		super();
@@ -32,9 +30,14 @@ class Room extends FlxTransitionableState
 		}
 	}
 
+	var objects:FlxTypedGroup<FlxSprite>;
+
 	override function create():Void
 	{
 		var access:Access = new Access(data);
+
+		objects = new FlxTypedGroup<FlxSprite>();
+		add(objects);
 
 		for (element in access.nodes.obj)
 		{
@@ -42,7 +45,7 @@ class Room extends FlxTransitionableState
 			obj.scale.set(element.has.scaleX ? Std.parseFloat(element.att.scaleX) : 1.0, element.has.scaleY ? Std.parseFloat(element.att.scaleY) : 1.0);
 			obj.updateHitbox();
 			obj.scrollFactor.set();
-			add(obj);
+			objects.add(obj);
 		}
 
 		super.create();
