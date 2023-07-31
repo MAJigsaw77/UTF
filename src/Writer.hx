@@ -12,9 +12,7 @@ typedef DialogueData =
 
 class Writer extends FlxTypeText
 {
-	public var msg(default, set):Array<DialogueData> = [{text: 'Error!', speed: 4}];
-
-	public var finishCallback:Void->Void;
+	public var msg(default, set):DialogueData = {text: 'Error!', speed: 4};
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0, size:Int = 8):Void
 	{
@@ -24,41 +22,12 @@ class Writer extends FlxTypeText
 		sounds = [FlxG.sound.load(AssetPaths.sound('txt2'), 0.76)];
 	}
 
-	var currentMsg:Int = 0;
-
-	override function update(elapsed:Float):Void
+	private function set_msg(value:DialogueData):DialogueData
 	{
-		if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')) && alive)
+		if (value.text != null)
 		{
-			if (currentMsg < msg.length)
-			{
-				currentMsg++;
-
-				if (msg[currentMsg] != null)
-				{
-					resetText(msg[currentMsg].text);
-					start(msg[currentMsg].speed / 100, true);
-				}
-			}
-			else
-			{
-				kill();
-				if (finishCallback != null)
-					finishCallback();
-			}
-		}
-
-		super.update(elapsed);
-	}
-
-	private function set_msg(value:Array<DialogueData>):Array<DialogueData>
-	{
-		currentMsg = 0;
-
-		if (value[currentMsg] != null)
-		{
-			resetText(value[currentMsg].text);
-			start(value[currentMsg].speed / 100, true);
+			resetText(value.text);
+			start(value.speed / 100, true);
 		}
 
 		return value;
