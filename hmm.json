@@ -27,7 +27,7 @@
 		{
 			"name": "polymod",
 			"type": "git",
-			"ref": "master",
+			"ref": "develop",
 			"url": "https://github.com/larsiusprime/polymod.git"
 		},
 		{
