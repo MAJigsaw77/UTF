@@ -12,7 +12,9 @@ import openfl.events.UncaughtErrorEvent;
 import openfl.system.System;
 import openfl.utils.Assets;
 import openfl.Lib;
+#if sys
 import polymod.Polymod;
+#end
 
 class Main extends Sprite
 {
@@ -38,8 +40,10 @@ class Main extends Sprite
 			for (key in Assets.cache.getSoundKeys())
 				Assets.cache.removeSound(key);
 
+			#if sys
 			// Clear the loaded assets from polymod...
 			Polymod.clearCache();
+			#end
 
 			// Run the garbage colector...
 			System.gc();
@@ -77,7 +81,9 @@ class Main extends Sprite
 			}
 		}
 
+		#if sys
 		Sys.println(log.join('\n'));
+		#end
 		Lib.application.window.alert(log.join('\n'), 'Error!');
 		System.exit(1);
 	}

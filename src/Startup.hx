@@ -12,7 +12,9 @@ class Startup extends FlxState
 	{
 		Data.load();
 		Global.load();
+		#if sys
 		Mods.load();
+		#end
 
 		if (FlxG.save.data.volume != null)
 			FlxG.sound.volume = FlxG.save.data.volume;
