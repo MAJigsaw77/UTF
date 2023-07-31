@@ -1,0 +1,335 @@
+{
+	"id": 272,
+	"objects": [
+		{
+			"name": "solidsmall",
+			"position": [
+				200,
+				440
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				360,
+				440
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				360,
+				400
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				360,
+				360
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				200,
+				400
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				200,
+				360
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				200,
+				360
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				160,
+				320
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				160,
+				280
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				160,
+				240
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				160,
+				200
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				160,
+				160
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				160,
+				120
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				200,
+				120
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				240,
+				120
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				280,
+				120
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				320,
+				120
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				360,
+				120
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				400,
+				120
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				400,
+				320
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				360,
+				320
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				400,
+				160
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				400,
+				200
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				400,
+				240
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "solidsmall",
+			"position": [
+				400,
+				280
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "markerC",
+			"position": [
+				280,
+				360
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "redacted_a",
+			"position": [
+				280,
+				120
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "doorD",
+			"position": [
+				240,
+				440
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "doorD",
+			"position": [
+				280,
+				440
+			],
+			"scale": [
+				2,
+				2
+			]
+		},
+		{
+			"name": "doorD",
+			"position": [
+				320,
+				440
+			],
+			"scale": [
+				2,
+				2
+			]
+		}
+	]
+}
