@@ -11,10 +11,8 @@ typedef RoomData =
 typedef ObjectData =
 {
 	name:String,
-	x:Float,
-	y:Float,
-	scaleX:Float,
-	scaleY:Float
+	position:Array<Float>,
+	scale:Array<Float>
 }
 
 class Room extends FlxTransitionableState
