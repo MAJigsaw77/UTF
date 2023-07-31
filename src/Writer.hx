@@ -13,6 +13,7 @@ typedef DialogueData =
 class Writer extends FlxTypeText
 {
 	public var msg(default, set):Array<DialogueData> = [{text: 'Error!', speed: 4}];
+
 	public var finishCallback:Void->Void;
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0, size:Int = 8):Void
