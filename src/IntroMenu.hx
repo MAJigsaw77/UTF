@@ -33,24 +33,24 @@ class IntroMenu extends FlxState
 		flowey.scrollFactor.set();
 		add(flowey);
 
-		var name:FlxText = new FlxText(140, 120, 0, Global.name, 32);
+		var name:FlxText = new FlxText(145, 120, 0, Global.name, 32);
 		name.font = AssetPaths.font('DTM-Sans.ttf');
 		name.scrollFactor.set();
 		add(name);
 
-		var love:FlxText = new FlxText(280, 120, 0, 'LV ${Global.lv}', 32);
+		var love:FlxText = new FlxText(285, 120, 0, 'LV ${Global.lv}', 32);
 		love.font = AssetPaths.font('DTM-Sans.ttf');
 		love.scrollFactor.set();
 		add(love);
 
 		// TODO
-		var time:FlxText = new FlxText(420, 120, 0, '0:0', 32);
+		var time:FlxText = new FlxText(425, 120, 0, '0:0', 32);
 		time.font = AssetPaths.font('DTM-Sans.ttf');
 		time.scrollFactor.set();
 		add(time);
 
 		// TODO
-		var roomname:FlxText = new FlxText(140, 160, 0, '---', 32);
+		var roomname:FlxText = new FlxText(145, 160, 0, '---', 32);
 		roomname.font = AssetPaths.font('DTM-Sans.ttf');
 		roomname.scrollFactor.set();
 		add(roomname);
