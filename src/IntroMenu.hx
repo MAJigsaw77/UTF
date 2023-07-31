@@ -113,7 +113,7 @@ class IntroMenu extends FlxState
 			switch (choices[curChoice])
 			{
 				case 'Continue':
-					FlxG.switchState(new Battle());
+					FlxG.switchState(new Room(272));
 				case 'Reset':
 				// TODO
 				case 'Settings':
