@@ -3,9 +3,9 @@
 
 	<!--Application Settings -->
 
-	<app title="UNDERTALE" packageName="com.majigsaw.undertale" package="com.majigsaw.undertale" version="1.0.0" company="MAJigsaw" />
+	<app title="UTF" packageName="com.majigsaw.utf" package="com.majigsaw.utf" version="1.0.0" company="MAJigsaw" />
 
-	<app file="UNDERTALE" main="Main" preloader="flixel.system.FlxPreloader" />
+	<app file="UTF" main="Main" preloader="flixel.system.FlxPreloader" />
 
 	<icon path="icon.svg" />
 
