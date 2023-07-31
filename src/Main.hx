@@ -99,7 +99,7 @@ class Main extends Sprite
 				{
 					// Shout out to Ne_Eo for bringing this to my attention.
 					var sprite:Sprite = cam.flashSprite;
-	
+
 					if (sprite != null)
 					{
 						sprite.__cacheBitmap = null;

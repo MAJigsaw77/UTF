@@ -117,7 +117,7 @@ class Settings extends FlxTransitionableState
 				case 'Exit':
 					FlxG.switchState(new IntroMenu());
 				case 'Key Binds':
-					// TODO
+				// TODO
 				case 'FPS Display':
 					changeSetting('fps', false);
 				case 'Reset to Default':
