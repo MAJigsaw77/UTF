@@ -82,7 +82,7 @@ class Main extends Sprite
 			}
 		}
 
-		Log.trace(log.join('\n'), null);
+		Log.trace(log.join('\n'));
 		Lib.application.window.alert(log.join('\n'), 'Error!');
 		System.exit(1);
 	}
