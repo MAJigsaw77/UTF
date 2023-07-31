@@ -57,3 +57,4 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 | ------ | -------- | ----------- |
 | ![](https://upload.wikimedia.org/wikipedia/en/a/af/Toby_Fox_dog.jpg?s=64) | [Toby Fox](https://twitter.com/tobyfox) | Creator of **Undertale**.
 | ![](https://avatars.githubusercontent.com/u/77043862?s=64) | [MAJigsaw77](https://github.com/MAJigsaw77) | Creator of **UTF**.
+| ![](https://avatars.githubusercontent.com/u/23155359?s=64) | [Ne_Eo]() | Programmer.
