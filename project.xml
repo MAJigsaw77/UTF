@@ -3,7 +3,7 @@
 
 	<!--Application Settings -->
 
-	<app title="UTF" packageName="com.majigsaw.utf" package="com.majigsaw.utf" version="1.0.0" company="MAJigsaw" />
+	<app title="UTF" packageName="com.majigsaw77.utf" package="com.majigsaw77.utf" version="1.0.0" company="MAJigsaw77" />
 
 	<app file="UTF" main="Main" preloader="flixel.system.FlxPreloader" />
 
