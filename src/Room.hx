@@ -24,7 +24,7 @@ typedef ObjectData =
 
 class Room extends FlxTransitionableState
 {
-	var data:RoomData;
+	var data:RoomData = {id: 0, objects: []};
 	
 	public function new(room:Int):Void
 	{
@@ -39,14 +39,6 @@ class Room extends FlxTransitionableState
 				if (roomData.id == room)
 					data = roomData;
 			}
-		}
-
-		if (data == null)
-		{
-			data = {
-				id: room,
-				objects: []
-			};
 		}
 	}
 
