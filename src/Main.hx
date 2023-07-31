@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
 import haxe.CallStack;
+import haxe.Log;
 import lime.system.System;
 import openfl.display.FPS;
 import openfl.display.Sprite;
@@ -81,9 +82,7 @@ class Main extends Sprite
 			}
 		}
 
-		#if sys
-		Sys.println(log.join('\n'));
-		#end
+		Log.trace(log.join('\n'), null);
 		Lib.application.window.alert(log.join('\n'), 'Error!');
 		System.exit(1);
 	}
