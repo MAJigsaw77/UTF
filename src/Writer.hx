@@ -23,23 +23,21 @@ class Writer extends FlxTypeText
 		sounds = [FlxG.sound.load(AssetPaths.sound('txt2'), 0.76)];
 	}
 
-	public function startMsg(data:DialogueData):Void
-	{
-		resetText(data.text);
-		start(data.speed / 100, true);
-	}
-
 	var currentMsg:Int = 0;
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')))
+		if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')) && alive)
 		{
 			if (currentMsg < msg.length)
 			{
 				currentMsg++;
+
 				if (msg[currentMsg] != null)
-					startMsg(msg[currentMsg]);
+				{
+					resetText(msg[currentMsg].text);
+					start(msg[currentMsg].speed / 100, true);
+				}
 			}
 			else
 			{
@@ -57,7 +55,10 @@ class Writer extends FlxTypeText
 		currentMsg = 0;
 
 		if (value[currentMsg] != null)
-			startMsg(value[currentMsg]);
+		{
+			resetText(value[currentMsg].text);
+			start(value[currentMsg].speed / 100, true);
+		}
 
 		return value;
 	}
