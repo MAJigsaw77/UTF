@@ -11,11 +11,11 @@ using StringTools;
 
 typedef ObjectData =
 {
-	spr:String,
+	name:String,
 	x:Float,
 	y:Float,
-	sx:Float,
-	sy:Float
+	scaleX:Float,
+	scaleY:Float
 }
 
 class Room extends FlxTransitionableState
@@ -41,11 +41,11 @@ class Room extends FlxTransitionableState
 					for (element in access.nodes.obj)
 					{
 						objects.push({
-							spr: element.att.spr,
+							name: element.att.name,
 							x: Std.parseFloat(element.att.x),
 							y: Std.parseFloat(element.att.y),
-							sx: element.has.sx ? Std.parseFloat(element.att.sx) : 1.0,
-							sy: element.has.sy ? Std.parseFloat(element.att.sy) : 1.0,
+							scaleX: element.has.scaleX ? Std.parseFloat(element.att.scaleX) : 1.0,
+							scaleY: element.has.scaleY ? Std.parseFloat(element.att.scaleY) : 1.0,
 						});
 					}
 	
@@ -59,8 +59,8 @@ class Room extends FlxTransitionableState
 	{
 		for (object in objects)
 		{
-			var obj:FlxSprite = new FlxSprite(object.x, object.y, AssetPaths.sprite(object.spr));
-			obj.scale.set(object.sx, object.sy);
+			var obj:FlxSprite = new FlxSprite(object.x, object.y, AssetPaths.sprite(object.name));
+			obj.scale.set(object.scaleX, object.scaleY);
 			obj.updateHitbox();
 			obj.scrollFactor.set();
 			add(obj);
