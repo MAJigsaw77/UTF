@@ -5,14 +5,15 @@ import flixel.FlxG;
 
 typedef DialogueData =
 {
-	text:String,
 	?face:String,
+	text:String,
 	speed:Float
 }
 
 class Writer extends FlxTypeText
 {
-	public var msg(default, set):DialogueData = {text: 'Error!', speed: 4};
+	public var msg(default, set):Array<DialogueData> = [{text: 'Error!', speed: 4}];
+	public var finishCallback:Void->Void;
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0, size:Int = 8):Void
 	{
@@ -22,13 +23,41 @@ class Writer extends FlxTypeText
 		sounds = [FlxG.sound.load(AssetPaths.sound('txt2'), 0.76)];
 	}
 
-	private function set_msg(value:DialogueData):DialogueData
+	public function startMsg(data:DialogueData):Void
 	{
-		if (value.text != null)
+		resetText(data.text);
+		start(data.speed / 100, true);
+	}
+
+	var currentMsg:Int = 0;
+
+	override function update(elapsed:Float):Void
+	{
+		if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')))
 		{
-			resetText(value.text);
-			start(value.speed / 100, true);
+			if (currentMsg < msg.length)
+			{
+				currentMsg++;
+				if (msg[currentMsg] != null)
+					startMsg(msg[currentMsg]);
+			}
+			else
+			{
+				kill();
+				if (finishCallback != null)
+					finishCallback();
+			}
 		}
+
+		super.update(elapsed);
+	}
+
+	private function set_msg(value:Array<DialogueData>):Array<DialogueData>
+	{
+		currentMsg = 0;
+
+		if (value[currentMsg] != null)
+			startMsg(value[currentMsg]);
 
 		return value;
 	}
