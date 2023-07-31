@@ -28,6 +28,8 @@ class Room extends FlxTransitionableState
 	
 	public function new(room:Int):Void
 	{
+		super();
+
 		for (file in Assets.list(TEXT).filter(folder -> folder.startsWith('assets/data/rooms')))
 		{
 			// Being sure about something...
