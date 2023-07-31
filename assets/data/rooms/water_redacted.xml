@@ -1,0 +1,32 @@
+<room id="272">
+    <obj spr="solidsmall" x="200" y="440" sx="2" sy="2" />
+    <obj spr="solidsmall" x="360" y="440" sx="2" sy="2" />
+    <obj spr="solidsmall" x="360" y="400" sx="2" sy="2" />
+    <obj spr="solidsmall" x="360" y="360" sx="2" sy="2" />
+    <obj spr="solidsmall" x="200" y="400" sx="2" sy="2" />
+    <obj spr="solidsmall" x="200" y="360" sx="2" sy="2" />
+    <obj spr="solidsmall" x="200" y="360" sx="2" sy="2" />
+    <obj spr="solidsmall" x="160" y="320" sx="2" sy="2" />
+    <obj spr="solidsmall" x="160" y="280" sx="2" sy="2" />
+    <obj spr="solidsmall" x="160" y="240" sx="2" sy="2" />
+    <obj spr="solidsmall" x="160" y="200" sx="2" sy="2" />
+    <obj spr="solidsmall" x="160" y="160" sx="2" sy="2" />
+    <obj spr="solidsmall" x="160" y="120" sx="2" sy="2" />
+    <obj spr="solidsmall" x="200" y="120" sx="2" sy="2" />
+    <obj spr="solidsmall" x="240" y="120" sx="2" sy="2" />
+    <obj spr="solidsmall" x="280" y="120" sx="2" sy="2" />
+    <obj spr="solidsmall" x="320" y="120" sx="2" sy="2" />
+    <obj spr="solidsmall" x="360" y="120" sx="2" sy="2" />
+    <obj spr="solidsmall" x="400" y="120" sx="2" sy="2" />
+    <obj spr="solidsmall" x="400" y="320" sx="2" sy="2" />
+    <obj spr="solidsmall" x="360" y="320" sx="2" sy="2" />
+    <obj spr="solidsmall" x="400" y="160" sx="2" sy="2" />
+    <obj spr="solidsmall" x="400" y="200" sx="2" sy="2" />
+    <obj spr="solidsmall" x="400" y="240" sx="2" sy="2" />
+    <obj spr="solidsmall" x="400" y="280" sx="2" sy="2" />
+    <obj spr="markerC" x="280" y="360" sx="2" sy="2" />
+    <obj spr="redacted_a" x="280" y="120" sx="2" sy="2" />
+    <obj spr="doorD" x="240" y="440" sx="2" sy="2" />
+    <obj spr="doorD" x="280" y="440" sx="2" sy="2" />
+    <obj spr="doorD" x="320" y="440" sx="2" sy="2" />
+</room>
