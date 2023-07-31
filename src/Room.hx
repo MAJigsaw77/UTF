@@ -5,7 +5,16 @@ import flixel.addons.transition.FlxTransitionableState;
 typedef RoomData =
 {
 	id:Int,
-	objects:Array<Dynamic>
+	objects:Array<ObjectData>
+}
+
+typedef ObjectData =
+{
+	name:String,
+	x:Float,
+	y:Float,
+	scaleX:Float,
+	scaleY:Float
 }
 
 class Room extends FlxTransitionableState
