@@ -34,18 +34,18 @@ class Room extends FlxTransitionableState
 
 	override function create():Void
 	{
-		var access:Access = new Access(data);
+		final fast:Access = new Access(data);
 
 		objects = new FlxTypedGroup<FlxSprite>();
 		add(objects);
 
-		for (element in access.nodes.obj)
+		for (obj in fast.nodes.obj)
 		{
-			var obj:FlxSprite = new FlxSprite(Std.parseFloat(element.att.x), Std.parseFloat(element.att.y), AssetPaths.sprite(element.att.name));
-			obj.scale.set(element.has.scaleX ? Std.parseFloat(element.att.scaleX) : 1.0, element.has.scaleY ? Std.parseFloat(element.att.scaleY) : 1.0);
-			obj.updateHitbox();
-			obj.scrollFactor.set();
-			objects.add(obj);
+			var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
+			object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
+			object.updateHitbox();
+			object.scrollFactor.set();
+			objects.add(object);
 		}
 
 		super.create();
