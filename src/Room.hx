@@ -30,6 +30,7 @@ class Room extends FlxTransitionableState
 		}
 	}
 
+	var chara:Chara;
 	var objects:FlxTypedGroup<FlxSprite>;
 
 	override function create():Void
@@ -41,11 +42,21 @@ class Room extends FlxTransitionableState
 
 		for (obj in fast.nodes.obj)
 		{
-			var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
-			object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
-			object.updateHitbox();
-			object.scrollFactor.set();
-			objects.add(object);
+			switch (obj.att.name)
+			{
+				case 'chara':
+					chara = new Chara(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y));
+					chara.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
+					chara.updateHitbox();
+					chara.scrollFactor.set();
+					add(chara);
+				default:
+					var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
+					object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
+					object.updateHitbox();
+					object.scrollFactor.set();
+					objects.add(object);
+			}
 		}
 
 		super.create();
