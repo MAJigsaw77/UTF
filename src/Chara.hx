@@ -11,26 +11,10 @@ class Chara extends FlxSprite
 		frames = AssetPaths.spritesheet({
 			key: 'tobdog_summer',
 			sheet: [
-				{
-					animation: 'chara down',
-					path: 'f_maincharad',
-					frames: [3, 2, 1, 0]
-				},
-				{
-					animation: 'chara left',
-					path: 'f_maincharal',
-					frames: [1, 0]
-				},
-				{
-					animation: 'chara right',
-					path: 'f_maincharar',
-					frames: [1, 0]
-				},
-				{
-					animation: 'chara up',
-					path: 'f_maincharau',
-					frames: [3, 2, 1, 0]
-				}
+				{animation: 'chara down', path: 'f_maincharad', frames: [3, 2, 1, 0]},
+				{animation: 'chara left', path: 'f_maincharal', frames: [1, 0]},
+				{animation: 'chara right', path: 'f_maincharar', frames: [1, 0]},
+				{animation: 'chara up', path: 'f_maincharau', frames: [3, 2, 1, 0]}
 			]
 		});
 		animation.addByPrefix('down', 'chara down', 4);
