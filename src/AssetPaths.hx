@@ -65,7 +65,7 @@ class AssetPaths
 	{
 		if (data == null)
 			return null;
-		
+
 		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(data.key), FlxPoint.weak(0, 0), FlxPoint.weak(0, 0));
 
 		for (sheet in data.sheet)
