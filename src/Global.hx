@@ -7,7 +7,7 @@ import openfl.Lib;
 class Global
 {
 	public static var name:String = 'CHARA';
-	public static var room:Int = 0;
+	public static var room:Int = 272;
 	public static var hp:Int = 20;
 	public static var maxHp:Int = 20;
 	public static var attack:Float = 10;
