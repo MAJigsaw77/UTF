@@ -22,7 +22,9 @@ class Chara extends FlxSprite
 		animation.addByPrefix('left', 'chara left', 2, false);
 		animation.addByPrefix('right', 'chara right', 2, false);
 		animation.addByPrefix('up', 'chara up', 4, false);
+
 		animation.play(facing);
+		animation.finish();
 	}
 
 	override function update(elapsed:Float):Void
@@ -36,6 +38,9 @@ class Chara extends FlxSprite
 			animation.play('left');
 		else if (FlxG.keys.pressed.RIGHT)
 			animation.play('right');
+
+		if (FlxG.keys.anyReleased([DOWN, UP, LEFT, RIGHT]))
+			animation.finish();
 
 		super.update(elapsed);
 	}
