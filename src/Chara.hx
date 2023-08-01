@@ -40,7 +40,7 @@ class Chara extends FlxSprite
 		else if (FlxG.keys.pressed.RIGHT)
 			animation.play('right');
 
-		if (FlxG.keys.anyReleased([DOWN, UP, LEFT, RIGHT]))
+		if (FlxG.keys.anyJustReleased([DOWN, UP, LEFT, RIGHT]))
 			animation.finish();
 
 		super.update(elapsed);
