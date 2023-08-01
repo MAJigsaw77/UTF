@@ -68,15 +68,15 @@ class AssetPaths
 		
 		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(data.key), FlxPoint.weak(0, 0), FlxPoint.weak(0, 0));
 
-		for (sheet in data.sheets)
+		for (sheet in data.sheet)
 		{
 			for (frame in sheet.frames)
 			{
-				var file:String = AssetPaths.sprite('${sheet.path}_$i');
+				var file:String = AssetPaths.sprite('${sheet.path}_$frame');
 				if (Assets.exists(file))
-					atlas.addNode(Assets.getBitmapData(file, false), sheet.key.substring(sheet.key.lastIndexOf('/') + 1, sheet.key.length) + i);
+					atlas.addNode(Assets.getBitmapData(file, false), sheet.key.substring(sheet.key.lastIndexOf('/') + 1, sheet.key.length) + frame);
 				else
-					atlas.addNode('flixel/images/logo/default.png', sheet.key.substring(sheet.key.lastIndexOf('/') + 1, sheet.key.length) + i);
+					atlas.addNode('flixel/images/logo/default.png', sheet.key.substring(sheet.key.lastIndexOf('/') + 1, sheet.key.length) + frame);
 			}
 		}
 
