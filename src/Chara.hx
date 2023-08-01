@@ -31,14 +31,38 @@ class Chara extends FlxSprite
 	override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.pressed.DOWN)
+		{
 			animation.play('down');
+
+			y -= 6;
+			if (FlxG.keys.anyJustPressed(Data.binds.get('cancel')))
+				y -= 10;
+		}
 		else if (FlxG.keys.pressed.UP)
+		{
 			animation.play('up');
 
+			y += 6;
+			if (FlxG.keys.anyJustPressed(Data.binds.get('cancel')))
+				y += 10;
+		}
+
 		if (FlxG.keys.pressed.LEFT)
+		{
 			animation.play('left');
+
+			x -= 6;
+			if (FlxG.keys.anyJustPressed(Data.binds.get('cancel')))
+				x -= 10;
+		}
 		else if (FlxG.keys.pressed.RIGHT)
+		{
 			animation.play('right');
+
+			x += 6;
+			if (FlxG.keys.anyJustPressed(Data.binds.get('cancel')))
+				x -= 10;
+		}
 
 		if (FlxG.keys.anyJustReleased([DOWN, UP, LEFT, RIGHT]))
 			animation.finish();
