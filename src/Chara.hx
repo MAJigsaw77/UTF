@@ -35,7 +35,7 @@ class Chara extends FlxSprite
 			animation.play('down');
 
 			y += 6;
-			if (FlxG.keys.anyJustPressed(Data.binds.get('cancel')))
+			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
 				y += 10;
 		}
 		else if (FlxG.keys.pressed.UP)
@@ -43,7 +43,7 @@ class Chara extends FlxSprite
 			animation.play('up');
 
 			y -= 6;
-			if (FlxG.keys.anyJustPressed(Data.binds.get('cancel')))
+			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
 				y -= 10;
 		}
 
@@ -52,7 +52,7 @@ class Chara extends FlxSprite
 			animation.play('left');
 
 			x -= 6;
-			if (FlxG.keys.anyJustPressed(Data.binds.get('cancel')))
+			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
 				x -= 10;
 		}
 		else if (FlxG.keys.pressed.RIGHT)
@@ -60,7 +60,7 @@ class Chara extends FlxSprite
 			animation.play('right');
 
 			x += 6;
-			if (FlxG.keys.anyJustPressed(Data.binds.get('cancel')))
+			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
 				x -= 10;
 		}
 
