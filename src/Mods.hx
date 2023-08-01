@@ -6,9 +6,7 @@ import android.content.Context;
 import flixel.FlxG;
 import polymod.backends.PolymodAssets;
 import polymod.Polymod;
-#if sys
 import sys.FileSystem;
-#end
 
 class Mods
 {
