@@ -72,12 +72,12 @@ class AssetPaths
 		{
 			for (frame in sheet.frames)
 			{
-				var file:String = AssetPaths.sprite('${sheet.path}_$frame');
+				var file:String = AssetPaths.sprite(sheet.path + '_$frame');
 
 				if (Assets.exists(file))
-					atlas.addNode(Assets.getBitmapData(file, false), sheet.key.substring(sheet.animation.lastIndexOf('/') + 1, sheet.animation.length) + frame);
+					atlas.addNode(Assets.getBitmapData(file, false), sheet.animation + frame);
 				else
-					atlas.addNode('flixel/images/logo/default.png', sheet.key.substring(sheet.animation.lastIndexOf('/') + 1, sheet.animation.length) + frame);
+					atlas.addNode('flixel/images/logo/default.png', sheet.animation + frame);
 			}
 		}
 
