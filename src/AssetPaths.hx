@@ -6,6 +6,19 @@ import flixel.math.FlxPoint;
 import flixel.FlxG;
 import openfl.utils.Assets;
 
+typedef SpriteSheetData =
+{
+	key:String,
+	sheet:Array<SheetData>
+}
+
+typedef SheetData =
+{
+	key:String,
+	path:String,
+	frames:Array<Int>
+}
+
 class AssetPaths
 {
 	public static inline function background(key:String):String
@@ -48,20 +61,22 @@ class AssetPaths
 		return 'assets/sprites/$key.png';
 	}
 
-	public static function spritesheet(key:String, frames:Array<Int>):FlxAtlasFrames
+	public static function spritesheet(data:SpriteSheetData):FlxAtlasFrames
 	{
-		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(key), FlxPoint.weak(0, 0), FlxPoint.weak(0, 0));
+		if (data == null)
+			return null;
+		
+		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(data.key), FlxPoint.weak(0, 0), FlxPoint.weak(0, 0));
 
-		for (i in frames)
+		for (sheet in data.sheets)
 		{
-			var file:String = AssetPaths.sprite('${key}_$i');
-			if (Assets.exists(file))
-				atlas.addNode(Assets.getBitmapData(file, false), key.substring(key.lastIndexOf('/') + 1, key.length) + i);
-			else
+			for (frame in sheet.frames)
 			{
-				FlxG.log.error('Couldn\'t find frame $file');
-
-				atlas.addNode('flixel/images/logo/default.png', key.substring(key.lastIndexOf('/') + 1, key.length) + i);
+				var file:String = AssetPaths.sprite('${sheet.path}_$i');
+				if (Assets.exists(file))
+					atlas.addNode(Assets.getBitmapData(file, false), sheet.key.substring(sheet.key.lastIndexOf('/') + 1, sheet.key.length) + i);
+				else
+					atlas.addNode('flixel/images/logo/default.png', sheet.key.substring(sheet.key.lastIndexOf('/') + 1, sheet.key.length) + i);
 			}
 		}
 
