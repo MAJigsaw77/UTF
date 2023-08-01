@@ -59,12 +59,26 @@ class Settings extends FlxTransitionableState
 			case 1:
 				tobdogWeather.loadGraphic(AssetPaths.sprite('tobdog_winter'));
 			case 2:
-				tobdogWeather.frames = AssetPaths.spritesheet('tobdog_spring', [3, 2, 1, 0]);
-				tobdogWeather.animation.addByPrefix('spring', 'tobdog_spring', 4, true);
+				tobdogWeather.frames = AssetPaths.spritesheet({
+					key: 'tobdog_spring',
+					sheet: [
+						animation: 'tobdog spring',
+						path: 'tobdog_spring',
+						frames: [3, 2, 1, 0]
+					]
+				});
+				tobdogWeather.animation.addByPrefix('spring', 'tobdog spring', 4, true);
 				tobdogWeather.animation.play('spring');
 			case 3:
-				tobdogWeather.frames = AssetPaths.spritesheet('tobdog_summer', [1, 0]);
-				tobdogWeather.animation.addByPrefix('summer', 'tobdog_summer', 2, true);
+				tobdogWeather.frames = AssetPaths.spritesheet({
+					key: 'tobdog_summer',
+					sheet: [
+						animation: 'tobdog summer',
+						path: 'tobdog_summer',
+						frames: [1, 0]
+					]
+				});
+				tobdogWeather.animation.addByPrefix('summer', 'tobdog summer', 2, true);
 				tobdogWeather.animation.play('summer');
 			case 4:
 				tobdogWeather.loadGraphic(AssetPaths.sprite('tobdog_autumn'));
