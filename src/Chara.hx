@@ -9,7 +9,7 @@ class Chara extends FlxSprite
 		super(x, y);
 
 		frames = AssetPaths.spritesheet({
-			key: 'tobdog_summer',
+			key: 'f_mainchara',
 			sheet: [
 				{animation: 'chara down', path: 'f_maincharad', frames: [3, 2, 1, 0]},
 				{animation: 'chara left', path: 'f_maincharal', frames: [1, 0]},
