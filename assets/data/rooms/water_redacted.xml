@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <room id="272">
+	<obj name="chara" x="140" y="100" scaleX="2" scaleY="2" />
 	<obj name="solidsmall" x="200" y="440" scaleX="2" scaleY="2" />
 	<obj name="solidsmall" x="360" y="440" scaleX="2" scaleY="2" />
 	<obj name="solidsmall" x="360" y="400" scaleX="2" scaleY="2" />
