@@ -57,7 +57,7 @@ class Room extends FlxTransitionableState
 					if (obj.att.name.startsWith('solid'))
 					{
 						object.alpha = 0.5;
-						object.immoveable = true;
+						object.immovable = true;
 						object.solid = true;
 					}
 	
@@ -77,6 +77,7 @@ class Room extends FlxTransitionableState
 
 		super.update(elapsed);
 
-		FlxG.collide(chara, objects);
+		if (objects.length > 0)
+			FlxG.collide(chara, objects);
 	}
 }
