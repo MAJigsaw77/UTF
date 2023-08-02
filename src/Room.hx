@@ -68,6 +68,8 @@ class Room extends FlxTransitionableState
 			}
 		}
 
+		FlxG.worldBounds.set(0, 0, data.exists('width') ? Std.parseInt(data.get('width')) ? FlxG.width, data.exists('height') ? Std.parseInt(data.get('height')) ? FlxG.height);
+
 		super.create();
 	}
 
