@@ -70,12 +70,12 @@ class Room extends FlxTransitionableState
 		add(objects);
 
 		super.create();
+
+		FlxG.camera.follow(chara);
 	}
 
 	override function update(elapsed:Float):Void
 	{
-		FlxG.camera.focusOn(chara.getGraphicMidpoint());
-
 		super.update(elapsed);
 
 		if (objects.length > 0)
