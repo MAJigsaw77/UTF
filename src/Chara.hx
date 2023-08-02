@@ -61,7 +61,7 @@ class Chara extends FlxSprite
 
 			x += 6;
 			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
-				x -= 10;
+				x += 10;
 		}
 
 		if (FlxG.keys.anyJustReleased([DOWN, UP, LEFT, RIGHT]))
