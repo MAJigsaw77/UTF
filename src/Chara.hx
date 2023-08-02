@@ -34,34 +34,34 @@ class Chara extends FlxSprite
 		{
 			animation.play('down');
 
-			y += 6;
+			velocity.y = 6 * FlxG.updateFramerate;
 			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
-				y += 10;
+				velocity.y = 10 * FlxG.updateFramerate;
 		}
 		else if (FlxG.keys.pressed.UP)
 		{
 			animation.play('up');
 
-			y -= 6;
+			velocity.y = -6 * FlxG.updateFramerate;
 			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
-				y -= 10;
+				velocity.y = -10 * FlxG.updateFramerate;
 		}
 
 		if (FlxG.keys.pressed.RIGHT)
 		{
 			animation.play('right');
 
-			x += 6;
+			velocity.x = 6 * FlxG.updateFramerate;
 			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
-				x += 10;
+				velocity.x = 10 * FlxG.updateFramerate;
 		}
 		else if (FlxG.keys.pressed.LEFT)
 		{
 			animation.play('left');
 
-			x -= 6;
+			velocity.x = -6 * FlxG.updateFramerate;
 			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
-				x -= 10;
+				velocity.x = -10 * FlxG.updateFramerate;
 		}
 
 		if (FlxG.keys.anyJustReleased([DOWN, UP, LEFT, RIGHT]))
