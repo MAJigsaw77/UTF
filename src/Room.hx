@@ -2,6 +2,7 @@ package;
 
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
+import flixel.math.FlxPoint;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import haxe.io.Path;
@@ -72,7 +73,7 @@ class Room extends FlxTransitionableState
 
 	override function update(elapsed:Float):Void
 	{
-		FlxG.camera.follow(chara, NO_DEAD_ZONE);
+		FlxG.camera.focusOn(FlxPoint.weak(Math.round(chara.x - 10), Math.round(chara.y - 10)));
 
 		super.update(elapsed);
 
