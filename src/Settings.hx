@@ -41,7 +41,6 @@ class Settings extends FlxTransitionableState
 		add(settings);
 
 		optionsItems = new FlxTypedGroup<FlxText>();
-		add(optionsItems);
 
 		for (i in 0...options.length)
 		{
@@ -51,6 +50,8 @@ class Settings extends FlxTransitionableState
 			opt.scrollFactor.set();
 			optionsItems.add(opt);
 		}
+
+		add(optionsItems);
 
 		tobdogWeather = new FlxSprite(500, 436);
 

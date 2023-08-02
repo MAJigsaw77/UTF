@@ -55,7 +55,6 @@ class IntroMenu extends FlxState
 		add(roomname);
 
 		choicesItems = new FlxTypedGroup<FlxText>();
-		add(choicesItems);
 
 		for (i in 0...choices.length)
 		{
@@ -79,6 +78,8 @@ class IntroMenu extends FlxState
 			bt.scrollFactor.set();
 			choicesItems.add(bt);
 		}
+
+		add(choicesItems);
 
 		#if !debug
 		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta.get('version')} (c) MAJigsaw77 2023', 16);

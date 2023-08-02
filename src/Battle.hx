@@ -52,7 +52,6 @@ class Battle extends FlxTransitionableState
 		add(hpInfo);
 
 		choicesItems = new FlxTypedGroup<FlxSprite>();
-		add(choicesItems);
 
 		for (i in 0...choices.length)
 		{
@@ -74,6 +73,8 @@ class Battle extends FlxTransitionableState
 			bt.ID = i;
 			choicesItems.add(bt);
 		}
+
+		add(choicesItems);
 
 		monster = new Monster(0, 0, 'default');
 		monster.scrollFactor.set();
