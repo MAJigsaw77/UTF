@@ -32,7 +32,8 @@ class Chara extends FlxSprite
 	{
 		if (FlxG.keys.pressed.DOWN)
 		{
-			animation.play('down');
+			if (!FlxG.keys.anyPressed([RIGHT, LEFT]))
+				animation.play('down');
 
 			y += 6;
 			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
@@ -40,7 +41,8 @@ class Chara extends FlxSprite
 		}
 		else if (FlxG.keys.pressed.UP)
 		{
-			animation.play('up');
+			if (!FlxG.keys.anyPressed([RIGHT, LEFT]))
+				animation.play('up');
 
 			y -= 6;
 			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
