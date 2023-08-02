@@ -35,10 +35,10 @@ class Room extends FlxTransitionableState
 
 	override function create():Void
 	{
-		final fast:Access = new Access(data);
-
 		objects = new FlxTypedGroup<FlxSprite>();
 		add(objects);
+
+		final fast:Access = new Access(data);
 
 		for (obj in fast.nodes.obj)
 		{
@@ -49,9 +49,13 @@ class Room extends FlxTransitionableState
 					chara.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
 					chara.updateHitbox();
 					chara.scrollFactor.set();
-					add(chara);
+					insert(chara, members.indexOf(objects) - 1);
 				default:
 					var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
+
+					if (obj.att.name.startsWith('solid'))
+						object.alpha = 0.5;
+	
 					object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
 					object.updateHitbox();
 					object.scrollFactor.set();
