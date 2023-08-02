@@ -65,6 +65,8 @@ class Room extends FlxTransitionableState
 			}
 		}
 
+		FlxG.camera.follow(chara);
+
 		super.create();
 	}
 
