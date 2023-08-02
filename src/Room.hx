@@ -57,7 +57,6 @@ class Room extends FlxTransitionableState
 					if (obj.att.name.startsWith('solid'))
 					{
 						object.alpha = 0.5;
-						object.immovable = true;
 						object.solid = true;
 					}
 	
