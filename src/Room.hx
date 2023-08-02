@@ -73,7 +73,7 @@ class Room extends FlxTransitionableState
 
 	override function update(elapsed:Float):Void
 	{
-		FlxG.camera.focusOn(FlxPoint.weak(Math.round(chara.x - 10), Math.round(chara.y - 10)));
+		FlxG.camera.focusOn(chara.getGraphicMidpoint());
 
 		super.update(elapsed);
 
