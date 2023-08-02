@@ -50,13 +50,14 @@ class Room extends FlxTransitionableState
 					chara = new Chara(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y));
 					chara.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
 					chara.updateHitbox();
-					add(chara);
+					insert(members.indexOf(objects), chara);
 				default:
 					var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
 
 					if (obj.att.name.startsWith('solid'))
 					{
 						object.alpha = 0.5;
+						object.immovable = true;
 						object.solid = true;
 					}
 	
@@ -71,7 +72,7 @@ class Room extends FlxTransitionableState
 
 	override function update(elapsed:Float):Void
 	{
-		FlxG.camera.follow(chara, PLATFORMER);
+		FlxG.camera.follow(chara);
 
 		super.update(elapsed);
 
