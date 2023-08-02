@@ -52,7 +52,6 @@ class Room extends FlxTransitionableState
 					var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
 					object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
 					object.updateHitbox();
-					object.scrollFactor.set();
 	
 					if (obj.att.name.startsWith('solid'))
 						object.alpha = 0.5;
