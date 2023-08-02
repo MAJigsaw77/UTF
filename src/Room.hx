@@ -50,7 +50,6 @@ class Room extends FlxTransitionableState
 					chara = new Chara(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y));
 					chara.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
 					chara.updateHitbox();
-					chara.scrollFactor.set();
 					add(chara);
 				default:
 					var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
@@ -58,6 +57,7 @@ class Room extends FlxTransitionableState
 					if (obj.att.name.startsWith('solid'))
 					{
 						object.alpha = 0.5;
+						object.immoveable = true;
 						object.solid = true;
 					}
 	
