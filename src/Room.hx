@@ -33,13 +33,10 @@ class Room extends FlxTransitionableState
 		Global.room = Std.parseInt(data.get('id'));
 	}
 
-	var objects:FlxTypedGroup<FlxSprite>;
 	var chara:Chara;
 
 	override function create():Void
 	{
-		objects = new FlxTypedGroup<FlxSprite>();
-
 		final fast:Access = new Access(data);
 
 		for (obj in fast.nodes.obj)
@@ -53,31 +50,24 @@ class Room extends FlxTransitionableState
 					add(chara);
 				default:
 					var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
-
-					if (obj.att.name.startsWith('solid'))
-					{
-						object.alpha = 0.5;
-						object.immovable = true;
-						object.solid = true;
-					}
-	
 					object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
 					object.updateHitbox();
-					objects.add(object);
+					object.scrollFactor.set();
+	
+					if (obj.att.name.startsWith('solid'))
+						object.alpha = 0.5;
+
+					add(object);
 			}
 		}
 
-		add(objects);
+		super.create();
 
 		FlxG.camera.follow(chara);
-
-		super.create();
 	}
 
 	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-
-		FlxG.collide(chara, objects);
 	}
 }
