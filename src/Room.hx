@@ -24,12 +24,12 @@ class Room extends FlxTransitionableState
 			if (Path.extension(file) == 'xml')
 			{
 				data = Xml.parse(Assets.getText(file)).firstElement();
-				if (Std.parseInt(data.get("id")) == room)
+				if (Std.parseInt(data.get('id')) == room)
 					break;
 			}
 		}
 
-		Global.room = Std.parseInt(data.get("id"));
+		Global.room = Std.parseInt(data.get('id'));
 	}
 
 	var chara:Chara;
