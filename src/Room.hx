@@ -28,6 +28,8 @@ class Room extends FlxTransitionableState
 					break;
 			}
 		}
+
+		Global.room = Std.parseInt(data.get("id"));
 	}
 
 	var chara:Chara;
