@@ -39,7 +39,6 @@ class Room extends FlxTransitionableState
 	override function create():Void
 	{
 		objects = new FlxTypedGroup<FlxSprite>();
-		add(objects);
 
 		final fast:Access = new Access(data);
 
@@ -51,7 +50,7 @@ class Room extends FlxTransitionableState
 					chara = new Chara(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y));
 					chara.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
 					chara.updateHitbox();
-					insert(members.indexOf(objects), chara);
+					add(chara);
 				default:
 					var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
 
@@ -68,7 +67,7 @@ class Room extends FlxTransitionableState
 			}
 		}
 
-		FlxG.worldBounds.set(0, 0, data.exists('width') ? Std.parseInt(data.get('width')) ? FlxG.width, data.exists('height') ? Std.parseInt(data.get('height')) ? FlxG.height);
+		add(objects);
 
 		super.create();
 	}
@@ -80,6 +79,6 @@ class Room extends FlxTransitionableState
 		super.update(elapsed);
 
 		if (objects.length > 0)
-			FlxG.collide(chara, objects);
+			FlxG.collide(objects, chara);
 	}
 }
