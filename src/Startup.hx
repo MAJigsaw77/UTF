@@ -22,8 +22,6 @@ class Startup extends FlxState
 		if (FlxG.save.data.mute != null)
 			FlxG.sound.muted = FlxG.save.data.mute;
 
-		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
-
 		FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 0.5);
 		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.5);
 
