@@ -73,10 +73,9 @@ class Room extends FlxTransitionableState
 	override function update(elapsed:Float):Void
 	{
 		FlxG.camera.follow(chara);
-
-		super.update(elapsed);
-
 		if (objects.length > 0)
 			FlxG.collide(chara, objects);
+
+		super.update(elapsed);
 	}
 }
