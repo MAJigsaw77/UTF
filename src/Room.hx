@@ -62,7 +62,6 @@ class Room extends FlxTransitionableState
 	
 					object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
 					object.updateHitbox();
-					object.scrollFactor.set();
 					objects.add(object);
 			}
 		}
