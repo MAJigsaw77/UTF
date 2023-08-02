@@ -47,21 +47,21 @@ class Chara extends FlxSprite
 				y -= 10;
 		}
 
-		if (FlxG.keys.pressed.LEFT)
-		{
-			animation.play('left');
-
-			x -= 6;
-			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
-				x -= 10;
-		}
-		else if (FlxG.keys.pressed.RIGHT)
+		if (FlxG.keys.pressed.RIGHT)
 		{
 			animation.play('right');
 
 			x += 6;
 			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
 				x += 10;
+		}
+		else if (FlxG.keys.pressed.LEFT)
+		{
+			animation.play('left');
+
+			x -= 6;
+			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
+				x -= 10;
 		}
 
 		if (FlxG.keys.anyJustReleased([DOWN, UP, LEFT, RIGHT]))
