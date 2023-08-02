@@ -72,7 +72,7 @@ class Room extends FlxTransitionableState
 
 	override function update(elapsed:Float):Void
 	{
-		FlxG.camera.follow(chara);
+		FlxG.camera.follow(chara, NO_DEAD_ZONE);
 
 		super.update(elapsed);
 
