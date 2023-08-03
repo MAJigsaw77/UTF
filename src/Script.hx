@@ -3,6 +3,8 @@ package;
 #if (FLX_DRAW_QUADS && !flash)
 import flixel.addons.display.FlxRuntimeShader;
 #end
+import flixel.effects.particles.FlxEmitter;
+import flixel.effects.particles.FlxParticle;
 import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxMath;
 import flixel.tweens.FlxEase;
@@ -32,6 +34,8 @@ class Script
 		#if (FLX_DRAW_QUADS && !flash)
 		'FlxRuntimeShader' => FlxRuntimeShader,
 		#end
+		'FlxEmitter' => FlxEmitter,
+		'FlxParticle' => FlxParticle,
 		'FlxMath' => FlxMath,
 		'FlxEase' => FlxEase,
 		'FlxTween' => FlxTween,
