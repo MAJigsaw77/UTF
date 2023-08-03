@@ -13,7 +13,7 @@ using StringTools;
 
 class Room extends FlxTransitionableState
 {
-	var data:Xml = Xml.parse('<room id="0"></room>').firstElement();
+	var data:Xml = Xml.parse('<room id="0" facing="down" cameraFollow="true"></room>').firstElement();
 
 	public function new(room:Int):Void
 	{
@@ -71,7 +71,8 @@ class Room extends FlxTransitionableState
 
 		super.create();
 
-		FlxG.camera.follow(chara);
+		if (data.get('cameraFollow') == 'true')
+			FlxG.camera.follow(chara);
 	}
 
 	override function update(elapsed:Float):Void
