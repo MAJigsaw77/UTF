@@ -31,15 +31,21 @@ class Chara extends FlxSprite
 
 	override function update(elapsed:Float):Void
 	{
+		FlxG.watch.addQuick("X", x);
+		FlxG.watch.addQuick("X Speed", velocity.x);
+
+		FlxG.watch.addQuick("Y", y);
+		FlxG.watch.addQuick("Y Speed", velocity.y);
+
 		if (FlxG.keys.pressed.DOWN)
 		{
 			if (!FlxG.keys.anyPressed([RIGHT, LEFT]))
 				animation.play('down');
 
-			y += 6;
+			velocity.y = 180;
 			#if debug
 			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
-				y += 10;
+				velocity.y = 300;
 			#end
 		}
 		else if (FlxG.keys.pressed.UP)
@@ -47,10 +53,10 @@ class Chara extends FlxSprite
 			if (!FlxG.keys.anyPressed([RIGHT, LEFT]))
 				animation.play('up');
 
-			y -= 6;
+			velocity.y = -180;
 			#if debug
 			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
-				y -= 10;
+				velocity.y = -300;
 			#end
 		}
 
@@ -58,25 +64,29 @@ class Chara extends FlxSprite
 		{
 			animation.play('right');
 
-			x += 6;
+			velocity.x = 180;
 			#if debug
 			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
-				x += 10;
+				velocity.x = 300;
 			#end
 		}
 		else if (FlxG.keys.pressed.LEFT)
 		{
 			animation.play('left');
 
-			x -= 6;
+			velocity.x = -180;
 			#if debug
 			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
-				x -= 10;
+				velocity.x = -300;
 			#end
 		}
 
 		if (FlxG.keys.anyJustReleased([DOWN, UP, LEFT, RIGHT]))
+		{
 			animation.finish();
+
+			velocity.set();
+		}
 
 		super.update(elapsed);
 	}
