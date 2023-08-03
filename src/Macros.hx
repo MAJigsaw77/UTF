@@ -10,7 +10,7 @@ class Macros
 	{
 		try
 		{
-			var proc = new Process('git', ['rev-parse', '--short', 'HEAD']);
+			var proc:Process = new Process('git', ['rev-parse', '--short', 'HEAD']);
 			proc.exitCode(true);
 			return macro $v{proc.stdout.readLine()};
 		}
@@ -23,7 +23,7 @@ class Macros
 	{
 		try
 		{
-			var proc = new Process('git', ['rev-list', '--count', 'HEAD']);
+			var proc:Process = new Process('git', ['rev-list', '--count', 'HEAD']);
 			proc.exitCode(true);
 			return macro $v{Std.parseInt(proc.stdout.readLine())};
 		}
