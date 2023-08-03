@@ -33,10 +33,13 @@ class Room extends FlxTransitionableState
 		Global.room = Std.parseInt(data.get('id'));
 	}
 
+	var solid:FlxTypedGroup<FlxSprite>;
 	var chara:Chara;
 
 	override function create():Void
 	{
+		solid = new FlxTypedGroup<FlxSprite>();
+
 		final fast:Access = new Access(data);
 
 		for (obj in fast.nodes.obj)
@@ -54,11 +57,18 @@ class Room extends FlxTransitionableState
 					object.updateHitbox();
 	
 					if (obj.att.name.startsWith('solid'))
+					{
 						object.alpha = 0.5;
-
-					add(object);
+						object.immovable = true;
+						object.solid = true;
+						solid.add(object);
+					}
+					else
+						add(object);
 			}
 		}
+
+		add(solid);
 
 		super.create();
 
@@ -68,5 +78,7 @@ class Room extends FlxTransitionableState
 	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+
+		FlxG.collide(solid, chara);
 	}
 }
