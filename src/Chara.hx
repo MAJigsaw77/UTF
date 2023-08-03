@@ -6,7 +6,7 @@ import flixel.FlxSprite;
 
 class Chara extends FlxSprite
 {
-	public function new(x:Float, y:Float, facing:String = 'down'):Void
+	public function new(x:Float, y:Float, facing:String):Void
 	{
 		super(x, y);
 
