@@ -1,6 +1,7 @@
 package;
 
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
 import flixel.sound.FlxSound;
@@ -15,6 +16,7 @@ class Settings extends FlxTransitionableState
 	final options:Array<String> = ['Exit', 'FPS Display', 'Key Binds', 'Reset to Default'];
 	var optionsItems:FlxTypedGroup<FlxText>;
 
+	var particlesEmitter:FlxEmitter;
 	var tobdogWeather:FlxSprite;
 	var tobdogLine:FlxText;
 
@@ -33,6 +35,10 @@ class Settings extends FlxTransitionableState
 		}
 
 		FlxG.sound.cache(weatherMusic);
+
+		particlesEmitter = new FlxEmitter(0, 0, 200);
+		particlesEmitter.loadParticles(AssetPaths.sprite('fallleaf'));
+		add(particlesEmitter);
 
 		var settings:FlxText = new FlxText(0, 20, 0, 'SETTINGS', 64);
 		settings.font = AssetPaths.font('DTM-Sans.ttf');
@@ -102,6 +108,8 @@ class Settings extends FlxTransitionableState
 		FlxG.sound.play(AssetPaths.music('harpnoise'), () -> FlxG.sound.playMusic(weatherMusic, 0.8, true));
 
 		super.create();
+
+		particlesEmitter.start();
 	}
 
 	var siner:Int = 0;
