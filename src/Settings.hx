@@ -36,7 +36,7 @@ class Settings extends FlxTransitionableState
 
 		FlxG.sound.cache(weatherMusic);
 
-		particlesEmitter = new FlxEmitter(FlxG.random.int(FlxG.width), 0, 200);
+		particlesEmitter = new FlxEmitter(FlxG.random.int(FlxG.width), 0);
 		particlesEmitter.loadParticles(AssetPaths.sprite('fallleaf'), 200);
 		particlesEmitter.alpha.set(0.5, 0.5);
 		add(particlesEmitter);
@@ -110,7 +110,7 @@ class Settings extends FlxTransitionableState
 
 		super.create();
 
-		particlesEmitter.start();
+		particlesEmitter.start(false, 0.01);
 	}
 
 	var siner:Int = 0;
