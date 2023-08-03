@@ -39,6 +39,7 @@ class Room extends FlxTransitionableState
 	override function create():Void
 	{
 		solid = new FlxTypedGroup<FlxSprite>();
+		add(solid);
 
 		final fast:Access = new Access(data);
 
@@ -67,8 +68,6 @@ class Room extends FlxTransitionableState
 						add(object);
 			}
 		}
-
-		add(solid);
 
 		super.create();
 
