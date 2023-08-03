@@ -78,6 +78,6 @@ class Room extends FlxTransitionableState
 	{
 		super.update(elapsed);
 
-		FlxG.collide(solid, chara);
+		FlxG.collide(chara, solid);
 	}
 }
