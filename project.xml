@@ -5,7 +5,9 @@
 
 	<app title="UTF" packageName="com.majigsaw77.utf" package="com.majigsaw77.utf" version="1.0.0" company="MAJigsaw77" />
 
-	<app file="UTF" main="Main" preloader="flixel.system.FlxPreloader" />
+	<app file="UTF" main="Main" path="export" preloader="flixel.system.FlxPreloader" />
+
+	<!--Icon Settings -->
 
 	<icon path="icon.svg" />
 
@@ -16,8 +18,6 @@
 	<window if="mobile || switch" fullscreen="true" />
 
 	<!--Path Settings-->
-
-	<set name="BUILD_DIR" value="export" />
 
 	<assets path="assets" />
 
