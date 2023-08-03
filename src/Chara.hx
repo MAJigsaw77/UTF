@@ -31,12 +31,6 @@ class Chara extends FlxSprite
 
 	override function update(elapsed:Float):Void
 	{
-		FlxG.watch.addQuick("X", x);
-		FlxG.watch.addQuick("X Speed", velocity.x);
-
-		FlxG.watch.addQuick("Y", y);
-		FlxG.watch.addQuick("Y Speed", velocity.y);
-
 		if (FlxG.keys.pressed.DOWN)
 		{
 			if (!FlxG.keys.anyPressed([RIGHT, LEFT]))
