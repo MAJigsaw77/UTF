@@ -37,7 +37,7 @@ class Settings extends FlxTransitionableState
 		FlxG.sound.cache(weatherMusic);
 
 		particlesEmitter = new FlxEmitter(FlxG.random.int(FlxG.width), 0, 200);
-		particlesEmitter.loadParticles(AssetPaths.sprite('fallleaf'));
+		particlesEmitter.loadParticles(AssetPaths.sprite('fallleaf'), 200);
 		particlesEmitter.alpha.set(0.5, 0.5);
 		add(particlesEmitter);
 
