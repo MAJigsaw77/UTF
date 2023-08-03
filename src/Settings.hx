@@ -39,6 +39,7 @@ class Settings extends FlxTransitionableState
 		particlesEmitter = new FlxEmitter(FlxG.random.int(FlxG.width), 0);
 		particlesEmitter.loadParticles(AssetPaths.sprite('fallleaf'), 200);
 		particlesEmitter.alpha.set(0.5, 0.5);
+		particlesEmitter.velocity.set(180, 180);
 		add(particlesEmitter);
 
 		var settings:FlxText = new FlxText(0, 20, 0, 'SETTINGS', 64);
