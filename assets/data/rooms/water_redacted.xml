@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<room id="272" facing="up">
+<room id="272" facing="up" cameraFollow="false">
 	<obj name="chara" x="280" y="200" scaleX="2" scaleY="2" />
 
 	<obj name="solidsmall" x="200" y="440" scaleX="2" scaleY="2" />
