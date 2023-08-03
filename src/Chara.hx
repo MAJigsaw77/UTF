@@ -19,6 +19,7 @@ class Chara extends FlxSprite
 				{animation: 'chara up', path: 'f_maincharau', frames: [3, 2, 1, 0]}
 			]
 		});
+
 		animation.addByPrefix('down', 'chara down', 6, false);
 		animation.addByPrefix('left', 'chara left', 6, false);
 		animation.addByPrefix('right', 'chara right', 6, false);
