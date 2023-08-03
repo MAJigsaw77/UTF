@@ -44,7 +44,7 @@ class Room extends FlxTransitionableState
 			switch (obj.att.name)
 			{
 				case 'chara':
-					chara = new Chara(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y));
+					chara = new Chara(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), data.get('facing'));
 					chara.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
 					chara.updateHitbox();
 					add(chara);
