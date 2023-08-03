@@ -40,6 +40,7 @@ class Monster extends FlxSpriteGroup
 		}
 
 		script = new Script();
+
 		script.set('this', this);
 		script.set('add', add);
 		script.set('insert', insert);
