@@ -39,6 +39,7 @@ class Settings extends FlxTransitionableState
 		particlesEmitter = new FlxEmitter(320, 240, 200);
 		particlesEmitter.loadParticles(AssetPaths.sprite('fallleaf'), 200);
 		particlesEmitter.alpha.set(0.5, 0.5);
+		particlesEmitter.scale.set(0.5, 0.5);
 		particlesEmitter.velocity.set(180, 180);
 		add(particlesEmitter);
 
@@ -52,7 +53,7 @@ class Settings extends FlxTransitionableState
 
 		for (i in 0...options.length)
 		{
-			var opt:FlxText = new FlxText(40, 80 + i * 40, 0, options[i].toUpperCase(), 32);
+			var opt:FlxText = new FlxText(40, 80 + i * 50, 0, options[i].toUpperCase(), 32);
 			opt.font = AssetPaths.font('DTM-Sans.ttf');
 			opt.ID = i;
 			opt.scrollFactor.set();
