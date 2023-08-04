@@ -74,7 +74,7 @@ class AssetPaths
 			{
 				var file:String = AssetPaths.sprite(sheet.path + '_$frame');
 
-				if (Assets.exists(file))
+				if (Assets.exists(file, IMAGE))
 					atlas.addNode(Assets.getBitmapData(file, false), sheet.animation + frame);
 				else
 					atlas.addNode('flixel/images/logo/default.png', sheet.animation + frame);
