@@ -48,13 +48,7 @@ class AssetPaths
 
 	public static inline function shader(key:String):String
 	{
-		try
-		{
-			return Assets.getText('assets/shaders/$key');
-		}
-		catch (e:Dynamic)
-
-		return null;
+		return 'assets/shaders/$key';
 	}
 
 	public static inline function sound(key:String):String
