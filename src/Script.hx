@@ -69,7 +69,7 @@ class Script
 
 		try
 		{
-			if (Assets.exists(file))
+			if (Assets.exists(file, TEXT))
 				interp.execute(parser.parseString(Assets.getText(file), file));
 			else
 				throw 'script $file doesn\'t exist!';
