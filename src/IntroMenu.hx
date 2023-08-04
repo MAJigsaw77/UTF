@@ -107,15 +107,13 @@ class IntroMenu extends FlxState
 			changeOption(-1);
 		else if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')))
 		{
-			// if (choices[curChoice] != 'Reset')
-				// FlxG.sound.music.stop();
+			if (choices[curChoice] != 'Reset')
+				FlxG.sound.music.stop();
 
 			switch (choices[curChoice])
 			{
 				case 'Continue':
 					FlxG.switchState(new Room(Global.room));
-				case 'Reset':
-					FlxG.switchState(new Battle());
 				case 'Settings':
 					FlxG.switchState(new Settings());
 			}
