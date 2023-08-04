@@ -154,10 +154,7 @@ class Settings extends FlxTransitionableState
 
 		optionsItems.forEach(function(spr:FlxText)
 		{
-			if (spr.ID == curOption)
-				spr.color = FlxColor.YELLOW;
-			else
-				spr.color = FlxColor.WHITE;
+			spr.color = spr.ID == curOption ? FlxColor.YELLOW : FlxColor.WHITE;
 		});
 	}
 

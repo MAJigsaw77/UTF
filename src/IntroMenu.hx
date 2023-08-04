@@ -128,10 +128,7 @@ class IntroMenu extends FlxState
 
 		choicesItems.forEach(function(spr:FlxText)
 		{
-			if (spr.ID == curChoice)
-				spr.color = FlxColor.YELLOW;
-			else
-				spr.color = FlxColor.WHITE;
+			spr.color = spr.ID == curChoice ? FlxColor.YELLOW : FlxColor.WHITE;
 		});
 	}
 }
