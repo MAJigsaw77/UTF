@@ -40,7 +40,7 @@ class Settings extends FlxTransitionableState
 		particlesEmitter.loadParticles(AssetPaths.sprite('fallleaf'), 200);
 		particlesEmitter.alpha.set(0.5, 0.5);
 		particlesEmitter.scale.set(2, 2);
-		particlesEmitter.acceleration.set(0.02, 0.02);
+		particlesEmitter.acceleration.set(0.6, 0.6);
 		particlesEmitter.velocity.set(150, 180);
 		add(particlesEmitter);
 
