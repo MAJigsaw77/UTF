@@ -21,16 +21,6 @@ typedef SheetData =
 
 class AssetPaths
 {
-	public static inline function background(key:String):String
-	{
-		return 'assets/backgrounds/$key.png';
-	}
-
-	public static inline function font(key:String):String
-	{
-		return 'assets/fonts/$key';
-	}
-
 	public static inline function script(key:String):String
 	{
 		return 'assets/data/$key.hx';
@@ -41,14 +31,29 @@ class AssetPaths
 		return 'assets/data/$key.json';
 	}
 
+	public static inline function room(key:String):String
+	{
+		return 'assets/data/$key.xml';
+	}
+
+	public static inline function font(key:String):String
+	{
+		return 'assets/fonts/$key.ttf';
+	}
+
 	public static inline function music(key:String):String
 	{
 		return 'assets/music/$key.ogg';
 	}
 
-	public static inline function shader(key:String):String
+	public static inline function shaderFragment(key:String):String
 	{
-		return 'assets/shaders/$key';
+		return 'assets/shaders/$key.frag';
+	}
+
+	public static inline function shaderVertex(key:String):String
+	{
+		return 'assets/shaders/$key.vert';
 	}
 
 	public static inline function sound(key:String):String
@@ -56,9 +61,14 @@ class AssetPaths
 		return 'assets/sounds/$key.wav';
 	}
 
+	public static inline function background(key:String):String
+	{
+		return 'assets/images/backgrounds/$key.png';
+	}
+
 	public static inline function sprite(key:String):String
 	{
-		return 'assets/sprites/$key.png';
+		return 'assets/images/sprites/$key.png';
 	}
 
 	public static function spritesheet(data:SpriteSheetData):FlxAtlasFrames
