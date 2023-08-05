@@ -59,11 +59,7 @@ class FPS extends TextField
 		while (times[0] < currentTime - 1000)
 			times.shift();
 
-		var currentFrames:Int = times.length;
-		if (currentFrames > Std.int(FlxG.stage.frameRate))
-			currentFPS = Std.int(FlxG.stage.frameRate);
-		else
-			currentFPS = currentFrames;
+		currentFPS = (times.length > Std.int(FlxG.stage.frameRate)) ? Std.int(FlxG.stage.frameRate) : times.length;
 
 		final stats:Array<String> = [];
 		stats.push('FPS: ' + currentFPS);
