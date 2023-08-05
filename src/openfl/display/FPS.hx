@@ -12,7 +12,7 @@ import openfl.Lib;
 class FPS extends TextField
 {
 	/**
-	 * The current frame rate, expressed using frames-per-second.
+	 * The current frameRate, expressed using frames-per-second.
 	 */
 	public var currentFPS(default, null):Int = 0;
 
@@ -36,9 +36,9 @@ class FPS extends TextField
 
 		#if mobile
 		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans')).fontName,
-			Std.int(16 * Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height)), color);
+			Std.int(18 * Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height)), color);
 		#else
-		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans')).fontName, 16, color);
+		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans')).fontName, 18, color);
 		#end
 	}
 
@@ -54,8 +54,8 @@ class FPS extends TextField
 		currentFPS = (times.length > Std.int(FlxG.stage.frameRate)) ? Std.int(FlxG.stage.frameRate) : times.length;
 
 		if (!showMemoryUsage)
-			text = currentFPS + '\n';
+			text = currentFPS + ' FPS\n';
 		else
-			text = currentFPS + '\n' + FlxStringUtil.formatBytes(System.totalMemory) + '\n';
+			text = currentFPS + ' FPS\n' + FlxStringUtil.formatBytes(System.totalMemory) + '\n';
 	}
 }
