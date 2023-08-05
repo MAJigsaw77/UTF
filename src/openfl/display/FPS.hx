@@ -62,10 +62,10 @@ class FPS extends TextField
 		currentFPS = (times.length > Std.int(FlxG.stage.frameRate)) ? Std.int(FlxG.stage.frameRate) : times.length;
 
 		final stats:Array<String> = [];
-		stats.push('FPS: ' + currentFPS);
+		stats.push('$currentFPS FPS');
 
 		if (showMemoryUsage)
-			stats.push('Memory: ' + FlxStringUtil.formatBytes(System.totalMemory));
+			stats.push(FlxStringUtil.formatBytes(System.totalMemory));
 
 		stats.push(''); // adding this to not hide the last line.
 		text = stats.join('\n');
