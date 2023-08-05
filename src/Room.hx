@@ -69,16 +69,16 @@ class Room extends FlxTransitionableState
 			}
 		}
 
-		super.create();
-
 		if (data.get('cameraFollow') == 'true')
 			FlxG.camera.follow(chara);
+
+		super.create();
 	}
 
 	override function update(elapsed:Float):Void
 	{
-		super.update(elapsed);
-
 		FlxG.collide(chara, solid);
+
+		super.update(elapsed);
 	}
 }
