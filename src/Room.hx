@@ -13,7 +13,7 @@ using StringTools;
 
 class Room extends FlxTransitionableState
 {
-	var data:Xml = Xml.parse('<room id="0" facing="down" cameraFollow="true"></room>').firstElement();
+	var data:Xml;
 
 	public function new(room:Int):Void
 	{
@@ -22,7 +22,7 @@ class Room extends FlxTransitionableState
 		for (file in Assets.list(TEXT).filter(folder -> folder.startsWith('assets/data/rooms')))
 		{
 			// Being sure about something...
-			if (Path.extension(file) == 'xml')
+			if (Assets.exists(file, TEXT) && Path.extension(file) == 'xml')
 			{
 				data = Xml.parse(Assets.getText(file)).firstElement();
 				if (Std.parseInt(data.get('id')) == room)
