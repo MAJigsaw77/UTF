@@ -1,13 +1,13 @@
 package openfl.display;
 
-import flixel.FlxG;
 import flixel.util.FlxStringUtil;
-import openfl.Lib;
+import flixel.FlxG;
 import openfl.events.Event;
 import openfl.system.System;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.utils.Assets;
+import openfl.Lib;
 
 class FPS extends TextField
 {
@@ -42,12 +42,11 @@ class FPS extends TextField
 		#end
 
 		currentTime = 0;
-		times = [];
+		times = new Array<Float>();
 
-		addEventListener(Event.ENTER_FRAME, function(e:Event)
+		addEventListener(Event.ENTER_FRAME, function(event:Event)
 		{
-			var time:Int = Lib.getTimer();
-			onEnterFrame(time - currentTime);
+			onEnterFrame(Lib.getTimer() - currentTime);
 		});
 	}
 
@@ -61,13 +60,9 @@ class FPS extends TextField
 
 		currentFPS = (times.length > Std.int(FlxG.stage.frameRate)) ? Std.int(FlxG.stage.frameRate) : times.length;
 
-		final stats:Array<String> = [];
-		stats.push('$currentFPS FPS');
-
-		if (showMemoryUsage)
-			stats.push(FlxStringUtil.formatBytes(System.totalMemory));
-
-		stats.push(''); // adding this to not hide the last line.
-		text = stats.join('\n');
+		if (!showMemoryUsage)
+			text = currentFPS + '\n';
+		else
+			text = currentFPS + '\n' + FlxStringUtil.formatBytes(System.totalMemory) + '\n';
 	}
 }
