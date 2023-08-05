@@ -45,7 +45,7 @@ class Settings extends FlxTransitionableState
 		add(particlesEmitter);
 
 		var settings:FlxText = new FlxText(0, 20, 0, 'SETTINGS', 64);
-		settings.font = AssetPaths.font('DTM-Sans.ttf');
+		settings.font = AssetPaths.font('DTM-Sans');
 		settings.screenCenter(X);
 		settings.scrollFactor.set();
 		add(settings);
@@ -55,7 +55,7 @@ class Settings extends FlxTransitionableState
 		for (i in 0...options.length)
 		{
 			var opt:FlxText = new FlxText(40, 80 + i * 50, 0, options[i].toUpperCase(), 32);
-			opt.font = AssetPaths.font('DTM-Sans.ttf');
+			opt.font = AssetPaths.font('DTM-Sans');
 			opt.ID = i;
 			opt.scrollFactor.set();
 			optionsItems.add(opt);
@@ -101,7 +101,7 @@ class Settings extends FlxTransitionableState
 			case 4: 'sweep a leaf\nsweep away a\ntroubles';
 			default: '';
 		}
-		tobdogLine.font = AssetPaths.font('DTM-Sans.ttf');
+		tobdogLine.font = AssetPaths.font('DTM-Sans');
 		tobdogLine.color = FlxColor.GRAY;
 		tobdogLine.angle = 20;
 		tobdogLine.scrollFactor.set();

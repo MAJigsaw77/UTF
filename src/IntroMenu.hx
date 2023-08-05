@@ -33,24 +33,24 @@ class IntroMenu extends FlxState
 		add(flowey);
 
 		var name:FlxText = new FlxText(145, 120, 0, Global.name, 32);
-		name.font = AssetPaths.font('DTM-Sans.ttf');
+		name.font = AssetPaths.font('DTM-Sans');
 		name.scrollFactor.set();
 		add(name);
 
 		var love:FlxText = new FlxText(285, 120, 0, 'LV ${Global.lv}', 32);
-		love.font = AssetPaths.font('DTM-Sans.ttf');
+		love.font = AssetPaths.font('DTM-Sans');
 		love.scrollFactor.set();
 		add(love);
 
 		// TODO
 		var time:FlxText = new FlxText(425, 120, 0, '0:0', 32);
-		time.font = AssetPaths.font('DTM-Sans.ttf');
+		time.font = AssetPaths.font('DTM-Sans');
 		time.scrollFactor.set();
 		add(time);
 
 		// TODO
 		var roomname:FlxText = new FlxText(145, 160, 0, '---', 32);
-		roomname.font = AssetPaths.font('DTM-Sans.ttf');
+		roomname.font = AssetPaths.font('DTM-Sans');
 		roomname.scrollFactor.set();
 		add(roomname);
 
@@ -73,7 +73,7 @@ class IntroMenu extends FlxState
 					bt.y = 250;
 			}
 
-			bt.font = AssetPaths.font('DTM-Sans.ttf');
+			bt.font = AssetPaths.font('DTM-Sans');
 			bt.ID = i;
 			bt.scrollFactor.set();
 			choicesItems.add(bt);
@@ -88,7 +88,7 @@ class IntroMenu extends FlxState
 			'UTF v${Lib.application.meta.get('version')} (c) MAJigsaw77 2023\nCommit ${Macros.getCommitNumber()} (${Macros.getCommitHash()})', 16);
 		#end
 		info.alignment = 'center';
-		info.font = AssetPaths.font('Small.ttf');
+		info.font = AssetPaths.font('Small');
 		info.color = FlxColor.GRAY;
 		info.screenCenter(X);
 		info.scrollFactor.set();
