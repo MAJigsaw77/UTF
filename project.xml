@@ -4,7 +4,6 @@
 	<!--Application Settings -->
 
 	<app title="UTF" packageName="com.majigsaw77.utf" package="com.majigsaw77.utf" version="1.0.0" company="MAJigsaw77" />
-
 	<app file="UTF" main="Main" path="export" preloader="flixel.system.FlxPreloader" />
 
 	<!--Icon Settings -->
@@ -15,22 +14,19 @@
 
 	<window width="640" height="480" fps="30" orientation="landscape" background="#000000" hardware="true" vsync="false" resizable="false" />
 
-	<window if="mobile || switch" fullscreen="true" />
+	<window fullscreen="true" if="mobile || switch" />
 
 	<!--Path Settings-->
 
 	<assets path="assets" />
-
 	<source name="src" />
 
 	<!--Libraries-->
 
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
-
 	<haxelib name="hscript" />
 	<haxelib name="polymod" />
-
 	<haxelib name="extension-androidtools" if="android" />
 
 	<!--hxcpp Settings-->
@@ -42,9 +38,10 @@
 	<haxedef name="hscriptPos" />
 
 	<!--Flixel Settings-->
-	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
-	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
+	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
+	<haxedef name="FLX_NO_MOUSE" if="mobile" />
+	<haxedef name="FLX_NO_TOUCH" if="desktop" />
 
 	<!--Polymod Settings-->
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="meta.json" />
