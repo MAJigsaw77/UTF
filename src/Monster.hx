@@ -59,15 +59,6 @@ class Monster extends FlxSpriteGroup
 		script.call('postUpdate', [elapsed]);
 	}
 
-	public override function draw():Void
-	{
-		script.call('preDraw');
-
-		super.draw();
-
-		script.call('postDraw');
-	}
-
 	public override function destroy():Void
 	{
 		script.call('preDestroy');
