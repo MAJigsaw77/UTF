@@ -146,7 +146,7 @@ class Settings extends FlxTransitionableState
 
 		super.update(elapsed);
 
-		tobdogLine.setPosition(420 + Math.sin(siner / 12), 260 + Math.cos(siner / 12));
+		tobdogLine.setPosition(420 + Math.sin(siner / 24), 260 + Math.cos(siner / 24));
 	}
 
 	private function changeOption(num:Int = 0):Void
