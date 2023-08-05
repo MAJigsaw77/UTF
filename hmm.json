@@ -18,7 +18,9 @@
 		},
 		{
 			"name": "flixel-addons",
-			"type": "haxelib"
+			"type": "git",
+			"ref": "dev-1",
+			"url": "https://github.com/MAJigsaw77/flixel-addons.git"
 		},
 		{
 			"name": "hscript",
