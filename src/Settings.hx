@@ -36,7 +36,7 @@ class Settings extends FlxTransitionableState
 
 		FlxG.sound.cache(weatherMusic);
 
-		particlesEmitter = new FlxEmitter(320, 240, 200);
+		particlesEmitter = new FlxEmitter(FlxG.random.int(0, FlxG.width), 0, 200);
 		particlesEmitter.loadParticles(AssetPaths.sprite('fallleaf'), 200);
 		particlesEmitter.alpha.set(0.5, 0.5);
 		particlesEmitter.scale.set(2, 2);
@@ -166,11 +166,7 @@ class Settings extends FlxTransitionableState
 			switch (name)
 			{
 				case 'fps':
-					if (reset)
-						Data.settings.set('fps', #if debug true #else false #end);
-					else
-						Data.settings.set('fps', !Data.settings.get('fps'));
-
+					Data.settings.set('fps', reset ? false : !Data.settings.get('fps'));
 					Main.fps.visible = Data.settings.get('fps');
 			}
 
