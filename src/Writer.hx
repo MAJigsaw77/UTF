@@ -28,7 +28,7 @@ class Writer extends FlxTypeText
 			msg = [{text: 'Error!', speed: 4}];
 		else
 			msg = value;
-		
+
 		page = 0;
 
 		if (msg[page] != null)
@@ -50,7 +50,7 @@ class Writer extends FlxTypeText
 			if (msg[page] != null && page < msg.length)
 			{
 				resetText(msg[page].text);
-				start(msg[page].speed / 100, 
+				start(msg[page].speed / 100,
 			}
 		}
 
