@@ -1,4 +1,4 @@
-## UTF (WIP)
+## ![](https://raw.githubusercontent.com/MAJigsaw77/UTF/main/icon.svg?s=128) UTF (WIP)
 
 ![](https://img.shields.io/github/repo-size/MAJigsaw77/UTF) ![](https://badgen.net/github/open-issues/MAJigsaw77/UTF) ![](https://badgen.net/badge/license/Apache-2.0/green)
 
@@ -56,6 +56,6 @@ Install [`Haxe`](https://haxe.org/download).
 
 | Avatar | UserName | Involvement |
 | ------ | -------- | ----------- |
-| ![](https://upload.wikimedia.org/wikipedia/en/a/af/Toby_Fox_dog.jpg?s=64) | [Toby Fox](https://twitter.com/tobyfox) | Creator of **Undertale**.
+| ![](https://upload.wikimedia.org/wikipedia/en/a/af/Toby_Fox_dog.jpg) | [Toby Fox](https://twitter.com/tobyfox) | Creator of **Undertale**.
 | ![](https://avatars.githubusercontent.com/u/77043862?s=64) | [MAJigsaw77](https://github.com/MAJigsaw77) | Creator of **UTF**.
 | ![](https://avatars.githubusercontent.com/u/23155359?s=64) | [Ne_Eo](https://github.com/NeeEoo) | Programmer.
