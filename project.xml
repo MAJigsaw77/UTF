@@ -13,7 +13,6 @@
 	<!--Window Settings -->
 
 	<window width="640" height="480" fps="30" orientation="landscape" background="#000000" hardware="true" vsync="false" resizable="false" />
-
 	<window fullscreen="true" if="mobile || switch" />
 
 	<!--Path Settings-->
