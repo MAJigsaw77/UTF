@@ -50,7 +50,7 @@ class Writer extends FlxTypeText
 			if (msg[page] != null && page < msg.length)
 			{
 				resetText(msg[page].text);
-				start(msg[page].speed / 100,
+				start(msg[page].speed / 100, true);
 			}
 		}
 
