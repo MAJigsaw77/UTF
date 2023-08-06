@@ -1,5 +1,8 @@
 package openfl.display;
 
+#if cpp
+import cpp.vm.Gc;
+#end
 import flixel.util.FlxStringUtil;
 import flixel.FlxG;
 import openfl.events.Event;
@@ -56,6 +59,12 @@ class FPS extends TextField
 		if (!showMemoryUsage)
 			text = currentFPS + 'FPS\n';
 		else
+		{
+			#if cpp
+			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(Gc.memInfo64(Gc.MEM_INFO_USAGE)) + '\n';
+			#else
 			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(System.totalMemory) + '\n';
+			#end
+		}
 	}
 }
