@@ -12,7 +12,6 @@ typedef DialogueData =
 
 class Writer extends FlxTypeText
 {
-	public var msg(default, set):Array<DialogueData> = [{text: 'Error!', speed: 4}];
 	public var skippable:Bool = true;
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0, size:Int = 8):Void
@@ -23,11 +22,28 @@ class Writer extends FlxTypeText
 		sounds = [FlxG.sound.load(AssetPaths.sound('txt2'), 0.76)];
 	}
 
+	private function startMsg(value:Array<DialogueData>):Void
+	{
+		if (value == null)
+			msg = [{text: 'Error!', speed: 4}];
+		else
+			msg = value;
+		
+		page = 0;
+
+		if (msg[page] != null)
+		{
+			resetText(msg[page].text);
+			start(msg[page].speed / 100, true);
+		}
+	}
+
+	private var msg:Array<DialogueData> = [{text: 'Error!', speed: 4}];
 	private var page:Int = 0;
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.anyJustPressed(Data.binds.get('continue')) && skippable)
+		if (FlxG.keys.anyJustPressed(Data.binds.get('continue')) && msg != null && skippable)
 		{
 			page++;
 
@@ -39,18 +55,5 @@ class Writer extends FlxTypeText
 		}
 
 		super.update(elapsed);
-	}
-
-	private function set_msg(value:Array<DialogueData>):Array<DialogueData>
-	{
-		page = 0;
-
-		if (value[page] != null)
-		{
-			resetText(value[page].text);
-			start(value[page].speed / 100, true);
-		}
-
-		return value;
 	}
 }
