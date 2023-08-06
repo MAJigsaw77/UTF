@@ -1,4 +1,4 @@
-## ![](https://raw.githubusercontent.com/MAJigsaw77/UTF/main/icon.svg?s=128) UTF (WIP)
+## UTF ![](https://raw.githubusercontent.com/MAJigsaw77/UTF/main/icon.svg)
 
 ![](https://img.shields.io/github/repo-size/MAJigsaw77/UTF) ![](https://badgen.net/github/open-issues/MAJigsaw77/UTF) ![](https://badgen.net/badge/license/Apache-2.0/green)
 
