@@ -19,6 +19,8 @@ import openfl.utils.Assets;
 import openfl.Lib;
 #if sys
 import polymod.Polymod;
+import sys.io.File;
+import sys.FileSystem;
 #end
 
 class Main extends Sprite
