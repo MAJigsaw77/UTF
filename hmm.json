@@ -19,8 +19,8 @@
 		{
 			"name": "flixel-addons",
 			"type": "git",
-			"ref": "dev-1",
-			"url": "https://github.com/MAJigsaw77/flixel-addons.git"
+			"ref": "dev",
+			"url": "https://github.com/HaxeFlixel/flixel-addons.git"
 		},
 		{
 			"name": "hscript",
