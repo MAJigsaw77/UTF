@@ -8,6 +8,7 @@ import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
 import haxe.CallStack;
+import haxe.Exception;
 import haxe.Log;
 import lime.system.System;
 import openfl.display.FPS;
@@ -94,10 +95,15 @@ class Main extends Sprite
 		final msg:String = log.join('\n');
 
 		#if sys
-		if (!FileSystem.exists('errors'))
-			FileSystem.createDirectory('errors');
+		try
+		{
+			if (!FileSystem.exists('errors'))
+				FileSystem.createDirectory('errors');
 
-		File.saveContent('errors/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt', msg);
+			File.saveContent('errors/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt', msg);
+		}
+		catch (e:Exception)
+			Log.trace('Couldn\'t save error message "${e.message}"');
 		#end
 
 		Log.trace(msg);
