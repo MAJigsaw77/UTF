@@ -89,6 +89,11 @@ class Main extends Sprite
 			}
 		}
 
+		#if sys
+		if (!FileSystem.exists('errors'))
+			FileSystem.createDirectory('errors');
+		#end
+
 		Log.trace(log.join('\n'));
 		Lib.application.window.alert(log.join('\n'), 'Error!');
 		System.exit(1);
