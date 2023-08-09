@@ -70,7 +70,7 @@ class Main extends Sprite
 		event.preventDefault();
 		event.stopImmediatePropagation();
 
-		var log:Array<String> = [Std.string(event.error)];
+		final log:Array<String> = [Std.string(event.error)];
 
 		for (item in CallStack.exceptionStack(true))
 		{
@@ -89,9 +89,14 @@ class Main extends Sprite
 			}
 		}
 
+		final msg:String = log.join('\n')
+
 		#if sys
 		if (!FileSystem.exists('errors'))
 			FileSystem.createDirectory('errors');
+
+		File.saveContent('errors/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt',
+				 log + '\n');
 		#end
 
 		Log.trace(log.join('\n'));
