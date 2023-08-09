@@ -7,8 +7,6 @@ import sys.FileSystem;
 
 class Mods
 {
-	public static var MOD_DIR(default, null):String = 'mods';
-
 	public static function load():Void
 	{
 		Polymod.onError = function(error:PolymodError)
@@ -26,11 +24,11 @@ class Mods
 			}
 		}
 
-		if (!FileSystem.exists(MOD_DIR))
-			FileSystem.createDirectory(MOD_DIR);
+		if (!FileSystem.exists('mods'))
+			FileSystem.createDirectory('mods');
 
 		Polymod.init({
-			modRoot: MOD_DIR,
+			modRoot: 'mods',
 			dirs: getModDirs(),
 			framework: OPENFL,
 			ignoredFiles: Polymod.getDefaultIgnoreList(),
@@ -42,7 +40,7 @@ class Mods
 	{
 		final modIds:Array<String> = [];
 
-		for (mod in Polymod.scan({modRoot: MOD_DIR}))
+		for (mod in Polymod.scan({modRoot: 'mods'}))
 			modIds.push(mod.id);
 
 		return modIds;
