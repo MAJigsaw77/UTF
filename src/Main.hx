@@ -1,5 +1,8 @@
 package;
 
+#if android
+import android.content.Context;
+#end
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -24,6 +27,10 @@ class Main extends Sprite
 	public function new():Void
 	{
 		super();
+
+		#if android
+		Sys.setCwd(Context.getExternalFilesDir() + '/');
+		#end
 
 		#if !debug
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
