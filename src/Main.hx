@@ -117,18 +117,16 @@ class Main extends Sprite
 	{
 		if (FlxG.cameras != null)
 		{
-			for (cam in FlxG.cameras.list)
+			for (camera in FlxG.cameras.list)
 			{
 				@:privateAccess
-				if (cam != null && (cam._filters != null && cam._filters.length > 0))
+				if (camera != null && (camera._filters != null && camera._filters.length > 0))
 				{
 					// Shout out to Ne_Eo for bringing this to my attention.
-					var sprite:Sprite = cam.flashSprite;
-
-					if (sprite != null)
+					if (camera.flashSprite != null)
 					{
-						sprite.__cacheBitmap = null;
-						sprite.__cacheBitmapData = null;
+						camera.flashSprite.__cacheBitmap = null;
+						camera.flashSprite.__cacheBitmapData = null;
 					}
 				}
 			}
