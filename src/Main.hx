@@ -95,12 +95,11 @@ class Main extends Sprite
 		if (!FileSystem.exists('errors'))
 			FileSystem.createDirectory('errors');
 
-		File.saveContent('errors/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt',
-				 log + '\n');
+		File.saveContent('errors/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt', msg);
 		#end
 
-		Log.trace(log.join('\n'));
-		Lib.application.window.alert(log.join('\n'), 'Error!');
+		Log.trace(msg);
+		Lib.application.window.alert(msg, 'Error!');
 		System.exit(1);
 	}
 
