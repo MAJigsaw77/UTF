@@ -30,6 +30,8 @@ class Main extends Sprite
 
 		#if android
 		Sys.setCwd(Context.getExternalFilesDir() + '/');
+		#elseif ios
+		Sys.setCwd(System.applicationStorageDirectory);
 		#end
 
 		#if !debug
