@@ -23,6 +23,8 @@ import sys.io.File;
 import sys.FileSystem;
 #end
 
+using StringTools;
+
 class Main extends Sprite
 {
 	public static var fps:FPS;
