@@ -89,7 +89,7 @@ class Main extends Sprite
 			}
 		}
 
-		final msg:String = log.join('\n')
+		final msg:String = log.join('\n');
 
 		#if sys
 		if (!FileSystem.exists('errors'))
