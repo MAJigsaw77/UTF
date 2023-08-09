@@ -1,8 +1,5 @@
 package;
 
-#if android
-import android.content.Context;
-#end
 import flixel.FlxG;
 import polymod.backends.PolymodAssets;
 import polymod.Polymod;
@@ -10,11 +7,7 @@ import sys.FileSystem;
 
 class Mods
 {
-	#if android
-	public static var MOD_DIR(default, null):String = Context.getExternalFilesDir() + '/mods';
-	#else
 	public static var MOD_DIR(default, null):String = 'mods';
-	#end
 
 	public static function load():Void
 	{
