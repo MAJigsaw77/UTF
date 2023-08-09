@@ -37,9 +37,9 @@ class Title extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')) && titleText.alpha == 1)
+		if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')))
 			FlxG.switchState(new IntroMenu());
-		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE && titleText.alpha == 1)
+		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE)
 		{
 			var letter:String = cast(FlxG.keys.firstJustPressed(), FlxKey).toString();
 
