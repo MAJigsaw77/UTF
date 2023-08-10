@@ -22,6 +22,7 @@ class KeyBinds extends FlxSubState
 	{
 		bindsItems = new FlxTypedGroup<FlxText>();
 
+		var i:Int = 0;
 		for (key => value in Data.binds)
 		{
 			var text:FlxText = new FlxText(0, 0, 0, '$key: ${Data.binds.get(key).join(' / ')}', 32);
@@ -29,11 +30,12 @@ class KeyBinds extends FlxSubState
 			text.ID = i;
 			text.scrollFactor.set();
 			bindsItems.add(text);
+			i++;
 		}
 
 		add(bindsItems);
 
-		changeOption();
+		changeBind();
 
 		super.create();
 	}
@@ -52,7 +54,7 @@ class KeyBinds extends FlxSubState
 
 	private function changeBind(num:Int = 0):Void
 	{
-		curBind = FlxMath.wrap(curBind + num, 0, Data.binds.length - 1);
+		curBind = FlxMath.wrap(curBind + num, 0, Data.binds.keys().length - 1);
 
 		bindsItems.forEach(function(spr:FlxText)
 		{
