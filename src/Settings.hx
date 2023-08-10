@@ -126,7 +126,7 @@ class Settings extends FlxTransitionableState
 			changeOption(-1);
 		else if (FlxG.keys.justPressed.DOWN)
 			changeOption(1);
-		else if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')) && (FlxG.sound.music != null && FlxG.sound.music.playing))
+		else if (FlxG.keys.anyJustPressed(Data.binds['confirm']) && (FlxG.sound.music != null && FlxG.sound.music.playing))
 		{
 			if (options[curOption] == 'Exit')
 				FlxG.sound.music.stop();

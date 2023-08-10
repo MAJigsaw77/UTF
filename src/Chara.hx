@@ -38,7 +38,7 @@ class Chara extends FlxSprite
 
 			velocity.y = 180;
 			#if debug
-			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
+			if (FlxG.keys.anyPressed(Data.binds['cancel']))
 				velocity.y = 300;
 			#end
 		}
@@ -49,7 +49,7 @@ class Chara extends FlxSprite
 
 			velocity.y = -180;
 			#if debug
-			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
+			if (FlxG.keys.anyPressed(Data.binds['cancel']))
 				velocity.y = -300;
 			#end
 		}
@@ -60,7 +60,7 @@ class Chara extends FlxSprite
 
 			velocity.x = 180;
 			#if debug
-			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
+			if (FlxG.keys.anyPressed(Data.binds['cancel']))
 				velocity.x = 300;
 			#end
 		}
@@ -70,7 +70,7 @@ class Chara extends FlxSprite
 
 			velocity.x = -180;
 			#if debug
-			if (FlxG.keys.anyPressed(Data.binds.get('cancel')))
+			if (FlxG.keys.anyPressed(Data.binds['cancel']))
 				velocity.x = -300;
 			#end
 		}

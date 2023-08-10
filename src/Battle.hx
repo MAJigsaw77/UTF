@@ -110,7 +110,7 @@ class Battle extends FlxTransitionableState
 			changeChoice(1);
 		else if (FlxG.keys.justPressed.LEFT && !choiceSelected)
 			changeChoice(-1);
-		else if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')))
+		else if (FlxG.keys.anyJustPressed(Data.binds['confirm']))
 		{
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 
@@ -154,7 +154,7 @@ class Battle extends FlxTransitionableState
 				}
 			}
 		}
-		else if (FlxG.keys.anyJustPressed(Data.binds.get('cancel')))
+		else if (FlxG.keys.anyJustPressed(Data.binds['cancel']))
 		{
 			choiceSelected = false;
 

@@ -46,7 +46,7 @@ class KeyBinds extends FlxSubState
 			changeBind(1);
 		else if (FlxG.keys.justPressed.UP)
 			changeBind(-1);
-		else if (FlxG.keys.anyJustPressed(Data.binds.get('confirm'))) {}
+		else if (FlxG.keys.anyJustPressed(Data.binds['confirm'])) {}
 		else if (FlxG.keys.anyJustPressed(Data.binds.get('cancel'))) {}
 
 		super.update(elapsed);

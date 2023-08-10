@@ -40,7 +40,7 @@ class Writer extends FlxTypeText
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')) && msg != null && skippable)
+		if (FlxG.keys.anyJustPressed(Data.binds['confirm']) && msg != null && skippable)
 		{
 			page++;
 
