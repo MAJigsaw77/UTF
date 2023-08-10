@@ -24,10 +24,7 @@ class Writer extends FlxTypeText
 
 	private function startMsg(value:Array<DialogueData>):Void
 	{
-		if (value == null)
-			msg = [{text: 'Error!', speed: 4}];
-		else
-			msg = value;
+		msg = value == null ? [{text: 'Error!', speed: 4}] : value;
 
 		page = 0;
 
@@ -43,7 +40,7 @@ class Writer extends FlxTypeText
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.anyJustPressed(Data.binds.get('continue')) && msg != null && skippable)
+		if (FlxG.keys.anyJustPressed(Data.binds.get('confirm')) && msg != null && skippable)
 		{
 			page++;
 
