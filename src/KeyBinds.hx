@@ -26,7 +26,7 @@ class KeyBinds extends FlxSubState
 		// for (i in 0...Lambda.count(Data.binds))
 		for (key => value in Data.binds)
 		{
-			var text:FlxText = new FlxText(0, i * 40, 0, '$key: ${Data.binds.get(key).join(' / ')}', 32);
+			var text:FlxText = new FlxText(0, i * 40, 0, '$key: ${Data.binds[key].toString()}', 32);
 			text.font = AssetPaths.font('DTM-Sans');
 			text.ID = i;
 			text.scrollFactor.set();
