@@ -26,7 +26,7 @@ class KeyBinds extends FlxSubState
 		// for (i in 0...Lambda.count(Data.binds))
 		for (key => value in Data.binds)
 		{
-			var text:FlxText = new FlxText(0, 0, 0, '$key: ${Data.binds.get(key).join(' / ')}', 32);
+			var text:FlxText = new FlxText(0, i * 40, 0, '$key: ${Data.binds.get(key).join(' / ')}', 32);
 			text.font = AssetPaths.font('DTM-Sans');
 			text.ID = i;
 			text.scrollFactor.set();
@@ -48,7 +48,7 @@ class KeyBinds extends FlxSubState
 		else if (FlxG.keys.justPressed.UP)
 			changeBind(-1);
 		else if (FlxG.keys.anyJustPressed(Data.binds['confirm'])) {}
-		else if (FlxG.keys.anyJustPressed(Data.binds.get('cancel'))) {}
+		else if (FlxG.keys.anyJustPressed(Data.binds['cancel'])) {}
 
 		super.update(elapsed);
 	}
