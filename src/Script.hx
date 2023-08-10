@@ -24,6 +24,7 @@ class Script
 {
 	public static var classes(default, null):Map<String, Dynamic> = [
 		'Date' => Date,
+		'Lambda' => Lambda,
 		'Math' => Math,
 		'Std' => Std,
 		'StringTools' => StringTools,
