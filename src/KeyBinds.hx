@@ -27,7 +27,7 @@ class KeyBinds extends FlxSubState
 			var text:FlxText = new FlxText(0, 120 + i * 40, 0, genBindText(i), 32);
 			text.font = AssetPaths.font('DTM-Sans');
 			text.ID = i;
-			text.screenCentre(X);
+			text.screenCenter(X);
 			text.scrollFactor.set();
 			bindsItems.add(text);
 		}
