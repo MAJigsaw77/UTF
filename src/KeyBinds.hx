@@ -65,6 +65,6 @@ class KeyBinds extends FlxSubState
 	{
 		final key:String = Lambda.array(Data.binds)[i];
 
-		return '$key: ' + cast(Data.binds[key], String};
+		return '$key: ' + cast(Data.binds[key], String);
 	}
 }
