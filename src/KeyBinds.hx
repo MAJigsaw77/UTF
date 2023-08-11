@@ -22,16 +22,14 @@ class KeyBinds extends FlxSubState
 	{
 		bindsItems = new FlxTypedGroup<FlxText>();
 
-		var i:Int = 0;
-		// for (i in 0...Lambda.count(Data.binds))
-		for (key => value in Data.binds)
+		for (i in 0...Lambda.array(Data.binds).length)
 		{
-			var text:FlxText = new FlxText(0, i * 40, 0, '$key: ${Data.binds[key].toString()}', 32);
+			var text:FlxText = new FlxText(0, 120 + i * 40, 0, genBindText(i), 32);
 			text.font = AssetPaths.font('DTM-Sans');
 			text.ID = i;
+			text.screenCentre(X);
 			text.scrollFactor.set();
 			bindsItems.add(text);
-			i++;
 		}
 
 		add(bindsItems);
@@ -61,5 +59,12 @@ class KeyBinds extends FlxSubState
 		{
 			spr.color = spr.ID == curBind ? FlxColor.YELLOW : FlxColor.WHITE;
 		});
+	}
+
+	private function genBindText(num:Int = 0):Void
+	{
+		final key:String = Lambda.array(Data.binds)[i];
+
+		return '$key: ' + cast(Data.binds[key], String};
 	}
 }
