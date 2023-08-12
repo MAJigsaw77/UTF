@@ -151,7 +151,7 @@ class Settings extends FlxTransitionableState
 
 	private function changeOption(num:Int = 0):Void
 	{
-		curOption = FlxMath.wrap(curOption + num, 0, options.length - 1);
+		curOption = Std.int(FlxMath.bound(curOption + num, 0, options.length - 1));
 
 		optionsItems.forEach(function(spr:FlxText)
 		{
