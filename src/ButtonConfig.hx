@@ -22,7 +22,7 @@ class ButtonConfig extends FlxSubState
 	{
 		bindsItems = new FlxTypedGroup<FlxText>();
 
-		for (i in 0...Lambda.array(Data.binds).length)
+		for (i in 0...Lambda.count(Data.binds))
 		{
 			var text:FlxText = new FlxText(0, 120 + i * 40, 0, genBindText(i), 32);
 			text.font = AssetPaths.font('DTM-Sans');
