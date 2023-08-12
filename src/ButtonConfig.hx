@@ -45,8 +45,12 @@ class ButtonConfig extends FlxSubState
 			changeBind(1);
 		else if (FlxG.keys.justPressed.UP)
 			changeBind(-1);
-		else if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED)) {}
-		else if (FlxG.keys.checkStatus(Data.binds['cancel'], JUST_PRESSED)) {}
+		else if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
+		{
+			// TODO
+		}
+		else if (FlxG.keys.checkStatus(Data.binds['cancel'], JUST_PRESSED))
+			close();
 
 		super.update(elapsed);
 	}
@@ -62,7 +66,7 @@ class ButtonConfig extends FlxSubState
 	}
 
 	private function genBindText(num:Int = 0):String
-	{
+	{ 
 		final key:String = Lambda.array(Data.binds)[num];
 
 		return '$key: ' + cast(Data.binds[key], String);
