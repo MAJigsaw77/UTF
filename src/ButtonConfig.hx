@@ -13,7 +13,7 @@ import flixel.FlxSubState;
 
 using StringTools;
 
-class KeyBinds extends FlxSubState
+class ButtonConfig extends FlxSubState
 {
 	var curBind:Int = 0;
 	var bindsItems:FlxTypedGroup<FlxText>;
