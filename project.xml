@@ -20,6 +20,10 @@
 	<assets path="assets" />
 	<source name="src" />
 
+	<!--Defines-->
+
+	<define name="DISCORD" if="cpp" unless="mobile" />
+
 	<!--Libraries-->
 
 	<haxelib name="flixel" />
