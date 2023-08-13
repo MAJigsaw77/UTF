@@ -43,7 +43,7 @@ class DiscordClient
 			discordPresence.state = state;
 
 		discordPresence.largeImageKey = "icon";
-		discordPresence.largeImageText = Lib.application.meta['title'];
+		discordPresence.largeImageText = cast(Lib.application.meta['title'], String);
 		Discord.UpdatePresence(cpp.RawConstPointer.addressOf(discordPresence));
 	}
 
@@ -56,7 +56,7 @@ class DiscordClient
 		var discordPresence:DiscordRichPresence = DiscordRichPresence.create();
 		discordPresence.details = "In the Menus";
 		discordPresence.largeImageKey = "icon";
-		discordPresence.largeImageText = Lib.application.meta['title'];
+		discordPresence.largeImageText = cast(Lib.application.meta['title'], String);
 		Discord.UpdatePresence(cpp.RawConstPointer.addressOf(discordPresence));
 	}
 
