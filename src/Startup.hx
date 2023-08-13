@@ -16,6 +16,10 @@ class Startup extends FlxState
 		Mods.load();
 		#end
 
+		#if DISCORD
+		DiscordClient.start();
+		#end
+
 		if (FlxG.save.data.volume != null)
 			FlxG.sound.volume = FlxG.save.data.volume;
 
