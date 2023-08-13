@@ -17,6 +17,7 @@ class ButtonConfig extends FlxSubState
 {
 	var curBind:Int = 0;
 	var bindsItems:FlxTypedGroup<FlxText>;
+	var keySelected:Bool = false;
 
 	override function create():Void
 	{
@@ -41,16 +42,21 @@ class ButtonConfig extends FlxSubState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justPressed.DOWN)
+		if (FlxG.keys.justPressed.DOWN && !keySelected)
 			changeBind(1);
-		else if (FlxG.keys.justPressed.UP)
+		else if (FlxG.keys.justPressed.UP && !keySelected)
 			changeBind(-1);
 		else if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
 		{
 			// TODO
 		}
 		else if (FlxG.keys.checkStatus(Data.binds['cancel'], JUST_PRESSED))
-			close();
+		{
+			if (keySelected)
+				keySelected = false;
+			else
+				close();
+		}
 
 		super.update(elapsed);
 	}
@@ -66,8 +72,9 @@ class ButtonConfig extends FlxSubState
 	}
 
 	private function genBindText(num:Int = 0):String
-	{ 
-		final key:String = Lambda.array(Data.binds.keys)[num];
+	{
+		// ...
+		final key:String = Lambda.array(Data.binds)[num];
 
 		return '$key: ' + cast(Data.binds[key], String);
 	}
