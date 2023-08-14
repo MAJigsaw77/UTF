@@ -24,7 +24,7 @@ class ButtonConfig extends FlxSubState
 
 	override function create():Void
 	{
-		box = new FlxShapeBox(0, 0, 320, 240, {thickness: 6, color: FlxColor.WHITE}, FlxColor.BLACK);
+		var box:FlxShapeBox = new FlxShapeBox(0, 0, 320, 240, {thickness: 6, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.screenCenter();
 		box.scrollFactor.set();
 		add(box);
