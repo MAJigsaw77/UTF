@@ -22,15 +22,17 @@
 
 	<!--Defines-->
 
-	<define name="DISCORD" if="cpp" unless="mobile || emscripten" />
+	<define name="DISCORD" if="desktop cpp" />
 
 	<!--Libraries-->
 
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
+
 	<haxelib name="hscript" />
 	<haxelib name="hxdiscord_rpc" if="DISCORD" />
 	<haxelib name="polymod" />
+
 	<haxelib name="extension-androidtools" if="android" />
 
 	<!--Libraries Settings-->
