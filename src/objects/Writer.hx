@@ -56,17 +56,22 @@ class Writer extends FlxTypeText
 		sounds = [FlxG.sound.load(AssetPaths.sound('txt2'), 0.76)];
 	}
 
-	public function startDialogue(value:Array<DialogueData>):Void
+	/**
+	 * Starts new dialogue with the specified list
+	 * also has error checing for null values
+	 * 
+	 * @param newList 			the list with dialogue data to use
+	 **/
+	public function startDialogue(newList:Array<DialogueData>):Void
 	{
 		finished = false;
-		dialogueList = value == null ? [{text: 'Error!', speed: 4}] : value;
+		dialogueList = newList == null ? [{text: 'Error!', speed: 4}] : newList;
 		currentPage = 0;
 
 		if (curDialogue != null)
-		{
-			resetText(curDialogue.text);
-			start(curDialogue.speed / 100, true);
-		}
+			resetDialogue(curDialogue);
+		else
+			trace("Hey, there's NOTHING in here to be said!");
 	}
 
 	override function update(elapsed:Float):Void
@@ -77,17 +82,7 @@ class Writer extends FlxTypeText
 		{
 			currentPage++;
 			if (dialogueList[currentPage] != null) // check if the next page exists
-			{
-				// default text if none
-				if (curDialogue.text == null || curDialogue.text.length <= 0)
-					curDialogue.text = "";
-				// default speed
-				if (curDialogue.speed == null || curDialogue.speed <= 0)
-					curDialogue.speed = 4.0;
-
-				resetText(curDialogue.text);
-				start(curDialogue.speed / 100, true);
-			}
+				resetDialogue(curDialogue);
 			else
 			{
 				var finalPage:Bool = currentPage > dialogueList.indexOf(dialogueList.last());
@@ -99,6 +94,25 @@ class Writer extends FlxTypeText
 				}
 			}
 		}
+	}
+
+	/**
+	 * Resets the Current Dialogue to a new specified one
+	 * also does error checking for mandatory fields
+	 * 
+	 * @param newDialogue 			the data to use for this dialogue
+	 **/
+	private function resetDialogue(newDialogue:DialogueData):Void
+	{
+		// default text if none
+		if (newDialogue.text == null || newDialogue.text.length <= 0)
+			newDialogue.text = "";
+		// default speed
+		if (newDialogue.speed == null || newDialogue.speed <= 0)
+			newDialogue.speed = 4.0;
+
+		resetText(newDialogue.text);
+		start(newDialogue.speed / 100, true);
 	}
 
 	@:noCompletion
