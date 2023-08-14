@@ -78,9 +78,26 @@ class Room extends FlxTransitionableState
 		super.create();
 	}
 
+	var writer:objects.Writer;
+
 	override function update(elapsed:Float):Void
 	{
 		FlxG.collide(chara, solid);
+
+		if (FlxG.keys.justPressed.CONTROL) {
+			writer = new objects.Writer(5, 5, FlxG.width, 20);
+			writer.startDialogue([
+				{text: 'hello everybody it\'s me sans from smash bros.', speed: 4},
+				{text: 'and welcome to another impossible sans boss battle fight fangame.', speed: 4},
+				{text: 'leave a like and subscribe for more banger fangames.', speed: 4}
+			]);
+			add(writer);
+		}
+
+		if (writer != null && writer.finished) {
+			writer.destroy();
+			remove(writer);
+		}
 
 		super.update(elapsed);
 	}

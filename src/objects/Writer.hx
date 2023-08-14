@@ -1,19 +1,52 @@
 package objects;
 
-import backend AssetPaths;
+import backend.AssetPaths;
+import backend.Data;
 import flixel.addons.text.FlxTypeText;
 import flixel.FlxG;
 
+using flixel.util.FlxArrayUtil;
+
 typedef DialogueData =
 {
+	/**
+	 * Defines the current font, uses the previous one if undefined
+	 * if defined as "null" or nothing, it uses nothing
+	 **/
+	?char:String,
+	/**
+	 * Defines the expression of the current character
+	 **/
 	?face:String,
+	/**
+	 * Defines the current font, uses DTM-Mono by default
+	 **/
+	?font:String,
+	/**
+	 * Defines the current text, if unspecified, the text gets set to nothing
+	 **/
 	text:String,
-	speed:Float
+	/**
+	 * Defines the speed of the text, if unspecified, the speed gets set to 1 (default)
+	 **/
+	?speed:Null<Float>
 }
 
+/**
+ * Helper class for dialogue text
+ **/
 class Writer extends FlxTypeText
 {
+	// public var parent:DialogueBox;
+	// public var currentCharacter:String = "";
+	// public var currentFont:String = "";
+
 	public var skippable:Bool = true;
+	public var finished:Bool = false;
+
+	var curDialogue(get, never):DialogueData;
+	var dialogueList:Array<DialogueData> = [{text: 'Error!', speed: 4}];
+	var currentPage:Int = 0;
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0, size:Int = 8):Void
 	{
@@ -23,35 +56,54 @@ class Writer extends FlxTypeText
 		sounds = [FlxG.sound.load(AssetPaths.sound('txt2'), 0.76)];
 	}
 
-	private function startMsg(value:Array<DialogueData>):Void
+	public function startDialogue(value:Array<DialogueData>):Void
 	{
-		msg = value == null ? [{text: 'Error!', speed: 4}] : value;
+		finished = false;
+		dialogueList = value == null ? [{text: 'Error!', speed: 4}] : value;
+		currentPage = 0;
 
-		page = 0;
-
-		if (msg[page] != null)
+		if (curDialogue != null)
 		{
-			resetText(msg[page].text);
-			start(msg[page].speed / 100, true);
+			resetText(curDialogue.text);
+			start(curDialogue.speed / 100, true);
 		}
 	}
 
-	private var msg:Array<DialogueData> = [{text: 'Error!', speed: 4}];
-	private var page:Int = 0;
-
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && msg != null && skippable)
-		{
-			page++;
+		super.update(elapsed);
 
-			if (msg[page] != null && page < msg.length)
+		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && skippable)
+		{
+			currentPage++;
+			if (dialogueList[currentPage] != null) // check if the next page exists
 			{
-				resetText(msg[page].text);
-				start(msg[page].speed / 100, true);
+				// default text if none
+				if (curDialogue.text == null || curDialogue.text.length <= 0)
+					curDialogue.text = "";
+				// default speed
+				if (curDialogue.speed == null || curDialogue.speed <= 0)
+					curDialogue.speed = 4.0;
+
+				resetText(curDialogue.text);
+				start(curDialogue.speed / 100, true);
+			}
+			else
+			{
+				var finalPage:Bool = currentPage > dialogueList.indexOf(dialogueList.last());
+				if (finalPage || curDialogue == null)
+				{
+					// trying to differentiate both traces -Crow
+					trace(finalPage ? "Dialogue finished!" : "Current dialogue page doesn't have any data.");
+					finished = true;
+				}
 			}
 		}
+	}
 
-		super.update(elapsed);
+	@:noCompletion
+	function get_curDialogue():DialogueData {
+		var ensureExists:Bool = dialogueList[currentPage] != null;
+		return ensureExists ? dialogueList[currentPage] : null;
 	}
 }
