@@ -29,7 +29,7 @@ class DiscordClient
 			Discord.RunCallbacks();
 		});
 
-		Lib.application.onExit.add((exitCode:Int) -> Discord.shutdown());
+		Lib.application.onExit.add((exitCode:Int) -> Discord.Shutdown());
 	}
 
 	public static function changePresence(details:String, ?state:String):Void
