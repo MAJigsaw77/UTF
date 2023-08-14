@@ -2,6 +2,7 @@ package states;
 
 import backend.AssetPaths;
 import backend.Data;
+import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.input.keyboard.FlxKey;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
@@ -23,6 +24,11 @@ class ButtonConfig extends FlxSubState
 
 	override function create():Void
 	{
+		box = new FlxShapeBox(0, 0, 320, 240, {thickness: 6, color: FlxColor.WHITE}, FlxColor.BLACK);
+		box.screenCenter();
+		box.scrollFactor.set();
+		add(box);
+
 		bindsItems = new FlxTypedGroup<FlxText>();
 
 		for (i in 0...Lambda.count(Data.binds))
