@@ -1,4 +1,4 @@
-package;
+package states;
 
 import flixel.input.keyboard.FlxKey;
 import flixel.group.FlxGroup;

@@ -1,4 +1,4 @@
-package;
+package objects;;
 
 import flixel.group.FlxSpriteGroup;
 import haxe.Json;

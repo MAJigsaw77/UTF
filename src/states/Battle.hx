@@ -1,4 +1,4 @@
-package;
+package states;
 
 import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.addons.transition.FlxTransitionableState;

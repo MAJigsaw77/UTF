@@ -1,4 +1,4 @@
-package;
+package objects;;
 
 import flixel.addons.text.FlxTypeText;
 import flixel.FlxG;

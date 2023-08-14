@@ -2,12 +2,12 @@ package;
 
 #if DISCORD
 import flixel.FlxG;
-import hxdiscord_rpc.Discord;
+import hxdiscord_rpc.Discord as RichPresence;
 import hxdiscord_rpc.Types;
 import openfl.Lib;
 import sys.thread.Thread;
 
-class DiscordClient
+class Discord
 {
 	public static function start():Void
 	{
@@ -17,19 +17,19 @@ class DiscordClient
 		handlers.ready = cpp.Function.fromStaticFunction(onReady);
 		handlers.disconnected = cpp.Function.fromStaticFunction(onDisconnected);
 		handlers.errored = cpp.Function.fromStaticFunction(onError);
-		Discord.Initialize("1140307809167220836", cpp.RawPointer.addressOf(handlers), 1, null);
+		RichPresence.Initialize("1140307809167220836", cpp.RawPointer.addressOf(handlers), 1, null);
 
 		FlxG.log.notice("(Discord) Client started");
 
 		Thread.runWithEventLoop(function()
 		{
 			#if DISCORD_DISABLE_IO_THREAD
-			Discord.UpdateConnection();
+			RichPresence.UpdateConnection();
 			#end
-			Discord.RunCallbacks();
+			RichPresence.RunCallbacks();
 		});
 
-		Lib.application.onExit.add((exitCode:Int) -> Discord.Shutdown());
+		Lib.application.onExit.add((exitCode:Int) -> RichPresence.Shutdown());
 	}
 
 	public static function changePresence(details:String, ?state:String):Void
@@ -42,7 +42,7 @@ class DiscordClient
 
 		discordPresence.largeImageKey = "icon";
 		discordPresence.largeImageText = cast(Lib.application.meta['title'], String);
-		Discord.UpdatePresence(cpp.RawConstPointer.addressOf(discordPresence));
+		RichPresence.UpdatePresence(cpp.RawConstPointer.addressOf(discordPresence));
 	}
 
 	private static function onReady(request:cpp.RawConstPointer<DiscordUser>):Void
@@ -55,7 +55,7 @@ class DiscordClient
 		discordPresence.details = "In the Menus";
 		discordPresence.largeImageKey = "icon";
 		discordPresence.largeImageText = cast(Lib.application.meta['title'], String);
-		Discord.UpdatePresence(cpp.RawConstPointer.addressOf(discordPresence));
+		RichPresence.UpdatePresence(cpp.RawConstPointer.addressOf(discordPresence));
 	}
 
 	private static function onDisconnected(errorCode:Int, message:cpp.ConstCharStar):Void

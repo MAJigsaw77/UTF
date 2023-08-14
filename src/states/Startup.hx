@@ -1,4 +1,4 @@
-package;
+package states;
 
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.transition.TransitionData;
@@ -17,7 +17,7 @@ class Startup extends FlxState
 		#end
 
 		#if DISCORD
-		DiscordClient.start();
+		Discord.start();
 		#end
 
 		if (FlxG.save.data.volume != null)

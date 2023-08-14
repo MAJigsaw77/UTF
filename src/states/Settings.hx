@@ -1,4 +1,4 @@
-package;
+package states;
 
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.particles.FlxEmitter;
@@ -134,7 +134,7 @@ class Settings extends FlxTransitionableState
 			switch (options[curOption])
 			{
 				case 'Exit':
-					FlxG.switchState(new IntroMenu());
+					FlxG.switchState(new Intro());
 				case 'Key Binds':
 					openSubState(new ButtonConfig());
 				case 'FPS Display':

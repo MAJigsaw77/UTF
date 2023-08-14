@@ -1,4 +1,4 @@
-package;
+package states;
 
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
@@ -9,7 +9,7 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import openfl.Lib;
 
-class IntroMenu extends FlxState
+class Intro extends FlxState
 {
 	var curChoice:Int = 0;
 	final choices:Array<String> = ['Continue', 'Reset', 'Settings'];
