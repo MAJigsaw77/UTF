@@ -88,9 +88,11 @@ class ButtonConfig extends FlxSubState
 
 	private function genBindText(num:Int = 0):String
 	{
-		// ...
-		var key:String = Lambda.array(Data.binds.keys())[num];
+		// i hate this so much...
+		final names:Array<String> = [];
+		for (key in Data.binds.keys())
+			names.push(key);
 
-		return '$key: ' + cast(Data.binds[key], String);
+		return '${names[num]}: ' + cast(Data.binds[names[num]], String);
 	}
 }
