@@ -23,6 +23,7 @@
 	<!--Defines-->
 
 	<define name="DISCORD" if="desktop cpp" />
+	<define name="MODS" if="desktop || mobile" />
 
 	<!--Libraries-->
 
