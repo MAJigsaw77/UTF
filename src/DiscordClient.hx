@@ -28,11 +28,8 @@ class DiscordClient
 			#end
 			Discord.RunCallbacks();
 		});
-	}
 
-	public static function shutdown():Void
-	{
-		Discord.Shutdown();
+		Lib.application.onExit.add((exitCode:Int) -> Discord.shutdown());
 	}
 
 	public static function changePresence(details:String, ?state:String):Void
