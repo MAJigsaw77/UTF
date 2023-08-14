@@ -1,4 +1,4 @@
-package;
+package backend;
 
 #if DISCORD
 import flixel.FlxG;

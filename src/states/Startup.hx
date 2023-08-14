@@ -1,6 +1,9 @@
 package states;
 
 import backend.Data;
+#if DISCORD
+import backend.Discord;
+#end
 import backend.Global;
 #if MODS
 import backend.Mods;

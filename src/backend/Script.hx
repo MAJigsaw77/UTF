@@ -1,4 +1,4 @@
-package;
+package backend;
 
 #if (FLX_DRAW_QUADS && !flash)
 import flixel.addons.display.FlxRuntimeShader;
