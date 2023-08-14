@@ -27,6 +27,8 @@ class Settings extends FlxTransitionableState
 
 	override function create():Void
 	{
+		persistentDraw = true;
+
 		FlxTransitionableState.skipNextTransOut = true;
 
 		var weatherMusic:String = AssetPaths.music('options_fall');
@@ -47,6 +49,7 @@ class Settings extends FlxTransitionableState
 		particlesEmitter.scale.set(2, 2);
 		particlesEmitter.acceleration.set(0.6, 0.6);
 		particlesEmitter.velocity.set(150, 180, 150, 180);
+		particlesEmitter.start(false, 0.01);
 		add(particlesEmitter);
 
 		var settings:FlxText = new FlxText(0, 20, 0, 'SETTINGS', 64);
@@ -117,8 +120,6 @@ class Settings extends FlxTransitionableState
 		FlxG.sound.play(AssetPaths.music('harpnoise'), () -> FlxG.sound.playMusic(weatherMusic, 0.8, true));
 
 		super.create();
-
-		particlesEmitter.start(false, 0.01);
 	}
 
 	var siner:Int = 0;
