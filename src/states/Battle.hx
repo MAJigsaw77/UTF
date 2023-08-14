@@ -85,7 +85,7 @@ class Battle extends FlxTransitionableState
 		monster.scrollFactor.set();
 		add(monster);
 
-		box = new FlxShapeBox(32, 250, 570, 135, {thickness: 6, color: FlxColor.WHITE}, FlxColor.BLACK);
+		box = new FlxShapeBox(32, 250, 570, 135, {thickness: 6, jointStyle: MITER, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.scrollFactor.set();
 		add(box);
 
