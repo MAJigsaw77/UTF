@@ -12,7 +12,7 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 
 ### Compiling
 
-![](https://haxe.org/img/haxe-logo-horizontal-on-dark.svg)
+![](https://raw.githubusercontent.com/HaxeFoundation/haxe/development/extra/images/Readme.png)
 
 Install [`Haxe`](https://haxe.org/download).
 
