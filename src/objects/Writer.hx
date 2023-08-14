@@ -1,5 +1,6 @@
-package;
+package objects;
 
+import backend AssetPaths;
 import flixel.addons.text.FlxTypeText;
 import flixel.FlxG;
 

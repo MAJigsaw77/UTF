@@ -3,6 +3,7 @@ package;
 #if android
 import android.content.Context;
 #end
+import backend.Data;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -17,8 +18,11 @@ import openfl.events.UncaughtErrorEvent;
 import openfl.system.System;
 import openfl.utils.Assets;
 import openfl.Lib;
-#if sys
+#if MODS
 import polymod.Polymod;
+#end
+import states.Startup;
+#if sys
 import sys.io.File;
 import sys.FileSystem;
 #end
@@ -55,7 +59,7 @@ class Main extends Sprite
 			for (key in Assets.cache.getSoundKeys())
 				Assets.cache.removeSound(key);
 
-			#if sys
+			#if MODS
 			// Clear the loaded assets from polymod...
 			Polymod.clearCache();
 			#end

@@ -1,5 +1,9 @@
-package;
+package states;
 
+import backend.AssetPaths;
+import backend.Data;
+import backend.Global;
+import backend.Macros;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
@@ -8,8 +12,10 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import openfl.Lib;
+import states.Room;
+import states.Settings;
 
-class IntroMenu extends FlxState
+class Intro extends FlxState
 {
 	var curChoice:Int = 0;
 	final choices:Array<String> = ['Continue', 'Reset', 'Settings'];

@@ -1,5 +1,7 @@
-package;
+package states;
 
+import backend.AssetPaths;
+import backend.Data;
 import flixel.input.keyboard.FlxKey;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;

@@ -1,5 +1,6 @@
 package openfl.display;
 
+import backend.AssetPaths;
 #if cpp
 import cpp.vm.Gc;
 #end

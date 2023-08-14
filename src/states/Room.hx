@@ -1,5 +1,8 @@
-package;
+package states;
 
+import backend.AssetPaths;
+import backend.Global;
+import objects.Chara;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;

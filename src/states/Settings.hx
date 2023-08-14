@@ -1,5 +1,8 @@
-package;
+package states;
 
+import backend.AssetPaths;
+import backend.Data;
+import backend.Global;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup;
@@ -9,6 +12,8 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import states.ButtonConfig;
+import states.Intro;
 
 class Settings extends FlxTransitionableState
 {
@@ -134,7 +139,7 @@ class Settings extends FlxTransitionableState
 			switch (options[curOption])
 			{
 				case 'Exit':
-					FlxG.switchState(new IntroMenu());
+					FlxG.switchState(new Intro());
 				case 'Key Binds':
 					openSubState(new ButtonConfig());
 				case 'FPS Display':

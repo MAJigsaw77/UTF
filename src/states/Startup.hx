@@ -1,10 +1,19 @@
-package;
+package states;
 
+import backend.Data;
+#if DISCORD
+import backend.Discord;
+#end
+import backend.Global;
+#if MODS
+import backend.Mods;
+#end
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.transition.TransitionData;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxState;
+import states.Title;
 
 class Startup extends FlxState
 {
@@ -12,12 +21,13 @@ class Startup extends FlxState
 	{
 		Data.load();
 		Global.load();
-		#if sys
+
+		#if MODS
 		Mods.load();
 		#end
 
 		#if DISCORD
-		DiscordClient.start();
+		Discord.start();
 		#end
 
 		if (FlxG.save.data.volume != null)

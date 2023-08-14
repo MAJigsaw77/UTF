@@ -1,11 +1,14 @@
-package;
+package states;
 
+import backend.AssetPaths;
+import backend.Data;
 import flixel.input.keyboard.FlxKey;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import states.Intro;
 
 class Title extends FlxState
 {
@@ -38,7 +41,7 @@ class Title extends FlxState
 	override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && titleText.alpha == 1)
-			FlxG.switchState(new IntroMenu());
+			FlxG.switchState(new Intro());
 		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE && titleText.alpha == 1)
 		{
 			var letter:String = cast(FlxG.keys.firstJustPressed(), FlxKey).toString();

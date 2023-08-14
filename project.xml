@@ -23,6 +23,7 @@
 	<!--Defines-->
 
 	<define name="DISCORD" if="desktop cpp" />
+	<define name="MODS" if="desktop || mobile" />
 
 	<!--Libraries-->
 
@@ -31,7 +32,7 @@
 
 	<haxelib name="hscript" />
 	<haxelib name="hxdiscord_rpc" if="DISCORD" />
-	<haxelib name="polymod" />
+	<haxelib name="polymod" if="MODS" />
 
 	<haxelib name="extension-androidtools" if="android" />
 
