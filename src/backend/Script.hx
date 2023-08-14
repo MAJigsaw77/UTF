@@ -1,5 +1,6 @@
 package backend;
 
+import backend.AssetPaths;
 #if (FLX_DRAW_QUADS && !flash)
 import flixel.addons.display.FlxRuntimeShader;
 #end
