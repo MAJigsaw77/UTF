@@ -51,11 +51,7 @@ class Discord
 
 		FlxG.log.notice('(Discord) Connected to User (' + cast(requestPtr.username, String) + '#' + cast(requestPtr.discriminator, String) + ')');
 
-		var discordPresence:DiscordRichPresence = DiscordRichPresence.create();
-		discordPresence.details = "In the Menus";
-		discordPresence.largeImageKey = "icon";
-		discordPresence.largeImageText = cast(Lib.application.meta['title'], String);
-		RichPresence.UpdatePresence(cpp.RawConstPointer.addressOf(discordPresence));
+		Discord.changePresence('In the Menus');
 	}
 
 	private static function onDisconnected(errorCode:Int, message:cpp.ConstCharStar):Void
