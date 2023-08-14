@@ -31,7 +31,7 @@ class ButtonConfig extends FlxSubState
 		bg.alpha = 0.5;
 		add(bg);
 
-		var box:FlxShapeBox = new FlxShapeBox(0, 0, Std.int(FlxG.width / 2), Std.int(FlxG.height / 2), {thickness: 6, color: FlxColor.WHITE}, FlxColor.BLACK);
+		var box:FlxShapeBox = new FlxShapeBox(0, 0, Std.int(FlxG.width / 2), Std.int(FlxG.height / 2), {thickness: 6, jointStyle: MITER, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.screenCenter();
 		box.scrollFactor.set();
 		add(box);
