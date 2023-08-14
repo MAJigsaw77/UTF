@@ -23,6 +23,12 @@
 			"url": "https://github.com/HaxeFlixel/flixel-addons.git"
 		},
 		{
+			"name": "hxdiscord_rpc",
+			"type": "git",
+			"ref": "main",
+			"url": "https://github.com/MAJigsaw77/hxdiscord_rpc.git"
+		},
+		{
 			"name": "hscript",
 			"type": "haxelib"
 		},

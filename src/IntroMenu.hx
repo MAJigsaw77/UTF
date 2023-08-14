@@ -82,10 +82,10 @@ class IntroMenu extends FlxState
 		add(choicesItems);
 
 		#if !debug
-		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta.get('version')} (c) MAJigsaw77 2023', 16);
+		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta['version']} (c) MAJigsaw77 2023', 16);
 		#else
 		var info:FlxText = new FlxText(0, FlxG.height - 40, 0,
-			'UTF v${Lib.application.meta.get('version')} (c) MAJigsaw77 2023\nCommit ${Macros.getCommitNumber()} (${Macros.getCommitHash()})', 16);
+			'UTF v${Lib.application.meta['version']} (c) MAJigsaw77 2023\nCommit ${Macros.getCommitNumber()} (${Macros.getCommitHash()})', 16);
 		#end
 		info.alignment = 'center';
 		info.font = AssetPaths.font('Small');
