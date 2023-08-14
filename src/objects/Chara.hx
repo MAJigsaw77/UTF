@@ -1,5 +1,7 @@
-package objects;;
+package objects;
 
+import backend.AssetPaths;
+import backend.Data;
 import flixel.input.keyboard.FlxKey;
 import flixel.FlxG;
 import flixel.FlxSprite;

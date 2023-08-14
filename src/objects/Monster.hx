@@ -1,5 +1,7 @@
-package objects;;
+package objects;
 
+import backend.AssetPaths;
+import backend.Script;
 import flixel.group.FlxSpriteGroup;
 import haxe.Json;
 import openfl.utils.Assets;

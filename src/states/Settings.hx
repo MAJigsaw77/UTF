@@ -1,5 +1,7 @@
 package states;
 
+import backend.AssetPaths;
+import backend.Data;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup;
@@ -9,6 +11,8 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import states.ButtonConfig;
+import states.Intro;
 
 class Settings extends FlxTransitionableState
 {

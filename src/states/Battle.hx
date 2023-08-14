@@ -1,5 +1,10 @@
 package states;
 
+import backend.AssetPaths;
+import backend.Data;
+import backend.Global;
+import objects.Monster;
+import objects.Write;
 import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;

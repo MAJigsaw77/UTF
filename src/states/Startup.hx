@@ -1,10 +1,16 @@
 package states;
 
+import backend.Data;
+import backend.Global;
+#if MODS
+import backend.Mods;
+#end
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.transition.TransitionData;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxState;
+import states.Title;
 
 class Startup extends FlxState
 {
@@ -12,7 +18,8 @@ class Startup extends FlxState
 	{
 		Data.load();
 		Global.load();
-		#if sys
+
+		#if MODS
 		Mods.load();
 		#end
 
