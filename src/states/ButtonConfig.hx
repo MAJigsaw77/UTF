@@ -93,6 +93,6 @@ class ButtonConfig extends FlxSubState
 		for (key in Data.binds.keys())
 			keys.push(key);
 
-		return '${keys[num]}: ' + cast(Data.binds[keys[num]], String);
+		return '${keys[num].toUpperCase()}: ' + cast(Data.binds[keys[num]], String);
 	}
 }
