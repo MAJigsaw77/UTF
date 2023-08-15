@@ -17,6 +17,8 @@ class Global
 	public static var lv:Int = 1;
 	public static var item:Array<String> = [];
 
+	public static var hasName:Bool = false;
+
 	public static function save():Void
 	{
 		var save:FlxSave = new FlxSave();
@@ -30,6 +32,7 @@ class Global
 		save.data.gold = gold;
 		save.data.xp = xp;
 		save.data.lv = lv;
+		save.data.hasName = hasName;
 		save.close();
 	}
 
@@ -66,6 +69,9 @@ class Global
 
 			if (save.data.lv != null)
 				lv = save.data.lv;
+
+			if (save.data.hasName != null)
+				hasName = save.data.hasName;
 		}
 
 		save.destroy();
