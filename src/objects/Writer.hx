@@ -120,7 +120,6 @@ class Writer extends FlxTypeText
 	@:noCompletion
 	private function get_curDialogue():DialogueData
 	{
-		var ensureExists:Bool = dialogueList[currentPage] != null;
-		return ensureExists ? dialogueList[currentPage] : null;
+		return dialogueList[currentPage] != null ? dialogueList[currentPage] : null;
 	}
 }
