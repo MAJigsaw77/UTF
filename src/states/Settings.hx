@@ -172,13 +172,14 @@ class Settings extends FlxTransitionableState
 			switch (name)
 			{
 				case 'fps':
-					Data.settings.set('fps', reset ? false : !Data.settings.get('fps'));
+					Data.settings['fps'] = reset ? false : !Data.settings['fps']);
+
 					Main.fps.visible = Data.settings.get('fps');
 			}
 
 			Data.save();
 		}
 		else
-			FlxG.log.error('The setting "$name" doesn\'t exist');
+			FlxG.log.error('The setting "$name" doesn\'t exist?');
 	}
 }
