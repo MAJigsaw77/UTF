@@ -11,7 +11,7 @@ typedef DialogueData =
 {
 	/**
 	 * Defines the current font, uses the previous one if undefined
-	 * if defined as "null" or nothing, it uses nothing
+	 * if defined as 'null' or nothing, it uses nothing
 	**/
 	?char:String,
 	/**
@@ -40,8 +40,8 @@ typedef DialogueData =
 class Writer extends FlxTypeText
 {
 	// public var parent:DialogueBox;
-	// public var currentCharacter:String = "";
-	// public var currentFont:String = "";
+	// public var currentCharacter:String = '';
+	// public var currentFont:String = '';
 	public var skippable:Bool = true;
 	public var finished:Bool = false;
 
@@ -61,7 +61,7 @@ class Writer extends FlxTypeText
 	 * Starts new dialogue with the specified list
 	 * also has error checing for null values
 	 * 
-	 * @param newList 			the list with dialogue data to use
+	 * @param newList the list with dialogue data to use
 	**/
 	public function startDialogue(newList:Array<DialogueData>):Void
 	{
@@ -72,7 +72,7 @@ class Writer extends FlxTypeText
 		if (curDialogue != null)
 			resetDialogue(curDialogue);
 		else
-			trace("Hey, there's NOTHING in here to be said!");
+			trace('Hey, there\'s NOTHING in here to be said!');
 	}
 
 	override function update(elapsed:Float):Void
@@ -90,7 +90,7 @@ class Writer extends FlxTypeText
 				if (finalPage || curDialogue == null)
 				{
 					// trying to differentiate both traces -Crow
-					trace(finalPage ? "Dialogue finished!" : "Current dialogue page doesn't have any data.");
+					trace(finalPage ? 'Dialogue finished!' : 'Current dialogue page doesn\'t have any data.');
 					finished = true;
 				}
 			}
@@ -101,13 +101,14 @@ class Writer extends FlxTypeText
 	 * Resets the Current Dialogue to a new specified one
 	 * also does error checking for mandatory fields
 	 * 
-	 * @param newDialogue 			the data to use for this dialogue
+	 * @param newDialogue the data to use for this dialogue
 	**/
 	private function resetDialogue(newDialogue:DialogueData):Void
 	{
 		// default text if none
 		if (newDialogue.text == null || newDialogue.text.length <= 0)
-			newDialogue.text = "";
+			newDialogue.text = '';
+
 		// default speed
 		if (newDialogue.speed == null || newDialogue.speed <= 0)
 			newDialogue.speed = 4.0;
@@ -117,7 +118,7 @@ class Writer extends FlxTypeText
 	}
 
 	@:noCompletion
-	function get_curDialogue():DialogueData
+	private function get_curDialogue():DialogueData
 	{
 		var ensureExists:Bool = dialogueList[currentPage] != null;
 		return ensureExists ? dialogueList[currentPage] : null;

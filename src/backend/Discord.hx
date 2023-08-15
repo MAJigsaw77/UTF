@@ -11,7 +11,7 @@ class Discord
 {
 	public static function start():Void
 	{
-		FlxG.log.notice("(Discord) Client starting...");
+		FlxG.log.notice('(Discord) Client starting...');
 
 		var handlers:DiscordEventHandlers = DiscordEventHandlers.create();
 		handlers.ready = cpp.Function.fromStaticFunction(onReady);
@@ -19,7 +19,7 @@ class Discord
 		handlers.errored = cpp.Function.fromStaticFunction(onError);
 		RichPresence.Initialize("1140307809167220836", cpp.RawPointer.addressOf(handlers), 1, null);
 
-		FlxG.log.notice("(Discord) Client started");
+		FlxG.log.notice('(Discord) Client started');
 
 		Thread.runWithEventLoop(function()
 		{

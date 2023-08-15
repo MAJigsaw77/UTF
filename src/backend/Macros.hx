@@ -16,7 +16,7 @@ class Macros
 		}
 		catch (e:Dynamic) {}
 
-		return macro $v{"---"};
+		return macro $v{'---'};
 	}
 
 	public static macro function getCommitNumber():Expr
