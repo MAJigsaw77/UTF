@@ -47,7 +47,7 @@ class Battle extends FlxTransitionableState
 
 		hpBar = new FlxBar(hpName.x + 35, hpName.y - 5, LEFT_TO_RIGHT, Std.int(Global.maxHp * 1.2), 20, Global, 'hp', 0, Global.maxHp);
 		hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
-		hpBar.emptyCallback = () -> trace('GAME OVER');
+		hpBar.emptyCallback = () -> FlxG.log.notice('GAME OVER');
 		hpBar.scrollFactor.set();
 		add(hpBar);
 
@@ -149,7 +149,7 @@ class Battle extends FlxTransitionableState
 					/*var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + (monster.data.name.length * 16), writer.y, LEFT_TO_RIGHT,
 							Std.int(monster.data.hp / monster.data.maxHp * 100), 16, monster.data, 'hp', 0, monster.data.maxHp);
 						monsterHpBar.createFilledBar(FlxColor.RED, FlxColor.LIME);
-						monsterHpBar.emptyCallback = () -> trace('YOU WON!');
+						monsterHpBar.emptyCallback = () -> FlxG.log.notice('YOU WON!');
 						monsterHpBar.scrollFactor.set();
 						add(monsterHpBar); */
 					case 'Item':

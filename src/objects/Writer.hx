@@ -72,7 +72,7 @@ class Writer extends FlxTypeText
 		if (curDialogue != null)
 			resetDialogue(curDialogue);
 		else
-			trace('Hey, there\'s NOTHING in here to be said!');
+			FlxG.log.notice('Hey, there\'s NOTHING in here to be said!');
 	}
 
 	override function update(elapsed:Float):Void
@@ -89,8 +89,8 @@ class Writer extends FlxTypeText
 				var finalPage:Bool = currentPage > dialogueList.indexOf(dialogueList.last());
 				if (finalPage || curDialogue == null)
 				{
-					// trying to differentiate both traces -Crow
-					trace(finalPage ? 'Dialogue finished!' : 'Current dialogue page doesn\'t have any data.');
+					// trying to differentiate both FlxG.log.notices -Crow
+					FlxG.log.notice(finalPage ? 'Dialogue finished!' : 'Current dialogue page doesn\'t have any data.');
 					finished = true;
 				}
 			}
