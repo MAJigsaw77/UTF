@@ -63,10 +63,14 @@ class ButtonConfig extends FlxSubState
 			changeBind(1);
 		else if (FlxG.keys.justPressed.UP && !keySelected)
 			changeBind(-1);
-		else if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
+
+		if (FlxG.keys.firstJustPressed() != FlxKey.NONE && keySelected)
 		{
-			// TODO
+			Data.binds[getBind(curBind)] = FlxG.keys.firstJustPressed();
+			keySelected = false;
 		}
+		else if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
+			keySelected = true;
 		else if (FlxG.keys.checkStatus(Data.binds['cancel'], JUST_PRESSED))
 		{
 			if (keySelected)
