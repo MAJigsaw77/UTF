@@ -91,6 +91,6 @@ class ButtonConfig extends FlxSubState
 
 	private function genBindText(key:String):String
 	{
-		return '${key.toUpperCase()}: ' + cast(Data.binds[key], String);
+		return '${key.toUpperCase()}: ' + Data.binds[key];
 	}
 }
