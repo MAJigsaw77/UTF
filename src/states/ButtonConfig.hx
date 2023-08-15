@@ -41,7 +41,7 @@ class ButtonConfig extends FlxSubState
 
 		for (i in 0...binds.length)
 		{
-			var text:FlxText = new FlxText(0, 180 + i * 40, 0, genBindText(i), 32);
+			var text:FlxText = new FlxText(0, 180 + i * 40, 0, genBindText(binds[i].toLowerCase()), 32);
 			text.font = AssetPaths.font('DTM-Sans');
 			text.ID = i;
 			text.screenCenter(X);
@@ -89,8 +89,8 @@ class ButtonConfig extends FlxSubState
 		});
 	}
 
-	private function genBindText(num:Int = 0):String
+	private function genBindText(key:String):String
 	{
-		return '${binds[num].toUpperCase()}: ' + Data.binds[binds[num].toLowerCase()];
+		return '${key.toUpperCase()}: ' + cast(Data.binds[key], String);
 	}
 }
