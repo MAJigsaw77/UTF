@@ -111,7 +111,8 @@ class Intro extends FlxState
 			changeOption(1);
 		else if (FlxG.keys.justPressed.LEFT)
 			changeOption(-1);
-		else if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
+
+		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
 		{
 			if (choices[curChoice] != 'Reset')
 				FlxG.sound.music.stop();

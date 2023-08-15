@@ -27,8 +27,6 @@ class Settings extends FlxTransitionableState
 
 	override function create():Void
 	{
-		persistentDraw = true;
-
 		FlxTransitionableState.skipNextTransOut = true;
 
 		var weatherMusic:String = AssetPaths.music('options_fall');
@@ -132,7 +130,8 @@ class Settings extends FlxTransitionableState
 			changeOption(-1);
 		else if (FlxG.keys.justPressed.DOWN)
 			changeOption(1);
-		else if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && (FlxG.sound.music != null && FlxG.sound.music.playing))
+
+		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && (FlxG.sound.music != null && FlxG.sound.music.playing))
 		{
 			if (options[curOption] == 'Exit')
 				FlxG.sound.music.stop();
