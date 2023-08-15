@@ -19,7 +19,6 @@ using StringTools;
 class ButtonConfig extends FlxSubState
 {
 	var curBind:Int = 0;
-	final binds:Array<String> = ['Confirm', 'Cancel', 'Menu'];
 	var bindsItems:FlxTypedGroup<FlxText>;
 
 	override function create():Void
@@ -39,9 +38,9 @@ class ButtonConfig extends FlxSubState
 
 		bindsItems = new FlxTypedGroup<FlxText>();
 
-		for (i in 0...binds.length)
+		for (i in 0...Lambda.count(Data.binds))
 		{
-			var text:FlxText = new FlxText(0, 180 + i * 40, 0, genBindText(binds[i].toLowerCase()), 32);
+			var text:FlxText = new FlxText(0, 180 + i * 40, 0, genBindText(i), 32);
 			text.font = AssetPaths.font('DTM-Sans');
 			text.ID = i;
 			text.screenCenter(X);
@@ -81,7 +80,7 @@ class ButtonConfig extends FlxSubState
 
 	private function changeBind(num:Int = 0):Void
 	{
-		curBind = FlxMath.wrap(curBind + num, 0, binds.length - 1);
+		curBind = FlxMath.wrap(curBind + num, 0, Lambda.count(Data.binds) - 1);
 
 		bindsItems.forEach(function(spr:FlxText)
 		{
@@ -89,8 +88,13 @@ class ButtonConfig extends FlxSubState
 		});
 	}
 
-	private function genBindText(key:String):String
+	private function genBindText(num:Int = 0):String
 	{
-		return '${key.toUpperCase()}: ' + Data.binds[key];
+		final keys:Array<String> = [];
+		for (key in Data.binds.keys())
+			keys.push(key.toLowerCase());
+
+		// kinda stupid but ok
+		return '${keys[num].toUpperCase()}: ${Data.binds[keys[num]]}';
 	}
 }
