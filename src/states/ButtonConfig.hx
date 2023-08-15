@@ -40,7 +40,7 @@ class ButtonConfig extends FlxSubState
 
 		for (i in 0...Lambda.count(Data.binds))
 		{
-			var text:FlxText = new FlxText(0, 180 + i * 40, 0, genBindText(i), 32);
+			var text:FlxText = new FlxText(0, 180 + i * 40, 0, regenBindText(i), 32);
 			text.font = AssetPaths.font('DTM-Sans');
 			text.ID = i;
 			text.screenCenter(X);
@@ -66,11 +66,24 @@ class ButtonConfig extends FlxSubState
 
 		if (FlxG.keys.firstJustPressed() != FlxKey.NONE && keySelected)
 		{
-			Data.binds[getBind(curBind)] = FlxG.keys.firstJustPressed();
 			keySelected = false;
+
+			Data.binds[getBind(curBind)] = FlxG.keys.firstJustPressed();
+
+			bindsItems.forEach(function(spr:FlxText)
+			{
+				if (spr.ID == curBind)
+					spr.text = regenBindText(curBind);
+			});
+
+			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 		}
 		else if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
+		{
 			keySelected = true;
+
+			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
+		}
 		else if (FlxG.keys.checkStatus(Data.binds['cancel'], JUST_PRESSED))
 		{
 			if (keySelected)
@@ -92,7 +105,7 @@ class ButtonConfig extends FlxSubState
 		});
 	}
 
-	private function genBindText(num:Int = 0):String
+	private function regenBindText(num:Int = 0):String
 	{
 		return '${getBind(num).toUpperCase()}: ${Data.binds[getBind(num)]}';
 	}
