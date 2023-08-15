@@ -7,8 +7,6 @@ import flixel.input.keyboard.FlxKey;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -73,7 +71,10 @@ class ButtonConfig extends FlxSubState
 			bindsItems.forEach(function(spr:FlxText)
 			{
 				if (spr.ID == curBind)
+				{
 					spr.text = regenBindText(curBind);
+					spr.screenCenter(X);
+				}
 			});
 
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
