@@ -99,9 +99,6 @@ class ButtonConfig extends FlxSubState
 
 	private function getBind(num:Int = 0):String
 	{
-		final binds:Array<String> = [for (key in Data.binds.keys()) key];
-
-		// kinda stupid but ok
-		return binds[num];
+		return [for (key in Data.binds.keys()) key][num];
 	}
 }
