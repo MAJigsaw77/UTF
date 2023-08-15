@@ -3,6 +3,7 @@ package states;
 import backend.AssetPaths;
 import backend.Global;
 import objects.Chara;
+import objects.Writer;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
@@ -78,7 +79,7 @@ class Room extends FlxTransitionableState
 		super.create();
 	}
 
-	var writer:objects.Writer;
+	var writer:Writer;
 
 	override function update(elapsed:Float):Void
 	{
@@ -86,11 +87,17 @@ class Room extends FlxTransitionableState
 
 		if (FlxG.keys.justPressed.CONTROL)
 		{
-			writer = new objects.Writer(5, 5, FlxG.width, 20);
+			writer = new Writer(5, 5, 0, 32);
 			writer.startDialogue([
-				{text: 'hello everybody it\'s me sans from smash bros.', speed: 4},
-				{text: 'and welcome to another impossible sans boss battle fight fangame.', speed: 4},
-				{text: 'leave a like and subscribe for more banger fangames.', speed: 4}
+				{text: '* hmmm...', speed: 4},
+				{text: '* guess we didn\'t need\n  your help to have a\n  good time after all.', speed: 4},
+				{text: '* ...', speed: 4},
+				{text: '* say, i\'ve been\n  thinking.', speed: 4},
+				{text: '* seems like you\'re\n  gonna fight my brother\n  pretty soon.', speed: 4},
+				{text: '* here\'s some friendly\n  advice.', speed: 4},
+				{text: '* if you keep going the\n  way you are now...', speed: 4},
+				{text: '* ...', speed: 4},
+				{text: '* you\'re gonna have a\n  bad time.', speed: 4},
 			]);
 			add(writer);
 		}
