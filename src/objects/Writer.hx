@@ -12,35 +12,36 @@ typedef DialogueData =
 	/**
 	 * Defines the current font, uses the previous one if undefined
 	 * if defined as "null" or nothing, it uses nothing
-	 **/
+	**/
 	?char:String,
 	/**
 	 * Defines the expression of the current character
-	 **/
+	**/
 	?face:String,
 	/**
 	 * Defines the current font, uses DTM-Mono by default
-	 **/
+	**/
 	?font:String,
+
 	/**
 	 * Defines the current text, if unspecified, the text gets set to nothing
-	 **/
+	**/
 	text:String,
+
 	/**
 	 * Defines the speed of the text, if unspecified, the speed gets set to 1 (default)
-	 **/
+	**/
 	?speed:Null<Float>
 }
 
 /**
  * Helper class for dialogue text
- **/
+**/
 class Writer extends FlxTypeText
 {
 	// public var parent:DialogueBox;
 	// public var currentCharacter:String = "";
 	// public var currentFont:String = "";
-
 	public var skippable:Bool = true;
 	public var finished:Bool = false;
 
@@ -61,7 +62,7 @@ class Writer extends FlxTypeText
 	 * also has error checing for null values
 	 * 
 	 * @param newList 			the list with dialogue data to use
-	 **/
+	**/
 	public function startDialogue(newList:Array<DialogueData>):Void
 	{
 		finished = false;
@@ -101,7 +102,7 @@ class Writer extends FlxTypeText
 	 * also does error checking for mandatory fields
 	 * 
 	 * @param newDialogue 			the data to use for this dialogue
-	 **/
+	**/
 	private function resetDialogue(newDialogue:DialogueData):Void
 	{
 		// default text if none
@@ -116,7 +117,8 @@ class Writer extends FlxTypeText
 	}
 
 	@:noCompletion
-	function get_curDialogue():DialogueData {
+	function get_curDialogue():DialogueData
+	{
 		var ensureExists:Bool = dialogueList[currentPage] != null;
 		return ensureExists ? dialogueList[currentPage] : null;
 	}

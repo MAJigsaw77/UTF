@@ -84,7 +84,8 @@ class Room extends FlxTransitionableState
 	{
 		FlxG.collide(chara, solid);
 
-		if (FlxG.keys.justPressed.CONTROL) {
+		if (FlxG.keys.justPressed.CONTROL)
+		{
 			writer = new objects.Writer(5, 5, FlxG.width, 20);
 			writer.startDialogue([
 				{text: 'hello everybody it\'s me sans from smash bros.', speed: 4},
@@ -94,7 +95,8 @@ class Room extends FlxTransitionableState
 			add(writer);
 		}
 
-		if (writer != null && writer.finished) {
+		if (writer != null && writer.finished)
+		{
 			writer.destroy();
 			remove(writer);
 		}
