@@ -140,9 +140,9 @@ class Intro extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justPressed.RIGHT)
+		if (Global.hasName ? FlxG.keys.justPressed.RIGHT : FlxG.keys.justPressed.DOWN)
 			changeOption(1);
-		else if (FlxG.keys.justPressed.LEFT)
+		else if (Global.hasName ? FlxG.keys.justPressed.LEFT : FlxG.keys.justPressed.UP)
 			changeOption(-1);
 
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
