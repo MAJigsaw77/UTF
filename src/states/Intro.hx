@@ -68,11 +68,11 @@ class Intro extends FlxState
 
 			// The instructions.
 			instructions.text += '\n\n';
-			instructions.text += '[${Data.binds['confirm']}] - Confirm';
-			instructions.text += '[${Data.binds['cancel']}] - Cancel';
-			instructions.text += '[${Data.binds['menu']}] - Menu (In-Game)';
-			instructions.text += '[F4] - FullScreen';
-			instructions.text += '[Hold ${Data.binds['cancel']}] - Quit';
+			instructions.text += '[${Data.binds['confirm']}] - Confirm\n';
+			instructions.text += '[${Data.binds['cancel']}] - Cancel\n';
+			instructions.text += '[${Data.binds['menu']}] - Menu (In-Game)\n';
+			instructions.text += '[F4] - FullScreen\n';
+			instructions.text += '[Hold ${Data.binds['cancel']}] - Quit\n';
 			instructions.text += 'When HP is 0, you lose.';
 
 			instructions.font = AssetPaths.font('DTM-Sans');
