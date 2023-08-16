@@ -103,7 +103,7 @@ class ButtonConfig extends FlxSubState
 
 	private function regenBindText(num:Int = 0):String
 	{
-		return '${getBind(num).toUpperCase()}: ${Data.binds[getBind(num)]}';
+		return '${getBind(num).toUpperCase()}: [${Data.binds[getBind(num)]}]';
 	}
 
 	private function getBind(num:Int = 0):String
