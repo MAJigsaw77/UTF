@@ -109,7 +109,7 @@ class Intro extends FlxState
 					case 'Begin Game':
 						bt.setPosition(70, 160);
 					case 'Settings':
-						bt.setPosition(70, 200);
+						bt.setPosition(350, 320);
 				}
 			}
 
