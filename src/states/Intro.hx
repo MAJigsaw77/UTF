@@ -106,9 +106,9 @@ class Intro extends FlxState
 				switch (choices[i])
 				{
 					case 'Begin Game':
-						bt.setPosition(70, 320);
+						bt.setPosition(170, 320);
 					case 'Settings':
-						bt.setPosition(350, 320);
+						bt.setPosition(170, 360);
 				}
 			}
 
