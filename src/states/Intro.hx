@@ -104,7 +104,13 @@ class Intro extends FlxState
 			}
 			else
 			{
-				// TODO
+				switch (choices[i])
+				{
+					case 'Begin Game':
+						bt.setPosition(70, 160);
+					case 'Settings':
+						bt.setPosition(70, 200);
+				}
 			}
 
 			bt.font = AssetPaths.font('DTM-Sans');
