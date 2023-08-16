@@ -18,7 +18,7 @@ import states.Settings;
 class Intro extends FlxState
 {
 	var curChoice:Int = 0;
-	final choices:Array<String> = ['Continue', 'Reset', 'Settings'];
+	var choices:Array<String> = ['Continue', 'Reset', 'Settings'];
 	var choicesItems:FlxTypedGroup<FlxText>;
 
 	override function create():Void
@@ -80,8 +80,7 @@ class Intro extends FlxState
 			instructions.scrollFactor.set();
 			add(instructions);
 
-			choices.splice(0, choices.length);
-			choices.concat(['Begin Game', 'Settings']);
+			choices = ['Begin Game', 'Settings'];
 		}
 
 		choicesItems = new FlxTypedGroup<FlxText>();
