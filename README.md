@@ -24,7 +24,7 @@ Install [`Haxe`](https://haxe.org/download).
     - MSVC v143 VS 2022 C++ x64/x86 build tools.
     - Windows 10/11 SDK.
 4. This is what your Installation details panel should look like. Once correct, press "Install".
-    - ⚠ This will download around 1.07 GB of data from the internet, and will require around 5.5 GB of available space on your computer.
+    - ⚠️ This will download around 1.07 GB of data from the internet, and will require around 5.5 GB of available space on your computer.
 5. Once the installation is done, close Visual Studio Installer.
 6. Download and install [`git-scm`](https://git-scm.com/download/win).
     - Leave all installation options as default.
