@@ -62,6 +62,24 @@ class Intro extends FlxState
 			roomname.scrollFactor.set();
 			add(roomname);
 		}
+		else
+		{
+			var instructions:FlxText = new FlxText(170, 40, 0, ' --- Instruction --- ', 32);
+
+			// The instructions.
+			instructions.text += '\n\n';
+			instructions.text += '[${Data.binds['confirm']}] - Confirm';
+			instructions.text += '[${Data.binds['cancel']}] - Cancel';
+			instructions.text += '[${Data.binds['menu']}] - Menu (In-Game)':
+			instructions.text += '[F4] - FullScreen':
+			instructions.text += '[Hold ${Data.binds['cancel']}] - Quit':
+			instructions.text += 'When HP is 0, you lose.':
+
+			instructions.font = AssetPaths.font('DTM-Sans');
+			instructions.color = 0xFFC0C0C0; // Silver
+			instructions.scrollFactor.set();
+			add(instructions);
+		}
 
 		choicesItems = new FlxTypedGroup<FlxText>();
 
