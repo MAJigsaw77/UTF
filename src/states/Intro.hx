@@ -79,6 +79,9 @@ class Intro extends FlxState
 			instructions.color = 0xFFC0C0C0; // Silver
 			instructions.scrollFactor.set();
 			add(instructions);
+
+			choices.splice(0, choices.length);
+			choices.concat(['Begin Game', 'Settings']);
 		}
 
 		choicesItems = new FlxTypedGroup<FlxText>();
@@ -87,17 +90,21 @@ class Intro extends FlxState
 		{
 			var bt:FlxText = new FlxText(0, 0, 0, choices[i], 32);
 
-			switch (choices[i])
+			if (!choices.contains('Begin Game'))
 			{
-				case 'Continue':
-					bt.x = 170;
-					bt.y = 210;
-				case 'Reset':
-					bt.x = 385;
-					bt.y = 210;
-				case 'Settings':
-					bt.x = 260;
-					bt.y = 250;
+				switch (choices[i])
+				{
+					case 'Continue':
+						bt.setPosition(170, 210);
+					case 'Reset':
+						bt.setPosition(385, 210);
+					case 'Settings':
+						bt.setPosition(260, 250);
+				}
+			}
+			else
+			{
+				// TODO
 			}
 
 			bt.font = AssetPaths.font('DTM-Sans');
