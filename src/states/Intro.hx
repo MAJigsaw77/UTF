@@ -23,42 +23,45 @@ class Intro extends FlxState
 
 	override function create():Void
 	{
-		FlxG.sound.playMusic(AssetPaths.music('menu1'));
+		FlxG.sound.playMusic(AssetPaths.music(Global.hasName ? 'menu1' : 'menu0'));
 
-		var bg:FlxSprite = new FlxSprite(0, -240, AssetPaths.background('floweyglow'));
-		bg.scale.set(2, 2);
-		bg.updateHitbox();
-		bg.scrollFactor.set();
-		add(bg);
+		if (Global.hasName)
+		{
+			var bg:FlxSprite = new FlxSprite(0, -240, AssetPaths.background('floweyglow'));
+			bg.scale.set(2, 2);
+			bg.updateHitbox();
+			bg.scrollFactor.set();
+			add(bg);
 
-		var flowey:FlxSprite = new FlxSprite(0, 348, AssetPaths.sprite('flowey_1'));
-		flowey.scale.set(2, 2);
-		flowey.updateHitbox();
-		flowey.screenCenter(X);
-		flowey.scrollFactor.set();
-		add(flowey);
+			var flowey:FlxSprite = new FlxSprite(0, 348, AssetPaths.sprite('flowey_1'));
+			flowey.scale.set(2, 2);
+			flowey.updateHitbox();
+			flowey.screenCenter(X);
+			flowey.scrollFactor.set();
+			add(flowey);
 
-		var name:FlxText = new FlxText(145, 120, 0, Global.name, 32);
-		name.font = AssetPaths.font('DTM-Sans');
-		name.scrollFactor.set();
-		add(name);
+			var name:FlxText = new FlxText(145, 120, 0, Global.name, 32);
+			name.font = AssetPaths.font('DTM-Sans');
+			name.scrollFactor.set();
+			add(name);
 
-		var love:FlxText = new FlxText(285, 120, 0, 'LV ${Global.lv}', 32);
-		love.font = AssetPaths.font('DTM-Sans');
-		love.scrollFactor.set();
-		add(love);
+			var love:FlxText = new FlxText(285, 120, 0, 'LV ${Global.lv}', 32);
+			love.font = AssetPaths.font('DTM-Sans');
+			love.scrollFactor.set();
+			add(love);
 
-		// TODO
-		var time:FlxText = new FlxText(425, 120, 0, '0:0', 32);
-		time.font = AssetPaths.font('DTM-Sans');
-		time.scrollFactor.set();
-		add(time);
+			// TODO
+			var time:FlxText = new FlxText(425, 120, 0, '0:0', 32);
+			time.font = AssetPaths.font('DTM-Sans');
+			time.scrollFactor.set();
+			add(time);
 
-		// TODO
-		var roomname:FlxText = new FlxText(145, 160, 0, '---', 32);
-		roomname.font = AssetPaths.font('DTM-Sans');
-		roomname.scrollFactor.set();
-		add(roomname);
+			// TODO
+			var roomname:FlxText = new FlxText(145, 160, 0, '---', 32);
+			roomname.font = AssetPaths.font('DTM-Sans');
+			roomname.scrollFactor.set();
+			add(roomname);
+		}
 
 		choicesItems = new FlxTypedGroup<FlxText>();
 
