@@ -106,7 +106,7 @@ class Intro extends FlxState
 				switch (choices[i])
 				{
 					case 'Begin Game':
-						bt.setPosition(70, 160);
+						bt.setPosition(70, 320);
 					case 'Settings':
 						bt.setPosition(350, 320);
 				}
@@ -147,7 +147,7 @@ class Intro extends FlxState
 
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
 		{
-			if (choices[curChoice] != 'Reset')
+			if (choices[curChoice] != 'Reset' || choices[curChoice] != 'Begin Game')
 				FlxG.sound.music.stop();
 
 			switch (choices[curChoice])
