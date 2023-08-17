@@ -74,7 +74,8 @@ class Naming extends FlxState
 
 		letterItems.forEach(function(spr:FlxText)
 		{
-			// Shaking shit
+			spr.x += FlxG.random.float(-0.5, 0.5);
+			spr.y += FlxG.random.float(-0.5, 0.5);
 		});
 	}
 
