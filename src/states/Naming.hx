@@ -102,7 +102,7 @@ class Naming extends FlxState
 			{
 				switch (spr.text)
 				{
-					case 'Quit';
+					case 'Quit':
 						FlxG.switchState(new Intro());
 					case 'BackSpace':
 						charname.text = charname.text.substring(0, charname.length - 1);
