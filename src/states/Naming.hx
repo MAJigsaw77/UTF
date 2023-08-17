@@ -24,6 +24,8 @@ class Naming extends FlxState
 		namingText.scrollFactor.set();
 		add(namingText);
 
+		letterItems = new FlxTypedGroup<FlxText>();
+		
 		// UpperCase Letters.
 		for (i in 65...91)
 		{
@@ -43,6 +45,8 @@ class Naming extends FlxState
 			letter.scrollFactor.set();
 			letterItems.add(letter);
 		}
+
+		add(letterItems);
 
 		changeLetter();
 
