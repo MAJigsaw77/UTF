@@ -80,7 +80,7 @@ class Naming extends FlxState
 
 		letterItems.forEach(function(spr:FlxText)
 		{
-			spr.color = spr.ID == curChoice ? FlxColor.YELLOW : FlxColor.WHITE;
+			spr.color = spr.ID == curLetter ? FlxColor.YELLOW : FlxColor.WHITE;
 		});
 	}
 }
