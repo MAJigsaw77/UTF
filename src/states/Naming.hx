@@ -18,7 +18,7 @@ class Naming extends FlxState
 
 	override function create():Void
 	{
-		var namingText:FlxText = new FlxText(180, 60, 0, 'Name the fallen human.', 32);
+		var namingText:FlxText = new FlxText(0, 60, 0, 'Name the fallen human.', 32);
 		namingText.font = AssetPaths.font('DTM-Sans');
 		namingText.screenCenter(X);
 		namingText.scrollFactor.set();
