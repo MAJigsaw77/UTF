@@ -22,9 +22,7 @@
 		},
 		{
 			"name": "hxdiscord_rpc",
-			"type": "git",
-			"ref": "main",
-			"url": "https://github.com/MAJigsaw77/hxdiscord_rpc.git"
+			"type": "haxelib"
 		},
 		{
 			"name": "hscript",
