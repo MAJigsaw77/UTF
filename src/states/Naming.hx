@@ -31,11 +31,17 @@ class Naming extends FlxState
 		// UpperCase Letters.
 		for (i in 0...upLetters.length)
 		{
-			var letter:FlxText = new FlxText(120, 150, 0, String.fromCharCode(upLetters[i]), 32);
-			letter.font = AssetPaths.font('DTM-Sans');
-			letter.ID = i; // Ugh
-			letter.scrollFactor.set();
-			letterItems.add(letter);
+			for (row in 0...2)
+			{
+				for (line in 0...5)
+				{
+					var letter:FlxText = new FlxText(120 + line * 64, 150 + row * 28, 0, String.fromCharCode(upLetters[i]), 32);
+					letter.font = AssetPaths.font('DTM-Sans');
+					letter.ID = i; // Ugh
+					letter.scrollFactor.set();
+					letterItems.add(letter);
+				}
+			}
 		}
 
 		final lowLetters:Array<Int> = [for (i in 97...123) i];
@@ -43,11 +49,18 @@ class Naming extends FlxState
 		// LowerCase Letters.
 		for (i in 0...upLetters.length)
 		{
-			var letter:FlxText = new FlxText(120, 270, 0, String.fromCharCode(lowLetters[i]), 32);
-			letter.font = AssetPaths.font('DTM-Sans');
-			letter.ID = i + 26; // Ugh
-			letter.scrollFactor.set();
-			letterItems.add(letter);
+			for (row in 0...2)
+			{
+				for (line in 0...5)
+				{
+
+					var letter:FlxText = new FlxText(120 + line * 64, 270 + row * 28, 0, String.fromCharCode(lowLetters[i]), 32);
+					letter.font = AssetPaths.font('DTM-Sans');
+					letter.ID = i + 26; // Ugh
+					letter.scrollFactor.set();
+					letterItems.add(letter);
+				}
+			}
 		}
 
 		add(letterItems);
