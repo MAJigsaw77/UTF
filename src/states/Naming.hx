@@ -26,7 +26,7 @@ class Naming extends FlxState
 
 		letterItems = new FlxTypedGroup<FlxText>();
 		
-		var upLetters:Array<Int> = [for (i in 65...91) i];
+		final upLetters:Array<Int> = [for (i in 65...91) i];
 
 		// UpperCase Letters.
 		for (i in 0...upLetters.length)
@@ -38,7 +38,7 @@ class Naming extends FlxState
 			letterItems.add(letter);
 		}
 
-		var lowLetters:Array<Int> = [for (i in 97...123) i];
+		final lowLetters:Array<Int> = [for (i in 97...123) i];
 
 		// LowerCase Letters.
 		for (i in 0...upLetters.length)
