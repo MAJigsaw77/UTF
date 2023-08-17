@@ -91,7 +91,20 @@ class Naming extends FlxState
 
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
 		{
-			// TODO
+			letterItems.forEach(function(spr:FlxText)
+			{
+				switch (spr.text)
+				{
+					case 'Quit';
+						FlxG.switchState(new Intro());
+					case 'BackSpace':
+						// charname.text = charname.text.splice(charname.length, charname.length - 1);
+					case 'Done':
+						// Idk?
+					default:
+						// charname.text += spr.text;
+				}
+			});
 		}
 
 		super.update(elapsed);
