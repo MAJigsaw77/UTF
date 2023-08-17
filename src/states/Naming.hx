@@ -29,7 +29,7 @@ class Naming extends FlxState
 		// UpperCase Letters.
 		for (i in 65...91)
 		{
-			var letter:FlxText = new FlxText(0, 0, 0, String.fromCharCode(i), 32);
+			var letter:FlxText = new FlxText(120, 150, 0, String.fromCharCode(i), 32);
 			letter.font = AssetPaths.font('DTM-Sans');
 			letter.ID = i; // Ugh
 			letter.scrollFactor.set();
@@ -39,7 +39,7 @@ class Naming extends FlxState
 		// LowerCase Letters.
 		for (i in 97...123)
 		{
-			var letter:FlxText = new FlxText(0, 0, 0, String.fromCharCode(i), 32);
+			var letter:FlxText = new FlxText(120, 270, 0, String.fromCharCode(i), 32);
 			letter.font = AssetPaths.font('DTM-Sans');
 			letter.ID = i; // Ugh
 			letter.scrollFactor.set();
