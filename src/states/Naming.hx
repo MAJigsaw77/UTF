@@ -26,22 +26,26 @@ class Naming extends FlxState
 
 		letterItems = new FlxTypedGroup<FlxText>();
 		
+		var upLetters:Array<Int> = [for (i in 65...91) i];
+
 		// UpperCase Letters.
-		for (i in 65...91)
+		for (i in 0...upLetters.length)
 		{
-			var letter:FlxText = new FlxText(120, 150, 0, String.fromCharCode(i), 32);
+			var letter:FlxText = new FlxText(120, 150, 0, String.fromCharCode(upLetters[i]), 32);
 			letter.font = AssetPaths.font('DTM-Sans');
 			letter.ID = i; // Ugh
 			letter.scrollFactor.set();
 			letterItems.add(letter);
 		}
 
+		var lowLetters:Array<Int> = [for (i in 97...123) i];
+
 		// LowerCase Letters.
-		for (i in 97...123)
+		for (i in 0...upLetters.length)
 		{
-			var letter:FlxText = new FlxText(120, 270, 0, String.fromCharCode(i), 32);
+			var letter:FlxText = new FlxText(120, 270, 0, String.fromCharCode(lowLetters[i]), 32);
 			letter.font = AssetPaths.font('DTM-Sans');
-			letter.ID = i; // Ugh
+			letter.ID = i + 26; // Ugh
 			letter.scrollFactor.set();
 			letterItems.add(letter);
 		}
