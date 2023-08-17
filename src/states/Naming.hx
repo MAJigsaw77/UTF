@@ -100,16 +100,19 @@ class Naming extends FlxState
 		{
 			letterItems.forEach(function(spr:FlxText)
 			{
-				switch (spr.text)
+				if (spr.ID == curLetter)
 				{
-					case 'Quit':
-						FlxG.switchState(new Intro());
-					case 'BackSpace':
-						charname.text = charname.text.substring(0, charname.text.length - 1);
-					case 'Done':
-						// Idk for now.
-					default:
-						charname.text += spr.text;
+					switch (spr.text)
+					{
+						case 'Quit':
+							FlxG.switchState(new Intro());
+						case 'BackSpace':
+							charname.text = charname.text.substring(0, charname.text.length - 1);
+						case 'Done':
+							// Idk for now.
+						default:
+							charname.text += spr.text;
+					}
 				}
 			});
 		}
