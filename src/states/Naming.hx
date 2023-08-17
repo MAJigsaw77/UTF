@@ -16,6 +16,8 @@ class Naming extends FlxState
 	var curLetter:Int = 0;
 	var letterItems:FlxTypedGroup<FlxText>;
 
+	var charname:FlxText;
+	
 	override function create():Void
 	{
 		var namingText:FlxText = new FlxText(0, 60, 0, 'Name the fallen human.', 32);
@@ -23,6 +25,11 @@ class Naming extends FlxState
 		namingText.screenCenter(X);
 		namingText.scrollFactor.set();
 		add(namingText);
+
+		charname = new FlxText(280, 110, 0, '', 32);
+		charname.font = AssetPaths.font('DTM-Sans');
+		charname.scrollFactor.set();
+		add(charname);
 
 		letterItems = new FlxTypedGroup<FlxText>();
 		
@@ -98,11 +105,11 @@ class Naming extends FlxState
 					case 'Quit';
 						FlxG.switchState(new Intro());
 					case 'BackSpace':
-						// charname.text = charname.text.substring(0, charname.length - 1);
+						charname.text = charname.text.substring(0, charname.length - 1);
 					case 'Done':
-						// Idk?
+						// Idk for now.
 					default:
-						// charname.text += spr.text;
+						charname.text += spr.text;
 				}
 			});
 		}
