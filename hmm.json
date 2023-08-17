@@ -18,9 +18,7 @@
 		},
 		{
 			"name": "flixel-addons",
-			"type": "git",
-			"ref": "dev",
-			"url": "https://github.com/HaxeFlixel/flixel-addons.git"
+			"type": "haxelib"
 		},
 		{
 			"name": "hxdiscord_rpc",
