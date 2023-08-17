@@ -105,7 +105,7 @@ class Naming extends FlxState
 					case 'Quit':
 						FlxG.switchState(new Intro());
 					case 'BackSpace':
-						charname.text = charname.text.substring(0, charname.length - 1);
+						charname.text = charname.text.substring(0, charname.text.length - 1);
 					case 'Done':
 						// Idk for now.
 					default:
