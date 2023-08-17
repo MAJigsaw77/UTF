@@ -74,8 +74,8 @@ class Naming extends FlxState
 
 		letterItems.forEach(function(spr:FlxText)
 		{
-			spr.x += FlxG.random.float(-0.5, 0.5);
-			spr.y += FlxG.random.float(-0.5, 0.5);
+			spr.offset.x = ((spr.frameWidth - spr.width) * 0.5) + FlxG.random.float(-0.5, 0.5);
+                        spr.offset.y = ((spr.frameHeight - spr.height) * 0.5) + FlxG.random.float(-0.5, 0.5);
 		});
 	}
 
