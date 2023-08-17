@@ -28,38 +28,45 @@ class Naming extends FlxState
 		
 		final upLetters:Array<Int> = [for (i in 65...91) i];
 
+		var row:Int = 0;
+		var line:Int = 0;
+
 		// UpperCase Letters.
 		for (i in 0...upLetters.length)
 		{
-			for (row in 0...2)
+			var letter:FlxText = new FlxText(120 + line * 64, 150 + row * 28, 0, String.fromCharCode(upLetters[i]), 32);
+			letter.font = AssetPaths.font('DTM-Sans');
+			letter.ID = i; // Ugh
+			letter.scrollFactor.set();
+			letterItems.add(letter);
+
+			line++;
+			if (line > 6)
 			{
-				for (line in 0...5)
-				{
-					var letter:FlxText = new FlxText(120 + line * 64, 150 + row * 28, 0, String.fromCharCode(upLetters[i]), 32);
-					letter.font = AssetPaths.font('DTM-Sans');
-					letter.ID = i; // Ugh
-					letter.scrollFactor.set();
-					letterItems.add(letter);
-				}
+				row++;
+				line = 0;
 			}
 		}
 
 		final lowLetters:Array<Int> = [for (i in 97...123) i];
 
+		var row:Int = 0;
+		var line:Int = 0;
+
 		// LowerCase Letters.
 		for (i in 0...upLetters.length)
 		{
-			for (row in 0...2)
-			{
-				for (line in 0...5)
-				{
+			var letter:FlxText = new FlxText(120 + line * 64, 270 + row * 28, 0, String.fromCharCode(lowLetters[i]), 32);
+			letter.font = AssetPaths.font('DTM-Sans');
+			letter.ID = i + 26; // Ugh
+			letter.scrollFactor.set();
+			letterItems.add(letter);
 
-					var letter:FlxText = new FlxText(120 + line * 64, 270 + row * 28, 0, String.fromCharCode(lowLetters[i]), 32);
-					letter.font = AssetPaths.font('DTM-Sans');
-					letter.ID = i + 26; // Ugh
-					letter.scrollFactor.set();
-					letterItems.add(letter);
-				}
+			line++;
+			if (line > 6)
+			{
+				row++;
+				line = 0;
 			}
 		}
 
