@@ -111,6 +111,9 @@ class Naming extends FlxState
 						case 'Done':
 							// Idk for now.
 						default:
+							if (charname.text.length > 6)
+								charname.text = charname.text.substring(0, 5);
+
 							charname.text += spr.text;
 					}
 				}
