@@ -91,7 +91,7 @@ class Naming extends FlxState
 				case 'Backspace':
 					choice.setPosition(240, 400);
 				case 'Done':
-					choice.setPosition(480, 400);
+					choice.setPosition(440, 400);
 			}
 
 			choice.font = AssetPaths.font('DTM-Sans');
