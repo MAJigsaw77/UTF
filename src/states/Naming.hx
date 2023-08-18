@@ -86,11 +86,6 @@ class Naming extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justPressed.DOWN)
-			changeItem(1);
-		else if (FlxG.keys.justPressed.UP)
-			changeItem(-1);
-
 		if (FlxG.keys.justPressed.RIGHT)
 			changeItem(1);
 		else if (FlxG.keys.justPressed.LEFT)
@@ -131,7 +126,7 @@ class Naming extends FlxState
 
 	private function changeItem(num:Int = 0):Void
 	{
-		curSelected = FlxMath.wrap(curSelected + num, 0, items.length - 1);
+		curSelected = Std.int(FlxMath.bound(curSelected + num, 0, items.length - 1));
 
 		items.forEach(function(spr:FlxText)
 		{
