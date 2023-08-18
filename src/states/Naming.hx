@@ -13,8 +13,8 @@ import flixel.FlxState;
 
 class Naming extends FlxState
 {
-	var curLetter:Int = 0;
-	var letterItems:FlxTypedGroup<FlxText>;
+	var curSelected:Int = 0;
+	var items:FlxTypedGroup<FlxText>;
 
 	var charname:FlxText;
 	
@@ -31,7 +31,7 @@ class Naming extends FlxState
 		charname.scrollFactor.set();
 		add(charname);
 
-		letterItems = new FlxTypedGroup<FlxText>();
+		items = new FlxTypedGroup<FlxText>();
 		
 		final upLetters:Array<Int> = [for (i in 65...91) i];
 
@@ -45,7 +45,7 @@ class Naming extends FlxState
 			letter.font = AssetPaths.font('DTM-Sans');
 			letter.ID = i; // Ugh
 			letter.scrollFactor.set();
-			letterItems.add(letter);
+			items.add(letter);
 
 			line++;
 			if (line > 6)
@@ -67,7 +67,7 @@ class Naming extends FlxState
 			letter.font = AssetPaths.font('DTM-Sans');
 			letter.ID = i + 26; // Ugh
 			letter.scrollFactor.set();
-			letterItems.add(letter);
+			items.add(letter);
 
 			line++;
 			if (line > 6)
@@ -77,9 +77,9 @@ class Naming extends FlxState
 			}
 		}
 
-		add(letterItems);
+		add(items);
 
-		changeLetter();
+		changeItem();
 
 		super.create();
 	}
@@ -87,20 +87,20 @@ class Naming extends FlxState
 	override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justPressed.DOWN)
-			changeLetter(1);
+			changeItem(1);
 		else if (FlxG.keys.justPressed.UP)
-			changeLetter(-1);
+			changeItem(-1);
 
 		if (FlxG.keys.justPressed.RIGHT)
-			changeLetter(1);
+			changeItem(1);
 		else if (FlxG.keys.justPressed.LEFT)
-			changeLetter(-1);
+			changeItem(-1);
 
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
 		{
-			letterItems.forEach(function(spr:FlxText)
+			items.forEach(function(spr:FlxText)
 			{
-				if (spr.ID == curLetter)
+				if (spr.ID == curSelected)
 				{
 					switch (spr.text)
 					{
@@ -122,20 +122,20 @@ class Naming extends FlxState
 
 		super.update(elapsed);
 
-		letterItems.forEach(function(spr:FlxText)
+		items.forEach(function(spr:FlxText)
 		{
 			spr.offset.x = ((spr.frameWidth - spr.width) * 0.5) + FlxG.random.float(-0.5, 0.5);
                         spr.offset.y = ((spr.frameHeight - spr.height) * 0.5) + FlxG.random.float(-0.5, 0.5);
 		});
 	}
 
-	private function changeLetter(num:Int = 0):Void
+	private function changeItem(num:Int = 0):Void
 	{
-		curLetter = FlxMath.wrap(curLetter + num, 0, letterItems.length - 1);
+		curSelected = FlxMath.wrap(curSelected + num, 0, items.length - 1);
 
-		letterItems.forEach(function(spr:FlxText)
+		items.forEach(function(spr:FlxText)
 		{
-			spr.color = spr.ID == curLetter ? FlxColor.YELLOW : FlxColor.WHITE;
+			spr.color = spr.ID == curSelected ? FlxColor.YELLOW : FlxColor.WHITE;
 		});
 	}
 }
