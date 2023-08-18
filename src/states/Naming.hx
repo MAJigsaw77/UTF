@@ -86,6 +86,11 @@ class Naming extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
+		if (FlxG.keys.justPressed.DOWN)
+			changeItem(6); // Stupid workaround
+		else if (FlxG.keys.justPressed.UP)
+			changeItem(-6); // Stupid workaround
+
 		if (FlxG.keys.justPressed.RIGHT)
 			changeItem(1);
 		else if (FlxG.keys.justPressed.LEFT)
