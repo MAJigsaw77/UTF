@@ -133,6 +133,7 @@ class Naming extends FlxState
 							charname.text = charname.text.substring(0, charname.text.length - 1);
 						case 'Done':
 							Global.name = charname.text;
+							Global.hasName = true;
 							Global.save();
 
 							// Reseting the game for now...
