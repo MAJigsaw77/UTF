@@ -65,7 +65,7 @@ class Naming extends FlxState
 		{
 			var letter:FlxText = new FlxText(120 + line * 64, 270 + row * 28, 0, String.fromCharCode(lowLetters[i]), 32);
 			letter.font = AssetPaths.font('DTM-Sans');
-			letter.ID = i + 26; // Ugh
+			letter.ID = 26 + i; // Ugh
 			letter.scrollFactor.set();
 			items.add(letter);
 
@@ -75,6 +75,29 @@ class Naming extends FlxState
 				row++;
 				line = 0;
 			}
+		}
+
+		final choices:Array<String> = ['Quit', 'Backspace', 'Done'];
+
+		// Choices.
+		for (i in 0...choices.length)
+		{
+			var choice:FlxText = new FlxText(0, 0, 0, choices[i], 32);
+
+			switch (choices[i])
+			{
+				case 'Quit':
+					choice.setPosition(120, 400);
+				case 'Backspace':
+					choice.setPosition(240, 400);
+				case 'Done':
+					choice.setPosition(480, 400);
+			}
+
+			choice.font = AssetPaths.font('DTM-Sans');
+			choice.ID = 52 + i; // Ugh
+			choice.scrollFactor.set();
+			items.add(choice);
 		}
 
 		add(items);
@@ -106,10 +129,14 @@ class Naming extends FlxState
 					{
 						case 'Quit':
 							FlxG.switchState(new Intro());
-						case 'BackSpace':
+						case 'Backspace':
 							charname.text = charname.text.substring(0, charname.text.length - 1);
 						case 'Done':
-							// Idk for now.
+							Global.name = charname.text;
+							Global.save();
+
+							// Reseting the game for now...
+							FlxG.resetGame();
 						default:
 							if (charname.text.length >= 6)
 								charname.text = charname.text.substring(0, 5);
@@ -124,8 +151,11 @@ class Naming extends FlxState
 
 		items.forEach(function(spr:FlxText)
 		{
-			spr.offset.x = ((spr.frameWidth - spr.width) * 0.5) + FlxG.random.float(-0.5, 0.5);
-                        spr.offset.y = ((spr.frameHeight - spr.height) * 0.5) + FlxG.random.float(-0.5, 0.5);
+			if (spr.text != 'Quit' && spr.text != 'Backspace' && spr.text != 'Done')
+			{
+				spr.offset.x = ((spr.frameWidth - spr.width) * 0.5) + FlxG.random.float(-0.5, 0.5);
+				spr.offset.y = ((spr.frameHeight - spr.height) * 0.5) + FlxG.random.float(-0.5, 0.5);
+			}
 		});
 	}
 
