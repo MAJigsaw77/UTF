@@ -11,6 +11,9 @@ import flixel.FlxState;
 import haxe.CallStack;
 import haxe.Exception;
 import haxe.Log;
+#if (hl && !debug)
+import hl.Api;
+#end
 import lime.system.System;
 import openfl.display.FPS;
 import openfl.display.Sprite;
@@ -48,6 +51,8 @@ class Main extends Sprite
 
 		#if cpp
 		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
+		#elseif hl
+		Api.setErrorHandler(onError);
 		#end
 		#end
 
@@ -123,9 +128,9 @@ class Main extends Sprite
 		System.exit(1);
 	}
 
-	private inline function onCriticalError(error:String):Void
+	private inline function onCriticalError(error:Dynamic):Void
 	{
-		final log:Array<String> = [error];
+		final log:Array<String> = [Std.string(error)];
 
 		for (item in CallStack.exceptionStack(true))
 		{
