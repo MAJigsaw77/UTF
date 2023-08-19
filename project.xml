@@ -38,6 +38,7 @@
 
 	<!--Libraries Settings-->
 
+	<haxeflag name="-dce" value="no" />
 	<haxedef name="hscriptPos" />
 
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
@@ -45,14 +46,12 @@
 	<haxedef name="FLX_NO_MOUSE" if="mobile" />
 	<haxedef name="FLX_NO_TOUCH" if="desktop" />
 
-	<haxedef name="HXCPP_CHECK_POINTER" if="cpp" unless="debug" />
-	<haxedef name="HXCPP_STACK_LINE" if="cpp" unless="debug" />
-	<haxedef name="HXCPP_STACK_TRACE" if="cpp" unless="debug" />
+	<haxedef name="HXCPP_CHECK_POINTER" if="cpp" />
+	<haxedef name="HXCPP_STACK_LINE" if="cpp" />
+	<haxedef name="HXCPP_STACK_TRACE" if="cpp" />
 
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="meta.json" />
 	<haxedef name="POLYMOD_MOD_PACK_FILE" value="pack.txt" />
 	<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon.png" />
-
-	<haxeflag name="-dce" value="no" />
 
 </project>
