@@ -45,6 +45,10 @@ class Main extends Sprite
 
 		#if !debug
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
+
+		#if cpp
+		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
+		#end
 		#end
 
 		FlxG.signals.gameResized.add(onResizeGame);
@@ -82,6 +86,46 @@ class Main extends Sprite
 		event.stopImmediatePropagation();
 
 		final log:Array<String> = [Std.string(event.error)];
+
+		for (item in CallStack.exceptionStack(true))
+		{
+			switch (item)
+			{
+				case CFunction:
+					log.push('C Function');
+				case Module(m):
+					log.push('Module [$m]');
+				case FilePos(s, file, line, column):
+					log.push('$file [line $line]');
+				case Method(classname, method):
+					log.push('$classname [method $method]');
+				case LocalFunction(name):
+					log.push('Local Function [$name]');
+			}
+		}
+
+		final msg:String = log.join('\n');
+
+		#if sys
+		try
+		{
+			if (!FileSystem.exists('errors'))
+				FileSystem.createDirectory('errors');
+
+			File.saveContent('errors/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt', msg);
+		}
+		catch (e:Exception)
+			Log.trace('Couldn\'t save error message "${e.message}"');
+		#end
+
+		Log.trace(msg);
+		Lib.application.window.alert(msg, 'Error!');
+		System.exit(1);
+	}
+
+	private inline function onCriticalError(error:String):Void
+	{
+		final log:Array<String> = [error];
 
 		for (item in CallStack.exceptionStack(true))
 		{
