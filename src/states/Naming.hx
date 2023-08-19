@@ -15,9 +15,8 @@ class Naming extends FlxState
 {
 	var curSelected:Int = 0;
 	var items:FlxTypedGroup<FlxText>;
+	var name:FlxText;
 
-	var charname:FlxText;
-	
 	override function create():Void
 	{
 		var namingText:FlxText = new FlxText(0, 60, 0, 'Name the fallen human.', 32);
@@ -26,10 +25,10 @@ class Naming extends FlxState
 		namingText.scrollFactor.set();
 		add(namingText);
 
-		charname = new FlxText(280, 110, 0, '', 32);
-		charname.font = AssetPaths.font('DTM-Sans');
-		charname.scrollFactor.set();
-		add(charname);
+		name = new FlxText(280, 110, 0, '', 32);
+		name.font = AssetPaths.font('DTM-Sans');
+		name.scrollFactor.set();
+		add(name);
 
 		items = new FlxTypedGroup<FlxText>();
 		
@@ -130,22 +129,31 @@ class Naming extends FlxState
 						case 'Quit':
 							FlxG.switchState(new Intro());
 						case 'Backspace':
-							charname.text = charname.text.substring(0, charname.text.length - 1);
+							if (name.text.length > 0)
+								name.text = name.text.substring(0, name.text.length - 1);
 						case 'Done':
-							Global.name = charname.text;
+							Global.name = name.text;
 							Global.hasName = true;
 							Global.save();
 
 							// Reseting the game for now...
 							FlxG.resetGame();
 						default:
-							if (charname.text.length >= 6)
-								charname.text = charname.text.substring(0, 5);
+							if (name.text.length >= 6)
+								name.text = name.text.substring(0, 5);
 
-							charname.text += spr.text;
+							name.text += spr.text;
+
+							if (name.text.toLowerCase() == 'gaster')
+								FlxG.resetGame();
 					}
 				}
 			});
+		}
+		else if (FlxG.keys.checkStatus(Data.binds['cancel'], JUST_PRESSED))
+		{
+			if (name.text.length > 0)
+				name.text = name.text.substring(0, name.text.length - 1);
 		}
 
 		super.update(elapsed);
