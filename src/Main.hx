@@ -53,7 +53,7 @@ class Main extends Sprite
 		#if cpp
 		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
 		#elseif hl
-		Api.setErrorHandler(onError);
+		Api.setErrorHandler(onCriticalError);
 		#end
 
 		FlxG.signals.gameResized.add(onResizeGame);
