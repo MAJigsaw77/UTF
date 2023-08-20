@@ -78,10 +78,10 @@ class Main extends Sprite
 		});
 		FlxG.signals.postStateSwitch.add(System.gc);
 
-		addChild(new FlxGame(640, 480, Startup, 30, 30, false, false));
+		addChild(new FlxGame(640, 480, Startup, 30, 30));
 
 		fps = new FPS(10, 10, FlxColor.RED);
-		fps.visible = Data.settings.get('fps');
+		fps.visible = Data.settings['fps'];
 		addChild(fps);
 	}
 
