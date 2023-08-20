@@ -31,7 +31,7 @@ class Naming extends FlxState
 		add(name);
 
 		items = new FlxTypedGroup<FlxText>();
-		
+
 		final upLetters:Array<Int> = [for (i in 65...91) i];
 
 		var row:Int = 0;
