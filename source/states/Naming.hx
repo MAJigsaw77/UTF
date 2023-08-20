@@ -132,7 +132,7 @@ class Naming extends FlxState
 							if (name.text.length > 0)
 								name.text = name.text.substring(0, name.text.length - 1);
 						case 'Done':
-							if (name.text.length >= 0)
+							if (name.text.length <= 0)
 								return;
 
 							Global.name = name.text;
