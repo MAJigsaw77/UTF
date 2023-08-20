@@ -17,7 +17,7 @@ import states.Intro;
 
 class Settings extends FlxTransitionableState
 {
-	var curOption:Int = 0;
+	var selected:Int = 0;
 	final options:Array<String> = ['Exit', 'FPS Display', 'Key Binds', 'Reset to Default'];
 	var items:FlxTypedGroup<FlxText>;
 
@@ -133,10 +133,10 @@ class Settings extends FlxTransitionableState
 
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && (FlxG.sound.music != null && FlxG.sound.music.playing))
 		{
-			if (options[curOption] == 'Exit')
+			if (options[selected] == 'Exit')
 				FlxG.sound.music.stop();
 
-			switch (options[curOption])
+			switch (options[selected])
 			{
 				case 'Exit':
 					FlxG.switchState(new Intro());
@@ -156,11 +156,11 @@ class Settings extends FlxTransitionableState
 
 	private function changeOption(num:Int = 0):Void
 	{
-		curOption = Std.int(FlxMath.bound(curOption + num, 0, options.length - 1));
+		selected = Std.int(FlxMath.bound(selected + num, 0, options.length - 1));
 
 		items.forEach(function(spr:FlxText)
 		{
-			spr.color = spr.ID == curOption ? FlxColor.YELLOW : FlxColor.WHITE;
+			spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
 		});
 	}
 
