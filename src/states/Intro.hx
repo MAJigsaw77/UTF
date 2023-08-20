@@ -17,9 +17,9 @@ import states.Settings;
 
 class Intro extends FlxState
 {
-	var curChoice:Int = 0;
+	var selected:Int = 0;
 	var choices:Array<String> = ['Continue', 'Reset', 'Settings'];
-	var choicesItems:FlxTypedGroup<FlxText>;
+	var items:FlxTypedGroup<FlxText>;
 
 	override function create():Void
 	{
@@ -83,7 +83,7 @@ class Intro extends FlxState
 			choices = ['Begin Game', 'Settings'];
 		}
 
-		choicesItems = new FlxTypedGroup<FlxText>();
+		items = new FlxTypedGroup<FlxText>();
 
 		for (i in 0...choices.length)
 		{
@@ -115,10 +115,10 @@ class Intro extends FlxState
 			bt.font = AssetPaths.font('DTM-Sans');
 			bt.ID = i;
 			bt.scrollFactor.set();
-			choicesItems.add(bt);
+			items.add(bt);
 		}
 
-		add(choicesItems);
+		add(items);
 
 		#if !debug
 		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta['version']} (c) MAJigsaw77 2023', 16);
@@ -147,10 +147,10 @@ class Intro extends FlxState
 
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
 		{
-			if (choices[curChoice] != 'Reset' && choices[curChoice] != 'Begin Game')
+			if (choices[selected] != 'Reset' && choices[selected] != 'Begin Game')
 				FlxG.sound.music.stop();
 
-			switch (choices[curChoice])
+			switch (choices[selected])
 			{
 				case 'Continue':
 					FlxG.switchState(new Room(Global.room));
@@ -166,11 +166,11 @@ class Intro extends FlxState
 
 	private function changeOption(num:Int = 0):Void
 	{
-		curChoice = Global.hasName ? FlxMath.wrap(curChoice + num, 0, choices.length - 1) : Std.int(FlxMath.bound(curChoice + num, 0, choices.length - 1));
+		selected = Global.hasName ? FlxMath.wrap(selected + num, 0, choices.length - 1) : Std.int(FlxMath.bound(selected + num, 0, choices.length - 1));
 
-		choicesItems.forEach(function(spr:FlxText)
+		items.forEach(function(spr:FlxText)
 		{
-			spr.color = spr.ID == curChoice ? FlxColor.YELLOW : FlxColor.WHITE;
+			spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
 		});
 	}
 }

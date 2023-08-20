@@ -19,7 +19,7 @@ class Settings extends FlxTransitionableState
 {
 	var curOption:Int = 0;
 	final options:Array<String> = ['Exit', 'FPS Display', 'Key Binds', 'Reset to Default'];
-	var optionsItems:FlxTypedGroup<FlxText>;
+	var items:FlxTypedGroup<FlxText>;
 
 	var particlesEmitter:FlxEmitter;
 	var tobdogWeather:FlxSprite;
@@ -56,7 +56,7 @@ class Settings extends FlxTransitionableState
 		settings.scrollFactor.set();
 		add(settings);
 
-		optionsItems = new FlxTypedGroup<FlxText>();
+		items = new FlxTypedGroup<FlxText>();
 
 		for (i in 0...options.length)
 		{
@@ -64,10 +64,10 @@ class Settings extends FlxTransitionableState
 			opt.font = AssetPaths.font('DTM-Sans');
 			opt.ID = i;
 			opt.scrollFactor.set();
-			optionsItems.add(opt);
+			items.add(opt);
 		}
 
-		add(optionsItems);
+		add(items);
 
 		tobdogWeather = new FlxSprite(500, 436);
 
@@ -158,7 +158,7 @@ class Settings extends FlxTransitionableState
 	{
 		curOption = Std.int(FlxMath.bound(curOption + num, 0, options.length - 1));
 
-		optionsItems.forEach(function(spr:FlxText)
+		items.forEach(function(spr:FlxText)
 		{
 			spr.color = spr.ID == curOption ? FlxColor.YELLOW : FlxColor.WHITE;
 		});

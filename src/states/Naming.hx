@@ -13,7 +13,7 @@ import flixel.FlxState;
 
 class Naming extends FlxState
 {
-	var curSelected:Int = 0;
+	var selected:Int = 0;
 	var items:FlxTypedGroup<FlxText>;
 	var name:FlxText;
 
@@ -122,7 +122,7 @@ class Naming extends FlxState
 		{
 			items.forEach(function(spr:FlxText)
 			{
-				if (spr.ID == curSelected)
+				if (spr.ID == selected)
 				{
 					switch (spr.text)
 					{
@@ -173,11 +173,11 @@ class Naming extends FlxState
 
 	private function changeItem(num:Int = 0):Void
 	{
-		curSelected = Std.int(FlxMath.bound(curSelected + num, 0, items.length - 1));
+		selected = Std.int(FlxMath.bound(selected + num, 0, items.length - 1));
 
 		items.forEach(function(spr:FlxText)
 		{
-			spr.color = spr.ID == curSelected ? FlxColor.YELLOW : FlxColor.WHITE;
+			spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
 		});
 	}
 }

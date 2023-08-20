@@ -16,8 +16,8 @@ using StringTools;
 
 class ButtonConfig extends FlxSubState
 {
-	var curBind:Int = 0;
-	var bindsItems:FlxTypedGroup<FlxText>;
+	var selected:Int = 0;
+	var items:FlxTypedGroup<FlxText>;
 
 	override function create():Void
 	{
@@ -34,7 +34,7 @@ class ButtonConfig extends FlxSubState
 		box.scrollFactor.set();
 		add(box);
 
-		bindsItems = new FlxTypedGroup<FlxText>();
+		items = new FlxTypedGroup<FlxText>();
 
 		for (i in 0...Lambda.count(Data.binds))
 		{
@@ -43,10 +43,10 @@ class ButtonConfig extends FlxSubState
 			text.ID = i;
 			text.screenCenter(X);
 			text.scrollFactor.set();
-			bindsItems.add(text);
+			items.add(text);
 		}
 
-		add(bindsItems);
+		add(items);
 
 		changeBind();
 
@@ -66,13 +66,13 @@ class ButtonConfig extends FlxSubState
 		{
 			keySelected = false;
 
-			Data.binds[getBind(curBind)] = FlxG.keys.firstJustPressed();
+			Data.binds[getBind(selected)] = FlxG.keys.firstJustPressed();
 
-			bindsItems.forEach(function(spr:FlxText)
+			items.forEach(function(spr:FlxText)
 			{
-				if (spr.ID == curBind)
+				if (spr.ID == selected)
 				{
-					spr.text = regenBindText(curBind);
+					spr.text = regenBindText(selected);
 					spr.screenCenter(X);
 				}
 			});
@@ -93,11 +93,11 @@ class ButtonConfig extends FlxSubState
 
 	private function changeBind(num:Int = 0):Void
 	{
-		curBind = FlxMath.wrap(curBind + num, 0, Lambda.count(Data.binds) - 1);
+		selected = FlxMath.wrap(selected + num, 0, Lambda.count(Data.binds) - 1);
 
-		bindsItems.forEach(function(spr:FlxText)
+		items.forEach(function(spr:FlxText)
 		{
-			spr.color = spr.ID == curBind ? FlxColor.YELLOW : FlxColor.WHITE;
+			spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
 		});
 	}
 

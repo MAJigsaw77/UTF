@@ -18,9 +18,9 @@ import flixel.FlxState;
 
 class Battle extends FlxTransitionableState
 {
-	var curChoice:Int = 0;
+	var selected:Int = 0;
 	final choices:Array<String> = ['Fight', 'Talk', 'Item', 'Spare'];
-	var choicesItems:FlxTypedGroup<FlxSprite>;
+	var items:FlxTypedGroup<FlxSprite>;
 
 	var stats:FlxText;
 	var hpName:FlxSprite;
@@ -56,7 +56,7 @@ class Battle extends FlxTransitionableState
 		hpInfo.scrollFactor.set();
 		add(hpInfo);
 
-		choicesItems = new FlxTypedGroup<FlxSprite>();
+		items = new FlxTypedGroup<FlxSprite>();
 
 		for (i in 0...choices.length)
 		{
@@ -76,10 +76,10 @@ class Battle extends FlxTransitionableState
 
 			bt.scrollFactor.set();
 			bt.ID = i;
-			choicesItems.add(bt);
+			items.add(bt);
 		}
 
-		add(choicesItems);
+		add(items);
 
 		monster = new Monster(0, 0, 'default');
 		monster.scrollFactor.set();
@@ -122,7 +122,7 @@ class Battle extends FlxTransitionableState
 
 			if (choiceSelected)
 			{
-				if (choices[curChoice] == 'Talk')
+				if (choices[selected] == 'Talk')
 				{
 					// TODO
 				}
@@ -137,12 +137,12 @@ class Battle extends FlxTransitionableState
 			{
 				writer.visible = true;
 
-				if (choices[curChoice] == 'Item' && Global.item.length <= 0)
+				if (choices[selected] == 'Item' && Global.item.length <= 0)
 					return;
 
 				choiceSelected = true;
 
-				switch (choices[curChoice])
+				switch (choices[selected])
 				{
 					case 'Fight' | 'Talk':
 						writer.msg = {text: '* ${monster.data.name}', speed: 4};
@@ -176,11 +176,11 @@ class Battle extends FlxTransitionableState
 		if (num != 0)
 			FlxG.sound.play(AssetPaths.sound('menumove'));
 
-		curChoice = FlxMath.wrap(curChoice + num, 0, choices.length - 1);
+		selected = FlxMath.wrap(selected + num, 0, choices.length - 1);
 
-		choicesItems.forEach(function(spr:FlxSprite)
+		items.forEach(function(spr:FlxSprite)
 		{
-			if (spr.ID == curChoice)
+			if (spr.ID == selected)
 			{
 				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_0'));
 
