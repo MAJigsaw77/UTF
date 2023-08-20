@@ -6,12 +6,6 @@ import flixel.math.FlxPoint;
 import flixel.FlxG;
 import openfl.utils.Assets;
 
-typedef SpriteSheetData =
-{
-	key:String,
-	sheet:Array<SheetData>
-}
-
 typedef SheetData =
 {
 	animation:String,
@@ -71,7 +65,7 @@ class AssetPaths
 		return 'assets/images/sprites/$key.png';
 	}
 
-	public static function spritesheet(data:SpriteSheetData):FlxAtlasFrames
+	public static function spritesheet(data:{key:String, sheet:Array<SheetData>}):FlxAtlasFrames
 	{
 		if (data == null)
 			return null;
