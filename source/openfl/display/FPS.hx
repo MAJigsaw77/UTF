@@ -25,8 +25,11 @@ class FPS extends TextField
 	 */
 	public var showMemoryUsage:Bool = #if debug true #else false #end;
 
-	@:noCompletion private var currentTime:Float = 0;
-	@:noCompletion private var times:Array<Float> = [];
+	@:noCompletion
+	private var currentTime:Float = 0;
+
+	@:noCompletion
+	private var times:Array<Float> = [];
 
 	public function new(x:Float = 10, y:Float = 10, color:Int = 0xFFFFFF)
 	{
@@ -47,7 +50,8 @@ class FPS extends TextField
 	}
 
 	// Overrides
-	@:noCompletion private override function __enterFrame(deltaTime:Int):Void
+	@:noCompletion
+	private override function __enterFrame(deltaTime:Int):Void
 	{
 		currentTime += deltaTime;
 

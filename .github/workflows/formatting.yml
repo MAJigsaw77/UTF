@@ -17,11 +17,11 @@ jobs:
           haxelib --quiet install formatter
 
       - name: Formatting
-        run: haxelib run formatter -s src
+        run: haxelib run formatter -s source
 
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
           name: Source-Files
-          path: src
+          path: source
           if-no-files-found: error

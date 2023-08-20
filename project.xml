@@ -18,7 +18,7 @@
 	<!--Path Settings-->
 
 	<assets path="assets" />
-	<source name="src" />
+	<source name="source" />
 
 	<!--Defines-->
 
