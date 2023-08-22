@@ -2,7 +2,6 @@ package states;
 
 import backend.AssetPaths;
 import backend.Data;
-import states.Settings;
 import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.input.keyboard.FlxKey;
 import flixel.group.FlxGroup;
@@ -10,10 +9,8 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
-import flixel.FlxSprite;
 import flixel.FlxState;
-
-using StringTools;
+import states.Settings;
 
 class ButtonConfig extends FlxState
 {
