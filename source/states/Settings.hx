@@ -18,7 +18,7 @@ import states.Intro;
 class Settings extends FlxTransitionableState
 {
 	var selected:Int = 0;
-	final options:Array<String> = ['Exit', 'FPS Display', 'Key Binds', 'Reset to Default'];
+	final options:Array<String> = ['Exit', 'FPS Display', 'Button Config', 'Reset to Default'];
 	var items:FlxTypedGroup<FlxText>;
 
 	var particlesEmitter:FlxEmitter;
@@ -140,8 +140,8 @@ class Settings extends FlxTransitionableState
 			{
 				case 'Exit':
 					FlxG.switchState(new Intro());
-				case 'Key Binds':
-					openSubState(new ButtonConfig());
+				case 'Button Config':
+					FlxG.switchState(new ButtonConfig());
 				case 'FPS Display':
 					changeSetting('fps', false);
 				case 'Reset to Default':
