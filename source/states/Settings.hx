@@ -42,7 +42,7 @@ class Settings extends FlxTransitionableState
 		FlxG.sound.cache(weatherMusic);
 
 		particlesEmitter = new FlxEmitter(FlxG.width / 2, FlxG.height / 2, FlxG.width);
-		particlesEmitter.loadParticles(AssetPaths.sprite('fallleaf'), Std.int(FlxG.width / 2));
+		particlesEmitter.loadParticles(AssetPaths.sprite('fallleaf'), Math.floor(FlxG.width / 2));
 		particlesEmitter.alpha.set(0.5, 0.5);
 		particlesEmitter.scale.set(2, 2);
 		particlesEmitter.acceleration.set(0.6, 0.6);
@@ -156,7 +156,7 @@ class Settings extends FlxTransitionableState
 
 	private function changeOption(num:Int = 0):Void
 	{
-		selected = Std.int(FlxMath.bound(selected + num, 0, options.length - 1));
+		selected = Math.floor(FlxMath.bound(selected + num, 0, options.length - 1));
 
 		items.forEach(function(spr:FlxText)
 		{

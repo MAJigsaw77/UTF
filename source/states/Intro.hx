@@ -166,7 +166,7 @@ class Intro extends FlxState
 
 	private function changeOption(num:Int = 0):Void
 	{
-		selected = Global.hasName ? FlxMath.wrap(selected + num, 0, choices.length - 1) : Std.int(FlxMath.bound(selected + num, 0, choices.length - 1));
+		selected = Global.hasName ? FlxMath.wrap(selected + num, 0, choices.length - 1) : Math.floor(FlxMath.bound(selected + num, 0, choices.length - 1));
 
 		items.forEach(function(spr:FlxText)
 		{
