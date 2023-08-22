@@ -69,6 +69,6 @@ class Monster extends FlxSpriteGroup
 
 		script.call('postDestroy');
 
-		script.destroy();
+		script.close();
 	}
 }
