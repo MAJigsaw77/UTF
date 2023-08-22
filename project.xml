@@ -30,16 +30,16 @@
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 
-	<haxelib name="hscript" />
 	<haxelib name="hxdiscord_rpc" if="DISCORD" />
+	<haxelib name="hscript" />
 	<haxelib name="polymod" if="MODS" />
 
 	<haxelib name="extension-androidtools" if="android" />
 
 	<!--Libraries Settings-->
 
-	<haxeflag name="-dce" value="no" />
 	<haxedef name="hscriptPos" />
+	<haxeflag name="-dce" value="no" />
 
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 	<haxedef name="FLX_NO_FOCUS_LOST_SCREEN" />
@@ -53,14 +53,5 @@
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="meta.json" />
 	<haxedef name="POLYMOD_MOD_PACK_FILE" value="pack.txt" />
 	<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon.png" />
-
-	<!--Platforms Settings-->
-
-	<section if="android">
-		<config>
-			<!--Gradle-->
-			<android gradle-version="8.3" gradle-plugin="8.1.0" />
-		</config>
-	</section>
 
 </project>
