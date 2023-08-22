@@ -17,7 +17,7 @@ class AssetPaths
 {
 	public static inline function script(key:String):String
 	{
-		return 'assets/data/$key.hx';
+		return 'assets/data/$key.hxs';
 	}
 
 	public static inline function data(key:String):String
