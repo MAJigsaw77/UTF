@@ -100,7 +100,6 @@ class Naming extends FlxState
 		}
 
 		add(items);
-
 		changeItem();
 
 		super.create();
@@ -109,9 +108,9 @@ class Naming extends FlxState
 	override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justPressed.DOWN)
-			changeItem(6); // Stupid workaround
+			changeItem(7); // Stupid workaround
 		else if (FlxG.keys.justPressed.UP)
-			changeItem(-6); // Stupid workaround
+			changeItem(-7); // Stupid workaround
 
 		if (FlxG.keys.justPressed.RIGHT)
 			changeItem(1);
@@ -173,11 +172,10 @@ class Naming extends FlxState
 
 	private function changeItem(num:Int = 0):Void
 	{
-		selected = Std.int(FlxMath.bound(selected + num, 0, items.length - 1));
+		selected = Math.floor(FlxMath.bound(selected + num, 0, items.length - 1));
 
-		items.forEach(function(spr:FlxText)
-		{
-			spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
-		});
+		for (spr in items) // fun fact: for loops are faster than forEach or forEachAlive loops -Crow
+			if (spr != null && spr.text.length > 0)
+				spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
 	}
 }
