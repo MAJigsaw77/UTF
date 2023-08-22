@@ -14,10 +14,12 @@ typedef DialogueData =
 	 * if defined as 'null' or nothing, it uses nothing
 	**/
 	?char:String,
+
 	/**
 	 * Defines the expression of the current character
 	**/
 	?face:String,
+
 	/**
 	 * Defines the current font, uses DTM-Mono by default
 	**/
@@ -39,15 +41,12 @@ typedef DialogueData =
 **/
 class Writer extends FlxTypeText
 {
-	// public var parent:DialogueBox;
-	// public var currentCharacter:String = '';
-	// public var currentFont:String = '';
 	public var skippable:Bool = true;
 	public var finished:Bool = false;
 
-	var curDialogue(get, never):DialogueData;
-	var dialogueList:Array<DialogueData> = [{text: 'Error!', speed: 4}];
-	var currentPage:Int = 0;
+	private var curDialogue(get, never):DialogueData;
+	private var dialogueList:Array<DialogueData> = [{text: 'Error!', speed: 4}];
+	private var currentPage:Int = 0;
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0, size:Int = 8):Void
 	{
