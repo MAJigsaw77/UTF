@@ -108,12 +108,12 @@ class Naming extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		var rowSel:Int = selected == 26 ? 8 : 7;
+		var rowSel:Int = ;
 
 		if (FlxG.keys.justPressed.DOWN)
-			changeItem(rowSel); // Stupid workaround
+			changeItem(selected == 26 ? 8 : 7); // Stupid workaround
 		else if (FlxG.keys.justPressed.UP)
-			changeItem(-rowSel); // Stupid workaround
+			changeItem(selected == 26 ? -8 : -7); // Stupid workaround
 
 		if (FlxG.keys.justPressed.RIGHT)
 			changeItem(1);
@@ -177,8 +177,9 @@ class Naming extends FlxState
 	{
 		selected = Math.floor(FlxMath.bound(selected + num, 0, items.length - 1));
 
-		for (spr in items) // fun fact: for loops are faster than forEach or forEachAlive loops -Crow
-			if (spr != null && spr.text.length > 0)
-				spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
+		items.forEach(function(spr:FlxText)
+		{
+			spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
+		});
 	}
 }
