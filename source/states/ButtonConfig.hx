@@ -2,6 +2,7 @@ package states;
 
 import backend.AssetPaths;
 import backend.Data;
+import states.Settings;
 import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.input.keyboard.FlxKey;
 import flixel.group.FlxGroup;
@@ -10,23 +11,24 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.FlxSubState;
+import flixel.FlxState;
 
 using StringTools;
 
-class ButtonConfig extends FlxSubState
+class ButtonConfig extends FlxState
 {
 	var selected:Int = 0;
 	var items:FlxTypedGroup<FlxText>;
 
 	override function create():Void
 	{
-		var bg:FlxSprite = new FlxSprite();
-		bg.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
-		bg.screenCenter();
-		bg.scrollFactor.set();
-		bg.alpha = 0.5;
-		add(bg);
+		FlxG.sound.playMusic(AssetPaths.music('star'));
+
+		var settings:FlxText = new FlxText(0, 40, 0, 'BUTTON CONFIG', 64);
+		settings.font = AssetPaths.font('DTM-Sans');
+		settings.screenCenter(X);
+		settings.scrollFactor.set();
+		add(settings);
 
 		var box:FlxShapeBox = new FlxShapeBox(0, 0, Std.int(FlxG.width / 2), Std.int(FlxG.height / 2),
 			{thickness: 6, jointStyle: MITER, color: FlxColor.WHITE}, FlxColor.BLACK);
@@ -86,7 +88,11 @@ class ButtonConfig extends FlxSubState
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 		}
 		else if (FlxG.keys.checkStatus(Data.binds['cancel'], JUST_PRESSED) && !keySelected)
-			close();
+		{
+			FlxG.sound.music.stop();
+
+			FlxG.switchState(new Settings());
+		}
 
 		super.update(elapsed);
 	}
