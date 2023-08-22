@@ -14,7 +14,6 @@ import flixel.FlxState;
 class Naming extends FlxState
 {
 	var selected:Int = 0;
-	var selectedRow:Int = 0;
 	var items:FlxTypedGroup<FlxText>;
 	var name:FlxText;
 
@@ -108,8 +107,6 @@ class Naming extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		var rowSel:Int = ;
-
 		if (FlxG.keys.justPressed.DOWN)
 			changeItem(selected == 26 ? 8 : 7); // Stupid workaround
 		else if (FlxG.keys.justPressed.UP)
