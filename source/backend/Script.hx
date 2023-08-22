@@ -1,19 +1,5 @@
 package backend;
 
-import backend.AssetPaths;
-#if (FLX_DRAW_QUADS && !flash)
-import flixel.addons.display.FlxRuntimeShader;
-#end
-import flixel.effects.particles.FlxEmitter;
-import flixel.effects.particles.FlxParticle;
-import flixel.group.FlxSpriteGroup;
-import flixel.math.FlxMath;
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
-import flixel.util.FlxTimer;
-import flixel.FlxG;
-import flixel.FlxBasic;
-import flixel.FlxSprite;
 import haxe.Exception;
 import hscript.Interp;
 import hscript.Parser;
@@ -23,33 +9,43 @@ import openfl.Lib;
 
 class Script
 {
-	public static var classes(default, null):Map<String, Dynamic> = [
+	public static var properties(default, null):Map<String, Dynamic> = [
+		// Haxe Classes.
 		'Date' => Date,
 		'Lambda' => Lambda,
 		'Math' => Math,
 		'Std' => Std,
 		'StringTools' => StringTools,
 		'Sys' => Sys,
-		'FlxG' => FlxG,
-		'FlxSprite' => FlxSprite,
-		'FlxSpriteGroup' => FlxSpriteGroup,
+
+		// Flixel Classes.
+		'FlxG' => flixel.FlxG,
+		'FlxSprite' => flixel.FlxSprite,
+		'FlxSpriteGroup' => flixel.group.FlxSpriteGroup,
 		#if (FLX_DRAW_QUADS && !flash)
-		'FlxRuntimeShader' => FlxRuntimeShader,
+		'FlxRuntimeShader' => flixel.addons.display.FlxRuntimeShader,
 		#end
-		'FlxEmitter' => FlxEmitter,
-		'FlxParticle' => FlxParticle,
-		'FlxMath' => FlxMath,
-		'FlxEase' => FlxEase,
-		'FlxTween' => FlxTween,
-		'FlxTimer' => FlxTimer,
-		'AssetPaths' => AssetPaths,
+		'FlxEmitter' => flixel.effects.particles.FlxEmitter,
+		'FlxParticle' => flixel.effects.particles.FlxParticle,
+		'FlxMath' => flixel.math.FlxMath,
+		'FlxEase' => flixel.tweens.FlxEase,
+		'FlxTween' => flixel.tweens.FlxTween,
+		'FlxTimer' => flixel.util.FlxTimer,
+
+		// Engine Classes.
+		'AssetPaths' => backend.AssetPaths,
+		#if DISCORD
+		'Discord' => backend.Discord,
+		#end
+
+		// OpenFL Classes.
 		'Assets' => Assets,
 		'ShaderFilter' => ShaderFilter,
 		'Lib' => Lib
 	];
 
-	var parser:Parser;
-	var interp:Interp;
+	private var parser:Parser;
+	private var interp:Interp;
 
 	public function new():Void
 	{
@@ -60,7 +56,7 @@ class Script
 		parser.allowMetadata = true;
 
 		interp = new Interp();
-		for (key => value in classes)
+		for (key => value in properties)
 			set(key, value);
 	}
 
@@ -77,7 +73,10 @@ class Script
 				throw 'script $file doesn\'t exist!';
 		}
 		catch (e:Exception)
+		{
 			FlxG.log.error(e.message);
+			return close();
+		}
 	}
 
 	public function set(name:String, val:Dynamic):Void
@@ -96,15 +95,7 @@ class Script
 		return interp.variables.get(name);
 	}
 
-	public function exists(name:String):Bool
-	{
-		if (interp == null)
-			return false;
-
-		return interp.variables.exists(name);
-	}
-
-	public function call(fname:String, ?args:Array<Dynamic>):Dynamic
+	public function call(name:String, ?args:Array<Dynamic>):Dynamic
 	{
 		if (interp == null)
 			return null;
@@ -112,16 +103,19 @@ class Script
 		try
 		{
 			@:privateAccess
-			if (exists(fname) && Reflect.isFunction(get(fname)))
-				return interp.call(null, get(fname), args == null ? [] : args);
+			if (interp.variables.exists(name) && Reflect.isFunction(interp.variables.get(name)))
+				return interp.call(null, interp.variables.get(name), args == null ? [] : args);
 		}
 		catch (e:Exception)
+		{
 			FlxG.log.error(e.message);
+			close();
+		}
 
 		return null;
 	}
 
-	public function destroy():Void
+	public function close():Void
 	{
 		parser = null;
 		interp = null;
