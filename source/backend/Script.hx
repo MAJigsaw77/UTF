@@ -3,7 +3,9 @@ package backend;
 import haxe.Exception;
 import hscript.Interp;
 import hscript.Parser;
+#if (FLX_DRAW_QUADS && !flash)
 import openfl.filters.ShaderFilter;
+#end
 import openfl.utils.Assets;
 import openfl.Lib;
 
