@@ -16,7 +16,13 @@ class Script
 		'Math' => Math,
 		'Std' => Std,
 		'StringTools' => StringTools,
-		'Sys' => Sys,
+
+		// OpenFL Classes.
+		'Assets' => Assets,
+		#if (FLX_DRAW_QUADS && !flash)
+		'ShaderFilter' => ShaderFilter,
+		#end
+		'Lib' => Lib,
 
 		// Flixel Classes.
 		'FlxG' => flixel.FlxG,
@@ -37,11 +43,7 @@ class Script
 		#if DISCORD
 		'Discord' => backend.Discord,
 		#end
-
-		// OpenFL Classes.
-		'Assets' => Assets,
-		'ShaderFilter' => ShaderFilter,
-		'Lib' => Lib
+		'Global' => backend.Global
 	];
 
 	private var parser:Parser;
