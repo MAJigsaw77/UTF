@@ -10,6 +10,7 @@ import flixel.math.FlxMath;
 import flixel.sound.FlxSound;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import states.ButtonConfig;
@@ -115,7 +116,9 @@ class Settings extends FlxTransitionableState
 
 		changeOption();
 
-		FlxG.sound.play(AssetPaths.music('harpnoise'), () -> FlxG.sound.playMusic(weatherMusic, 0.8, true));
+		FlxG.sound.play(AssetPaths.music('harpnoise'));
+
+		new FlxTimer().start(2, () -> FlxG.sound.playMusic(weatherMusic, 0.8));
 
 		super.create();
 	}
