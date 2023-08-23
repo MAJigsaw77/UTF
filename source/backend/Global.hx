@@ -15,6 +15,7 @@ class Global
 	public static var gold:Int = 0;
 	public static var xp:Int = 0;
 	public static var lv:Int = 1;
+	public static var kills:Int = 0;
 	public static var item:Array<String> = [];
 
 	public static var hasName:Bool = false;
@@ -32,6 +33,7 @@ class Global
 		save.data.gold = gold;
 		save.data.xp = xp;
 		save.data.lv = lv;
+		save.data.kills = kills;
 		save.data.hasName = hasName;
 		save.close();
 	}
@@ -69,6 +71,9 @@ class Global
 
 			if (save.data.lv != null)
 				lv = save.data.lv;
+
+			if (save.data.kills != null)
+				kills = save.data.kills;
 
 			if (save.data.hasName != null)
 				hasName = save.data.hasName;
