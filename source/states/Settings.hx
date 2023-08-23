@@ -118,7 +118,7 @@ class Settings extends FlxTransitionableState
 
 		FlxG.sound.play(AssetPaths.music('harpnoise'));
 
-		new FlxTimer().start(2, () -> FlxG.sound.playMusic(weatherMusic, 0.8));
+		new FlxTimer().start(2, (tmr:FlxTimer) -> FlxG.sound.playMusic(weatherMusic, 0.8));
 
 		super.create();
 	}
