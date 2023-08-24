@@ -19,7 +19,7 @@ class GameOver extends FlxState
 	{
 		FlxG.sound.playMusic(AssetPaths.music('gameover'));
 
-		bg = new FlxSprite(0, 20, AssetPaths.sprite('gameoverbg'));
+		bg = new FlxSprite(0, 30, AssetPaths.sprite('gameoverbg'));
 		bg.alpha = 0;
 		bg.screenCenter(X);
 		bg.scrollFactor.set();
