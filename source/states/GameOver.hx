@@ -45,7 +45,7 @@ class GameOver extends FlxState
 							]);
 						case 1:
 							writer.startDialogue([
-								{text: '  Our fate rests \n  upon you...', speed: 6},
+								{text: '  Our fate rests\n  upon you...', speed: 6},
 								{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
 							]);
 						case 2:
