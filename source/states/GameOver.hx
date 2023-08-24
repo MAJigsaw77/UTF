@@ -25,7 +25,7 @@ class GameOver extends FlxState
 		bg.scrollFactor.set();
 		add(bg);
 
-		writer = new Writer(100, 300, 0, 32);
+		writer = new Writer(120, 320, 0, 32);
 		writer.scrollFactor.set();
 		add(writer);
 
