@@ -73,7 +73,7 @@ class GameOver extends FlxState
 	{
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && writer == null && bg.alpha == 1)
 		{
-			FlxTween.tween(bg, {alpha: 1}, 1.5);
+			FlxTween.tween(bg, {alpha: 0}, 1.5);
 			FlxG.sound.music.fadeOut(1.5);
 		}
 
