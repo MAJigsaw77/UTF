@@ -12,6 +12,9 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import openfl.Lib;
+#if debug
+import states.Battle;
+#end
 import states.Room;
 import states.Settings;
 
@@ -160,6 +163,11 @@ class Intro extends FlxState
 					FlxG.switchState(new Settings());
 			}
 		}
+
+		#if debug
+		if (FlxG.keys.justPressed.B)
+			FlxG.switchState(new Battle());
+		#end
 
 		super.update(elapsed);
 	}
