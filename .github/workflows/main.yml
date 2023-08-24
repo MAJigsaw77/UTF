@@ -31,7 +31,7 @@ jobs:
           haxelib run hmm install
 
       - name: Building
-        run: haxelib run lime build windows -debug
+        run: haxelib run lime build windows -debug -alias -n
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
@@ -106,7 +106,7 @@ jobs:
           haxelib run hmm install
 
       - name: Building
-        run: haxelib run lime build mac -debug
+        run: haxelib run lime build mac -debug -alias -n
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
@@ -181,7 +181,7 @@ jobs:
           haxelib run hmm install
 
       - name: Building
-        run: haxelib run lime build linux -debug
+        run: haxelib run lime build linux -debug -alias -n
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
@@ -278,7 +278,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Building
-        run: haxelib run lime build android -debug
+        run: haxelib run lime build android -debug -alias -n
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
