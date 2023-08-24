@@ -57,28 +57,14 @@ class Main extends Sprite
 		#end
 
 		FlxG.signals.gameResized.add(onResizeGame);
-		FlxG.signals.preStateCreate.add(function(state:FlxState)
-		{
-			// Clear the loaded graphics if they are no longer in flixel cache...
-			for (key in Assets.cache.getBitmapKeys())
-				if (!FlxG.bitmap.checkCache(key))
-					Assets.cache.removeBitmapData(key);
-
-			// Clear all the loaded sounds from the cache...
-			for (key in Assets.cache.getSoundKeys())
-				Assets.cache.removeSound(key);
-
-			#if MODS
-			// Clear the loaded assets from polymod...
-			Polymod.clearCache();
-			#end
-
-			// Run the garbage colector...
-			System.gc();
-		});
+		FlxG.signals.preStateCreate.add(onPreStateCreate);
 		FlxG.signals.postStateSwitch.add(System.gc);
 
 		addChild(new FlxGame(640, 480, Startup, 30, 30));
+
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
 
 		fps = new FPS(10, 10, FlxColor.RED);
 		fps.visible = Data.settings['fps'];
@@ -195,5 +181,25 @@ class Main extends Sprite
 				FlxG.game.__cacheBitmapData = null;
 			}
 		}
+	}
+
+	private inline function onPreStateCreate(state:FlxState):Void
+	{
+		// Clear the loaded graphics if they are no longer in flixel cache...
+		for (key in Assets.cache.getBitmapKeys())
+			if (!FlxG.bitmap.checkCache(key))
+				Assets.cache.removeBitmapData(key);
+
+		// Clear all the loaded sounds from the cache...
+		for (key in Assets.cache.getSoundKeys())
+			Assets.cache.removeSound(key);
+
+		#if MODS
+		// Clear the loaded assets from polymod...
+		Polymod.clearCache();
+		#end
+
+		// Run the garbage colector...
+		System.gc();
 	}
 }
