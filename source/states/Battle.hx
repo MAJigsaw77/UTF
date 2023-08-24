@@ -96,7 +96,7 @@ class Battle extends FlxTransitionableState
 		add(heart);
 
 		writer = new Writer(box.x + 14, box.y + 14, 0, 32);
-		writer.msg = {text: '* You feel like you\'re going to\n  have a bad time.', speed: 4};
+		writer.startDialogue({text: '* You feel like you\'re going to\n  have a bad time.', speed: 4});
 		writer.scrollFactor.set();
 		add(writer);
 
@@ -146,7 +146,7 @@ class Battle extends FlxTransitionableState
 				switch (choices[selected])
 				{
 					case 'Fight' | 'Talk':
-						writer.msg = {text: '* ${monster.data.name}', speed: 4};
+						writer.startDialogue({text: '* ${monster.data.name}', speed: 4});
 
 					/*var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + (monster.data.name.length * 16), writer.y, LEFT_TO_RIGHT,
 							Std.int(monster.data.hp / monster.data.maxHp * 100), 16, monster.data, 'hp', 0, monster.data.maxHp);
@@ -155,9 +155,9 @@ class Battle extends FlxTransitionableState
 						monsterHpBar.scrollFactor.set();
 						add(monsterHpBar); */
 					case 'Item':
-						writer.msg = {text: '* Item Selected...', speed: 4};
+						writer.startDialogue({text: '* Item Selected...', speed: 4});
 					case 'Spare':
-						writer.msg = {text: '* Mercy Selected...', speed: 4};
+						writer.startDialogue({text: '* Mercy Selected...', speed: 4});
 				}
 			}
 		}
@@ -166,12 +166,12 @@ class Battle extends FlxTransitionableState
 			choiceSelected = false;
 
 			writer.visible = true;
-			writer.msg = {text: '* You feel like you\'re going to\n  have a bad time.', speed: 4};
+			writer.startDialogue({text: '* You feel like you\'re going to\n  have a bad time.', speed: 4});
 		}
 
 		#if debug
 		if (FlxG.keys.justPressed.G)
-			Global.health = 0;
+			Global.hp = 0;
 		#end
 
 		super.update(elapsed);
