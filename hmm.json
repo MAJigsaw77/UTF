@@ -2,9 +2,7 @@
 	"dependencies": [
 		{
 			"name": "hxcpp",
-			"type": "git",
-			"ref": "master",
-			"url": "https://github.com/HaxeFoundation/hxcpp.git"
+			"type": "haxelib"
 		},
 		{
 			"name": "lime",
