@@ -15,6 +15,7 @@ import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import states.GameOver;
 
 class Battle extends FlxTransitionableState
 {
@@ -47,7 +48,7 @@ class Battle extends FlxTransitionableState
 
 		hpBar = new FlxBar(hpName.x + 35, hpName.y - 5, LEFT_TO_RIGHT, Std.int(Global.maxHp * 1.2), 20, Global, 'hp', 0, Global.maxHp);
 		hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
-		hpBar.emptyCallback = () -> FlxG.log.notice('GAME OVER');
+		hpBar.emptyCallback = () -> FlxG.switchState(new GameOver());
 		hpBar.scrollFactor.set();
 		add(hpBar);
 
@@ -167,6 +168,11 @@ class Battle extends FlxTransitionableState
 			writer.visible = true;
 			writer.msg = {text: '* You feel like you\'re going to\n  have a bad time.', speed: 4};
 		}
+
+		#if debug
+		if (FlxG.keys.justPressed.G)
+			Global.health = 0;
+		#end
 
 		super.update(elapsed);
 	}
