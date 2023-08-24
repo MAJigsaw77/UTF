@@ -4,11 +4,7 @@ import flixel.FlxG;
 import haxe.Exception;
 import hscript.Interp;
 import hscript.Parser;
-#if (FLX_DRAW_QUADS && !flash)
-import openfl.filters.ShaderFilter;
-#end
 import openfl.utils.Assets;
-import openfl.Lib;
 
 class Script
 {
@@ -21,19 +17,20 @@ class Script
 		'StringTools' => StringTools,
 
 		// OpenFL Classes.
-		'Assets' => Assets,
+		'Assets' => openfl.utils.Assets,
 		#if (FLX_DRAW_QUADS && !flash)
-		'ShaderFilter' => ShaderFilter,
+		'ShaderFilter' => openfl.filters.ShaderFilter,
 		#end
-		'Lib' => Lib,
+		'Lib' => openfl.Lib,
 
 		// Flixel Classes.
-		'FlxG' => FlxG,
+		'FlxG' => flixel.FlxG,
 		'FlxSprite' => flixel.FlxSprite,
 		'FlxSpriteGroup' => flixel.group.FlxSpriteGroup,
 		#if (FLX_DRAW_QUADS && !flash)
 		'FlxRuntimeShader' => flixel.addons.display.FlxRuntimeShader,
 		#end
+		'FlxTrail' => flixel.addons.effects.FlxTrail,
 		'FlxEmitter' => flixel.effects.particles.FlxEmitter,
 		'FlxParticle' => flixel.effects.particles.FlxParticle,
 		'FlxMath' => flixel.math.FlxMath,
