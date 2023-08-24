@@ -1,5 +1,6 @@
 package backend;
 
+import flixel.FlxG;
 import haxe.Exception;
 import hscript.Interp;
 import hscript.Parser;
@@ -27,7 +28,7 @@ class Script
 		'Lib' => Lib,
 
 		// Flixel Classes.
-		'FlxG' => flixel.FlxG,
+		'FlxG' => FlxG,
 		'FlxSprite' => flixel.FlxSprite,
 		'FlxSpriteGroup' => flixel.group.FlxSpriteGroup,
 		#if (FLX_DRAW_QUADS && !flash)
