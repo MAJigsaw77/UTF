@@ -17,26 +17,26 @@ class Script
 		'StringTools' => StringTools,
 
 		// OpenFL Classes.
-		'Assets' => openfl.utils.Assets,
 		#if (FLX_DRAW_QUADS && !flash)
 		'ShaderFilter' => openfl.filters.ShaderFilter,
 		#end
+		'Assets' => openfl.utils.Assets,
 		'Lib' => openfl.Lib,
 
 		// Flixel Classes.
-		'FlxG' => flixel.FlxG,
-		'FlxSprite' => flixel.FlxSprite,
-		'FlxSpriteGroup' => flixel.group.FlxSpriteGroup,
 		#if (FLX_DRAW_QUADS && !flash)
 		'FlxRuntimeShader' => flixel.addons.display.FlxRuntimeShader,
 		#end
 		'FlxTrail' => flixel.addons.effects.FlxTrail,
 		'FlxEmitter' => flixel.effects.particles.FlxEmitter,
 		'FlxParticle' => flixel.effects.particles.FlxParticle,
+		'FlxSpriteGroup' => flixel.group.FlxSpriteGroup,
 		'FlxMath' => flixel.math.FlxMath,
 		'FlxEase' => flixel.tweens.FlxEase,
 		'FlxTween' => flixel.tweens.FlxTween,
 		'FlxTimer' => flixel.util.FlxTimer,
+		'FlxG' => flixel.FlxG,
+		'FlxSprite' => flixel.FlxSprite,
 
 		// Engine Classes.
 		'AssetPaths' => backend.AssetPaths,
