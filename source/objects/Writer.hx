@@ -76,8 +76,6 @@ class Writer extends FlxTypeText
 
 	override function update(elapsed:Float):Void
 	{
-		super.update(elapsed);
-
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && skippable)
 		{
 			currentPage++;
@@ -94,6 +92,8 @@ class Writer extends FlxTypeText
 				}
 			}
 		}
+
+		super.update(elapsed);
 	}
 
 	/**
