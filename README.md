@@ -56,7 +56,7 @@ Install [`Haxe`](https://haxe.org/download).
 
 | Avatar | UserName | Involvement |
 | ------ | -------- | ----------- |
-| ![](https://github.com/MAJigsaw77/UTF/assets/45212377/beaacae9-abcf-4a70-bf2a-59511c5b007c) | [Toby Fox](https://twitter.com/tobyfox) | Creator of **Undertale**.
+| ![](https://github.com/MAJigsaw77/UTF/assets/45212377/beaacae9-abcf-4a70-bf2a-59511c5b007c) | [Toby Fox](https://twitter.com/tobyfox) | Creator of [**Undertale**](https://undertale.com).
 | ![](https://avatars.githubusercontent.com/u/77043862?s=64) | [MAJigsaw77](https://github.com/MAJigsaw77) | Creator of **UTF**.
 | ![](https://avatars.githubusercontent.com/u/23155359?s=64) | [Ne_Eo](https://github.com/NeeEoo) | Programmer.
 | ![](https://avatars.githubusercontent.com/u/45212377?s=64) | [CrowPlexus](https://github.com/CrowPlexus) | Programmer.
