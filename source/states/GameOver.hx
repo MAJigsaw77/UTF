@@ -2,8 +2,10 @@ package states;
 
 import backend.AssetPaths;
 import backend.Data;
+import backend.Global;
 import objects.Writer;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -32,34 +34,37 @@ class GameOver extends FlxState
 		FlxTween.tween(bg, {alpha: 1}, 1.5, {
 			onComplete: function(twn:FlxTween)
 			{
-				switch (FlxG.random.int(0, 4))
+				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
-					case 0:
-						writer.startDialogue([
-							{text: '  You cannot give\n  up just yet...', speed: 6},
-							{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
-						]);
-					case 1:
-						writer.startDialogue([
-							{text: '  Our fate rests \n  upon you...', speed: 6},
-							{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
-						]);
-					case 2:
-						writer.startDialogue([
-							{text: '  You\'re going to\n  be alright!', speed: 6},
-							{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
-						]);
-					case 3:
-						writer.startDialogue([
-							{text: '  Don\'t lose hope!', speed: 6},
-							{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
-						]);
-					case 4:
-						writer.startDialogue([
-							{text: '  It cannot end\n  now!', speed: 6},
-							{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
-						]);
-				}
+					switch (FlxG.random.int(0, 4))
+					{
+						case 0:
+							writer.startDialogue([
+								{text: '  You cannot give\n  up just yet...', speed: 6},
+								{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
+							]);
+						case 1:
+							writer.startDialogue([
+								{text: '  Our fate rests \n  upon you...', speed: 6},
+								{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
+							]);
+						case 2:
+							writer.startDialogue([
+								{text: '  You\'re going to\n  be alright!', speed: 6},
+								{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
+							]);
+						case 3:
+							writer.startDialogue([
+								{text: '  Don\'t lose hope!', speed: 6},
+								{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
+							]);
+						case 4:
+							writer.startDialogue([
+								{text: '  It cannot end\n  now!', speed: 6},
+								{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
+							]);
+					}
+				});
 			}
 		});
 	}
