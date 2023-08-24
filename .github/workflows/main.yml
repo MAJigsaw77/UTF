@@ -28,10 +28,10 @@ jobs:
       - name: Installing Libraries
         run: |
           haxelib install hmm --quiet
-          haxelib run hmm install
+          haxelib run hmm install --quiet
 
       - name: Building
-        run: haxelib run lime build windows -debug -alias -n
+        run: haxelib run lime build windows -debug
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
@@ -103,10 +103,10 @@ jobs:
       - name: Installing Libraries
         run: |
           haxelib install hmm --quiet
-          haxelib run hmm install
+          haxelib run hmm install --quiet
 
       - name: Building
-        run: haxelib run lime build mac -debug -alias -n
+        run: haxelib run lime build mac -debug
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
@@ -178,10 +178,10 @@ jobs:
       - name: Installing Libraries
         run: |
           haxelib install hmm --quiet
-          haxelib run hmm install
+          haxelib run hmm install --quiet
 
       - name: Building
-        run: haxelib run lime build linux -debug -alias -n
+        run: haxelib run lime build linux -debug
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
@@ -265,7 +265,7 @@ jobs:
       - name: Installing Libraries
         run: |
           haxelib install hmm --quiet
-          haxelib run hmm install
+          haxelib run hmm install --quiet
 
       - name: Configure Android
         run: |
@@ -278,7 +278,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Building
-        run: haxelib run lime build android -debug -alias -n
+        run: haxelib run lime build android -debug
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
