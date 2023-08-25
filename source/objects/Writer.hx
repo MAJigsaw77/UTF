@@ -42,11 +42,10 @@ typedef DialogueData =
 class Writer extends FlxTypeText
 {
 	public var skippable:Bool = true;
-	public var finished:Bool = false;
+	public var finished(default, null):Bool = false;
 
-	private var curDialogue(get, never):DialogueData;
-	private var dialogueList:Array<DialogueData> = [{text: 'Error!', speed: 4}];
-	private var currentPage:Int = 0;
+	private var dialogueList:Array<DialogueData> = [];
+	private var page:Int = 0;
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0, size:Int = 8):Void
 	{
@@ -60,65 +59,46 @@ class Writer extends FlxTypeText
 	 * Starts new dialogue with the specified list
 	 * also has error checing for null values
 	 * 
-	 * @param newList the list with dialogue data to use
+	 * @param list the list with dialogue data to use
 	**/
-	public function startDialogue(newList:Array<DialogueData>):Void
+	public function startDialogue(list:Array<DialogueData>):Void
 	{
 		finished = false;
-		dialogueList = newList == null ? [{text: 'Error!', speed: 4}] : newList;
-		currentPage = 0;
+		dialogueList = list == null ? [{text: 'Error!', speed: 4}] : list;
+		page = 0;
 
-		if (curDialogue != null)
-			resetDialogue(curDialogue);
+		if (dialogueList[page] != null)
+			changeDialogue(dialogueList[page]);
 		else
 			FlxG.log.notice('Hey, there\'s NOTHING in here to be said!');
 	}
 
+	/**
+	 * Changes the dialogue to a new specified one
+	 * also does error checking for mandatory fields
+	 * 
+	 * @param dialogue the data to use for this dialogue
+	**/
+	public function changeDialogue(dialogue:DialogueData):Void
+	{
+		if (dialogue == null)
+			dialogue = {text: 'Error!', speed: 4};
+
+		resetText(dialogue.text != null ? dialogue.text : 'Error!');
+		start(dialogue.speed != null ? dialogue.speed / 100 : 0.04, true);
+	}
+
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && skippable)
+		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && !finished && skippable)
 		{
-			currentPage++;
-			if (dialogueList[currentPage] != null) // check if the next page exists
-				resetDialogue(curDialogue);
-			else
-			{
-				var finalPage:Bool = currentPage > dialogueList.indexOf(dialogueList.last());
-				if (finalPage || curDialogue == null)
-				{
-					// trying to differentiate both FlxG.log.notices -Crow
-					FlxG.log.notice(finalPage ? 'Dialogue finished!' : 'Current dialogue page doesn\'t have any data.');
-					finished = true;
-				}
-			}
+			page++;
+			if (dialogueList[page] != null) // check if the next page exists
+				changeDialogue(dialogueList[page]);
+			else if (page > dialogueList.indexOf(dialogueList.last()) || dialogueList[page] == null)
+				finished = true;
 		}
 
 		super.update(elapsed);
-	}
-
-	/**
-	 * Resets the Current Dialogue to a new specified one
-	 * also does error checking for mandatory fields
-	 * 
-	 * @param newDialogue the data to use for this dialogue
-	**/
-	private function resetDialogue(newDialogue:DialogueData):Void
-	{
-		// default text if none
-		if (newDialogue.text == null || newDialogue.text.length <= 0)
-			newDialogue.text = '';
-
-		// default speed
-		if (newDialogue.speed == null || newDialogue.speed <= 0)
-			newDialogue.speed = 4.0;
-
-		resetText(newDialogue.text);
-		start(newDialogue.speed / 100, true);
-	}
-
-	@:noCompletion
-	private function get_curDialogue():DialogueData
-	{
-		return dialogueList[currentPage] != null ? dialogueList[currentPage] : null;
 	}
 }
