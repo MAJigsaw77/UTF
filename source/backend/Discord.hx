@@ -21,12 +21,16 @@ class Discord
 
 		FlxG.log.notice('(Discord) Client started');
 
-		Thread.runWithEventLoop(function()
+		// Daemon Thread
+		Thread.create(function()
 		{
-			#if DISCORD_DISABLE_IO_THREAD
-			RichPresence.UpdateConnection();
-			#end
-			RichPresence.RunCallbacks();
+			while (true)
+			{
+				#if DISCORD_DISABLE_IO_THREAD
+				RichPresence.UpdateConnection();
+				#end
+				RichPresence.RunCallbacks();
+			}
 		});
 
 		Lib.application.onExit.add((exitCode:Int) -> RichPresence.Shutdown());
