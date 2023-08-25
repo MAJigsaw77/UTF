@@ -22,7 +22,10 @@
 
 	<!--Defines-->
 
-	<define name="DISCORD" if="desktop cpp" />
+	<section if="cpp">
+		<define name="DISCORD" if="desktop" />
+	</section>
+
 	<define name="MODS" if="desktop || mobile" />
 
 	<!--Libraries-->
