@@ -116,7 +116,7 @@ class Main extends Sprite
 
 	private inline function onCriticalError(error:Dynamic):Void
 	{
-		final log:Array<String> = [Std.string(error)];
+		final log:Array<String> = [Std.isOfType(error, String) ? error : Std.string(error)];
 
 		for (item in CallStack.exceptionStack(true))
 		{
