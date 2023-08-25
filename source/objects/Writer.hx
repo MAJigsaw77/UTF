@@ -93,10 +93,15 @@ class Writer extends FlxTypeText
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && !finished && skippable)
 		{
 			page++;
-			if (dialogueList[page] != null) // check if the next page exists
-				changeDialogue(dialogueList[page]);
-			else if (page > dialogueList.indexOf(dialogueList.last()) || dialogueList[page] == null)
+
+			if (page > dialogueList.indexOf(dialogueList.last()))
+			{
+				page--;
 				finished = true;
+				return;
+			}
+
+			changeDialogue(dialogueList[page]);
 		}
 
 		super.update(elapsed);
