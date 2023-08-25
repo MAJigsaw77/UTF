@@ -9,13 +9,8 @@ import sys.thread.Thread;
 
 class Discord
 {
-	private static var initialized:Bool = false;
-
 	public static function start():Void
 	{
-		if (initialized)
-			return;
-
 		FlxG.log.notice('(Discord) Client starting...');
 
 		var handlers:DiscordEventHandlers = DiscordEventHandlers.create();
@@ -35,8 +30,6 @@ class Discord
 		});
 
 		Lib.application.onExit.add((exitCode:Int) -> RichPresence.Shutdown());
-
-		initialized = true;
 	}
 
 	public static function changePresence(details:String, ?state:String):Void
