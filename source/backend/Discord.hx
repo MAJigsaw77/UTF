@@ -30,6 +30,9 @@ class Discord
 				RichPresence.UpdateConnection();
 				#end
 				RichPresence.RunCallbacks();
+
+				// Wait 2 seconds until the next loop...
+				Sys.sleep(2);
 			}
 		});
 
