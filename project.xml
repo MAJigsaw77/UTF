@@ -59,7 +59,6 @@
 	<haxeflag name="-dce" value="no" />
 
 	<!--Undefinitions-->
-
 	<undefine name="openfl-disable-handle-error" if="debug" />
 
 </project>
