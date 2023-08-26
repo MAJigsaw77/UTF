@@ -41,8 +41,6 @@
 
 	<!--Libraries Settings-->
 
-	<define name="openfl-enable-handle-error" if="debug" />
-
 	<haxedef name="hscriptPos" />
 
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
@@ -59,5 +57,9 @@
 	<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon.png" />
 
 	<haxeflag name="-dce" value="no" />
+
+	<!--Undefinitions-->
+
+	<undefine name="openfl-disable-handle-error" if="debug" />
 
 </project>
