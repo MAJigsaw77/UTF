@@ -53,6 +53,8 @@
 	<haxedef name="HXCPP_STACK_LINE" if="cpp" />
 	<haxedef name="HXCPP_STACK_TRACE" if="cpp" />
 
+	<haxedef name="openfl-enable-handle-error" if="debug" />
+
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="meta.json" />
 	<haxedef name="POLYMOD_MOD_PACK_FILE" value="pack.txt" />
 	<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon.png" />
