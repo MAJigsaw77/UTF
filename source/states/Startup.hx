@@ -21,14 +21,14 @@ class Startup extends FlxState
 	{
 		Data.load();
 
-		#if MODS
-		Mods.load();
+		#if DISCORD
+		Discord.load();
 		#end
 
 		Global.load();
 
-		#if DISCORD
-		Discord.load();
+		#if MODS
+		Mods.load();
 		#end
 
 		if (FlxG.save.data.volume != null)
