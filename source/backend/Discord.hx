@@ -9,7 +9,7 @@ import sys.thread.Thread;
 
 class Discord
 {
-	public static function start():Void
+	public static function load():Void
 	{
 		var handlers:DiscordEventHandlers = DiscordEventHandlers.create();
 		handlers.ready = cpp.Function.fromStaticFunction(onReady);
