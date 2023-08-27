@@ -116,11 +116,11 @@ class Settings extends FlxTransitionableState
 
 		changeOption();
 
+		super.create();
+
 		FlxG.sound.play(AssetPaths.music('harpnoise'));
 
 		new FlxTimer().start(2, (tmr:FlxTimer) -> FlxG.sound.playMusic(weatherMusic, 0.8));
-
-		super.create();
 	}
 
 	var siner:Int = 0;
