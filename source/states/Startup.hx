@@ -20,14 +20,15 @@ class Startup extends FlxState
 	override function create():Void
 	{
 		Data.load();
-		Global.load();
 
 		#if MODS
 		Mods.load();
 		#end
 
+		Global.load();
+
 		#if DISCORD
-		Discord.start();
+		Discord.load();
 		#end
 
 		if (FlxG.save.data.volume != null)
