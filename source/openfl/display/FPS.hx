@@ -53,16 +53,14 @@ class FPS extends TextField
 		currentTime += deltaTime;
 
 		times.push(currentTime);
-		while (times[0] < currentTime - 1000)
+		while (times[0] < (currentTime - 1000))
 			times.shift();
 
-		currentFPS = (times.length > Std.int(FlxG.stage.frameRate)) ? Std.int(FlxG.stage.frameRate) : times.length;
+		currentFPS = times.length;
 
 		if (!showMemoryUsage)
 			text = currentFPS + 'FPS\n';
 		else
-		{
 			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(System.totalMemory) + '\n';
-		}
 	}
 }
