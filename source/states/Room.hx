@@ -52,6 +52,8 @@ class Room extends FlxTransitionableState
 		chara.updateHitbox();
 		add(chara);
 
+		FlxG.camera.follow(chara);
+
 		solids = new FlxTypedGroup<FlxSprite>();
 
 		for (solid in fast.nodes.solid)
@@ -94,9 +96,6 @@ class Room extends FlxTransitionableState
 		add(doors);
 
 		FlxG.worldBounds.set(0, 0, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')));
-
-		if (fast.node.chara.att.follow == 'true')
-			FlxG.camera.follow(chara);
 
 		super.create();
 	}
