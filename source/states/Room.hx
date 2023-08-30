@@ -2,8 +2,6 @@ package states;
 
 import backend.AssetPaths;
 import backend.Global;
-import objects.Chara;
-import objects.Writer;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
@@ -11,6 +9,8 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import haxe.io.Path;
 import haxe.xml.Access;
+import objects.Chara;
+import objects.Writer;
 import openfl.utils.Assets;
 
 using StringTools;
@@ -37,41 +37,33 @@ class Room extends FlxTransitionableState
 		Global.room = Std.parseInt(data.get('id'));
 	}
 
-	var solid:FlxTypedGroup<FlxSprite>;
+	var solids:FlxTypedGroup<FlxSprite>;
+
 	var chara:Chara;
 
 	override function create():Void
 	{
-		solid = new FlxTypedGroup<FlxSprite>();
-		add(solid);
+		solids = new FlxTypedGroup<FlxSprite>();
 
 		final fast:Access = new Access(data);
 
-		for (obj in fast.nodes.obj)
+		for (sol in fast.nodes.solid)
 		{
-			switch (obj.att.name)
-			{
-				case 'chara':
-					chara = new Chara(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), data.get('facing'));
-					chara.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
-					chara.updateHitbox();
-					add(chara);
-				default:
-					var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
-					object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
-					object.updateHitbox();
-
-					if (obj.att.name.startsWith('solid'))
-					{
-						object.alpha = 0.5;
-						object.immovable = true;
-						object.solid = true;
-						solid.add(object);
-					}
-					else
-						add(object);
-			}
+			var solid:FlxSprite = new FlxSprite(Std.parseFloat(sol.att.x), Std.parseFloat(sol.att.y), AssetPaths.sprite(sol.att.name));
+			solid.scale.set(sol.has.scaleX ? Std.parseFloat(sol.att.scaleX) : 1.0, sol.has.scaleY ? Std.parseFloat(sol.att.scaleY) : 1.0);
+			solid.updateHitbox();
+			solid.alpha = #if debug 0.5 #else 0 #end;
+			solid.immovable = true;
+			solid.solid = true;
+			solids.add(solid);
 		}
+
+		add(solids);
+
+		chara = new Chara(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), data.get('facing'));
+		chara.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
+		chara.updateHitbox();
+		add(chara);
 
 		if (data.get('cameraFollow') == 'true')
 			FlxG.camera.follow(chara);
@@ -81,7 +73,7 @@ class Room extends FlxTransitionableState
 
 	override function update(elapsed:Float):Void
 	{
-		FlxG.collide(chara, solid);
+		FlxG.collide(solids, chara);
 
 		super.update(elapsed);
 	}
