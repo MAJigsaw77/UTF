@@ -79,36 +79,9 @@ class Room extends FlxTransitionableState
 		super.create();
 	}
 
-	var writer:Writer;
-
 	override function update(elapsed:Float):Void
 	{
 		FlxG.collide(chara, solid);
-
-		#if debug // Just a Writer test...
-		if (FlxG.keys.justPressed.CONTROL)
-		{
-			writer = new Writer(5, 5, 0, 32);
-			writer.startDialogue([
-				{text: '* hmmm...', speed: 4},
-				{text: '* guess we didn\'t need\n  your help to have a\n  good time after all.', speed: 4},
-				{text: '* ...', speed: 4},
-				{text: '* say, i\'ve been\n  thinking.', speed: 4},
-				{text: '* seems like you\'re\n  gonna fight my brother\n  pretty soon.', speed: 4},
-				{text: '* here\'s some friendly\n  advice.', speed: 4},
-				{text: '* if you keep going the\n  way you are now...', speed: 4},
-				{text: '* ...', speed: 4},
-				{text: '* you\'re gonna have a\n  bad time.', speed: 4}
-			]);
-			add(writer);
-		}
-
-		if (writer != null && writer.finished)
-		{
-			writer.destroy();
-			remove(writer);
-		}
-		#end
 
 		super.update(elapsed);
 	}
