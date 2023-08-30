@@ -18,6 +18,10 @@ using StringTools;
 class Room extends FlxTransitionableState
 {
 	var data:Xml;
+	var solids:FlxTypedGroup<FlxSprite>;
+	var markers:FlxTypedGroup<FlxSprite>;
+	var doors:FlxTypedGroup<FlxSprite>;
+	var chara:Chara;
 
 	public function new(room:Int):Void
 	{
@@ -37,11 +41,6 @@ class Room extends FlxTransitionableState
 		Global.room = Std.parseInt(data.get('id'));
 	}
 
-	var solids:FlxTypedGroup<FlxSprite>;
-	var markers:FlxTypedGroup<FlxSprite>;
-
-	var chara:Chara;
-
 	override function create():Void
 	{
 		final fast:Access = new Access(data);
@@ -50,36 +49,49 @@ class Room extends FlxTransitionableState
 
 		for (sol in fast.nodes.solid)
 		{
-			var solid:FlxSprite = new FlxSprite(Std.parseFloat(sol.att.x), Std.parseFloat(sol.att.y), AssetPaths.sprite(sol.att.name));
-			solid.scale.set(sol.has.scaleX ? Std.parseFloat(sol.att.scaleX) : 1.0, sol.has.scaleY ? Std.parseFloat(sol.att.scaleY) : 1.0);
-			solid.updateHitbox();
-			solid.alpha = #if debug 0.5 #else 0 #end;
-			solid.immovable = true;
-			solid.solid = true;
-			solids.add(solid);
+			var object:FlxSprite = new FlxSprite(Std.parseFloat(sol.att.x), Std.parseFloat(sol.att.y), AssetPaths.sprite('solid${sol.att.type}'));
+			object.scale.set(sol.has.scaleX ? Std.parseFloat(sol.att.scaleX) : 1.0, sol.has.scaleY ? Std.parseFloat(sol.att.scaleY) : 1.0);
+			object.updateHitbox();
+			object.alpha = #if debug 0.5 #else 0 #end;
+			object.immovable = true;
+			object.solid = true;
+			solids.add(object);
 		}
 
 		add(solids);
 
 		markers = new FlxTypedGroup<FlxSprite>();
 
-		for (mark in fast.nodes.marker)
+		for (marker in fast.nodes.marker)
 		{
-			var marker:FlxSprite = new FlxSprite(Std.parseFloat(mark.att.x), Std.parseFloat(mark.att.y), AssetPaths.sprite(mark.att.name));
-			marker.scale.set(mark.has.scaleX ? Std.parseFloat(mark.att.scaleX) : 1.0, mark.has.scaleY ? Std.parseFloat(mark.att.scaleY) : 1.0);
-			marker.updateHitbox();
-			marker.immovable = true;
-			markers.add(marker);
+			var object:FlxSprite = new FlxSprite(Std.parseFloat(marker.att.x), Std.parseFloat(marker.att.y), AssetPaths.sprite('marker${marker.att.name}'));
+			object.scale.set(marker.has.scaleX ? Std.parseFloat(marker.att.scaleX) : 1.0, marker.has.scaleY ? Std.parseFloat(marker.att.scaleY) : 1.0);
+			object.updateHitbox();
+			object.immovable = true;
+			markers.add(object);
 		}
 
 		add(markers);
 
-		/*chara = new Chara(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), data.get('facing'));
-		chara.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
-		chara.updateHitbox();
-		add(chara);*/
+		doors = new FlxTypedGroup<FlxSprite>();
 
-		if (data.get('cameraFollow') == 'true')
+		for (door in fast.nodes.door)
+		{
+			var object:FlxSprite = new FlxSprite(Std.parseFloat(door.att.x), Std.parseFloat(door.att.y), AssetPaths.sprite(door.att.name));
+			object.scale.set(door.has.scaleX ? Std.parseFloat(door.att.scaleX) : 1.0, door.has.scaleY ? Std.parseFloat(door.att.scaleY) : 1.0);
+			object.updateHitbox();
+			object.immovable = true;
+			doors.add(object);
+		}
+
+		add(doors);
+
+		chara = new Chara(Std.parseFloat(fast.node.chara.att.x), Std.parseFloat(fast.node.chara.att.y), fast.node.chara.att.facing == 'true');
+		chara.scale.set(2, 2);
+		chara.updateHitbox();
+		add(chara);
+
+		if (fast.node.chara.att.follow == 'true')
 			FlxG.camera.follow(chara);
 
 		super.create();
