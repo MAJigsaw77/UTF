@@ -47,10 +47,10 @@ class Room extends FlxTransitionableState
 
 		solids = new FlxTypedGroup<FlxSprite>();
 
-		for (sol in fast.nodes.solid)
+		for (solid in fast.nodes.solid)
 		{
-			var object:FlxSprite = new FlxSprite(Std.parseFloat(sol.att.x), Std.parseFloat(sol.att.y), AssetPaths.sprite('solid${sol.att.type}'));
-			object.scale.set(sol.has.scaleX ? Std.parseFloat(sol.att.scaleX) : 1.0, sol.has.scaleY ? Std.parseFloat(sol.att.scaleY) : 1.0);
+			var object:FlxSprite = new FlxSprite(Std.parseFloat(solid.att.x), Std.parseFloat(solid.att.y), AssetPaths.sprite('solid${solid.att.type}'));
+			object.scale.set(solid.has.scaleX ? Std.parseFloat(solid.att.scaleX) : 1.0, solid.has.scaleY ? Std.parseFloat(solid.att.scaleY) : 1.0);
 			object.updateHitbox();
 			object.alpha = #if debug 0.5 #else 0 #end;
 			object.immovable = true;
@@ -77,7 +77,7 @@ class Room extends FlxTransitionableState
 
 		for (door in fast.nodes.door)
 		{
-			var object:FlxSprite = new FlxSprite(Std.parseFloat(door.att.x), Std.parseFloat(door.att.y), AssetPaths.sprite(door.att.name));
+			var object:FlxSprite = new FlxSprite(Std.parseFloat(door.att.x), Std.parseFloat(door.att.y), AssetPaths.sprite('door${door.att.name}'));
 			object.scale.set(door.has.scaleX ? Std.parseFloat(door.att.scaleX) : 1.0, door.has.scaleY ? Std.parseFloat(door.att.scaleY) : 1.0);
 			object.updateHitbox();
 			object.immovable = true;
@@ -86,7 +86,7 @@ class Room extends FlxTransitionableState
 
 		add(doors);
 
-		chara = new Chara(Std.parseFloat(fast.node.chara.att.x), Std.parseFloat(fast.node.chara.att.y), fast.node.chara.att.facing == 'true');
+		chara = new Chara(Std.parseFloat(fast.node.chara.att.x), Std.parseFloat(fast.node.chara.att.y), fast.node.chara.att.facing);
 		chara.scale.set(2, 2);
 		chara.updateHitbox();
 		add(chara);
