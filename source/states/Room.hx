@@ -106,4 +106,11 @@ class Room extends FlxTransitionableState
 
 		super.update(elapsed);
 	}
+
+	override function destroy():Void
+	{
+		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
+
+		super.destroy();
+	}
 }
