@@ -18,9 +18,11 @@ using StringTools;
 class Room extends FlxTransitionableState
 {
 	var data:Xml;
+
 	var solids:FlxTypedGroup<FlxSprite>;
 	var markers:FlxTypedGroup<FlxSprite>;
 	var doors:FlxTypedGroup<FlxSprite>;
+
 	var chara:Chara;
 
 	public function new(room:Int):Void
@@ -44,6 +46,11 @@ class Room extends FlxTransitionableState
 	override function create():Void
 	{
 		final fast:Access = new Access(data);
+
+		chara = new Chara(Std.parseFloat(fast.node.chara.att.x), Std.parseFloat(fast.node.chara.att.y), fast.node.chara.att.facing);
+		chara.scale.set(2, 2);
+		chara.updateHitbox();
+		add(chara);
 
 		solids = new FlxTypedGroup<FlxSprite>();
 
@@ -86,20 +93,15 @@ class Room extends FlxTransitionableState
 
 		add(doors);
 
-		chara = new Chara(Std.parseFloat(fast.node.chara.att.x), Std.parseFloat(fast.node.chara.att.y), fast.node.chara.att.facing);
-		chara.scale.set(2, 2);
-		chara.updateHitbox();
-		add(chara);
+		super.create();
 
 		if (fast.node.chara.att.follow == 'true')
 			FlxG.camera.follow(chara);
-
-		super.create();
 	}
 
 	override function update(elapsed:Float):Void
 	{
-		FlxG.collide(solids, chara);
+		FlxG.collide(chara, solids);
 
 		super.update(elapsed);
 	}
