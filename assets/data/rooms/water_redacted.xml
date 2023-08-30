@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<room id="272">
+<room id="272" width="640" height="480">
 	<chara x="140" y="100" facing="up" follow="false" />
 
 	<solid type="small" x="200" y="440" scaleX="2" scaleY="2" />
