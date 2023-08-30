@@ -93,10 +93,12 @@ class Room extends FlxTransitionableState
 
 		add(doors);
 
-		super.create();
+		FlxG.worldBounds.set(0, 0, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')));
 
 		if (fast.node.chara.att.follow == 'true')
 			FlxG.camera.follow(chara);
+
+		super.create();
 	}
 
 	override function update(elapsed:Float):Void
