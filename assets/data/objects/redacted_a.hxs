@@ -3,7 +3,7 @@ var dist:Int = 0;
 // preUpdate has accuracy...
 function preUpdate(elapsed:Float)
 {
-	dist = FlxMath.distanceBetween(player, this);
+	dist = FlxMath.distanceBetween(chara, this);
 
 	if (dist <= 20)
 	{
@@ -12,6 +12,6 @@ function preUpdate(elapsed:Float)
 		if (disto >= 1)
 			disto = 1;
 
-		alpha = disto;
+		this.alpha = disto;
 	}
 }
