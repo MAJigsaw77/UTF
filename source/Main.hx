@@ -184,12 +184,12 @@ class Main extends Sprite
 	private inline function onPreStateCreate(state:FlxState):Void
 	{
 		// Clear the loaded graphics if they are no longer in flixel cache...
-		for (key in Assets.cache.bitmapData.keys())
+		for (key in Assets.cache.getBitmapKeys())
 			if (!FlxG.bitmap.checkCache(key))
 				Assets.cache.removeBitmapData(key);
 
 		// Clear all the loaded sounds from the cache...
-		for (key in Assets.cache.sound.keys())
+		for (key in Assets.cache.getSoundKeys())
 			Assets.cache.removeSound(key);
 
 		#if MODS
