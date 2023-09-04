@@ -46,7 +46,7 @@ Install [`Haxe`](https://haxe.org/download).
 
 #### MacOS
 
-1. Install `XCode` to allow C++ app building.
+1. Install [`Xcode`](https://developer.apple.com/documentation/xcode) to allow C++ app building.
 2. Download and install [`git-scm`](https://git-scm.com/download/mac).
 3. Open up a `Terminal` window in `UTF` folder and type `haxelib install hmm` after it finishes, simply type `haxelib run hmm install` in order to install all the needed libraries.
 4. Run `haxelib run lime test mac` to compile and launch the game.
