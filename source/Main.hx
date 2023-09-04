@@ -192,6 +192,10 @@ class Main extends Sprite
 		for (key in Assets.cache.getSoundKeys())
 			Assets.cache.removeSound(key);
 
+		// Clear all the loaded fonts from the cache...
+		for (key in Assets.cache.getFontKeys())
+			Assets.cache.removeFont(key);
+
 		#if MODS
 		// Clear the loaded assets from polymod...
 		Polymod.clearCache();
