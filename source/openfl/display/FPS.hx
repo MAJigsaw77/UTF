@@ -10,6 +10,10 @@ import openfl.text.TextFormat;
 import openfl.utils.Assets;
 import openfl.Lib;
 
+#if windows
+@:headerInclude('windows.h')
+@:headerInclude('psapi.h')
+#end
 class FPS extends TextField
 {
 	/**
@@ -58,9 +62,28 @@ class FPS extends TextField
 
 		currentFPS = times.length;
 
-		if (!showMemoryUsage)
-			text = currentFPS + 'FPS\n';
-		else
+		if (showMemoryUsage)
+		{
+			#if windows
+			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(getProcessMemoryInfo()) + '\n';
+			#else
 			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(System.totalMemory) + '\n';
+			#end
+		}
+		else
+			text = currentFPS + 'FPS\n';
 	}
+
+	#if windows
+	@:functionCode('
+		PROCESS_MEMORY_COUNTERS info;
+		GetProcessMemoryInfo(GetCurrentProcess(), &info, sizeof(info));
+		return static_cast<int>(info.WorkingSetSize);
+	')
+	@:noCompletion
+	private function getProcessMemoryInfo():Int
+	{
+		return 0;
+	}
+	#end
 }
