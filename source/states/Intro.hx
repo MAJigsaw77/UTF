@@ -21,7 +21,7 @@ import states.Settings;
 class Intro extends FlxState
 {
 	var selected:Int = 0;
-	var choices:Array<String> = ['Continue', 'Reset', 'Settings'];
+	var choices:Array<String> = [];
 	var items:FlxTypedGroup<FlxText>;
 
 	override function create():Void
@@ -64,12 +64,13 @@ class Intro extends FlxState
 			roomname.font = AssetPaths.font('DTM-Sans');
 			roomname.scrollFactor.set();
 			add(roomname);
+
+			choices = ['Continue', 'Reset', 'Settings'];
 		}
 		else
 		{
 			var instructions:FlxText = new FlxText(170, 40, 0, ' --- Instruction --- ', 32);
 
-			// The instructions.
 			instructions.text += '\n\n';
 			instructions.text += '[${Data.binds['confirm']}] - Confirm\n';
 			instructions.text += '[${Data.binds['cancel']}] - Cancel\n';
@@ -92,7 +93,7 @@ class Intro extends FlxState
 		{
 			var bt:FlxText = new FlxText(0, 0, 0, choices[i], 32);
 
-			if (!choices.contains('Begin Game'))
+			if (Global.hasName)
 			{
 				switch (choices[i])
 				{
