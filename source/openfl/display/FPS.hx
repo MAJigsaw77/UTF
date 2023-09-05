@@ -46,7 +46,7 @@ class FPS extends TextField
 		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans'), false).fontName,
 			Std.int(16 * Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height)), color);
 		#else
-		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans')).fontName, 16, color);
+		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans'), false).fontName, 16, color);
 		#end
 	}
 
@@ -65,7 +65,7 @@ class FPS extends TextField
 		if (showMemoryUsage)
 		{
 			#if windows
-			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(getProcessMemoryInfo()) + '\n';
+			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(getProcessMemory()) + '\n';
 			#else
 			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(System.totalMemory) + '\n';
 			#end
@@ -84,7 +84,7 @@ class FPS extends TextField
 		return 0;
 	')
 	@:noCompletion
-	private function getProcessMemoryInfo():Int
+	private function getProcessMemory():Int
 	{
 		return 0;
 	}
