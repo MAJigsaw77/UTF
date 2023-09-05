@@ -10,9 +10,9 @@ class Memory
 	@:functionCode('
 		PROCESS_MEMORY_COUNTERS pmc;
 		if (GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc)))
-			return static_cast<int>(pmc.WorkingSetSize);
+			return pmc.WorkingSetSize;
 	')
-	public static function getProcessMemory():Int
+	public static function getProcessMemory():cpp.SizeT
 	{
 		return 0;
 	}
