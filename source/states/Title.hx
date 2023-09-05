@@ -40,6 +40,14 @@ class Title extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
+		#if (mobile && debug)
+		for (touch in FlxG.touches.list)
+		{
+			if (touch.justPressed && titleText.alpha == 1)
+				FlxG.switchState(new Intro());
+		}
+		#end
+		
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && titleText.alpha == 1)
 			FlxG.switchState(new Intro());
 		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE && titleText.alpha == 1)
