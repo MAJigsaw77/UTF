@@ -79,12 +79,12 @@ class FPS extends TextField
 		PROCESS_MEMORY_COUNTERS info;
 
 		if (GetProcessMemoryInfo(GetCurrentProcess(), &info, sizeof(info)))
-			return (unsigned) info.WorkingSetSize;
+			return info.WorkingSetSize;
 
 		return 0;
 	')
 	@:noCompletion
-	private function getProcessMemory():Int
+	private function getProcessMemory():cpp.SizeT
 	{
 		return 0;
 	}
