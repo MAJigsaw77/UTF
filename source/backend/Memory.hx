@@ -16,8 +16,7 @@ class Memory
 
 		return 0;
 	')
-	@:noCompletion
-	private function getPhysicalInstalledMemory():cpp.SizeT
+	public static function getPhysicalInstalledMemory():cpp.SizeT
 	{
 		return 0;
 	}
@@ -32,8 +31,7 @@ class Memory
 
 		return 0;
 	')
-	@:noCompletion
-	private function getProcessMemory():cpp.SizeT
+	public static function function getProcessMemory():cpp.SizeT
 	{
 		return 0;
 	}
