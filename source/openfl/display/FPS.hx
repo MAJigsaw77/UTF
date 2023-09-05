@@ -77,8 +77,11 @@ class FPS extends TextField
 	#if windows
 	@:functionCode('
 		PROCESS_MEMORY_COUNTERS info;
-		GetProcessMemoryInfo(GetCurrentProcess(), &info, sizeof(info));
-		return static_cast<int>(info.WorkingSetSize);
+
+		if (GetProcessMemoryInfo(GetCurrentProcess(), &info, sizeof(info)))
+			return (unsigned) info.WorkingSetSize;
+
+		return 0;
 	')
 	@:noCompletion
 	private function getProcessMemoryInfo():Int
