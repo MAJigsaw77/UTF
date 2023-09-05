@@ -104,7 +104,7 @@ class Room extends FlxTransitionableState
 	{
 		FlxG.collide(chara, solids);
 
-		if (FlxG.overlap(chara, doors, playerOverlapDoor))
+		if (FlxG.overlap(chara, doors, playerOverlapDoors))
 		{
 			#if debug
 			trace("the player is overlapping the door");
