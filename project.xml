@@ -3,7 +3,8 @@
 
 	<!--Application Settings -->
 
-	<app title="UTF" packageName="com.majigsaw77.utf" package="com.majigsaw77.utf" version="1.0.0" company="MAJigsaw77" />
+	<meta title="UTF" packageName="com.majigsaw77.utf" package="com.majigsaw77.utf" version="1.0.0" company="MAJigsaw77" />
+
 	<app file="UTF" main="Main" path="export" preloader="flixel.system.FlxPreloader" />
 
 	<!--Icon Settings -->
@@ -13,11 +14,13 @@
 	<!--Window Settings -->
 
 	<window width="640" height="480" fps="30" orientation="landscape" background="#000000" hardware="true" vsync="false" resizable="false" />
+
 	<window fullscreen="true" if="mobile || switch" />
 
 	<!--Path Settings-->
 
 	<assets path="assets" />
+
 	<source name="source" />
 
 	<!--Defines-->
@@ -52,9 +55,9 @@
 	<haxedef name="HXCPP_STACK_LINE" if="cpp" />
 	<haxedef name="HXCPP_STACK_TRACE" if="cpp" />
 
-	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="meta.json" />
-	<haxedef name="POLYMOD_MOD_PACK_FILE" value="pack.txt" />
-	<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon.png" />
+	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="meta.json" if="MODS" />
+	<haxedef name="POLYMOD_MOD_PACK_FILE" value="pack.txt" if="MODS" />
+	<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon.png" if="MODS" />
 
 	<haxeflag name="-dce" value="no" />
 
