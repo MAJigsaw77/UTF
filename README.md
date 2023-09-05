@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/MAJigsaw77/UTF/main/logos/logo.png)
+![](https://raw.githubusercontent.com/MAJigsaw77/UTF/main/icon.png)
 
 ## UTF
 
