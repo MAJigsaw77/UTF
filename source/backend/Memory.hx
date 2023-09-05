@@ -3,35 +3,16 @@ package backend;
 #if windows
 @:headerInclude('windows.h')
 @:headerInclude('psapi.h')
-@:headerInclude('sysinfoapi.h')
 #end
 class Memory
 {
 	#if windows
 	@:functionCode('
-		size_t info = 0;
-
-		if (GetPhysicallyInstalledSystemMemory(&info))
-			return (info / 1024);
-
-		return 0;
+		PROCESS_MEMORY_COUNTERS pmc;
+		if (GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc)))
+			return static_cast<int>(pmc.WorkingSetSize);
 	')
-	public static function getPhysicalInstalledMemory():cpp.SizeT
-	{
-		return 0;
-	}
-	#end
-
-	#if windows
-	@:functionCode('
-		PROCESS_MEMORY_COUNTERS info;
-
-		if (GetProcessMemoryInfo(GetCurrentProcess(), &info, sizeof(info)))
-			return info.WorkingSetSize;
-
-		return 0;
-	')
-	public static function getProcessMemory():cpp.SizeT
+	public static function getProcessMemory():Int
 	{
 		return 0;
 	}
