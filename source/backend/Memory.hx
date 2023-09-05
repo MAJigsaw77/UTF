@@ -9,15 +9,15 @@ class Memory
 {
 	#if windows
 	@:functionCode('
-		unsigned long long info = 0;
+		size_t info = 0;
 
 		if (GetPhysicallyInstalledSystemMemory(&info))
-			return (info / 1024);
+			info /= 1024;
 
-		return 0;
+		return info;
 	')
 	@:noCompletion
-	private function getPhysicalInstalledMemory():Int
+	private function getPhysicalInstalledMemory():cpp.SizeT
 	{
 		return 0;
 	}
