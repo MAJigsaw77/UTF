@@ -48,14 +48,16 @@ class Main extends Sprite
 
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
 
-		#if cpp
-		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
-		#elseif hl
+		#if hl
 		Api.setErrorHandler(onCriticalError);
+		#elseif cpp
+		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
 		#end
 
 		FlxG.signals.gameResized.add(onResizeGame);
 		FlxG.signals.preStateCreate.add(onPreStateCreate);
+
+		// Run the garbage colector on after the state switched...
 		FlxG.signals.postStateSwitch.add(System.gc);
 
 		addChild(new FlxGame(640, 480, Startup, 30, 30));
@@ -200,8 +202,5 @@ class Main extends Sprite
 		// Clear the loaded assets from polymod...
 		Polymod.clearCache();
 		#end
-
-		// Run the garbage colector...
-		System.gc();
 	}
 }
