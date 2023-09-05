@@ -10,8 +10,11 @@ class Memory
 	#if windows
 	@:functionCode('
 		unsigned long long info = 0;
-		GetPhysicallyInstalledSystemMemory(&info);
-		return (info / 1024);
+
+		if (GetPhysicallyInstalledSystemMemory(&info))
+			return (info / 1024);
+
+		return 0;
 	')
 	@:noCompletion
 	private function getPhysicalInstalledMemory():Int
