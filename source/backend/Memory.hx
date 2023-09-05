@@ -12,9 +12,9 @@ class Memory
 		size_t info = 0;
 
 		if (GetPhysicallyInstalledSystemMemory(&info))
-			info /= 1024;
+			return (info / 1024);
 
-		return info;
+		return 0;
 	')
 	@:noCompletion
 	private function getPhysicalInstalledMemory():cpp.SizeT
