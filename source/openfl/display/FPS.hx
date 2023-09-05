@@ -1,6 +1,9 @@
 package openfl.display;
 
 import backend.AssetPaths;
+#if windows
+import backend.Memory;
+#end
 import flixel.util.FlxStringUtil;
 import flixel.FlxG;
 import openfl.events.Event;
@@ -10,10 +13,6 @@ import openfl.text.TextFormat;
 import openfl.utils.Assets;
 import openfl.Lib;
 
-#if windows
-@:headerInclude('windows.h')
-@:headerInclude('psapi.h')
-#end
 class FPS extends TextField
 {
 	/**
@@ -65,7 +64,7 @@ class FPS extends TextField
 		if (showMemoryUsage)
 		{
 			#if windows
-			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(getProcessMemory()) + '\n';
+			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(Memory.getProcessMemory()) + '\n';
 			#else
 			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(System.totalMemory) + '\n';
 			#end
@@ -73,20 +72,4 @@ class FPS extends TextField
 		else
 			text = currentFPS + 'FPS\n';
 	}
-
-	#if windows
-	@:functionCode('
-		PROCESS_MEMORY_COUNTERS info;
-
-		if (GetProcessMemoryInfo(GetCurrentProcess(), &info, sizeof(info)))
-			return info.WorkingSetSize;
-
-		return 0;
-	')
-	@:noCompletion
-	private function getProcessMemory():cpp.SizeT
-	{
-		return 0;
-	}
-	#end
 }
