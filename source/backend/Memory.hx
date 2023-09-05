@@ -31,7 +31,7 @@ class Memory
 
 		return 0;
 	')
-	public static function function getProcessMemory():cpp.SizeT
+	public static function getProcessMemory():cpp.SizeT
 	{
 		return 0;
 	}
