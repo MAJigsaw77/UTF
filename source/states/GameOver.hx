@@ -9,6 +9,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import objects.Writer;
+import states.Room;
 
 class GameOver extends FlxState
 {
@@ -74,7 +75,7 @@ class GameOver extends FlxState
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && writer == null && bg.alpha == 1)
 		{
 			FlxTween.tween(bg, {alpha: 0}, 1.5, {
-				onComplete: (twn:FlxTween) -> FlxG.switchState(new Room(Global.room));
+				onComplete: (twn:FlxTween) -> FlxG.switchState(new Room(Global.room))
 			});
 			FlxG.sound.music.fadeOut(1.5);
 		}
