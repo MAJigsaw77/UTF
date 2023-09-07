@@ -9,31 +9,17 @@ using flixel.util.FlxArrayUtil;
 
 typedef DialogueData =
 {
-	/**
-	 * Defines the current font, uses the previous one if undefined
-	 * if defined as 'null' or nothing, it uses nothing
-	**/
-	?char:String,
-
-	/**
-	 * Defines the expression of the current character
-	**/
 	?face:String,
-
-	/**
-	 * Defines the current font, uses DTM-Mono by default
-	**/
 	?font:String,
-
-	/**
-	 * Defines the current text, if unspecified, the text gets set to nothing
-	**/
+	?sound:DialogueSound,
 	text:String,
-
-	/**
-	 * Defines the speed of the text, if unspecified, the speed gets set to 1 (default)
-	**/
 	?speed:Null<Float>
+}
+
+typedef DialogueSound =
+{
+	path:String,
+	volume:Float
 }
 
 /**
@@ -44,23 +30,19 @@ class Writer extends FlxTypeText
 	public var skippable:Bool = true;
 	public var finished(default, null):Bool = false;
 
+	@:noCompletion
 	private var dialogueList:Array<DialogueData> = [];
+
+	@:noCompletion
 	private var page:Int = 0;
 
 	public function new(x:Float = 0, y:Float = 0, width:Int = 0, size:Int = 8):Void
 	{
 		super(x, y, width, '', size, true);
 
-		font = AssetPaths.font('DTM-Mono');
 		sounds = [FlxG.sound.load(AssetPaths.sound('txt2'), 0.76)];
 	}
 
-	/**
-	 * Starts new dialogue with the specified list
-	 * also has error checing for null values
-	 * 
-	 * @param list the list with dialogue data to use
-	**/
 	public function startDialogue(list:Array<DialogueData>):Void
 	{
 		finished = false;
@@ -73,16 +55,12 @@ class Writer extends FlxTypeText
 			FlxG.log.notice('Hey, there\'s NOTHING in here to be said!');
 	}
 
-	/**
-	 * Changes the dialogue to a new specified one
-	 * also does error checking for mandatory fields
-	 * 
-	 * @param dialogue the data to use for this dialogue
-	**/
 	public function changeDialogue(dialogue:DialogueData):Void
 	{
 		if (dialogue == null)
 			dialogue = {text: 'Error!', speed: 4};
+
+		font = AssetPaths.font(dialogue.font != null ? dialogue.font : 'DTM-Mono');
 
 		resetText(dialogue.text != null ? dialogue.text : 'Error!');
 		start(dialogue.speed != null ? dialogue.speed / 100 : 0.04, true);
