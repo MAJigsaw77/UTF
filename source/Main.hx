@@ -17,6 +17,8 @@ import hl.Api;
 import lime.system.System;
 import openfl.display.FPS;
 import openfl.display.Sprite;
+import openfl.errors.Error;
+import openfl.events.ErrorEvent;
 import openfl.events.UncaughtErrorEvent;
 import openfl.system.System;
 import openfl.utils.Assets;
@@ -76,7 +78,14 @@ class Main extends Sprite
 		event.preventDefault();
 		event.stopImmediatePropagation();
 
-		final log:Array<String> = [Std.string(event.error)];
+		final log:Array<String> = [];
+
+		if (Std.isOfType(event.error, Error))
+			log.push(cast(event.error, Error).message);
+		else if (Std.isOfType(event.error, ErrorEvent))
+			log.push(cast(event.error, ErrorEvent).text);
+		else
+			log.push(Std.string(event.error));
 
 		for (item in CallStack.exceptionStack(true))
 		{
