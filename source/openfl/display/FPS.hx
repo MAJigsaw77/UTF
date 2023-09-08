@@ -6,7 +6,6 @@ import backend.Memory;
 #end
 import flixel.util.FlxStringUtil;
 import flixel.FlxG;
-import openfl.events.Event;
 import openfl.system.System;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
