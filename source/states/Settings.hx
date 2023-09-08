@@ -19,7 +19,7 @@ import states.Intro;
 class Settings extends FlxTransitionableState
 {
 	var selected:Int = 0;
-	final options:Array<String> = ['Exit', 'FPS Overlay', 'Button Config', 'Reset to Default'];
+	final options:Array<String> = ['Exit', 'FPS Overlay', 'Button Config'];
 	var items:FlxTypedGroup<FlxText>;
 
 	var particles:FlxEmitter;
@@ -42,12 +42,11 @@ class Settings extends FlxTransitionableState
 
 		FlxG.sound.cache(weatherMusic);
 
-		particles = new FlxEmitter(FlxG.width / 2, FlxG.height / 2, FlxG.width);
+		particles = new FlxEmitter(FlxG.width / 2, 0, FlxG.width);
 		particles.loadParticles(AssetPaths.sprite('fallleaf'), Math.floor(FlxG.width / 2));
 		particles.alpha.set(0.5, 0.5);
 		particles.scale.set(2, 2);
 
-		// It will be similar to a snow storm.
 		particles.launchMode = SQUARE;
 		particles.acceleration.set(0.6, 0.6);
 		particles.velocity.set(-10, 80, 0, 120);
@@ -65,7 +64,7 @@ class Settings extends FlxTransitionableState
 
 		for (i in 0...options.length)
 		{
-			var opt:FlxText = new FlxText(40, 80 + i * 50, 0, options[i].toUpperCase(), 32);
+			var opt:FlxText = new FlxText(40, i == 0 ? 80 : (180 + i * 50), 0, options[i].toUpperCase(), 32);
 			opt.font = AssetPaths.font('DTM-Sans');
 			opt.ID = i;
 			opt.scrollFactor.set();
@@ -104,14 +103,19 @@ class Settings extends FlxTransitionableState
 		add(tobdogWeather);
 
 		tobdogLine = new FlxText(420, 260, 0, '', 32);
-		tobdogLine.text = switch (Global.getWeather())
+
+		switch (Global.getWeather())
 		{
-			case 1: 'cold outside\nbut stay warm\ninside of you';
-			case 2: 'spring time\nback to school';
-			case 3: 'try to withstand\nthe sun\'s life-\ngiving rays';
-			case 4: 'sweep a leaf\nsweep away a\ntroubles';
-			default: '';
+			case 1:
+				tobdogLine.text = 'cold outside\nbut stay warm\ninside of you';
+			case 2:
+				tobdogLine.text = 'spring time\nback to school';
+			case 3:
+				tobdogLine.text = 'try to withstand\nthe sun\'s life-\ngiving rays';
+			case 4:
+				tobdogLine.text = 'sweep a leaf\nsweep away a\ntroubles';
 		}
+
 		tobdogLine.font = AssetPaths.font('DTM-Sans');
 		tobdogLine.color = FlxColor.GRAY;
 		tobdogLine.angle = 20;
@@ -120,11 +124,11 @@ class Settings extends FlxTransitionableState
 
 		changeOption();
 
-		super.create();
-
 		FlxG.sound.play(AssetPaths.music('harpnoise'));
 
-		new FlxTimer().start(2, (tmr:FlxTimer) -> FlxG.sound.playMusic(weatherMusic, 0.8));
+		super.create();
+
+		new FlxTimer().start(1.5, (tmr:FlxTimer) -> FlxG.sound.playMusic(weatherMusic, 0.8));
 	}
 
 	var siner:Int = 0;
