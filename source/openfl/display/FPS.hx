@@ -59,7 +59,7 @@ class FPS extends TextField
 		while (times[0] < (currentTime - 1000))
 			times.shift();
 
-		currentFPS = times.length;
+		currentFPS = (times.length > Std.int(FlxG.stage.frameRate)) ? Std.int(FlxG.stage.frameRate) : times.length;
 
 		if (showMemoryUsage)
 		{
