@@ -19,10 +19,10 @@ import states.Intro;
 class Settings extends FlxTransitionableState
 {
 	var selected:Int = 0;
-	final options:Array<String> = ['Exit', 'FPS Display', 'Button Config', 'Reset to Default'];
+	final options:Array<String> = ['Exit', 'FPS Overlay', 'Button Config', 'Reset to Default'];
 	var items:FlxTypedGroup<FlxText>;
 
-	var particlesEmitter:FlxEmitter;
+	var particles:FlxEmitter;
 	var tobdogWeather:FlxSprite;
 	var tobdogLine:FlxText;
 
@@ -42,15 +42,18 @@ class Settings extends FlxTransitionableState
 
 		FlxG.sound.cache(weatherMusic);
 
-		particlesEmitter = new FlxEmitter(FlxG.width / 2, FlxG.height / 2, FlxG.width);
-		particlesEmitter.loadParticles(AssetPaths.sprite('fallleaf'), Math.floor(FlxG.width / 2));
-		particlesEmitter.alpha.set(0.5, 0.5);
-		particlesEmitter.scale.set(2, 2);
-		particlesEmitter.launchMode = SQUARE;
-		particlesEmitter.acceleration.set(0.6, 0.6);
-		particlesEmitter.velocity.set(150, 180, 150, 180);
-		particlesEmitter.start(false, 0.01);
-		add(particlesEmitter);
+		particles = new FlxEmitter(FlxG.width / 2, FlxG.height / 2, FlxG.width);
+		particles.loadParticles(AssetPaths.sprite('fallleaf'), Math.floor(FlxG.width / 2));
+		particles.alpha.set(0.5, 0.5);
+		particles.scale.set(2, 2);
+
+		// It will be similar to a snow storm.
+		particles.launchMode = SQUARE;
+		particles.acceleration.set(0.6, 0.6);
+		particles.velocity.set(-10, 80, 0, 120);
+
+		particles.start(false, 0.01);
+		add(particles);
 
 		var settings:FlxText = new FlxText(0, 20, 0, 'SETTINGS', 64);
 		settings.font = AssetPaths.font('DTM-Sans');
@@ -146,10 +149,10 @@ class Settings extends FlxTransitionableState
 					FlxG.switchState(new Intro());
 				case 'Button Config':
 					FlxG.switchState(new ButtonConfig());
-				case 'FPS Display':
-					changeSetting('fps', false);
-				case 'Reset to Default':
-					changeSetting('fps', true);
+				case 'FPS Overlay':
+					Data.settings['fps'] = !Data.settings['fps'];
+
+					Main.fps.visible = Data.settings.get('fps');
 			}
 		}
 
@@ -166,23 +169,5 @@ class Settings extends FlxTransitionableState
 		{
 			spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
 		});
-	}
-
-	private function changeSetting(name:String, reset:Bool):Void
-	{
-		if (Data.settings.exists(name))
-		{
-			switch (name)
-			{
-				case 'fps':
-					Data.settings['fps'] = reset ? false : !Data.settings['fps'];
-
-					Main.fps.visible = Data.settings.get('fps');
-			}
-
-			Data.save();
-		}
-		else
-			FlxG.log.error('The setting "$name" doesn\'t exist?');
 	}
 }
