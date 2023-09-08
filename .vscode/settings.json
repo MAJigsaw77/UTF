@@ -1,5 +1,9 @@
 {
-   "files.associations": {
-      "*.hxs": "haxe"
-   }
+	"files.associations": {
+		"*.hxs": "haxe"
+	},
+	"[haxe]": {
+		"editor.formatOnSave": true,
+		"editor.formatOnPaste": true
+	}
 }
