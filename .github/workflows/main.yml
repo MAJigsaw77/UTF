@@ -25,8 +25,8 @@ jobs:
 
       - name: Installing Libraries
         run: |
-          haxelib --quiet install hmm
-          haxelib run hmm install 
+          haxelib install hmm
+          haxelib run hmm install
 
       - name: Building
         run: haxelib run lime build windows -debug
@@ -98,8 +98,8 @@ jobs:
 
       - name: Installing Libraries
         run: |
-          haxelib --quiet install hmm
-          haxelib run hmm install 
+          haxelib install hmm
+          haxelib run hmm install
 
       - name: Building
         run: haxelib run lime build mac -debug
@@ -171,8 +171,8 @@ jobs:
 
       - name: Installing Libraries
         run: |
-          haxelib --quiet install hmm
-          haxelib run hmm install 
+          haxelib install hmm
+          haxelib run hmm install
 
       - name: Building
         run: haxelib run lime build linux -debug
@@ -256,8 +256,8 @@ jobs:
 
       - name: Installing Libraries
         run: |
-          haxelib --quiet install hmm
-          haxelib run hmm install 
+          haxelib install hmm
+          haxelib run hmm install
 
       - name: Configure Android
         run: |
