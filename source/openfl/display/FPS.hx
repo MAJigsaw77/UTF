@@ -2,7 +2,7 @@ package openfl.display;
 
 import backend.AssetPaths;
 #if windows
-import backend.Memory;
+import backend.Windows;
 #end
 import flixel.util.FlxStringUtil;
 import flixel.FlxG;
@@ -63,7 +63,7 @@ class FPS extends TextField
 		if (showMemoryUsage)
 		{
 			#if windows
-			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(Memory.getProcessMemory()) + '\n';
+			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(Windows.getProcessMemory()) + '\n';
 			#else
 			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(System.totalMemory) + '\n';
 			#end
