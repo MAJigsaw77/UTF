@@ -32,7 +32,7 @@ class Settings extends FlxTransitionableState
 
 		var weatherMusic:String = AssetPaths.music('options_fall');
 
-		switch (Global.getWeather())
+		switch (Util.getWeather())
 		{
 			case 1:
 				weatherMusic = AssetPaths.music('options_winter');
@@ -75,7 +75,7 @@ class Settings extends FlxTransitionableState
 
 		tobdogWeather = new FlxSprite(500, 436);
 
-		switch (Global.getWeather())
+		switch (Util.getWeather())
 		{
 			case 1:
 				tobdogWeather.loadGraphic(AssetPaths.sprite('tobdog_winter'));
@@ -104,7 +104,7 @@ class Settings extends FlxTransitionableState
 
 		tobdogLine = new FlxText(420, 260, 0, '', 32);
 
-		switch (Global.getWeather())
+		switch (Util.getWeather())
 		{
 			case 1:
 				tobdogLine.text = 'cold outside\nbut stay warm\ninside of you';
