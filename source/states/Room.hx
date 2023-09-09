@@ -84,7 +84,7 @@ class Room extends FlxTransitionableState
 
 		add(markers);
 
-		objects = new FlxTypedGroup<FlxSprite>();
+		objects = new FlxTypedGroup<Object>();
 
 		for (obj in fast.nodes.object)
 		{
