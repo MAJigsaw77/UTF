@@ -66,7 +66,7 @@ class Main extends Sprite
 		FlxG.signals.postStateSwitch.add(System.gc);
 
 		#if windows
-		Windows.setWindowColorMode(DARK);
+		Windows.setWindowTheme(DARK);
 		#end
 		
 		addChild(new FlxGame(640, 480, Startup, 30, 30));
