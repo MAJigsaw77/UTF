@@ -16,7 +16,6 @@ class Windows
 	#if windows
 	@:functionCode('
 		PROCESS_MEMORY_COUNTERS pmc;
-
 		if (GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc)))
 			return pmc.WorkingSetSize;
 	')
@@ -27,10 +26,7 @@ class Windows
 
 	@:functionCode('
 		HWND hwnd = GetActiveWindow();
-
-		if (DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &theme, sizeof(theme)) != S_OK)
-			DwmSetWindowAttribute(hwnd, DWMWA_CAPTION_COLOR, &theme, sizeof(theme))
-
+		DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &theme, sizeof(theme))
 		UpdateWindow(hwnd);
 	')
 	public static function setWindowTheme(theme:WindowColorTheme):Void {}
