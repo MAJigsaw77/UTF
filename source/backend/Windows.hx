@@ -40,6 +40,6 @@ class Windows
 
 		UpdateWindow(window);
 	')
-	public static function setWindowColorMode(mode:WindowColorMode):Void;
+	public static function setWindowColorMode(mode:WindowColorMode):Void {}
 	#end
 }
