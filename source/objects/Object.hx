@@ -17,8 +17,8 @@ class Object extends FlxSprite
 
 		script.set('this', this);
 
-		if (Assets.exists(AssetPaths.script('objects/$name')))
-			script.execute(AssetPaths.script('objects/$name'));
+		if (Assets.exists(AssetPaths.script('objects/$key')))
+			script.execute(AssetPaths.script('objects/$key'));
 	}
 
 	public override function update(elapsed:Float):Void
