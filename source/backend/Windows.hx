@@ -1,5 +1,12 @@
 package backend;
 
+// Technically in the C++ output, Haxe UInt will be `int`.
+enum abstract WindowColorMode(UInt) from UInt to UInt
+{
+	var LIGHT = 0;
+	var DARK = 1;
+}
+
 #if windows
 @:buildXml('
 <target id="haxe">
