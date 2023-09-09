@@ -4,7 +4,7 @@ package backend;
 @:headerInclude('windows.h')
 @:headerInclude('psapi.h')
 #end
-class Windows
+class WinAPI
 {
 	#if windows
 	@:functionCode('
