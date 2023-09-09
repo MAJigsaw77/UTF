@@ -4,6 +4,9 @@ package;
 import android.content.Context;
 #end
 import backend.Data;
+#if windows
+import backend.Windows;
+#end
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -62,6 +65,10 @@ class Main extends Sprite
 		// Run the garbage colector on after the state switched...
 		FlxG.signals.postStateSwitch.add(System.gc);
 
+		#if windows
+		Windows.setWindowColorMode(DARK);
+		#end
+		
 		addChild(new FlxGame(640, 480, Startup, 30, 30));
 
 		#if android
