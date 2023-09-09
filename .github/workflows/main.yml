@@ -7,8 +7,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
-        with:
-          submodules: true
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
@@ -82,8 +80,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
-        with:
-          submodules: true
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
@@ -157,8 +153,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
-        with:
-          submodules: true
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
@@ -232,8 +226,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
-        with:
-          submodules: true
 
       - name: Setup Android NDK
         id: setup-ndk
