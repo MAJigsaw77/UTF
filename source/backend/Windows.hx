@@ -1,12 +1,5 @@
 package backend;
 
-// Technically in the C++ output, Haxe UInt will be `int`.
-enum abstract WindowColorMode(UInt) from UInt to UInt
-{
-	var LIGHT = 0;
-	var DARK = 1;
-}
-
 #if windows
 @:buildXml('
 <target id="haxe">
@@ -33,13 +26,19 @@ class Windows
 	}
 
 	@:functionCode('
-		HWND window = GetActiveWindow();
+		HWND hwnd = GetActiveWindow();
 
-		if (S_OK != DwmSetWindowAttribute(window, 19, &mode, sizeof(mode)))
-			DwmSetWindowAttribute(window, 20, &mode, sizeof(mode));
+		if (DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &theme, sizeof(theme)) != S_OK)
+			DwmSetWindowAttribute(hwnd, DWMWA_CAPTION_COLOR, &theme, sizeof(theme))
 
-		UpdateWindow(window);
+		UpdateWindow(hwnd);
 	')
-	public static function setWindowColorMode(mode:WindowColorMode):Void {}
+	public static function setWindowTheme(theme:WindowColorTheme):Void {}
 	#end
+}
+
+enum abstract WindowColorTheme(UInt) from UInt to UInt
+{
+	var LIGHT = 0;
+	var DARK = 1;
 }
