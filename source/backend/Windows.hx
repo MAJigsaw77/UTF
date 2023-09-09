@@ -26,7 +26,7 @@ class Windows
 
 	@:functionCode('
 		HWND hwnd = GetActiveWindow();
-		DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &theme, sizeof(theme))
+		DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &theme, sizeof(theme));
 		UpdateWindow(hwnd);
 	')
 	public static function setWindowTheme(theme:WindowColorTheme):Void {}
