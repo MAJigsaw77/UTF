@@ -90,6 +90,7 @@ class Room extends FlxTransitionableState
 		{
 			var object:Object = new Object(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), obj.att.name);
 			object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
+			object.script.set('chara', chara);
 			object.updateHitbox();
 			object.immovable = true;
 			objects.add(object);
