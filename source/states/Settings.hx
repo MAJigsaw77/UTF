@@ -43,12 +43,15 @@ class Settings extends FlxTransitionableState
 
 		FlxG.sound.cache(weatherMusic);
 
-		particles = new FlxEmitter(0, 0, 300);
-		particles.loadParticles(AssetPaths.sprite('fallleaf'), 150);
+		particles = new FlxEmitter(0, 0);
+
+		particles.loadParticles(AssetPaths.sprite('fallleaf'), FlxG.height);
+
 		particles.alpha.set(0.5, 0.5);
 		particles.scale.set(2, 2);
 
 		particles.width = FlxG.width;
+
 		particles.launchMode = SQUARE;
 		particles.acceleration.set(0.6, 0.6);
 		particles.velocity.set(-10, 80, 0, FlxG.height);
@@ -66,7 +69,7 @@ class Settings extends FlxTransitionableState
 
 		for (i in 0...options.length)
 		{
-			var opt:FlxText = new FlxText(40, i == 0 ? 80 : (120 + i * 30), 0, options[i].toUpperCase(), 32);
+			var opt:FlxText = new FlxText(40, i == 0 ? 80 : (120 + i * 32), 0, options[i].toUpperCase(), 32);
 			opt.font = AssetPaths.font('DTM-Sans');
 			opt.ID = i;
 			opt.scrollFactor.set();
