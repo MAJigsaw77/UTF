@@ -21,6 +21,7 @@ import openfl.errors.Error;
 import openfl.events.ErrorEvent;
 import openfl.events.UncaughtErrorEvent;
 import openfl.system.System;
+import openfl.utils.AssetCache;
 import openfl.utils.Assets;
 import openfl.Lib;
 #if MODS
@@ -194,18 +195,20 @@ class Main extends Sprite
 
 	private inline function onPreStateCreate(state:FlxState):Void
 	{
+		var cache:AssetCache = cast(Assets.cache, AssetCache);
+
 		// Clear the loaded graphics if they are no longer in flixel cache...
-		for (key in Assets.cache.getBitmapKeys())
+		for (key in cache.bitmapData.keys())
 			if (!FlxG.bitmap.checkCache(key))
-				Assets.cache.removeBitmapData(key);
+				cache.removeBitmapData(key);
 
 		// Clear all the loaded sounds from the cache...
-		for (key in Assets.cache.getSoundKeys())
-			Assets.cache.removeSound(key);
+		for (key in cache.sound.keys())
+			cache.removeSound(key);
 
 		// Clear all the loaded fonts from the cache...
-		for (key in Assets.cache.getFontKeys())
-			Assets.cache.removeFont(key);
+		for (key in cache.font.keys())
+			cache.removeFont(key);
 
 		#if MODS
 		// Clear the loaded assets from polymod...
