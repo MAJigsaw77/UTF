@@ -35,7 +35,8 @@ class FPS extends TextField
 		this.y = y;
 
 		autoSize = LEFT;
-		selectable = mouseEnabled = false;
+		selectable = false;
+		mouseEnabled = false;
 
 		#if mobile
 		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans'), false).fontName,
@@ -57,13 +58,7 @@ class FPS extends TextField
 		currentFPS = (times.length > Std.int(FlxG.stage.frameRate)) ? Std.int(FlxG.stage.frameRate) : times.length;
 
 		if (showMemoryUsage)
-		{
-			#if windows
-			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(WinAPI.getProcessMemory()) + '\n';
-			#else
-			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(System.totalMemory) + '\n';
-			#end
-		}
+			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(#if windows WinAPI.getProcessMemory() #else System.totalMemory #end) + '\n';
 		else
 			text = currentFPS + 'FPS\n';
 	}
