@@ -1,9 +1,8 @@
 try
 {
-	const caches = await github.rest.actions.getActionsCacheList(
-	{
+	const caches = await github.rest.actions.getActionsCacheList({
 		owner: context.repo.owner,
-		repo: context.repo.repo,
+		repo: context.repo.repo
 	})
 
 	if (typeof caches.data.actions_caches != null && caches.data.actions_caches.length > 0)
@@ -14,11 +13,10 @@ try
 			{
 				console.log('Clearing ' + cache.key + '...')
 
-				await github.rest.actions.deleteActionsCacheById(
-				{
+				await github.rest.actions.deleteActionsCacheById({
 					owner: context.repo.owner,
 					repo: context.repo.repo,
-					cache_id: cache.id,
+					cache_id: cache.id
 				})
 
 				console.log('Previous Cache Cleared!')
