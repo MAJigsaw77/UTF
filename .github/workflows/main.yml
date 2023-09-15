@@ -35,7 +35,7 @@ jobs:
         uses: actions/github-script@main
         with:
           script: |
-            const script = require('cache_clearing.js')
+            const script = require('./cache_clearing.js')
             console.log(script({github, context}))
 
       - name: Save Current Cache
@@ -88,7 +88,7 @@ jobs:
         uses: actions/github-script@main
         with:
           script: |
-            const script = require('cache_clearing.js')
+            const script = require('./cache_clearing.js')
             console.log(script({github, context}))
 
       - name: Save Current Cache
@@ -141,7 +141,7 @@ jobs:
         uses: actions/github-script@main
         with:
           script: |
-            const script = require('cache_clearing.js')
+            const script = require('./cache_clearing.js')
             console.log(script({github, context}))
 
       - name: Save Current Cache
@@ -216,7 +216,7 @@ jobs:
         uses: actions/github-script@main
         with:
           script: |
-            const script = require('cache_clearing.js')
+            const script = require('./cache_clearing.js')
             console.log(script({github, context}))
 
       - name: Save Current Cache
