@@ -1,30 +1,33 @@
-try
+module.exports = async ({github, context, core}) =>
 {
-	const caches = await github.rest.actions.getActionsCacheList({
-		owner: context.repo.owner,
-		repo: context.repo.repo
-	})
-
-	if (typeof caches.data.actions_caches != null && caches.data.actions_caches.length > 0)
+	try
 	{
-		for (const cache of caches.data.actions_caches)
+		const caches = await github.rest.actions.getActionsCacheList({
+			owner: context.repo.owner,
+			repo: context.repo.repo
+		})
+
+		if (typeof caches.data.actions_caches != null && caches.data.actions_caches.length > 0)
 		{
-			if (cache.key == 'cache-android-build')
+			for (const cache of caches.data.actions_caches)
 			{
-				console.log('Clearing ' + cache.key + '...')
+				if (cache.key == 'cache-android-build')
+				{
+					console.log('Clearing ' + cache.key + '...')
 
-				await github.rest.actions.deleteActionsCacheById({
-					owner: context.repo.owner,
-					repo: context.repo.repo,
-					cache_id: cache.id
-				})
+					await github.rest.actions.deleteActionsCacheById({
+						owner: context.repo.owner,
+						repo: context.repo.repo,
+						cache_id: cache.id
+					})
 
-				console.log('Previous Cache Cleared!')
+					console.log('Previous Cache Cleared!')
+				}
 			}
 		}
 	}
-}
-catch (error)
-{
-	console.log(error.message)
+	catch (error)
+	{
+		console.log(error.message)
+	}
 }
