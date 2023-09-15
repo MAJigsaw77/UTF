@@ -36,7 +36,7 @@ jobs:
         with:
           script: |
             const script = require('./cache_clearing.js')
-            console.log(script({github, context}))
+            await script({github, context, core})
 
       - name: Save Current Cache
         id: cache-release-build-windows-save
@@ -89,7 +89,7 @@ jobs:
         with:
           script: |
             const script = require('./cache_clearing.js')
-            console.log(script({github, context}))
+            await script({github, context, core})
 
       - name: Save Current Cache
         id: cache-build-save
@@ -142,7 +142,7 @@ jobs:
         with:
           script: |
             const script = require('./cache_clearing.js')
-            console.log(script({github, context}))
+            await script({github, context, core})
 
       - name: Save Current Cache
         id: cache-build-save
@@ -217,7 +217,7 @@ jobs:
         with:
           script: |
             const script = require('./cache_clearing.js')
-            console.log(script({github, context}))
+            await script({github, context, core})
 
       - name: Save Current Cache
         id: cache-build-save
