@@ -14,6 +14,7 @@ import flixel.FlxState;
 class Naming extends FlxState
 {
 	var selected:Int = 0;
+	final choices:Array<String> = ['Quit', 'Backspace', 'Done'];
 	var items:FlxTypedGroup<FlxText>;
 	var name:FlxText;
 
@@ -42,7 +43,7 @@ class Naming extends FlxState
 		{
 			var letter:FlxText = new FlxText(120 + line * 64, 150 + row * 28, 0, String.fromCharCode(upLetters[i]), 32);
 			letter.font = AssetPaths.font('DTM-Sans');
-			letter.ID = i; // Ugh
+			letter.ID = i;
 			letter.scrollFactor.set();
 			items.add(letter);
 
@@ -60,23 +61,22 @@ class Naming extends FlxState
 		var line:Int = 0;
 
 		// LowerCase Letters.
-		for (i in 0...upLetters.length)
+		for (i in 0...lowLetters.length)
 		{
 			var letter:FlxText = new FlxText(120 + line * 64, 270 + row * 28, 0, String.fromCharCode(lowLetters[i]), 32);
 			letter.font = AssetPaths.font('DTM-Sans');
-			letter.ID = 26 + i; // Ugh
+			letter.ID = lowLetters.length + i;
 			letter.scrollFactor.set();
 			items.add(letter);
 
 			line++;
+
 			if (line > 6)
 			{
 				row++;
 				line = 0;
 			}
 		}
-
-		final choices:Array<String> = ['Quit', 'Backspace', 'Done'];
 
 		// Choices.
 		for (i in 0...choices.length)
@@ -94,12 +94,13 @@ class Naming extends FlxState
 			}
 
 			choice.font = AssetPaths.font('DTM-Sans');
-			choice.ID = 52 + i; // Ugh
+			choice.ID = (upLetters.length + lowLetters.length) + i;
 			choice.scrollFactor.set();
 			items.add(choice);
 		}
 
 		add(items);
+
 		changeItem();
 
 		super.create();
@@ -138,7 +139,6 @@ class Naming extends FlxState
 							Global.hasName = true;
 							Global.save();
 
-							// Reseting the game for now...
 							FlxG.resetGame();
 						default:
 							if (name.text.length >= 6)
@@ -162,7 +162,7 @@ class Naming extends FlxState
 
 		items.forEach(function(spr:FlxText)
 		{
-			if (spr.text != 'Quit' && spr.text != 'Backspace' && spr.text != 'Done')
+			if (!choices.contains(spr.text))
 			{
 				spr.offset.x = ((spr.frameWidth - spr.width) * 0.5) + FlxG.random.float(-0.5, 0.5);
 				spr.offset.y = ((spr.frameHeight - spr.height) * 0.5) + FlxG.random.float(-0.5, 0.5);
