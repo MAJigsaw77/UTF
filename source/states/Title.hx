@@ -44,7 +44,7 @@ class Title extends FlxState
 			FlxG.switchState(new Intro());
 		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE && titleText.alpha == 1)
 		{
-			var letter:String = cast(FlxG.keys.firstJustPressed(), FlxKey).toString();
+			final letter:String = cast(FlxG.keys.firstJustPressed(), FlxKey).toString();
 
 			if (letters == 'ball' && letters.length > 3)
 				return;
