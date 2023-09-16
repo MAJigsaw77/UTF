@@ -11,7 +11,9 @@ class Util
 
 	public static function getWeather():Int
 	{
-		switch (Date.now().getMonth() + 1)
+		final curDate:Data = Date.now();
+
+		switch (curDate.getMonth() + 1)
 		{
 			case 12 | 1 | 2: // Winter
 				return 1;
@@ -23,6 +25,6 @@ class Util
 				return 4;
 		}
 
-		return 0; // Default
+		return 0;
 	}
 }
