@@ -11,7 +11,7 @@ class Util
 
 	public static function getWeather():Int
 	{
-		final curDate:Data = Date.now();
+		final curDate:Date = Date.now();
 
 		switch (curDate.getMonth() + 1)
 		{
