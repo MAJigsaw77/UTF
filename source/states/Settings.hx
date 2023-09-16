@@ -53,7 +53,7 @@ class Settings extends FlxTransitionableState
 			case 2:
 				particles.color.set(FlxColor.interpolate(FlxColor.RED, FlxColor.WHITE, 0.5));
 			case 4:
-				// Hmm
+				particles.color.set(FlxColor.YELLOW, FlxColor.fromRGB(255, 159, 64), FlxColor.RED);
 		}
 
 		particles.width = FlxG.width;
