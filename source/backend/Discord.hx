@@ -50,21 +50,21 @@ class Discord
 
 	private static function onReady(request:cpp.RawConstPointer<DiscordUser>):Void
 	{
-		var requestPtr:cpp.Star<DiscordUser> = cpp.ConstPointer.fromRaw(request).ptr;
+		final user:cpp.Star<DiscordUser> = cpp.ConstPointer.fromRaw(request).ptr;
 
-		FlxG.log.notice('(Discord) Connected to User (' + cast(requestPtr.username, String) + '#' + cast(requestPtr.discriminator, String) + ')');
+		FlxG.log.notice('(Discord) Connected to User (${cast(user.username, String)}#${cast(user.discriminator, String)})');
 
-		Discord.changePresence('In the Menus');
+		Discord.changePresence('Just Started');
 	}
 
 	private static function onDisconnected(errorCode:Int, message:cpp.ConstCharStar):Void
 	{
-		FlxG.log.notice('(Discord) Disconnected (' + errorCode + ': ' + cast(message, String) + ')');
+		FlxG.log.notice('(Discord) Disconnected ($errorCode: ${cast(message, String)})');
 	}
 
 	private static function onError(errorCode:Int, message:cpp.ConstCharStar):Void
 	{
-		FlxG.log.notice('(Discord) Error (' + errorCode + ': ' + cast(message, String) + ')');
+		FlxG.log.notice('(Discord) Error ($errorCode: ${cast(message, String)})');
 	}
 }
 #end
