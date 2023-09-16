@@ -44,9 +44,6 @@ class Monster extends FlxSpriteGroup
 		script = new Script();
 
 		script.set('this', this);
-		script.set('add', add);
-		script.set('insert', insert);
-		script.set('remove', remove);
 
 		if (Assets.exists(AssetPaths.script('monsters/$name')))
 			script.execute(AssetPaths.script('monsters/$name'));
