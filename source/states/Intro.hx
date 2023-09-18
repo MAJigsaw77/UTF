@@ -26,10 +26,10 @@ class Intro extends FlxState
 
 	override function create():Void
 	{
-		FlxG.sound.playMusic(AssetPaths.music(Global.hasName ? 'menu1' : 'menu0'));
-
 		if (Global.hasName)
 		{
+			FlxG.sound.playMusic(AssetPaths.music('menu1'));
+
 			var bg:FlxSprite = new FlxSprite(0, -240, AssetPaths.background('floweyglow'));
 			bg.scale.set(2, 2);
 			bg.updateHitbox();
@@ -69,6 +69,8 @@ class Intro extends FlxState
 		}
 		else
 		{
+			FlxG.sound.playMusic(AssetPaths.music('menu0'));
+
 			var instructions:FlxText = new FlxText(170, 40, 0, ' --- Instruction --- ', 32);
 
 			instructions.text += '\n\n';
@@ -93,7 +95,7 @@ class Intro extends FlxState
 		{
 			var bt:FlxText = new FlxText(0, 0, 0, choices[i], 32);
 
-			if (Global.hasName)
+			if (!choices.contains('Begin Game'))
 			{
 				switch (choices[i])
 				{
