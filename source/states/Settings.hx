@@ -58,7 +58,7 @@ class Settings extends FlxTransitionableState
 
 		particles.width = FlxG.width;
 		particles.launchMode = SQUARE;
-		particles.acceleration.set(0.6, 0.6);
+		particles.acceleration.set(0.2, 0.2);
 		particles.velocity.set(-10, 80, 0, FlxG.height);
 
 		particles.start(false, 0.01);
