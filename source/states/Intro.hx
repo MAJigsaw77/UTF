@@ -127,12 +127,12 @@ class Intro extends FlxState
 		add(items);
 
 		#if !debug
-		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta['version']} (c) MAJigsaw77 2023', 16);
-		#else
 		var info:FlxText = new FlxText(0, FlxG.height - 40, 0,
 			'UTF v${Lib.application.meta['version']} (c) MAJigsaw77 2023\nCommit ${Macros.getCommitNumber()} (${Macros.getCommitHash()})', 16);
-		#end
-		info.setFormat(AssetPaths.font('Small'), 16, GRAY, CENTER);
+		#else
+ 		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta['version']} (c) MAJigsaw77 2023', 16);
+ 		#end
+		info.setFormat(AssetPaths.font('Small'), 16, FlxColor.GRAY, CENTER);
 		info.screenCenter(X);
 		info.scrollFactor.set();
 		add(info);
