@@ -11,7 +11,7 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 
 ### Download
 
-> **Information**
+> **Important**
 > The latest builds of the engine can be found in the [Actions](https://github.com/MAJigsaw77/UTF/actions) tab.
 
 ### Compiling
