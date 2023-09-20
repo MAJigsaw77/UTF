@@ -60,6 +60,8 @@
 	<haxedef name="HXCPP_STACK_LINE" if="cpp" />
 	<haxedef name="HXCPP_STACK_TRACE" if="cpp" />
 
+	<haxedef name="DISCORD_DISABLE_IO_THREAD" if="DISCORD" />
+
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="meta.json" if="MODS" />
 	<haxedef name="POLYMOD_MOD_PACK_FILE" value="pack.txt" if="MODS" />
 	<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon.png" if="MODS" />
