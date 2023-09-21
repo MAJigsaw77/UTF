@@ -132,7 +132,9 @@ class Intro extends FlxState
 		#else
  		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta['version']} (c) MAJigsaw77 2023', 16);
  		#end
-		info.setFormat(AssetPaths.font('Small'), 16, FlxColor.GRAY, CENTER);
+		info.alignment = CENTER;
+		info.font = AssetPaths.font('Small');
+		info.color = FlxColor.GRAY;
 		info.screenCenter(X);
 		info.scrollFactor.set();
 		add(info);
