@@ -1,4 +1,7 @@
 {
+	"editor.codeActionsOnSave": {
+		"source.sortImports": true
+	},
 	"files.associations": {
 		"*.hxs": "haxe"
 	},
