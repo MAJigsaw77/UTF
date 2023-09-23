@@ -8,6 +8,7 @@ import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
+import haxe.io.Path;
 import haxe.CallStack;
 import haxe.Exception;
 import haxe.Log;
@@ -44,7 +45,7 @@ class Main extends Sprite
 		super();
 
 		#if android
-		Sys.setCwd(Context.getExternalFilesDir() + '/');
+		Sys.setCwd(Path.addTrailingSlash(Context.getExternalFilesDir()));
 		#elseif (ios || switch)
 		Sys.setCwd(System.applicationStorageDirectory);
 		#end
