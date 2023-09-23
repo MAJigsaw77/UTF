@@ -1,5 +1,7 @@
-name: Building
-on: workflow_dispatch
+name: Compile
+on:
+  push:
+  workflow_dispatch:
 jobs:
   Windows:
     runs-on: windows-latest
