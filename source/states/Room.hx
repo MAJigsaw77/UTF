@@ -111,7 +111,7 @@ class Room extends FlxTransitionableState
 
 		add(doors);
 
-		FlxG.camera.setScrollBoundsRect(0, 0, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')), true);
+		FlxG.camera.setScrollBoundsRect(0, 0, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')));
 
 		super.create();
 	}
