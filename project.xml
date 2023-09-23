@@ -74,6 +74,6 @@
 
 	<!--Undefinitions-->
 
-	<undefine name="openfl_disable_handle_error" if="debug" />
+	<undefine name="openfl-disable-handle-error" if="debug" />
 
 </project>
