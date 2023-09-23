@@ -4,7 +4,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://lime.openfl.org/project/1.0.4 http://lime.openfl.org/xsd/project-1.0.4.xsd">
 
-	<!--Application Settings -->
+	<!--Application Settings-->
 
 	<meta title="UTF" packageName="com.majigsaw77.utf" package="com.majigsaw77.utf" version="1.0.0" company="MAJigsaw77" />
 
@@ -68,7 +68,12 @@
 
 	<haxeflag name="-dce" value="no" />
 
+	<!--DPI Awareness-->
+
+	<define name="openfl_dpi_aware" unless="web" />
+
 	<!--Undefinitions-->
-	<undefine name="openfl-disable-handle-error" if="debug" />
+
+	<undefine name="openfl_disable_handle_error" if="debug" />
 
 </project>
