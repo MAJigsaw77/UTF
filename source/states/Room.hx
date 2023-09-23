@@ -111,7 +111,7 @@ class Room extends FlxTransitionableState
 
 		add(doors);
 
-		FlxG.worldBounds.set(0, 0, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')));
+		FlxG.camera.setScrollBoundsRect(0, 0, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')), true);
 
 		super.create();
 	}
@@ -133,12 +133,5 @@ class Room extends FlxTransitionableState
 	private function playerOverlapDoors(object:Chara, group:FlxTypedGroup<FlxSprite>):Void
 	{
 		// Do something here.
-	}
-
-	override function destroy():Void
-	{
-		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
-
-		super.destroy();
 	}
 }
