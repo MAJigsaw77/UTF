@@ -13,6 +13,7 @@ import objects.Chara;
 import objects.Object;
 import objects.Writer;
 import openfl.utils.Assets;
+import states.Intro;
 
 using StringTools;
 
@@ -132,6 +133,6 @@ class Room extends FlxTransitionableState
 
 	private function playerOverlapDoors(object:Chara, group:FlxTypedGroup<FlxSprite>):Void
 	{
-		// Do something here.
+		FlxG.switchState(new Intro());
 	}
 }
