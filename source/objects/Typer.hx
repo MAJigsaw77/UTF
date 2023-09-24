@@ -16,8 +16,8 @@ class Typer
 {
 	public var font:TyperFont;
 	public var sound:TyperSound;
-	public var speed:Float:
-	
+	public var speed:Float;
+
 	public function new(font:TyperFont, sound:TyperSound, speed:Float = 4):Void
 	{
 		this.font = font;
