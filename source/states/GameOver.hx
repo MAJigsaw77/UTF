@@ -8,6 +8,7 @@ import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import objects.Typer;
 import objects.Writer;
 import states.Room;
 
@@ -26,7 +27,7 @@ class GameOver extends FlxState
 		bg.scrollFactor.set();
 		add(bg);
 
-		writer = new Writer(120, 320, 0, 32);
+		writer = new Writer(120, 320);
 		writer.scrollFactor.set();
 		add(writer);
 
@@ -37,32 +38,34 @@ class GameOver extends FlxState
 			{
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
+					var typer:Typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 6);
+
 					switch (FlxG.random.int(0, 4))
 					{
 						case 0:
 							writer.startDialogue([
-								{text: '  You cannot give\n  up just yet...', speed: 6},
-								{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
+								{typer: typer, text: '  You cannot give\n  up just yet...'},
+								{typer: typer, text: '  ${Global.name}!\n  Stay determined...'}
 							]);
 						case 1:
 							writer.startDialogue([
-								{text: '  Our fate rests\n  upon you...', speed: 6},
-								{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
+								{typer: typer, text: '  Our fate rests\n  upon you...'},
+								{typer: typer, text: '  ${Global.name}!\n  Stay determined...'}
 							]);
 						case 2:
 							writer.startDialogue([
-								{text: '  You\'re going to\n  be alright!', speed: 6},
-								{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
+								{typer: typer, text: '  You\'re going to\n  be alright!'},
+								{typer: typer, text: '  ${Global.name}!\n  Stay determined...'}
 							]);
 						case 3:
 							writer.startDialogue([
-								{text: '  Don\'t lose hope!', speed: 6},
-								{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
+								{typer: typer, text: '  Don\'t lose hope!'},
+								{typer: typer, text: '  ${Global.name}!\n  Stay determined...'}
 							]);
 						case 4:
 							writer.startDialogue([
-								{text: '  It cannot end\n  now!', speed: 6},
-								{text: '  ${Global.name}!\n  Stay determined...', speed: 6}
+								{typer: typer, text: '  It cannot end\n  now!'},
+								{typer: typer, text: '  ${Global.name}!\n  Stay determined...'}
 							]);
 					}
 				});
