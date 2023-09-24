@@ -37,6 +37,7 @@ class FPS extends TextField
 		autoSize = LEFT;
 		selectable = false;
 		mouseEnabled = false;
+		multiline = true;
 
 		#if mobile
 		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans'), false).fontName,
