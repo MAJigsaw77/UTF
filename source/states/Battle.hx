@@ -31,6 +31,7 @@ class Battle extends FlxTransitionableState
 	var monster:Monster;
 	var box:FlxShapeBox;
 	var heart:FlxSprite;
+	var typer:Typer;
 	var writer:Writer;
 
 	var bullets:FlxTypedGroup<FlxSprite>;
@@ -95,8 +96,10 @@ class Battle extends FlxTransitionableState
 		heart.scrollFactor.set();
 		add(heart);
 
-		writer = new Writer(box.x + 14, box.y + 14, 0, 32);
-		writer.startDialogue([{text: '* You feel like you\'re going to\n  have a bad time.', speed: 4}]);
+		typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 4);
+
+		writer = new Writer(box.x + 14, box.y + 14);
+		writer.startDialogue([{typer: typer, text: '* You feel like you\'re going to\n  have a bad time.'}]);
 		writer.scrollFactor.set();
 		add(writer);
 
@@ -146,7 +149,7 @@ class Battle extends FlxTransitionableState
 				switch (choices[selected])
 				{
 					case 'Fight' | 'Talk':
-						writer.startDialogue([{text: '* ${monster.data.name}', speed: 4}]);
+						writer.startDialogue([{typer: typer, text: '* ${monster.data.name}'}]);
 
 					/*var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + (monster.data.name.length * 16), writer.y, LEFT_TO_RIGHT,
 							Std.int(monster.data.hp / monster.data.maxHp * 100), 16, monster.data, 'hp', 0, monster.data.maxHp);
@@ -155,9 +158,9 @@ class Battle extends FlxTransitionableState
 						monsterHpBar.scrollFactor.set();
 						add(monsterHpBar); */
 					case 'Item':
-						writer.startDialogue([{text: '* Item Selected...', speed: 4}]);
+						writer.startDialogue([{typer: typer, text: '* Item Selected...'}]);
 					case 'Spare':
-						writer.startDialogue([{text: '* Mercy Selected...', speed: 4}]);
+						writer.startDialogue([{typer: typer, text: '* Mercy Selected...'}]);
 				}
 			}
 		}
@@ -166,7 +169,7 @@ class Battle extends FlxTransitionableState
 			choiceSelected = false;
 
 			writer.visible = true;
-			writer.startDialogue([{text: '* You feel like you\'re going to\n  have a bad time.', speed: 4}]);
+			writer.startDialogue([{typer: typer, text: '* You feel like you\'re going to\n  have a bad time.'}]);
 		}
 
 		#if debug
