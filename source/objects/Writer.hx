@@ -4,27 +4,19 @@ import backend.AssetPaths;
 import backend.Data;
 import flixel.addons.text.FlxTypeText;
 import flixel.FlxG;
+import objects.Typer;
 
 using flixel.util.FlxArrayUtil;
 
 typedef DialogueData =
 {
-	?face:String,
-	?font:String,
-	?sound:DialogueSound,
-	text:String,
-	?speed:Null<Float>
-}
-
-typedef DialogueSound =
-{
-	path:String,
-	volume:Float
+	typer:Typer,
+	text:String
 }
 
 /**
  * Helper class for dialogue text
-**/
+ */
 class Writer extends FlxTypeText
 {
 	public var skippable:Bool = true;
@@ -36,17 +28,15 @@ class Writer extends FlxTypeText
 	@:noCompletion
 	private var page:Int = 0;
 
-	public function new(x:Float = 0, y:Float = 0, width:Int = 0, size:Int = 8):Void
+	public function new(x:Float = 0, y:Float = 0):Void
 	{
-		super(x, y, width, '', size, true);
-
-		sounds = [FlxG.sound.load(AssetPaths.sound('txt2'), 0.76)];
+		super(x, y, 0, '', 8, true);
 	}
 
 	public function startDialogue(list:Array<DialogueData>):Void
 	{
 		finished = false;
-		dialogueList = list == null ? [{text: 'Error!', speed: 4}] : list;
+		dialogueList = list == null ? [{typer: new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 4), text: 'Error!'}] : list;
 		page = 0;
 
 		if (dialogueList[page] != null)
@@ -58,12 +48,17 @@ class Writer extends FlxTypeText
 	public function changeDialogue(dialogue:DialogueData):Void
 	{
 		if (dialogue == null)
-			dialogue = {text: 'Error!', speed: 4};
+			dialogue = {typer: new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 4), text: 'Error!'};
 
-		font = AssetPaths.font(dialogue.font != null ? dialogue.font : 'DTM-Mono');
+		sounds = [FlxG.sound.load(AssetPaths.sound(dialogue.typer.sound.name), dialogue.typer.sound.volume)];
 
-		resetText(dialogue.text != null ? dialogue.text : 'Error!');
-		start(dialogue.speed != null ? dialogue.speed / 100 : 0.04, true);
+		font = AssetPaths.font(dialogue.typer.font.name);
+
+		if (size != dialogue.typer.font.size)
+			size = dialogue.typer.font.size;
+
+		resetText(dialogue.text);
+		start(dialogue.typer.speed / 100, true);
 	}
 
 	override function update(elapsed:Float):Void
