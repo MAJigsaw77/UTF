@@ -3,8 +3,6 @@ package states;
 import backend.AssetPaths;
 import backend.Data;
 import backend.Global;
-import objects.Monster;
-import objects.Writer;
 import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
@@ -15,6 +13,9 @@ import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import objects.Monster;
+import objects.Typer;
+import objects.Writer;
 import states.GameOver;
 
 class Battle extends FlxTransitionableState
