@@ -10,7 +10,6 @@ import flixel.FlxSprite;
 import haxe.io.Path;
 import haxe.xml.Access;
 import objects.Chara;
-import objects.Object;
 import objects.Writer;
 import openfl.utils.Assets;
 import states.Intro;
@@ -23,7 +22,7 @@ class Room extends FlxTransitionableState
 
 	var solids:FlxTypedGroup<FlxSprite>;
 	var markers:FlxTypedGroup<FlxSprite>;
-	var objects:FlxTypedGroup<Object>;
+	var objects:FlxTypedGroup<FlxSprite>;
 	var doors:FlxTypedGroup<FlxSprite>;
 
 	var chara:Chara;
@@ -85,13 +84,12 @@ class Room extends FlxTransitionableState
 
 		add(markers);
 
-		objects = new FlxTypedGroup<Object>();
+		objects = new FlxTypedGroup<FlxSprite>();
 
 		for (obj in fast.nodes.object)
 		{
-			var object:Object = new Object(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), obj.att.name);
+			var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
 			object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
-			object.script.set('chara', chara);
 			object.updateHitbox();
 			object.immovable = true;
 			objects.add(object);
