@@ -2,10 +2,18 @@ package backend;
 
 import flixel.input.keyboard.FlxKey;
 import flixel.util.FlxSave;
+import openfl.filters.BitmapFilter;
+import openfl.filters.ColorMatrixFilter;
 import openfl.Lib;
 
 class Data
 {
+	public static var filters:Map<String, BitmapFilter> = [
+		'Deuteranopia' => new ColorMatrixFilter([0.43, 0.72, -.15, 0, 0, 0.34, 0.57, 0.09, 0, 0, -.02, 0.03, 1, 0, 0, 0, 0, 0, 1, 0]),
+		'Protanopia' => new ColorMatrixFilter([0.20, 0.99, -.19, 0, 0, 0.16, 0.79, 0.04, 0, 0, 0.01, -.01, 1, 0, 0, 0, 0, 0, 1, 0]),
+		'Tritanopia' => new ColorMatrixFilter([0.97, 0.11, -.08, 0, 0, 0.02, 0.82, 0.16, 0, 0, 0.06, 0.88, 0.18, 0, 0, 0, 0, 0, 1, 0])
+	];
+
 	public static var settings:Map<String, Dynamic> = ['fps' => false];
 	public static var binds:Map<String, FlxKey> = ['confirm' => Z, 'cancel' => X, 'menu' => C];
 
