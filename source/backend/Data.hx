@@ -2,6 +2,7 @@ package backend;
 
 import flixel.input.keyboard.FlxKey;
 import flixel.util.FlxSave;
+import flixel.FlxG;
 import openfl.filters.BitmapFilter;
 import openfl.filters.ColorMatrixFilter;
 import openfl.Lib;
