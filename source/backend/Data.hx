@@ -51,7 +51,7 @@ class Data
 		// If the filter got modified or is `none` it won't set anything.
 		if (Data.settings.get('filter') != null && Data.settings.get('filter') != 'none')
 		{
-			if (Data.filters.exists(Data.settings.get('filter'))
+			if (Data.filters.exists(Data.settings.get('filter')))
 			    filters[0] = Data.filters.get(Data.settings.get('filter'));
 		}
 
