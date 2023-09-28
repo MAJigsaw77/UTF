@@ -172,7 +172,7 @@ class Main extends Sprite
 			for (camera in FlxG.cameras.list)
 			{
 				@:privateAccess
-				if (camera != null && (camera._filters != null && camera._filters.length > 0))
+				if (camera != null && (camera.filters != null && camera.filters.length > 0))
 				{
 					// Shout out to Ne_Eo for bringing this to my attention.
 					if (camera.flashSprite != null)
@@ -184,36 +184,34 @@ class Main extends Sprite
 			}
 		}
 
+		@:privateAccess
 		if (FlxG.game != null)
 		{
-			@:privateAccess
-			{
-				FlxG.game.__cacheBitmap = null;
-				FlxG.game.__cacheBitmapData = null;
-			}
+			FlxG.game.__cacheBitmap = null;
+			FlxG.game.__cacheBitmapData = null;
 		}
 	}
 
 	private inline function onPreStateCreate(state:FlxState):Void
 	{
+		#if MODS
+		// Clear the loaded assets from polymod...
+		Polymod.clearCache();
+		#end
+
 		var cache:AssetCache = cast(Assets.cache, AssetCache);
 
 		// Clear the loaded graphics if they are no longer in flixel cache...
 		for (key in cache.bitmapData.keys())
 			if (!FlxG.bitmap.checkCache(key))
-				cache.removeBitmapData(key);
+				cache.cache.bitmapData.remove(key);
 
 		// Clear all the loaded sounds from the cache...
 		for (key in cache.sound.keys())
-			cache.removeSound(key);
+			cache.sound.remove(key);
 
 		// Clear all the loaded fonts from the cache...
 		for (key in cache.font.keys())
-			cache.removeFont(key);
-
-		#if MODS
-		// Clear the loaded assets from polymod...
-		Polymod.clearCache();
-		#end
+			cache.font.remove(key);
 	}
 }
