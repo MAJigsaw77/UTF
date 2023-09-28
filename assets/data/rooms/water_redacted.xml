@@ -30,7 +30,7 @@
 
 	<marker name="C" x="280" y="360" scaleX="2" scaleY="2" />
 
-	<object name="redacted_a" x="280" y="120" scaleX="2" scaleY="2" />
+	<obj name="redacted_a" x="280" y="120" scaleX="2" scaleY="2" />
 
 	<door name="D" x="240" y="440" scaleX="2" scaleY="2" />
 	<door name="D" x="280" y="440" scaleX="2" scaleY="2" />
