@@ -61,8 +61,13 @@ class Room extends FlxTransitionableState
 		for (solid in fast.nodes.solid)
 		{
 			var object:FlxSprite = new FlxSprite(Std.parseFloat(solid.att.x), Std.parseFloat(solid.att.y), AssetPaths.sprite('solid${solid.att.type}'));
-			object.scale.set(solid.has.scaleX ? Std.parseFloat(solid.att.scaleX) : 1.0, solid.has.scaleY ? Std.parseFloat(solid.att.scaleY) : 1.0);
-			object.updateHitbox();
+
+			if (solid.has.scaleX || solid.has.scaleY)
+			{
+				object.scale.set(solid.has.scaleX ? Std.parseFloat(solid.att.scaleX) : 1, solid.has.scaleY ? Std.parseFloat(solid.att.scaleY) : 1);
+				object.updateHitbox();
+			}
+
 			object.alpha = #if debug 0.5 #else 0 #end;
 			object.immovable = true;
 			object.solid = true;
@@ -76,8 +81,13 @@ class Room extends FlxTransitionableState
 		for (marker in fast.nodes.marker)
 		{
 			var object:FlxSprite = new FlxSprite(Std.parseFloat(marker.att.x), Std.parseFloat(marker.att.y), AssetPaths.sprite('marker${marker.att.name}'));
-			object.scale.set(marker.has.scaleX ? Std.parseFloat(marker.att.scaleX) : 1.0, marker.has.scaleY ? Std.parseFloat(marker.att.scaleY) : 1.0);
-			object.updateHitbox();
+
+			if (marker.has.scaleX || marker.has.scaleY)
+			{
+				object.scale.set(marker.has.scaleX ? Std.parseFloat(marker.att.scaleX) : 1, marker.has.scaleY ? Std.parseFloat(marker.att.scaleY) : 1);
+				object.updateHitbox();
+			}
+
 			object.immovable = true;
 			markers.add(object);
 		}
@@ -86,11 +96,16 @@ class Room extends FlxTransitionableState
 
 		objects = new FlxTypedGroup<FlxSprite>();
 
-		for (obj in fast.nodes.object)
+		for (obj in fast.nodes.obj)
 		{
 			var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
-			object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1.0, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1.0);
-			object.updateHitbox();
+
+			if (obj.has.scaleX || obj.has.scaleY)
+			{
+				object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1);
+				object.updateHitbox();
+			}
+
 			object.immovable = true;
 			objects.add(object);
 		}
@@ -102,8 +117,13 @@ class Room extends FlxTransitionableState
 		for (door in fast.nodes.door)
 		{
 			var object:FlxSprite = new FlxSprite(Std.parseFloat(door.att.x), Std.parseFloat(door.att.y), AssetPaths.sprite('door${door.att.name}'));
-			object.scale.set(door.has.scaleX ? Std.parseFloat(door.att.scaleX) : 1.0, door.has.scaleY ? Std.parseFloat(door.att.scaleY) : 1.0);
-			object.updateHitbox();
+
+			if (door.has.scaleX || door.has.scaleY)
+			{
+				object.scale.set(door.has.scaleX ? Std.parseFloat(door.att.scaleX) : 1, door.has.scaleY ? Std.parseFloat(door.att.scaleY) : 1);
+				object.updateHitbox();
+			}
+
 			object.immovable = true;
 			doors.add(object);
 		}
