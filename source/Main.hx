@@ -117,10 +117,10 @@ class Main extends Sprite
 			File.saveContent('errors/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt', msg);
 		}
 		catch (e:Exception)
-			Log.trace('Couldn\'t save error message "${e.message}"');
+			Log.trace('Couldn\'t save error message "${e.message}"', null);
 		#end
 
-		Log.trace(msg);
+		Log.trace(msg, null);
 		Lib.application.window.alert(msg, 'Error!');
 		System.exit(1);
 	}
@@ -157,10 +157,10 @@ class Main extends Sprite
 			File.saveContent('errors/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt', msg);
 		}
 		catch (e:Exception)
-			Log.trace('Couldn\'t save error message "${e.message}"');
+			Log.trace('Couldn\'t save error message "${e.message}"', null);
 		#end
 
-		Log.trace(msg);
+		Log.trace(msg, null);
 		Lib.application.window.alert(msg, 'Error!');
 		System.exit(1);
 	}
