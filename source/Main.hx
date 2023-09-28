@@ -204,7 +204,7 @@ class Main extends Sprite
 		// Clear the loaded graphics if they are no longer in flixel cache...
 		for (key in cache.bitmapData.keys())
 			if (!FlxG.bitmap.checkCache(key))
-				cache.cache.bitmapData.remove(key);
+				cache.bitmapData.remove(key);
 
 		// Clear all the loaded sounds from the cache...
 		for (key in cache.sound.keys())
