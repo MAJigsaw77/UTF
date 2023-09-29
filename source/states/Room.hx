@@ -88,6 +88,9 @@ class Room extends FlxTransitionableState
 				object.updateHitbox();
 			}
 
+			#if !debug
+			object.alpha = 0;
+			#end
 			object.immovable = true;
 			markers.add(object);
 		}
@@ -124,6 +127,9 @@ class Room extends FlxTransitionableState
 				object.updateHitbox();
 			}
 
+			#if !debug
+			object.alpha = 0;
+			#end
 			object.immovable = true;
 			doors.add(object);
 		}
@@ -137,7 +143,7 @@ class Room extends FlxTransitionableState
 
 	override function update(elapsed:Float):Void
 	{
-		FlxG.collide(chara, solids);
+		FlxG.collide(solids, chara);
 
 		if (FlxG.overlap(chara, doors, playerOverlapDoors))
 		{
