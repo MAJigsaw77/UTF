@@ -28,7 +28,7 @@ class Intro extends FlxState
 	{
 		if (Global.flags[0] == 1)
 		{
-			FlxG.sound.playMusic(AssetPaths.music('menu1'));
+			// FlxG.sound.playMusic(AssetPaths.music('menu1'));
 
 			var bg:FlxSprite = new FlxSprite(0, -240, AssetPaths.background('floweyglow'));
 			bg.scale.set(2, 2);
@@ -69,7 +69,7 @@ class Intro extends FlxState
 		}
 		else
 		{
-			FlxG.sound.playMusic(AssetPaths.music('menu0'));
+			// FlxG.sound.playMusic(AssetPaths.music('menu0'));
 
 			var instructions:FlxText = new FlxText(170, 40, 0, ' --- Instruction --- ', 32);
 
