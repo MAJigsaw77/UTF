@@ -152,6 +152,11 @@ class Room extends FlxTransitionableState
 			#end
 		}
 
+		#if debug
+		FlxG.watch.addQuick(chara, 'x');
+		FlxG.watch.addQuick(chara, 'y');
+		#end
+
 		super.update(elapsed);
 	}
 
