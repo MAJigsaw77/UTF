@@ -142,7 +142,7 @@ class Battle extends FlxTransitionableState
 			{
 				writer.visible = true;
 
-				if (choices[selected] == 'Item' && Global.item.length <= 0)
+				if (choices[selected] == 'Item' && Global.items.length <= 0)
 					return;
 
 				choiceSelected = true;
