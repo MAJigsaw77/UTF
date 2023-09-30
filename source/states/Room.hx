@@ -143,7 +143,7 @@ class Room extends FlxTransitionableState
 
 	override function update(elapsed:Float):Void
 	{
-		FlxG.collide(solids, chara);
+		FlxG.collide(chara, solids);
 
 		if (FlxG.overlap(chara, doors, playerOverlapDoors))
 		{
