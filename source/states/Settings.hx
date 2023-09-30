@@ -168,6 +168,8 @@ class Settings extends FlxTransitionableState
 
 					Main.fps.visible = Data.settings.get('fps');
 			}
+
+			Data.save();
 		}
 
 		super.update(elapsed);
