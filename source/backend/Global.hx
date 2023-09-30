@@ -16,9 +16,8 @@ class Global
 	public static var xp:Int = 0;
 	public static var lv:Int = 1;
 	public static var kills:Int = 0;
-	public static var item:Array<String> = [];
-
-	public static var hasName:Bool = false;
+	public static var items:Array<String> = ['Pie', 'SnowPiece', 'I. Noodles', 'SnowPiece'];
+	public static var flags:Array<Int> = [];
 
 	public static function save():Void
 	{
@@ -34,7 +33,8 @@ class Global
 		save.data.xp = xp;
 		save.data.lv = lv;
 		save.data.kills = kills;
-		save.data.hasName = hasName;
+		save.data.items = items;
+		save.data.flags = flags;
 		save.close();
 	}
 
@@ -75,8 +75,11 @@ class Global
 			if (save.data.kills != null)
 				kills = save.data.kills;
 
-			if (save.data.hasName != null)
-				hasName = save.data.hasName;
+			if (save.data.items != null)
+				flags = save.data.items;
+
+			if (save.data.flags != null)
+				flags = save.data.flags;
 		}
 
 		save.destroy();
