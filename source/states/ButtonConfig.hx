@@ -76,6 +76,8 @@ class ButtonConfig extends FlxState
 				}
 			});
 
+			Data.save();
+
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 		}
 		else if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && !keySelected)
