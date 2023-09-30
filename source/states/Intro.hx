@@ -26,7 +26,7 @@ class Intro extends FlxState
 
 	override function create():Void
 	{
-		if (Global.hasName)
+		if (Global.flags[0] == 1)
 		{
 			FlxG.sound.playMusic(AssetPaths.music('menu1'));
 
@@ -146,9 +146,9 @@ class Intro extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (Global.hasName ? FlxG.keys.justPressed.RIGHT : FlxG.keys.justPressed.DOWN)
+		if (Global.flags[0] == 1 ? FlxG.keys.justPressed.RIGHT : FlxG.keys.justPressed.DOWN)
 			changeOption(1);
-		else if (Global.hasName ? FlxG.keys.justPressed.LEFT : FlxG.keys.justPressed.UP)
+		else if (Global.flags[0] == 1 ? FlxG.keys.justPressed.LEFT : FlxG.keys.justPressed.UP)
 			changeOption(-1);
 
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
@@ -177,7 +177,7 @@ class Intro extends FlxState
 
 	private function changeOption(num:Int = 0):Void
 	{
-		selected = Global.hasName ? FlxMath.wrap(selected + num, 0, choices.length - 1) : Math.floor(FlxMath.bound(selected + num, 0, choices.length - 1));
+		selected = Global.flags[0] == 1 ? FlxMath.wrap(selected + num, 0, choices.length - 1) : Math.floor(FlxMath.bound(selected + num, 0, choices.length - 1));
 
 		items.forEach(function(spr:FlxText)
 		{
