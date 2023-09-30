@@ -136,7 +136,7 @@ class Naming extends FlxState
 								return;
 
 							Global.name = name.text;
-							Global.hasName = true;
+							Global.flags[0] = 1;
 							Global.save();
 
 							FlxG.resetGame();
