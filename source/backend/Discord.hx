@@ -9,8 +9,13 @@ import sys.thread.Thread;
 
 class Discord
 {
+	public static var initialized(default, null):Bool = false;
+
 	public static function load():Void
 	{
+		if (initialized)
+			return;
+
 		var handlers:DiscordEventHandlers = DiscordEventHandlers.create();
 		handlers.ready = cpp.Function.fromStaticFunction(onReady);
 		handlers.disconnected = cpp.Function.fromStaticFunction(onDisconnected);
@@ -33,6 +38,8 @@ class Discord
 		});
 
 		Lib.application.onExit.add((exitCode:Int) -> RichPresence.Shutdown());
+
+		initialized = true;
 	}
 
 	public static function changePresence(details:String, ?state:String):Void
