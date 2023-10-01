@@ -3,7 +3,9 @@ package states;
 import backend.AssetPaths;
 import backend.Data;
 import backend.Global;
+#if debug
 import backend.Macros;
+#end
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
@@ -74,13 +76,11 @@ class Intro extends FlxState
 			var instructions:FlxText = new FlxText(170, 40, 0, '', 32);
 
 			instructions.text += ' --- Instruction --- ';
-
 			instructions.text += '\n\n';
 			instructions.text += '[${Data.binds['confirm']}] - Confirm\n';
 			instructions.text += '[${Data.binds['cancel']}] - Cancel\n';
 			instructions.text += '[${Data.binds['menu']}] - Menu (In-Game)\n';
 			instructions.text += '\n\n';
-
 			instructions.text += 'When HP is 0, you lose.';
 
 			instructions.font = AssetPaths.font('DTM-Sans');
@@ -128,7 +128,7 @@ class Intro extends FlxState
 
 		add(items);
 
-		#if !debug
+		#if debug
 		var info:FlxText = new FlxText(0, FlxG.height - 40, 0,
 			'UTF v${Lib.application.meta['version']} (c) MAJigsaw77 2023\nCommit ${Macros.getCommitNumber()} (${Macros.getCommitHash()})', 16);
 		#else
