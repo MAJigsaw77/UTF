@@ -61,7 +61,7 @@ class Main extends Sprite
 		FlxG.signals.gameResized.add(onResizeGame);
 		FlxG.signals.preStateCreate.add(onPreStateCreate);
 
-		// Run the garbage colector on after the state switched...
+		// Run the garbage colector after the state switched...
 		FlxG.signals.postStateSwitch.add(System.gc);
 		
 		addChild(new FlxGame(640, 480, Startup, 30, 30));
@@ -197,11 +197,6 @@ class Main extends Sprite
 
 	private inline function onPreStateCreate(state:FlxState):Void
 	{
-		#if MODS
-		// Clear the loaded assets from polymod...
-		Polymod.clearCache();
-		#end
-
 		var cache:AssetCache = cast(Assets.cache, AssetCache);
 
 		// Clear the loaded graphics if they are no longer in flixel cache...
@@ -216,5 +211,10 @@ class Main extends Sprite
 		// Clear all the loaded fonts from the cache...
 		for (key in cache.font.keys())
 			cache.font.remove(key);
+
+		#if MODS
+		// Clear the loaded assets from polymod...
+		Polymod.clearCache();
+		#end
 	}
 }
