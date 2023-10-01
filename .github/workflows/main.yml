@@ -20,22 +20,15 @@ jobs:
         uses: actions/cache/restore@main
         with:
           path: |
-            ~/haxelib
+            .haxelib
             export/windows/haxe
             export/windows/obj
           key: cache-windows-build
 
       - name: Installing Libraries
         run: |
-          haxelib setup ~/haxelib
-          haxelib install hxcpp --quiet
-          haxelib install lime --quiet
-          haxelib install openfl --quiet
-          haxelib install flixel --quiet
-          haxelib install flixel-addons --quiet
-          haxelib install hxdiscord_rpc --quiet
-          haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
-          haxelib git polymod https://github.com/larsiusprime/polymod.git develop --quiet
+          haxelib install hmm
+          haxelib run hmm install
 
       - name: Building
         run: haxelib run lime build windows -debug
@@ -72,7 +65,7 @@ jobs:
         uses: actions/cache/save@main
         with:
           path: |
-            ~/haxelib
+            .haxelib
             export/windows/haxe
             export/windows/obj
           key: cache-windows-build
@@ -100,22 +93,15 @@ jobs:
         uses: actions/cache/restore@main
         with:
           path: |
-            ~/haxelib
+            .haxelib
             export/macos/haxe
             export/macos/obj
           key: cache-macos-build
 
       - name: Installing Libraries
         run: |
-          haxelib setup ~/haxelib
-          haxelib install hxcpp --quiet
-          haxelib install lime --quiet
-          haxelib install openfl --quiet
-          haxelib install flixel --quiet
-          haxelib install flixel-addons --quiet
-          haxelib install hxdiscord_rpc --quiet
-          haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
-          haxelib git polymod https://github.com/larsiusprime/polymod.git develop --quiet
+          haxelib install hmm
+          haxelib run hmm install
 
       - name: Building
         run: haxelib run lime build mac -debug
@@ -152,7 +138,7 @@ jobs:
         uses: actions/cache/save@main
         with:
           path: |
-            ~/haxelib
+            .haxelib
             export/macos/haxe
             export/macos/obj
           key: cache-macos-build
@@ -180,22 +166,15 @@ jobs:
         uses: actions/cache/restore@main
         with:
           path: |
-            ~/haxelib
+            .haxelib
             export/linux/haxe
             export/linux/obj
           key: cache-linux-build
 
       - name: Installing Libraries
         run: |
-          haxelib setup ~/haxelib
-          haxelib install hxcpp --quiet
-          haxelib install lime --quiet
-          haxelib install openfl --quiet
-          haxelib install flixel --quiet
-          haxelib install flixel-addons --quiet
-          haxelib install hxdiscord_rpc --quiet
-          haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
-          haxelib git polymod https://github.com/larsiusprime/polymod.git develop --quiet 
+          haxelib install hmm
+          haxelib run hmm install 
 
       - name: Building
         run: haxelib run lime build linux -debug
@@ -232,7 +211,7 @@ jobs:
         uses: actions/cache/save@main
         with:
           path: |
-            ~/haxelib
+            .haxelib
             export/linux/haxe
             export/linux/obj
           key: cache-linux-build
@@ -250,6 +229,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
+      - name: Setup Android NDK
+        id: setup-ndk
+        uses: nttld/setup-ndk@main
+        with:
+          ndk-version: r21e
+
       - name: Setup Java
         uses: actions/setup-java@main
         with:
@@ -266,28 +251,15 @@ jobs:
         uses: actions/cache/restore@main
         with:
           path: |
-            ~/haxelib
+            .haxelib
             export/android/haxe
             export/android/obj
           key: cache-android-build
 
       - name: Installing Libraries
         run: |
-          haxelib setup ~/haxelib
-          haxelib git hxcpp https://github.com/HaxeFoundation/hxcpp.git --quiet
-          haxelib install lime --quiet
-          haxelib install openfl --quiet
-          haxelib install flixel --quiet
-          haxelib install flixel-addons --quiet
-          haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
-          haxelib git polymod https://github.com/larsiusprime/polymod.git develop --quiet
-          haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git --quiet
-
-      - name: Setup Git hxcpp
-        run: |
-          cd $(haxelib libpath hxcpp)/tools/hxcpp
-          haxe compile.hxml
-          cd ${{github.workspace}}
+          haxelib install hmm
+          haxelib run hmm install
 
       - name: Configure Android
         run: |
@@ -296,6 +268,8 @@ jobs:
           haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_HOME
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Building
         run: haxelib run lime build android -debug
@@ -332,7 +306,7 @@ jobs:
         uses: actions/cache/save@main
         with:
           path: |
-            ~/haxelib
+            .haxelib
             export/android/haxe
             export/android/obj
           key: cache-android-build
