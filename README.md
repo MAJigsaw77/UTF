@@ -18,7 +18,9 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 
 ### Licensing
 
-**UTF** is made available under the **Apache 2.0 License**. Check [LICENSE](./LICENSE) for more information.
+**UTF** is made available under the **Apache 2.0 License**.
+
+Check [LICENSE](./LICENSE) for more information.
 
 ### Credits
 
@@ -28,4 +30,3 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 | ![](https://avatars.githubusercontent.com/u/77043862?s=64) | [MAJigsaw77](https://github.com/MAJigsaw77) | Creator of **UTF**.
 | ![](https://avatars.githubusercontent.com/u/45212377?s=64) | [CrowPlexus](https://github.com/CrowPlexus) | Programmer.
 | ![](https://avatars.githubusercontent.com/u/23155359?s=64) | [Ne_Eo](https://github.com/NeeEoo) | Programmer.
-
