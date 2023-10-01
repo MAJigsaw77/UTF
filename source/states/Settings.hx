@@ -14,6 +14,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import openfl.filters.BitmapFilter;
 import states.ButtonConfig;
 import states.Intro;
 
@@ -202,8 +203,12 @@ class Settings extends FlxTransitionableState
 						}
 					});
 
+					final filters:Array<BitmapFilter> = [];
+
 					if (Data.settings['filter'] != 'none' && Data.filters.exists(Data.settings['filter']))
-						FlxG.game.setFilters([Data.filters[Data.settings['filter']]]);
+						filters.push(Data.filters[Data.settings['filter']]);
+
+					FlxG.game.setFilters(filters);
 			}
 
 			Data.save();
