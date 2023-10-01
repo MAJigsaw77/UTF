@@ -52,7 +52,8 @@ class Writer extends FlxTypeText
 
 		sounds = [FlxG.sound.load(AssetPaths.sound(dialogue.typer.sound.name), dialogue.typer.sound.volume)];
 
-		font = AssetPaths.font(dialogue.typer.font.name);
+		if (font != AssetPaths.font(dialogue.typer.font.name))
+			font = AssetPaths.font(dialogue.typer.font.name);
 
 		if (size != dialogue.typer.font.size)
 			size = dialogue.typer.font.size;
