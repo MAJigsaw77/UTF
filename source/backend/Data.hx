@@ -36,15 +36,7 @@ class Data
 		if (!save.isEmpty())
 		{
 			if (save.data.settings != null)
-			{
 				settings = save.data.settings;
-
-				Main.fps.visible = settings['fps'];
-
-				// If the filter got modified or is `none` it won't set anything.
-				if (settings['filter'] != 'none' && filters.exists(settings['filter']))
-					FlxG.game.setFilters([filters[settings['filter']]]);
-			}
 
 			if (save.data.binds != null)
 				binds = save.data.binds;
