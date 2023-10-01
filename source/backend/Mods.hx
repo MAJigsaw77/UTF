@@ -3,6 +3,7 @@ package backend;
 import flixel.FlxG;
 import polymod.backends.PolymodAssets;
 import polymod.Polymod;
+import openfl.Lib;
 import sys.FileSystem;
 
 class Mods
@@ -32,17 +33,13 @@ class Mods
 			dirs: getModDirs(),
 			framework: OPENFL,
 			ignoredFiles: Polymod.getDefaultIgnoreList(),
-			extensionMap: ['frag' => TEXT, 'vert' => TEXT]
+			extensionMap: ['frag' => TEXT, 'vert' => TEXT],
+			apiVersion: Lib.application.meta['version']
 		});
 	}
 
 	private static function getModDirs():Array<String>
 	{
-		final modIds:Array<String> = [];
-
-		for (mod in Polymod.scan({modRoot: 'mods'}))
-			modIds.push(mod.id);
-
-		return modIds;
+		return [for (mod in Polymod.scan({modRoot: 'mods'})) mod.id];
 	}
 }
