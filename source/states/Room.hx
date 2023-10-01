@@ -5,6 +5,7 @@ import backend.Global;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
+import flixel.util.FlxTimer:
 import flixel.FlxG;
 import flixel.FlxSprite;
 import haxe.io.Path;
