@@ -20,20 +20,20 @@ jobs:
         uses: actions/cache/restore@main
         with:
           path: |
-            .haxelib
+            ~/haxelib
             export/windows/haxe
             export/windows/obj
           key: cache-windows-build
 
       - name: Installing Libraries
         run: |
+          haxelib setup ~/haxelib
           haxelib install hxcpp --quiet
           haxelib install lime --quiet
           haxelib install openfl --quiet
           haxelib install flixel --quiet
           haxelib install flixel-addons --quiet
           haxelib install hxdiscord_rpc --quiet
-
           haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
           haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet
 
@@ -72,7 +72,7 @@ jobs:
         uses: actions/cache/save@main
         with:
           path: |
-            .haxelib
+            ~/haxelib
             export/windows/haxe
             export/windows/obj
           key: cache-windows-build
@@ -100,20 +100,20 @@ jobs:
         uses: actions/cache/restore@main
         with:
           path: |
-            .haxelib
+            ~/haxelib
             export/macos/haxe
             export/macos/obj
           key: cache-macos-build
 
       - name: Installing Libraries
         run: |
+          haxelib setup ~/haxelib
           haxelib install hxcpp --quiet
           haxelib install lime --quiet
           haxelib install openfl --quiet
           haxelib install flixel --quiet
           haxelib install flixel-addons --quiet
           haxelib install hxdiscord_rpc --quiet
-
           haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
           haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet
 
@@ -152,7 +152,7 @@ jobs:
         uses: actions/cache/save@main
         with:
           path: |
-            .haxelib
+            ~/haxelib
             export/macos/haxe
             export/macos/obj
           key: cache-macos-build
@@ -180,20 +180,20 @@ jobs:
         uses: actions/cache/restore@main
         with:
           path: |
-            .haxelib
+            ~/haxelib
             export/linux/haxe
             export/linux/obj
           key: cache-linux-build
 
       - name: Installing Libraries
         run: |
+          haxelib setup ~/haxelib
           haxelib install hxcpp --quiet
           haxelib install lime --quiet
           haxelib install openfl --quiet
           haxelib install flixel --quiet
           haxelib install flixel-addons --quiet
           haxelib install hxdiscord_rpc --quiet
-
           haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
           haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet 
 
@@ -232,7 +232,7 @@ jobs:
         uses: actions/cache/save@main
         with:
           path: |
-            .haxelib
+            ~/haxelib
             export/linux/haxe
             export/linux/obj
           key: cache-linux-build
@@ -266,20 +266,19 @@ jobs:
         uses: actions/cache/restore@main
         with:
           path: |
-            .haxelib
+            ~/haxelib
             export/android/haxe
             export/android/obj
           key: cache-android-build
 
       - name: Installing Libraries
         run: |
+          haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/HaxeFoundation/hxcpp.git --quiet
-
           haxelib install lime --quiet
           haxelib install openfl --quiet
           haxelib install flixel --quiet
           haxelib install flixel-addons --quiet
-
           haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
           haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git --quiet
@@ -333,7 +332,7 @@ jobs:
         uses: actions/cache/save@main
         with:
           path: |
-            .haxelib
+            ~/haxelib
             export/android/haxe
             export/android/obj
           key: cache-android-build
