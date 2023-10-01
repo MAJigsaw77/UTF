@@ -56,15 +56,20 @@
 	<haxedef name="FLX_NO_MOUSE" if="mobile" />
 	<haxedef name="FLX_NO_TOUCH" if="desktop" />
 
-	<haxedef name="HXCPP_CHECK_POINTER" if="cpp" />
-	<haxedef name="HXCPP_STACK_LINE" if="cpp" />
-	<haxedef name="HXCPP_STACK_TRACE" if="cpp" />
+	<section if="cpp">
+		<haxedef name="HXCPP_CHECK_POINTER" if="cpp" />
+		<haxedef name="HXCPP_STACK_LINE" if="cpp" />
+		<haxedef name="HXCPP_STACK_TRACE" if="cpp" />
+	</section>
 
 	<haxedef name="DISCORD_DISABLE_IO_THREAD" if="DISCORD" />
 
-	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="meta.json" if="MODS" />
-	<haxedef name="POLYMOD_MOD_PACK_FILE" value="pack.txt" if="MODS" />
-	<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon.png" if="MODS" />
+	<section if="MODS">
+		<haxedef name="POLYMOD_DEBUG" value="true" if="debug" />
+		<haxedef name="POLYMOD_MOD_METADATA_FILE" value="meta.json" />
+		<haxedef name="POLYMOD_MOD_PACK_FILE" value="pack.txt" />
+		<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon.png" />
+	</section>
 
 	<haxeflag name="-dce" value="no" />
 
