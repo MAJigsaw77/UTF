@@ -14,13 +14,10 @@ typedef DialogueData =
 	text:String
 }
 
-/**
- * Helper class for dialogue text
- */
 class Writer extends FlxTypeText
 {
-	public var skippable:Bool = true;
 	public var finished(default, null):Bool = false;
+	public var skippable:Bool = true;
 
 	@:noCompletion
 	private var dialogueList:Array<DialogueData> = [];
@@ -62,7 +59,7 @@ class Writer extends FlxTypeText
 		start(dialogue.typer.speed / 100, true);
 	}
 
-	override function update(elapsed:Float):Void
+	override public function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && !finished && skippable)
 		{
