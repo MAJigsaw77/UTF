@@ -2,6 +2,7 @@ package backend;
 
 import flixel.FlxG;
 import polymod.backends.PolymodAssets;
+import polymod.util.VersionUtil;
 import polymod.Polymod;
 import openfl.Lib;
 import sys.FileSystem;
@@ -34,7 +35,7 @@ class Mods
 			framework: OPENFL,
 			ignoredFiles: Polymod.getDefaultIgnoreList(),
 			extensionMap: ['frag' => TEXT, 'vert' => TEXT],
-			apiVersion: Lib.application.meta['version']
+			apiVersionRule: VersionUtil.anyPatch(Lib.application.meta['version'])
 		});
 	}
 
