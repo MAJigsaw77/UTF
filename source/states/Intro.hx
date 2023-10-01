@@ -28,7 +28,7 @@ class Intro extends FlxState
 	{
 		if (Global.flags[0] == 1)
 		{
-			// FlxG.sound.playMusic(AssetPaths.music('menu1'));
+			FlxG.sound.playMusic(AssetPaths.music('menu1'));
 
 			var bg:FlxSprite = new FlxSprite(0, -240, AssetPaths.background('floweyglow'));
 			bg.scale.set(2, 2);
@@ -69,16 +69,18 @@ class Intro extends FlxState
 		}
 		else
 		{
-			// FlxG.sound.playMusic(AssetPaths.music('menu0'));
+			FlxG.sound.playMusic(AssetPaths.music('menu0'));
 
-			var instructions:FlxText = new FlxText(170, 40, 0, ' --- Instruction --- ', 32);
+			var instructions:FlxText = new FlxText(170, 40, 0, '', 32);
+
+			instructions.text += ' --- Instruction --- ';
 
 			instructions.text += '\n\n';
 			instructions.text += '[${Data.binds['confirm']}] - Confirm\n';
 			instructions.text += '[${Data.binds['cancel']}] - Cancel\n';
 			instructions.text += '[${Data.binds['menu']}] - Menu (In-Game)\n';
-			instructions.text += '[F4] - FullScreen\n';
-			instructions.text += '[Hold ${Data.binds['cancel']}] - Quit\n';
+			instructions.text += '\n\n';
+
 			instructions.text += 'When HP is 0, you lose.';
 
 			instructions.font = AssetPaths.font('DTM-Sans');
