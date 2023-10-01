@@ -36,26 +36,20 @@ class Data
 		if (!save.isEmpty())
 		{
 			if (save.data.settings != null)
+			{
 				settings = save.data.settings;
+
+				Main.fps.visible = settings['fps'];
+
+				// If the filter got modified or is `none` it won't set anything.
+				if (settings['filter'] != 'none' && filters.exists(settings['filter']))
+					FlxG.game.setFilters([filters[settings['filter']]]);
+			}
 
 			if (save.data.binds != null)
 				binds = save.data.binds;
 		}
 
 		save.destroy();
-	}
-
-	public static function loadFilters():Void
-	{
-		var filters:Array<BitmapFilter> = [];
-
-		// If the filter got modified or is `none` it won't set anything.
-		if (Data.settings.get('filter') != null && Data.settings.get('filter') != 'none')
-		{
-			if (Data.filters.exists(Data.settings.get('filter')))
-			    filters[0] = Data.filters.get(Data.settings.get('filter'));
-		}
-
-		FlxG.game.setFilters(filters);
 	}
 }
