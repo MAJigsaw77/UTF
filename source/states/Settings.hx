@@ -17,10 +17,12 @@ import flixel.FlxSprite;
 import states.ButtonConfig;
 import states.Intro;
 
+using StringTools;
+
 class Settings extends FlxTransitionableState
 {
 	var selected:Int = 0;
-	final options:Array<String> = ['Exit', 'FPS Overlay', 'Button Config'];
+	final options:Array<String> = ['Exit', 'FPS Overlay', 'Button Config', 'Filter'];
 	var items:FlxTypedGroup<FlxText>;
 
 	var particles:FlxEmitter;
@@ -77,6 +79,14 @@ class Settings extends FlxTransitionableState
 		for (i in 0...options.length)
 		{
 			var opt:FlxText = new FlxText(40, i == 0 ? 80 : (120 + i * 32), 0, options[i].toUpperCase(), 32);
+
+			switch (options[i])
+			{
+				case 'Filter':
+					opt.text += ': ${Data.settings['filter']}';
+					opt.text.toUpperCase();
+			}
+
 			opt.font = AssetPaths.font('DTM-Sans');
 			opt.ID = i;
 			opt.scrollFactor.set();
@@ -163,12 +173,37 @@ class Settings extends FlxTransitionableState
 			{
 				case 'Exit':
 					FlxG.switchState(new Intro());
-				case 'Button Config':
-					FlxG.switchState(new ButtonConfig());
 				case 'FPS Overlay':
 					Data.settings['fps'] = !Data.settings['fps'];
 
-					Main.fps.visible = Data.settings.get('fps');
+					if (Main.fps != null)
+						Main.fps.visible = Data.settings['fps'];
+				case 'Button Config':
+					FlxG.switchState(new ButtonConfig());
+				case 'Filters':
+					switch (Data.settings['filter'])
+					{
+						case 'none':
+							Data.settings['filter'] = 'deuteranopia';
+						case 'deuteranopia':
+							Data.settings['filter'] = 'protanopia';
+						case 'protanopia':
+							Data.settings['filter'] = 'pritanopia';
+						case 'pritanopia':
+							Data.settings['filter'] = 'none';
+					}
+
+					items.forEach(function(spr:FlxText)
+					{
+						if (options[spr.ID] == 'Filter')
+						{
+							spr.text = 'Filter: ${Data.settings['filter']}';
+							spr.text.toUpperCase();
+						}
+					});
+
+					if (Data.settings['filter'] != 'none' && Data.filters.exists(Data.settings['filter']))
+						FlxG.game.setFilters([Data.filters[Data.settings['filter']]]);
 			}
 
 			Data.save();
