@@ -84,8 +84,7 @@ class Settings extends FlxTransitionableState
 			switch (options[i])
 			{
 				case 'Filter':
-					opt.text += ': ${Data.settings['filter']}';
-					opt.text.toUpperCase();
+					opt.text += ': ${Data.settings['filter']}'.toUpperCase();
 			}
 
 			opt.font = AssetPaths.font('DTM-Sans');
@@ -181,7 +180,7 @@ class Settings extends FlxTransitionableState
 						Main.fps.visible = Data.settings['fps'];
 				case 'Button Config':
 					FlxG.switchState(new ButtonConfig());
-				case 'Filters':
+				case 'Filter':
 					switch (Data.settings['filter'])
 					{
 						case 'none':
@@ -197,10 +196,7 @@ class Settings extends FlxTransitionableState
 					items.forEach(function(spr:FlxText)
 					{
 						if (options[spr.ID] == 'Filter')
-						{
-							spr.text = 'Filter: ${Data.settings['filter']}';
-							spr.text.toUpperCase();
-						}
+							spr.text = 'Filter: ${Data.settings['filter']}'.toUpperCase();
 					});
 
 					final filters:Array<BitmapFilter> = [];
