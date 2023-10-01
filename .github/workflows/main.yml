@@ -27,8 +27,15 @@ jobs:
 
       - name: Installing Libraries
         run: |
-          haxelib install hmm
-          haxelib run hmm install
+          haxelib install hxcpp --quiet
+          haxelib install lime --quiet
+          haxelib install openfl --quiet
+          haxelib install flixel --quiet
+          haxelib install flixel-addons --quiet
+          haxelib install hxdiscord_rpc --quiet
+
+          haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
+          haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet
 
       - name: Building
         run: haxelib run lime build windows -debug
@@ -100,8 +107,15 @@ jobs:
 
       - name: Installing Libraries
         run: |
-          haxelib install hmm
-          haxelib run hmm install
+          haxelib install hxcpp --quiet
+          haxelib install lime --quiet
+          haxelib install openfl --quiet
+          haxelib install flixel --quiet
+          haxelib install flixel-addons --quiet
+          haxelib install hxdiscord_rpc --quiet
+
+          haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
+          haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet
 
       - name: Building
         run: haxelib run lime build mac -debug
@@ -173,8 +187,15 @@ jobs:
 
       - name: Installing Libraries
         run: |
-          haxelib install hmm
-          haxelib run hmm install 
+          haxelib install hxcpp --quiet
+          haxelib install lime --quiet
+          haxelib install openfl --quiet
+          haxelib install flixel --quiet
+          haxelib install flixel-addons --quiet
+          haxelib install hxdiscord_rpc --quiet
+
+          haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
+          haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet 
 
       - name: Building
         run: haxelib run lime build linux -debug
@@ -252,12 +273,19 @@ jobs:
 
       - name: Installing Libraries
         run: |
-          haxelib install hmm
-          haxelib run hmm install
+          haxelib git hxcpp https://github.com/HaxeFoundation/hxcpp.git --quiet
+
+          haxelib install lime --quiet
+          haxelib install openfl --quiet
+          haxelib install flixel --quiet
+          haxelib install flixel-addons --quiet
+
+          haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
+          haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet
+          haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git --quiet
 
       - name: Setup Git hxcpp
         run: |
-          haxelib git hxcpp https://github.com/HaxeFoundation/hxcpp.git --quiet
           cd $(haxelib libpath hxcpp)/tools/hxcpp
           haxe compile.hxml
           cd ${{github.workspace}}
