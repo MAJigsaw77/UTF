@@ -31,6 +31,8 @@ class Settings extends FlxTransitionableState
 	{
 		FlxTransitionableState.skipNextTransOut = true;
 
+		persistentUpdate = true; // Mostly for particles shit.
+
 		var weatherMusic:String = AssetPaths.music('options_fall');
 
 		switch (Util.getWeather())
