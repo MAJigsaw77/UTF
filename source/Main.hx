@@ -174,10 +174,10 @@ class Main extends Sprite
 		{
 			for (camera in FlxG.cameras.list)
 			{
-				@:privateAccess
 				if (camera != null && (camera.filters != null && camera.filters.length > 0))
 				{
 					// Shout out to Ne_Eo for bringing this to my attention.
+					@:privateAccess
 					if (camera.flashSprite != null)
 					{
 						camera.flashSprite.__cacheBitmap = null;
