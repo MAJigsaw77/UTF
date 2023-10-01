@@ -26,12 +26,12 @@ class Chara extends FlxSprite
 		animation.addByPrefix('left', 'chara left', 6, false);
 		animation.addByPrefix('right', 'chara right', 6, false);
 		animation.addByPrefix('up', 'chara up', 6, false);
-
 		animation.play(facing);
+
 		animation.finish();
 	}
 
-	override function update(elapsed:Float):Void
+	override public function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.pressed.DOWN)
 		{
