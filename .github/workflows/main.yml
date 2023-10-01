@@ -229,13 +229,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
 
-      - name: Setup Android NDK
-        id: setup-ndk
-        uses: nttld/setup-ndk@main
-        with:
-          ndk-version: r21e
-
-      - name: Setup Java JDK
+      - name: Setup Java
         uses: actions/setup-java@main
         with:
           java-version: '11'
@@ -261,6 +255,13 @@ jobs:
           haxelib install hmm
           haxelib run hmm install
 
+      - name: Setup Git hxcpp
+        run: |
+          haxelib git hxcpp https://github.com/HaxeFoundation/hxcpp.git --quiet
+          cd $(haxelib libpath hxcpp)/tools/hxcpp
+          haxe compile.hxml
+          cd ${{github.workspace}}
+
       - name: Configure Android
         run: |
           haxelib run lime setup -alias -y
@@ -268,8 +269,6 @@ jobs:
           haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_HOME
           haxelib run lime config JAVA_HOME $JAVA_HOME
           haxelib run lime config ANDROID_SETUP true
-        env:
-          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Building
         run: haxelib run lime build android -debug
