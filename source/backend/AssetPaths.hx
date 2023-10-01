@@ -76,7 +76,7 @@ class AssetPaths
 		{
 			for (frame in sheet.frames)
 			{
-				var file:String = AssetPaths.sprite(sheet.path + '_$frame');
+				final file:String = AssetPaths.sprite(sheet.path + '_$frame');
 
 				if (Assets.exists(file, IMAGE))
 					atlas.addNode(Assets.getBitmapData(file, false), sheet.animation + frame);
