@@ -5,7 +5,6 @@ import backend.Global;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
-import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import haxe.io.Path;
@@ -111,6 +110,7 @@ class Room extends FlxTransitionableState
 			}
 
 			object.immovable = true;
+			object.solid = true;
 			objects.add(object);
 		}
 
@@ -163,9 +163,6 @@ class Room extends FlxTransitionableState
 
 	private function playerOverlapDoors(object:Chara, group:FlxTypedGroup<FlxSprite>):Void
 	{
-		new FlxTimer().start(0.5, function(tmr:FlxTimer)
-		{
-			FlxG.switchState(new GameOver());
-		});
+		FlxG.switchState(new GameOver());
 	}
 }
