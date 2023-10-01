@@ -188,8 +188,8 @@ class Settings extends FlxTransitionableState
 						case 'deuteranopia':
 							Data.settings['filter'] = 'protanopia';
 						case 'protanopia':
-							Data.settings['filter'] = 'pritanopia';
-						case 'pritanopia':
+							Data.settings['filter'] = 'tritanopia';
+						case 'tritanopia':
 							Data.settings['filter'] = 'none';
 					}
 
