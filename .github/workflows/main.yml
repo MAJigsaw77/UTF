@@ -35,7 +35,7 @@ jobs:
           haxelib install flixel-addons --quiet
           haxelib install hxdiscord_rpc --quiet
           haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
-          haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet
+          haxelib git polymod https://github.com/larsiusprime/polymod.git develop --quiet
 
       - name: Building
         run: haxelib run lime build windows -debug
@@ -115,7 +115,7 @@ jobs:
           haxelib install flixel-addons --quiet
           haxelib install hxdiscord_rpc --quiet
           haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
-          haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet
+          haxelib git polymod https://github.com/larsiusprime/polymod.git develop --quiet
 
       - name: Building
         run: haxelib run lime build mac -debug
@@ -195,7 +195,7 @@ jobs:
           haxelib install flixel-addons --quiet
           haxelib install hxdiscord_rpc --quiet
           haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
-          haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet 
+          haxelib git polymod https://github.com/larsiusprime/polymod.git develop --quiet 
 
       - name: Building
         run: haxelib run lime build linux -debug
@@ -280,7 +280,7 @@ jobs:
           haxelib install flixel --quiet
           haxelib install flixel-addons --quiet
           haxelib git hscript https://github.com/HaxeFoundation/hscript.git --quiet
-          haxelib git polymod https://github.com/larsiusprime/polymod.git --quiet
+          haxelib git polymod https://github.com/larsiusprime/polymod.git develop --quiet
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git --quiet
 
       - name: Setup Git hxcpp
