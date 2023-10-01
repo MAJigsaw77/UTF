@@ -31,6 +31,8 @@ class Startup extends FlxState
 		Mods.load();
 		#end
 
+		FlxG.game.focusLostFramerate = FlxG.updateFramerate;
+
 		if (FlxG.save.data.volume != null)
 			FlxG.sound.volume = FlxG.save.data.volume;
 
