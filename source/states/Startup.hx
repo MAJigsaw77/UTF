@@ -33,6 +33,9 @@ class Startup extends FlxState
 
 		FlxG.game.focusLostFramerate = FlxG.updateFramerate;
 
+		if (Data.settings['filter'] != 'none' && Data.filters.exists(Data.settings['filter']))
+			FlxG.game.setFilters([Data.filters[Data.settings['filter']]]);
+
 		if (FlxG.save.data.volume != null)
 			FlxG.sound.volume = FlxG.save.data.volume;
 
