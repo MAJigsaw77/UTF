@@ -7,19 +7,20 @@ const int EFFECT_TYPE_HEAT_WAVE_VERTICAL = 3;
 const int EFFECT_TYPE_FLAG = 4;
 
 uniform int uEffectType;
+
+uniform float uFrequency;
 uniform float uTime;
 uniform float uSpeed;
-uniform float uFrequency;
 uniform float uWaveAmplitude;
 
-vec2 wave(vec2 uv)
+vec2 sinWave(vec2 uv)
 {
 	vec2 position = vec2(0.0, 0.0);
 
 	if (uEffectType == EFFECT_TYPE_DREAMY)
-		pt.x += sin(uv.y * uFrequency + uTime * uSpeed) * uWaveAmplitude;
+		uv.x += sin(uv.y * uFrequency + uTime * uSpeed) * uWaveAmplitude;
 	else if (uEffectType == EFFECT_TYPE_WAVY)
-		pt.y += sin(uv.x * uFrequency + uTime * uSpeed) * uWaveAmplitude;
+		uv.y += sin(uv.x * uFrequency + uTime * uSpeed) * uWaveAmplitude;
 	else if (uEffectType == EFFECT_TYPE_HEAT_WAVE_HORIZONTAL)
 		position.x = sin(uv.x * uFrequency + uTime * uSpeed) * uWaveAmplitude;
 	else if (uEffectType == EFFECT_TYPE_HEAT_WAVE_VERTICAL)
@@ -35,5 +36,5 @@ vec2 wave(vec2 uv)
 
 void main(void)
 {
-	gl_FragColor = texture2D(bitmap, wave(openfl_TextureCoordv));
+	gl_FragColor = texture2D(bitmap, sinWave(openfl_TextureCoordv));
 }
