@@ -12,37 +12,28 @@ uniform float uSpeed;
 uniform float uFrequency;
 uniform float uWaveAmplitude;
 
-vec2 sineWave(vec2 pt)
+vec2 wave(vec2 uv)
 {
-	float x = 0.0;
-	float y = 0.0;
+	vec2 position = vec2(0.0, 0.0);
 
 	if (uEffectType == EFFECT_TYPE_DREAMY)
-	{
-		pt.x += sin(pt.y * uFrequency + uTime * uSpeed) * uWaveAmplitude;
-	}
+		pt.x += sin(uv.y * uFrequency + uTime * uSpeed) * uWaveAmplitude;
 	else if (uEffectType == EFFECT_TYPE_WAVY)
-	{
-		pt.y += sin(pt.x * uFrequency + uTime * uSpeed) * uWaveAmplitude;
-	}
+		pt.y += sin(uv.x * uFrequency + uTime * uSpeed) * uWaveAmplitude;
 	else if (uEffectType == EFFECT_TYPE_HEAT_WAVE_HORIZONTAL)
-	{
-		x = sin(pt.x * uFrequency + uTime * uSpeed) * uWaveAmplitude;
-	}
+		position.x = sin(uv.x * uFrequency + uTime * uSpeed) * uWaveAmplitude;
 	else if (uEffectType == EFFECT_TYPE_HEAT_WAVE_VERTICAL)
-	{
-		y = sin(pt.y * uFrequency + uTime * uSpeed) * uWaveAmplitude;
-	}
+		position.y = sin(uv.y * uFrequency + uTime * uSpeed) * uWaveAmplitude;
 	else if (uEffectType == EFFECT_TYPE_FLAG)
 	{
-		x = sin(pt.x * uFrequency + 5.0 * pt.y + uTime * uSpeed) * uWaveAmplitude;
-		y = sin(pt.y * uFrequency + 10.0 * pt.x + uTime * uSpeed) * uWaveAmplitude;
+		position.x = sin(uv.x * uFrequency + 5.0 * uv.y + uTime * uSpeed) * uWaveAmplitude;
+		position.y = sin(uv.y * uFrequency + 10.0 * uv.x + uTime * uSpeed) * uWaveAmplitude;
 	}
 
-	return vec2(pt.x + x, pt.y + y);
+	return vec2(uv.x + position.x, uv.y + position.y);
 }
 
 void main(void)
 {
-	gl_FragColor = texture2D(bitmap, sineWave(openfl_TextureCoordv));
+	gl_FragColor = texture2D(bitmap, wave(openfl_TextureCoordv));
 }
