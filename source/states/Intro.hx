@@ -155,7 +155,7 @@ class Intro extends FlxState
 
 		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
 		{
-			if (choices[selected] != 'Reset' && choices[selected] != 'Begin Game')
+			if (FlxG.sound.music.playing && (choices[selected] != 'Reset' && choices[selected] != 'Begin Game'))
 				FlxG.sound.music.stop();
 
 			switch (choices[selected])

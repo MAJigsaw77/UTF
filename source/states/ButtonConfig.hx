@@ -88,7 +88,8 @@ class ButtonConfig extends FlxState
 		}
 		else if (FlxG.keys.checkStatus(Data.binds['cancel'], JUST_PRESSED) && !keySelected)
 		{
-			FlxG.sound.music.stop();
+			if (FlxG.sound.music.playing)
+				FlxG.sound.music.stop();
 
 			FlxG.switchState(new Settings());
 		}
