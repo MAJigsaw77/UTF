@@ -59,7 +59,10 @@ class Discord
 	{
 		final user:cpp.Star<DiscordUser> = cpp.ConstPointer.fromRaw(request).ptr;
 
-		FlxG.log.notice('(Discord) Connected to User (${cast(user.username, String)}#${cast(user.discriminator, String)})');
+		if (Std.parseInt(cast(user.discriminator, String)) != 0)
+			FlxG.log.notice('(Discord) Connected to User "${cast(user.username, String)}#${cast(user.discriminator, String)}"');
+		else
+			FlxG.log.notice('(Discord) Connected to User "${cast(user.username, String)}"');
 
 		Discord.changePresence('Just Started');
 	}
