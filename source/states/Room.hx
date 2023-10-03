@@ -2,9 +2,9 @@ package states;
 
 import backend.AssetPaths;
 import backend.Global;
-#if debug
-import flixel.addons.display.FlxGridOverlay;
-#end
+// #if debug
+// import flixel.addons.display.FlxGridOverlay;
+// #end
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
@@ -50,11 +50,11 @@ class Room extends FlxTransitionableState
 
 	override function create():Void
 	{
-		#if debug
-		var grid:FlxSprite = FlxGridOverlay.create(40, 40, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')));
-		grid.scrollFactor.set();
-		add(grid);
-		#end
+		// #if debug
+		// var grid:FlxSprite = FlxGridOverlay.create(40, 40, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')));
+		// grid.scrollFactor.set();
+		// add(grid);
+		// #end
 
 		final fast:Access = new Access(data);
 
@@ -154,7 +154,6 @@ class Room extends FlxTransitionableState
 	override function update(elapsed:Float):Void
 	{
 		FlxG.collide(chara, solids);
-
 		FlxG.collide(chara, objects);
 
 		FlxG.overlap(chara, doors, playerOverlapDoors);
