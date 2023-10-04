@@ -170,7 +170,7 @@ class Main extends Sprite
 
 	private inline function onResizeGame(width:Int, height:Int):Void
 	{
-		if (FlxG.cameras != null)
+		if (FlxG.cameras != null && (FlxG.cameras.list != null && FlxG.cameras.list.length > 0))
 		{
 			for (camera in FlxG.cameras.list)
 			{
