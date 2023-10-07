@@ -30,11 +30,6 @@ class AssetPaths
 		return 'assets/data/$key.xml';
 	}
 
-	public static inline function font(key:String):String
-	{
-		return 'assets/fonts/$key.ttf';
-	}
-
 	public static inline function music(key:String):String
 	{
 		return 'assets/music/$key.ogg';
@@ -65,6 +60,16 @@ class AssetPaths
 		return 'assets/images/sprites/$key.png';
 	}
 
+	public static function font(key:String):String
+	{
+		final path:String = 'assets/fonts/$key.ttf';
+
+		if (Assets.exists(path, FONT))
+			return Assets.getFont(path).fontName;
+			
+		return null;
+	}
+
 	public static function spritesheet(data:{key:String, sheet:Array<SheetData>}):FlxAtlasFrames
 	{
 		if (data == null)
@@ -76,10 +81,10 @@ class AssetPaths
 		{
 			for (frame in sheet.frames)
 			{
-				final file:String = AssetPaths.sprite(sheet.path + '_$frame');
+				final path:String = AssetPaths.sprite(sheet.path + '_$frame');
 
-				if (Assets.exists(file, IMAGE))
-					atlas.addNode(Assets.getBitmapData(file, false), sheet.animation + frame);
+				if (Assets.exists(path, IMAGE))
+					atlas.addNode(Assets.getBitmapData(path, false), sheet.animation + frame);
 				else
 					atlas.addNode('flixel/images/logo/default.png', sheet.animation + frame);
 			}
