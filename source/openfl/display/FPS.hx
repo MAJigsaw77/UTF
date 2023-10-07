@@ -9,7 +9,6 @@ import flixel.FlxG;
 import openfl.system.System;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
-import openfl.utils.Assets;
 import openfl.Lib;
 
 class FPS extends TextField
@@ -39,7 +38,7 @@ class FPS extends TextField
 		mouseEnabled = false;
 		multiline = true;
 
-		defaultTextFormat = new TextFormat(Assets.getFont(AssetPaths.font('DTM-Sans'), false).fontName, 16, color);
+		defaultTextFormat = new TextFormat(AssetPaths.font('DTM-Sans'), 16, color);
 	}
 
 	// Overrides
