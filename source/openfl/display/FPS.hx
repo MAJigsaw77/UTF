@@ -38,7 +38,11 @@ class FPS extends TextField
 		mouseEnabled = false;
 		multiline = true;
 
+		#if mobile
+		defaultTextFormat = new TextFormat(AssetPaths.font('DTM-Sans'), Std.int(16 * Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height)), color);
+		#else
 		defaultTextFormat = new TextFormat(AssetPaths.font('DTM-Sans'), 16, color);
+		#end
 	}
 
 	// Overrides
