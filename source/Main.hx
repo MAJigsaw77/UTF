@@ -15,13 +15,13 @@ import haxe.Log;
 #if hl
 import hl.Api;
 #end
-import lime.system.System;
+import lime.system.System as LimeSystem;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.errors.Error;
 import openfl.events.ErrorEvent;
 import openfl.events.UncaughtErrorEvent;
-import openfl.system.System;
+import openfl.system.System as OpenFLSystem;
 import openfl.utils.AssetCache;
 import openfl.utils.Assets;
 import openfl.Lib;
@@ -47,7 +47,7 @@ class Main extends Sprite
 		#if android
 		Sys.setCwd(Path.addTrailingSlash(Context.getExternalFilesDir()));
 		#elseif (ios || switch)
-		Sys.setCwd(System.applicationStorageDirectory);
+		Sys.setCwd(LimeSystem.applicationStorageDirectory);
 		#end
 
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
@@ -62,7 +62,7 @@ class Main extends Sprite
 		FlxG.signals.preStateCreate.add(onPreStateCreate);
 
 		// Run the garbage colector after the state switched...
-		FlxG.signals.postStateSwitch.add(System.gc);
+		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
 		
 		addChild(new FlxGame(640, 480, Startup, 30, 30));
 
@@ -125,7 +125,7 @@ class Main extends Sprite
 
 		Log.trace(msg, null);
 		Lib.application.window.alert(msg, 'Error!');
-		System.exit(1);
+		LimeSystem.exit(1);
 	}
 
 	private inline function onCriticalError(error:Dynamic):Void
@@ -165,7 +165,7 @@ class Main extends Sprite
 
 		Log.trace(msg, null);
 		Lib.application.window.alert(msg, 'Error!');
-		System.exit(1);
+		LimeSystem.exit(1);
 	}
 
 	private inline function onResizeGame(width:Int, height:Int):Void
