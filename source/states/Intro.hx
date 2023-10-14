@@ -36,6 +36,7 @@ class Intro extends FlxState
 			bg.scale.set(2, 2);
 			bg.updateHitbox();
 			bg.scrollFactor.set();
+			bg.active = false;
 			add(bg);
 
 			var flowey:FlxSprite = new FlxSprite(0, 348, AssetPaths.sprite('flowey_1'));
@@ -43,6 +44,7 @@ class Intro extends FlxState
 			flowey.updateHitbox();
 			flowey.screenCenter(X);
 			flowey.scrollFactor.set();
+			flowey.active = false;
 			add(flowey);
 
 			var name:FlxText = new FlxText(145, 120, 0, Global.name, 32);
