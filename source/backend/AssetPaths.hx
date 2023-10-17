@@ -4,6 +4,7 @@ import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxPoint;
 import flixel.FlxG;
+import haxe.io.Path;
 import openfl.utils.Assets;
 
 typedef SheetData =
@@ -35,16 +36,6 @@ class AssetPaths
 		return 'assets/music/$key.ogg';
 	}
 
-	public static inline function shaderFragment(key:String):String
-	{
-		return 'assets/shaders/$key.frag';
-	}
-
-	public static inline function shaderVertex(key:String):String
-	{
-		return 'assets/shaders/$key.vert';
-	}
-
 	public static inline function sound(key:String):String
 	{
 		return 'assets/sounds/$key.wav';
@@ -64,9 +55,28 @@ class AssetPaths
 	{
 		final path:String = 'assets/fonts/$key.ttf';
 
-		if (Assets.exists(path, FONT))
-			return Assets.getFont(path).fontName;
-			
+		try
+		{
+			if (Assets.exists(path, FONT))
+				return Assets.getFont(path).fontName;
+			else if (Assets.exists(Path.withoutExtension(path), FONT))
+				return Assets.getFont(Path.withoutExtension(path)).fontName;
+		}
+		catch (e:Exception)
+			FlxG.log.error(e.message);
+
+		return null;
+	}
+
+	public static inline function shader(key:String):String
+	{
+		try
+		{
+			return Assets.getText('assets/shaders/$key');
+		}
+		catch (e:Exception)
+			FlxG.log.error(e.message);
+
 		return null;
 	}
 
