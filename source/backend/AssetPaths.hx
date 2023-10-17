@@ -5,6 +5,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxPoint;
 import flixel.FlxG;
 import haxe.io.Path;
+import haxe.Exception;
 import openfl.utils.Assets;
 
 typedef SheetData =
