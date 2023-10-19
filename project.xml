@@ -38,7 +38,7 @@
 		<define name="DISCORD" if="desktop" />
 	</section>
 
-	<define name="MODS" if="desktop || mobile" />
+	<define name="MODS" unless="web" />
 
 	<!--Libraries-->
 

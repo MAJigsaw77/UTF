@@ -79,9 +79,9 @@ class Intro extends FlxState
 
 			instructions.text += ' --- Instruction --- ';
 			instructions.text += '\n\n';
-			instructions.text += '[${Data.binds['confirm']}] - Confirm\n';
-			instructions.text += '[${Data.binds['cancel']}] - Cancel\n';
-			instructions.text += '[${Data.binds['menu']}] - Menu (In-Game)\n';
+			instructions.text += '[${Data.binds.get('cancel')}] - Confirm\n';
+			instructions.text += '[${Data.binds.get('cancel')}] - Cancel\n';
+			instructions.text += '[${Data.binds.get('menu')}] - Menu (In-Game)\n';
 			instructions.text += '\n\n';
 			instructions.text += 'When HP is 0, you lose.';
 
@@ -155,7 +155,7 @@ class Intro extends FlxState
 		else if (Global.flags[0] == 1 ? FlxG.keys.justPressed.LEFT : FlxG.keys.justPressed.UP)
 			changeOption(-1);
 
-		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
+		if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED))
 		{
 			if (FlxG.sound.music.playing && (choices[selected] != 'Reset' && choices[selected] != 'Begin Game'))
 				FlxG.sound.music.stop();

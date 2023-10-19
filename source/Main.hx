@@ -74,7 +74,7 @@ class Main extends Sprite
 		#if (mobile || switch)
 		fps.scaleX = fps.scaleY = Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height);
 		#end
-		fps.visible = Data.settings['fps'];
+		fps.visible = Data.settings.get('fps');
 		addChild(fps);
 	}
 

@@ -118,7 +118,7 @@ class Naming extends FlxState
 		else if (FlxG.keys.justPressed.LEFT)
 			changeItem(-1);
 
-		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED))
+		if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED))
 		{
 			items.forEach(function(spr:FlxText)
 			{
@@ -152,7 +152,7 @@ class Naming extends FlxState
 				}
 			});
 		}
-		else if (FlxG.keys.checkStatus(Data.binds['cancel'], JUST_PRESSED))
+		else if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED))
 		{
 			if (name.text.length > 0)
 				name.text = name.text.substring(0, name.text.length - 1);

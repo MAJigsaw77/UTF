@@ -61,7 +61,7 @@ class Writer extends FlxTypeText
 
 	override public function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && !finished && skippable)
+		if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED) && !finished && skippable)
 		{
 			page++;
 

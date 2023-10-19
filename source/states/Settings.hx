@@ -84,7 +84,7 @@ class Settings extends FlxTransitionableState
 			switch (options[i])
 			{
 				case 'Filter':
-					opt.text += ': ${Data.settings['filter']}'.toUpperCase();
+					opt.text += ': ${Data.settings.get('filter')}'.toUpperCase();
 			}
 
 			opt.font = AssetPaths.font('DTM-Sans');
@@ -164,7 +164,7 @@ class Settings extends FlxTransitionableState
 		else if (FlxG.keys.justPressed.DOWN)
 			changeOption(1);
 
-		if (FlxG.keys.checkStatus(Data.binds['confirm'], JUST_PRESSED) && (FlxG.sound.music != null && FlxG.sound.music.playing))
+		if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED) && (FlxG.sound.music != null && FlxG.sound.music.playing))
 		{
 			if (FlxG.sound.music.playing && options[selected] == 'Exit')
 				FlxG.sound.music.stop();
@@ -174,35 +174,35 @@ class Settings extends FlxTransitionableState
 				case 'Exit':
 					FlxG.switchState(new Intro());
 				case 'FPS Overlay':
-					Data.settings['fps'] = !Data.settings['fps'];
+					Data.settings.get('fps'] = !Data.settings.get('fps');
 
 					if (Main.fps != null)
-						Main.fps.visible = Data.settings['fps'];
+						Main.fps.visible = Data.settings.get('fps');
 				case 'Button Config':
 					FlxG.switchState(new ButtonConfig());
 				case 'Filter':
-					switch (Data.settings['filter'])
+					switch (Data.settings.get('filter'))
 					{
 						case 'none':
-							Data.settings['filter'] = 'deuteranopia';
+							Data.settings.set('filter', 'deuteranopia');
 						case 'deuteranopia':
-							Data.settings['filter'] = 'protanopia';
+							Data.settings.set('filter', 'protanopia');
 						case 'protanopia':
-							Data.settings['filter'] = 'tritanopia';
+							Data.settings.set('filter', 'tritanopia');
 						case 'tritanopia':
-							Data.settings['filter'] = 'none';
+							Data.settings.set('filter', 'none');
 					}
 
 					items.forEach(function(spr:FlxText)
 					{
 						if (options[spr.ID] == 'Filter')
-							spr.text = 'Filter: ${Data.settings['filter']}'.toUpperCase();
+							spr.text = 'Filter: ${Data.settings.get('filter')}'.toUpperCase();
 					});
 
 					final filters:Array<BitmapFilter> = [];
 
-					if (Data.settings['filter'] != 'none' && Data.filters.exists(Data.settings['filter']))
-						filters.push(Data.filters[Data.settings['filter']]);
+					if (Data.settings.get('filter') != 'none' && Data.filters.exists(Data.settings.get('filter')))
+						filters.push(Data.filters.get(Data.settings.get('filter')));
 
 					FlxG.game.setFilters(filters);
 			}
