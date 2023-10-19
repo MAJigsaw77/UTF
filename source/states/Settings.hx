@@ -174,7 +174,7 @@ class Settings extends FlxTransitionableState
 				case 'Exit':
 					FlxG.switchState(new Intro());
 				case 'FPS Overlay':
-					Data.settings.get('fps'] = !Data.settings.get('fps');
+					Data.settings.set('fps', !Data.settings.get('fps'));
 
 					if (Main.fps != null)
 						Main.fps.visible = Data.settings.get('fps');
@@ -193,18 +193,18 @@ class Settings extends FlxTransitionableState
 							Data.settings.set('filter', 'none');
 					}
 
-					items.forEach(function(spr:FlxText)
-					{
-						if (options[spr.ID] == 'Filter')
-							spr.text = 'Filter: ${Data.settings.get('filter')}'.toUpperCase();
-					});
-
 					final filters:Array<BitmapFilter> = [];
 
 					if (Data.settings.get('filter') != 'none' && Data.filters.exists(Data.settings.get('filter')))
 						filters.push(Data.filters.get(Data.settings.get('filter')));
 
 					FlxG.game.setFilters(filters);
+
+					items.forEach(function(spr:FlxText)
+					{
+						if (options[spr.ID] == 'Filter')
+							spr.text = 'Filter: ${Data.settings.get('filter')}'.toUpperCase();
+					});
 			}
 
 			Data.save();
