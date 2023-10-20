@@ -40,7 +40,7 @@ class Title extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED) && titleText.alpha == 1)
+		if (FlxG.keys.checkStatus(Data.binds.get('confirm'), JUST_PRESSED) && titleText.alpha == 1)
 			FlxG.switchState(new Intro());
 		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE && titleText.alpha == 1)
 		{

@@ -9,7 +9,10 @@ import openfl.Lib;
 
 class Data
 {
-	public static var settings:Map<String, Dynamic> = ['fps' => false, 'filter' => 'none'];
+	public static var settings:Map<String, Dynamic> = [
+		'fps' => false,
+		'filter' => 'none'
+	];
 
 	public static var filters:Map<String, BitmapFilter> = [
 		'deuteranopia' => new ColorMatrixFilter([0.43, 0.72, -.15, 0, 0, 0.34, 0.57, 0.09, 0, 0, -.02, 0.03, 1, 0, 0, 0, 0, 0, 1, 0]),
@@ -17,7 +20,11 @@ class Data
 		'tritanopia' => new ColorMatrixFilter([0.97, 0.11, -.08, 0, 0, 0.02, 0.82, 0.16, 0, 0, 0.06, 0.88, 0.18, 0, 0, 0, 0, 0, 1, 0])
 	];
 
-	public static var binds:Map<String, FlxKey> = ['confirm' => Z, 'cancel' => X, 'menu' => C];
+	public static var binds:Map<String, FlxKey> = [
+		'confirm' => FlxKey.Z, 
+		'cancel' => FlxKey.X, 
+		'menu' => FlxKey.C
+	];
 
 	public static function save():Void
 	{
@@ -31,6 +38,7 @@ class Data
 	public static function load():Void
 	{
 		var save:FlxSave = new FlxSave();
+
 		save.bind('data', Lib.application.meta.get('file'));
 
 		if (!save.isEmpty())

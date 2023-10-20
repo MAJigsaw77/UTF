@@ -118,7 +118,7 @@ class Naming extends FlxState
 		else if (FlxG.keys.justPressed.LEFT)
 			changeItem(-1);
 
-		if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED))
+		if (FlxG.keys.checkStatus(Data.binds.get('confirm'), JUST_PRESSED))
 		{
 			items.forEach(function(spr:FlxText)
 			{

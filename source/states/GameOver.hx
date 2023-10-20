@@ -75,7 +75,7 @@ class GameOver extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED) && writer == null && bg.alpha == 1)
+		if (FlxG.keys.checkStatus(Data.binds.get('confirm'), JUST_PRESSED) && writer == null && bg.alpha == 1)
 		{
 			FlxTween.tween(bg, {alpha: 0}, 1.5, {
 				onComplete: (twn:FlxTween) -> FlxG.switchState(new Room(Global.room))

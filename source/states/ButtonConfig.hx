@@ -80,7 +80,7 @@ class ButtonConfig extends FlxState
 
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 		}
-		else if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED) && !keySelected)
+		else if (FlxG.keys.checkStatus(Data.binds.get('confirm'), JUST_PRESSED) && !keySelected)
 		{
 			keySelected = true;
 

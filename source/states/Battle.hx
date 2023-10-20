@@ -121,7 +121,7 @@ class Battle extends FlxTransitionableState
 		else if (FlxG.keys.justPressed.LEFT && !choiceSelected)
 			changeChoice(-1);
 
-		if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED))
+		if (FlxG.keys.checkStatus(Data.binds.get('confirm'), JUST_PRESSED))
 		{
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 
