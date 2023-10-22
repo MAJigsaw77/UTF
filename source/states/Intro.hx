@@ -50,23 +50,27 @@ class Intro extends FlxState
 			var name:FlxText = new FlxText(145, 120, 0, Global.name, 32);
 			name.font = AssetPaths.font('DTM-Sans');
 			name.scrollFactor.set();
+			name.active = false;
 			add(name);
 
 			var love:FlxText = new FlxText(285, 120, 0, 'LV ${Global.lv}', 32);
 			love.font = AssetPaths.font('DTM-Sans');
 			love.scrollFactor.set();
+			love.active = false;
 			add(love);
 
 			// TODO
 			var time:FlxText = new FlxText(425, 120, 0, '0:0', 32);
 			time.font = AssetPaths.font('DTM-Sans');
 			time.scrollFactor.set();
+			time.active = false;
 			add(time);
 
 			// TODO
 			var roomname:FlxText = new FlxText(145, 160, 0, '---', 32);
 			roomname.font = AssetPaths.font('DTM-Sans');
 			roomname.scrollFactor.set();
+			roomname.active = false;
 			add(roomname);
 
 			choices = ['Continue', 'Reset', 'Settings'];
@@ -75,19 +79,21 @@ class Intro extends FlxState
 		{
 			FlxG.sound.playMusic(AssetPaths.music('menu0'));
 
-			var instructions:FlxText = new FlxText(170, 40, 0, '', 32);
+			var list:Array<String> = [];
+			
+			list.push(' --- Instruction --- ');
+			list.push('\n');
+			list.push('[${Data.binds.get('cancel')}] - Confirm');
+			list.push('[${Data.binds.get('cancel')}] - Cancel');
+			list.push('[${Data.binds.get('menu')}] - Menu (In-Game)');
+			list.push('\n');
+			list.push('When HP is 0, you lose.');
 
-			instructions.text += ' --- Instruction --- ';
-			instructions.text += '\n\n';
-			instructions.text += '[${Data.binds.get('cancel')}] - Confirm\n';
-			instructions.text += '[${Data.binds.get('cancel')}] - Cancel\n';
-			instructions.text += '[${Data.binds.get('menu')}] - Menu (In-Game)\n';
-			instructions.text += '\n\n';
-			instructions.text += 'When HP is 0, you lose.';
-
+			var instructions:FlxText = new FlxText(170, 40, 0, list.join('\n'), 32);
 			instructions.font = AssetPaths.font('DTM-Sans');
 			instructions.color = 0xFFC0C0C0; // Silver
 			instructions.scrollFactor.set();
+			instructions.active = false;
 			add(instructions);
 
 			choices = ['Begin Game', 'Settings'];
@@ -141,6 +147,7 @@ class Intro extends FlxState
 		info.color = FlxColor.GRAY;
 		info.screenCenter(X);
 		info.scrollFactor.set();
+		info.active = false;
 		add(info);
 
 		changeOption();
