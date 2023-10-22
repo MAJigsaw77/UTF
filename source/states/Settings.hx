@@ -73,6 +73,7 @@ class Settings extends FlxTransitionableState
 		settings.font = AssetPaths.font('DTM-Sans');
 		settings.screenCenter(X);
 		settings.scrollFactor.set();
+		settings.active = false;
 		add(settings);
 
 		items = new FlxTypedGroup<FlxText>();
@@ -142,6 +143,7 @@ class Settings extends FlxTransitionableState
 		tobdogLine.color = FlxColor.GRAY;
 		tobdogLine.angle = 20;
 		tobdogLine.scrollFactor.set();
+		tobdogLine.active = false;
 		add(tobdogLine);
 
 		changeOption();
