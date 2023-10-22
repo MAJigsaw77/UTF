@@ -25,12 +25,14 @@ class ButtonConfig extends FlxState
 		settings.font = AssetPaths.font('DTM-Sans');
 		settings.screenCenter(X);
 		settings.scrollFactor.set();
+		settings.active = false;
 		add(settings);
 
 		var box:FlxShapeBox = new FlxShapeBox(0, 0, Std.int(FlxG.width / 2), Std.int(FlxG.height / 2),
 			{thickness: 6, jointStyle: MITER, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.screenCenter();
 		box.scrollFactor.set();
+		box.active = false;
 		add(box);
 
 		items = new FlxTypedGroup<FlxText>();
@@ -42,6 +44,7 @@ class ButtonConfig extends FlxState
 			text.ID = i;
 			text.screenCenter(X);
 			text.scrollFactor.set();
+			text.active = false;
 			items.add(text);
 		}
 
