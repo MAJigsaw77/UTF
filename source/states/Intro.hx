@@ -67,10 +67,10 @@ class Intro extends FlxState
 			add(time);
 
 			// TODO
-			var roomname:FlxText = new FlxText(145, 160, 0, '---', 32);
-			roomname.font = AssetPaths.font('DTM-Sans');
-			roomname.scrollFactor.set();
-			roomname.active = false;
+			var room:FlxText = new FlxText(145, 160, 0, '---', 32);
+			room.font = AssetPaths.font('DTM-Sans');
+			room.scrollFactor.set();
+			room.active = false;
 			add(roomname);
 
 			choices = ['Continue', 'Reset', 'Settings'];
@@ -82,11 +82,11 @@ class Intro extends FlxState
 			var list:Array<String> = [];
 			
 			list.push(' --- Instruction --- ');
-			list.push('\n');
+			list.push('');
 			list.push('[${Data.binds.get('cancel')}] - Confirm');
 			list.push('[${Data.binds.get('cancel')}] - Cancel');
 			list.push('[${Data.binds.get('menu')}] - Menu (In-Game)');
-			list.push('\n');
+			list.push('');
 			list.push('When HP is 0, you lose.');
 
 			var instructions:FlxText = new FlxText(170, 40, 0, list.join('\n'), 32);
@@ -131,6 +131,7 @@ class Intro extends FlxState
 			bt.font = AssetPaths.font('DTM-Sans');
 			bt.ID = i;
 			bt.scrollFactor.set();
+			bt.active = false;
 			items.add(bt);
 		}
 
