@@ -53,6 +53,7 @@ class Room extends FlxTransitionableState
 		// #if debug
 		// var grid:FlxSprite = FlxGridOverlay.create(40, 40, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')));
 		// grid.scrollFactor.set();
+		// grid.active = false;
 		// add(grid);
 		// #end
 
@@ -80,6 +81,7 @@ class Room extends FlxTransitionableState
 			object.alpha = #if debug 0.5 #else 0 #end;
 			object.immovable = true;
 			object.solid = true;
+			object.active = false;
 			solids.add(object);
 		}
 
@@ -101,6 +103,7 @@ class Room extends FlxTransitionableState
 			object.alpha = 0;
 			#end
 			object.immovable = true;
+			object.active = false;
 			markers.add(object);
 		}
 
@@ -120,6 +123,7 @@ class Room extends FlxTransitionableState
 
 			object.immovable = true;
 			object.solid = true;
+			object.active = false;
 			objects.add(object);
 		}
 
@@ -141,6 +145,7 @@ class Room extends FlxTransitionableState
 			object.alpha = 0;
 			#end
 			object.immovable = true;
+			object.active = false;
 			doors.add(object);
 		}
 

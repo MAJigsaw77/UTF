@@ -25,6 +25,7 @@ class GameOver extends FlxState
 		bg.alpha = 0;
 		bg.screenCenter(X);
 		bg.scrollFactor.set();
+		bg.active = false;
 		add(bg);
 
 		writer = new Writer(120, 320);

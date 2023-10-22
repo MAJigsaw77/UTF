@@ -71,7 +71,7 @@ class Intro extends FlxState
 			room.font = AssetPaths.font('DTM-Sans');
 			room.scrollFactor.set();
 			room.active = false;
-			add(roomname);
+			add(room);
 
 			choices = ['Continue', 'Reset', 'Settings'];
 		}
