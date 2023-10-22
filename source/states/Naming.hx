@@ -45,6 +45,7 @@ class Naming extends FlxState
 			letter.font = AssetPaths.font('DTM-Sans');
 			letter.ID = i;
 			letter.scrollFactor.set();
+			letter.active = false;
 			items.add(letter);
 
 			line++;
@@ -67,6 +68,7 @@ class Naming extends FlxState
 			letter.font = AssetPaths.font('DTM-Sans');
 			letter.ID = lowLetters.length + i;
 			letter.scrollFactor.set();
+			letter.active = false;
 			items.add(letter);
 
 			line++;
@@ -96,6 +98,7 @@ class Naming extends FlxState
 			choice.font = AssetPaths.font('DTM-Sans');
 			choice.ID = (upLetters.length + lowLetters.length) + i;
 			choice.scrollFactor.set();
+			choice.active = false;
 			items.add(choice);
 		}
 
