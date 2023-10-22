@@ -63,7 +63,7 @@ class Settings extends FlxTransitionableState
 
 		particles.width = FlxG.width;
 		particles.launchMode = SQUARE;
-		particles.acceleration.set(0.02, 0.02);
+		particles.acceleration.set(0.02, 0.02, 0.02, 0.02);
 		particles.velocity.set(-10, 80, 0, FlxG.height);
 
 		particles.start(false, 0.01);
@@ -91,6 +91,10 @@ class Settings extends FlxTransitionableState
 			opt.font = AssetPaths.font('DTM-Sans');
 			opt.ID = i;
 			opt.scrollFactor.set();
+
+			if (options[i] != 'Filter')
+				opt.active = false;
+
 			items.add(opt);
 		}
 
@@ -123,6 +127,10 @@ class Settings extends FlxTransitionableState
 		tobdogWeather.scale.set(2, 2);
 		tobdogWeather.updateHitbox();
 		tobdogWeather.scrollFactor.set();
+
+		if (Util.getWeather() != 2 && Util.getWeather() != 3)
+			tobdogWeather.active = false;
+
 		add(tobdogWeather);
 
 		tobdogLine = new FlxText(420, 260, 0, '', 32);
