@@ -46,6 +46,7 @@ class Battle extends FlxTransitionableState
 
 		hpName = new FlxSprite(stats.x + 210, stats.y + 5, AssetPaths.sprite('hpname'));
 		hpName.scrollFactor.set();
+		hpName.active = false;
 		add(hpName);
 
 		hpBar = new FlxBar(hpName.x + 35, hpName.y - 5, LEFT_TO_RIGHT, Std.int(Global.maxHp * 1.2), 20, Global, 'hp', 0, Global.maxHp);
@@ -90,11 +91,13 @@ class Battle extends FlxTransitionableState
 
 		box = new FlxShapeBox(32, 250, 570, 135, {thickness: 6, jointStyle: MITER, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.scrollFactor.set();
+		box.active = false;
 		add(box);
 
 		heart = new FlxSprite(0, 0, AssetPaths.sprite('heart'));
 		heart.color = FlxColor.RED;
 		heart.scrollFactor.set();
+		heart.active = false;
 		add(heart);
 
 		typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 4);
