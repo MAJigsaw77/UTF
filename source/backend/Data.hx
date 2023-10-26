@@ -10,7 +10,7 @@ import openfl.Lib;
 class Data
 {
 	public static var settings(default, null):Map<String, Dynamic> = [
-		'fps' => false,
+		'fps-overlay' => false,
 		'filter' => 'none'
 	];
 
