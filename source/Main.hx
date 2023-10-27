@@ -168,8 +168,10 @@ class Main extends Sprite
 	private inline function onResizeGame(width:Int, height:Int):Void
 	{
 		#if mobile
+		final scale:Float = Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height);
+
 		if (fpsOverlay != null)
-			fpsOverlay.scaleX = fpsOverlay.scaleY = Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height);
+			fpsOverlay.scaleX = fpsOverlay.scaleY = (scale > 1 ? scale : 1);
 		#end
 
 		if (FlxG.cameras != null && (FlxG.cameras.list != null && FlxG.cameras.list.length > 0))
