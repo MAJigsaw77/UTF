@@ -75,7 +75,7 @@
 		<haxedef name="POLYMOD_MOD_ICON_FILE" value="icon.png" />
 	</section>
 
-	<haxeflag name="-dce" value="no" />
+	<haxeflag name="-dce" value="std" />
 
 	<!--DPI Awareness-->
 
