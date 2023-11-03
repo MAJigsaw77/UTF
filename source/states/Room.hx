@@ -2,6 +2,7 @@ package states;
 
 import backend.AssetPaths;
 import backend.Global;
+import backend.Script;
 // #if debug
 // import flixel.addons.display.FlxGridOverlay;
 // #end
@@ -15,13 +16,14 @@ import haxe.xml.Access;
 import objects.Chara;
 import objects.Writer;
 import openfl.utils.Assets;
-import states.GameOver;
 
 using StringTools;
 
 class Room extends FlxTransitionableState
 {
+	var name:String;
 	var data:Xml;
+	var script:Script;
 
 	var solids:FlxTypedGroup<FlxSprite>;
 	var markers:FlxTypedGroup<FlxSprite>;
@@ -36,10 +38,12 @@ class Room extends FlxTransitionableState
 
 		for (file in Assets.list(TEXT).filter(folder -> folder.startsWith('assets/data/rooms')))
 		{
-			// Being sure about something...
-			if (Assets.exists(file, TEXT) && Path.extension(file) == 'xml')
+			if (Path.extension(file) == 'xml')
 			{
+				name = new Path(file).name;
+
 				data = Xml.parse(Assets.getText(file)).firstElement();
+
 				if (Std.parseInt(data.get('id')) == room)
 					break;
 			}
@@ -50,6 +54,10 @@ class Room extends FlxTransitionableState
 
 	override function create():Void
 	{
+		script = new Script();
+		script.set('this', this);
+		script.execute(AssetPaths.script('rooms/$name'));
+
 		// #if debug
 		// var grid:FlxSprite = FlxGridOverlay.create(40, 40, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')));
 		// grid.scrollFactor.set();
@@ -158,6 +166,8 @@ class Room extends FlxTransitionableState
 
 	override function update(elapsed:Float):Void
 	{
+		script.call('update', [elapsed]);
+
 		FlxG.collide(chara, solids);
 		FlxG.collide(chara, objects);
 
@@ -173,6 +183,6 @@ class Room extends FlxTransitionableState
 
 	private function playerOverlapDoors(object:Chara, group:FlxTypedGroup<FlxSprite>):Void
 	{
-		FlxG.switchState(new GameOver());
+		script.call('playerOverlapDoors');
 	}
 }
