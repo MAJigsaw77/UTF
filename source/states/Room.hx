@@ -21,7 +21,7 @@ using StringTools;
 
 class Room extends FlxTransitionableState
 {
-	var name:String;
+	var file:String;
 	var data:Xml;
 	var script:Script;
 
@@ -40,7 +40,7 @@ class Room extends FlxTransitionableState
 		{
 			if (Path.extension(file) == 'xml')
 			{
-				name = new Path(file).name;
+				file = new Path(file).file;
 
 				data = Xml.parse(Assets.getText(file)).firstElement();
 
@@ -56,7 +56,7 @@ class Room extends FlxTransitionableState
 	{
 		script = new Script();
 		script.set('this', this);
-		script.execute(AssetPaths.script('rooms/$name'));
+		script.execute(AssetPaths.script('rooms/$file'));
 
 		// #if debug
 		// var grid:FlxSprite = FlxGridOverlay.create(40, 40, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')));
