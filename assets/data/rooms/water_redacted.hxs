@@ -1,0 +1,6 @@
+FlxG.sound.playMusic(AssetPaths.music('star'));
+
+function playerOverlapDoors()
+{
+	FlxG.resetState();
+}
