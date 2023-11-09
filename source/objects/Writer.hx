@@ -33,7 +33,7 @@ class Writer extends FlxTypeText
 	public function startDialogue(list:Array<DialogueData>):Void
 	{
 		finished = false;
-		dialogueList = list == null ? [{typer: new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 4), text: 'Error!'}] : list;
+		dialogueList = list ??= [{typer: new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 4), text: 'Error!'}];
 		page = 0;
 
 		if (dialogueList[page] != null)
