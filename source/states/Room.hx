@@ -36,17 +36,24 @@ class Room extends FlxTransitionableState
 	{
 		super();
 
-		for (file in Assets.list(TEXT).filter(folder -> folder.startsWith('assets/data/rooms')))
+		final files:Array<String> = Assets.list(TEXT).filter(function(file:String):Bool
 		{
-			if (Path.extension(file) == 'xml')
-			{
-				file = new Path(file).file;
+			return Path.directory(file) == 'assets/data/rooms' && Path.extension(file) == 'xml';
+		});
 
-				data = Xml.parse(Assets.getText(file)).firstElement();
+		files.sort(function(a:String, b:String):Int
+		{
+			return (a < b) ? -1 : (a > b) ? 1 : 0;
+		});
 
-				if (Std.parseInt(data.get('id')) == room)
-					break;
-			}
+		for (path in files)
+		{
+			file = new Path(path).file;
+
+			data = Xml.parse(Assets.getText(path)).firstElement();
+
+			if (Std.parseInt(data.get('id')) == room)
+				break;
 		}
 
 		Global.room = Std.parseInt(data.get('id'));
