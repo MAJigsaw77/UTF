@@ -11,7 +11,7 @@ import sys.FileSystem;
 
 class Mods
 {
-	public static var trackedPacks(default, null):Map<String, ModMetadata> = [];
+	public static var data(default, null):Map<String, ModMetadata> = [];
 
 	public static function load():Void
 	{
@@ -45,13 +45,14 @@ class Mods
 
 	private static function getModDirs():Array<String>
 	{
-		trackedPacks.clear();
+		if (data != null && Lambda.count(data) > 0)
+			data.clear();
 
 		var packs:Array<String> = [];
 
 		for (pack in Polymod.scan({modRoot: 'mods'}))
 		{
-			trackedPacks.set(pack.id, pack);
+			data.set(pack.id, pack);
 
 			// TODO: Adding the ability to disable mods.
 			if (true)
