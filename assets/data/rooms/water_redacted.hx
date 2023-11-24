@@ -6,19 +6,21 @@ var dist:Int = 0;
 
 function update(elapsed)
 {
-	dist = FlxMath.distanceBetween(this.chara, this.objects.members[0]);
+	this.objects.members[0].alpha = 0;
 
-	FlxG.watch.addQuick('Distance from Redacted', dist);
+	dist = FlxMath.distanceBetween(this.objects.members[0], this.chara);
 
-	if (dist <= 20)
+	if (dist <= 80)
 	{
-		var disto:Int = Math.floor(10 / (dist + 1));
+		var disto:Int = Math.floor(40 / dist);
 
 		if (disto >= 1)
 			disto = 1;
 
 		this.objects.members[0].alpha = disto;
 	}
+
+	FlxG.watch.addQuick('Distance from Redacted', dist);
 }
 
 function playerOverlapDoors()
