@@ -1,5 +1,26 @@
 FlxG.sound.playMusic(AssetPaths.music('star'));
 
+var dist:Int = 0;
+
+// this.objects.members[0] is redacted.
+
+function update(elapsed)
+{
+	dist = FlxMath.distanceBetween(this.chara, this.objects.members[0]);
+
+	FlxG.watch.addQuick('Distance from Redacted', dist);
+
+	if (dist <= 20)
+	{
+		var disto:Int = Math.floor(10 / (dist + 1));
+
+		if (disto >= 1)
+			disto = 1;
+
+		this.objects.members[0].alpha = disto;
+	}
+}
+
 function playerOverlapDoors()
 {
 	FlxG.resetState();
