@@ -64,7 +64,7 @@ class Main extends Sprite
 		// Run the garbage colector after the state switched...
 		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
 		
-		addChild(new FlxGame(640, 480, Startup, 30, 30));
+		addChild(new FlxGame(640, 480, Startup, 60, 60));
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
