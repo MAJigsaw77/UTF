@@ -224,7 +224,7 @@ class Settings extends FlxTransitionableState
 							spr.text = 'Filter: ${Data.settings.get('filter')}'.toUpperCase();
 					});
 				case 'Auto Pause':
-				Data.settings.set('auto-pause', !Data.settings.get('auto-pause'));
+					Data.settings.set('auto-pause', !Data.settings.get('auto-pause'));
 
 					FlxG.autoPause = Data.settings.get('auto-pause');
 			}
