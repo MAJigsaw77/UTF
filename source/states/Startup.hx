@@ -33,6 +33,10 @@ class Startup extends FlxState
 
 		FlxG.game.focusLostFramerate = FlxG.updateFramerate;
 
+		#if debug
+		FlxG.log.redirectTraces = true;
+		#end
+
 		if (Data.settings.get('filter') != 'none' && Data.filters.exists(Data.settings.get('filter')))
 			FlxG.game.setFilters([Data.filters.get(Data.settings.get('filter'))]);
 
