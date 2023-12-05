@@ -177,6 +177,8 @@ class Naming extends FlxState
 	{
 		selected = Math.floor(FlxMath.bound(selected + num, 0, items.length - 1));
 
+		FlxG.log.notice(selected);
+
 		items.forEach(function(spr:FlxText)
 		{
 			spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
