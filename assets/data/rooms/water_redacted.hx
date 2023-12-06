@@ -6,8 +6,6 @@ var dist:Int = 0;
 
 function update(elapsed)
 {
-	this.objects.members[0].alpha = 0;
-
 	dist = FlxMath.distanceBetween(this.objects.members[0], this.chara);
 
 	if (dist <= 80)
@@ -19,6 +17,8 @@ function update(elapsed)
 
 		this.objects.members[0].alpha = disto;
 	}
+	else
+		this.objects.members[0].alpha = 0;
 
 	FlxG.watch.addQuick('Distance from Redacted', dist);
 }
