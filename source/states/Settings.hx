@@ -26,8 +26,6 @@ class Settings extends FlxTransitionableState
 	final options:Array<String> = ['Exit', 'FPS Overlay', 'Button Config', 'Filter', 'Auto Pause'];
 	var items:FlxTypedGroup<FlxText>;
 
-	var particles:FlxEmitter;
-	var tobdogWeather:FlxSprite;
 	var tobdogLine:FlxText;
 
 	override function create():Void
@@ -48,26 +46,28 @@ class Settings extends FlxTransitionableState
 
 		FlxG.sound.cache(weatherMusic);
 
-		particles = new FlxEmitter(0, 0);
-		particles.loadParticles(AssetPaths.sprite(Util.getWeather() == 1 ? 'christmasflake' : 'fallleaf'), Math.floor(FlxG.height / 2));
-		particles.alpha.set(0.5, 0.5);
-		particles.scale.set(2, 2);
-
-		switch (Util.getWeather())
+		if (Util.getWeather() != 3)
 		{
-			case 2:
-				particles.color.set(FlxColor.interpolate(FlxColor.RED, FlxColor.WHITE, 0.5));
-			case 4:
-				particles.color.set(FlxColor.YELLOW, FlxColor.fromRGB(255, 159, 64), FlxColor.RED);
+			var particles:FlxEmitter = new FlxEmitter(0, 0);
+			particles.loadParticles(AssetPaths.sprite(Util.getWeather() == 1 ? 'christmasflake' : 'fallleaf'), Math.floor(FlxG.height / 2));
+			particles.alpha.set(0.5, 0.5);
+			particles.scale.set(2, 2);
+
+			switch (Util.getWeather())
+			{
+				case 2:
+					particles.color.set(FlxColor.interpolate(FlxColor.RED, FlxColor.WHITE, 0.5));
+				case 4:
+					particles.color.set(FlxColor.YELLOW, FlxColor.fromRGB(255, 159, 64), FlxColor.RED);
+			}
+
+			particles.width = FlxG.width;
+			particles.launchMode = SQUARE;
+			particles.acceleration.set(0.02, 0.02, 0.02, 0.02);
+			particles.velocity.set(-10, 80, 0, FlxG.height);
+			particles.start(false, 0.01);
+			add(particles);
 		}
-
-		particles.width = FlxG.width;
-		particles.launchMode = SQUARE;
-		particles.acceleration.set(0.02, 0.02, 0.02, 0.02);
-		particles.velocity.set(-10, 80, 0, FlxG.height);
-
-		particles.start(false, 0.01);
-		add(particles);
 
 		var settings:FlxText = new FlxText(0, 20, 0, 'SETTINGS', 64);
 		settings.font = AssetPaths.font('DTM-Sans');
@@ -100,7 +100,7 @@ class Settings extends FlxTransitionableState
 
 		add(items);
 
-		tobdogWeather = new FlxSprite(500, 436);
+		var tobdogWeather:FlxSprite = new FlxSprite(500, 436);
 
 		switch (Util.getWeather())
 		{
