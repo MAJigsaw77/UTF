@@ -20,7 +20,7 @@ function update(elapsed)
 	else
 		this.objects.members[0].alpha = 0;
 
-	FlxG.watch.addQuick('Distance from Redacted', dist);
+	FlxG.watch.addQuick('Dis from Redacted', dist);
 }
 
 function playerOverlapDoors()
