@@ -61,9 +61,9 @@
 	<haxedef name="FLX_NO_TOUCH" if="desktop" />
 
 	<section if="cpp">
-		<haxedef name="HXCPP_CHECK_POINTER" if="cpp" />
-		<haxedef name="HXCPP_STACK_LINE" if="cpp" />
-		<haxedef name="HXCPP_STACK_TRACE" if="cpp" />
+		<haxedef name="HXCPP_CHECK_POINTER" />
+		<haxedef name="HXCPP_STACK_LINE" />
+		<haxedef name="HXCPP_STACK_TRACE" />
 	</section>
 
 	<haxedef name="DISCORD_DISABLE_IO_THREAD" if="DISCORD" />
