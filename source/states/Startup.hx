@@ -1,5 +1,6 @@
 package states;
 
+import backend.Controls;
 import backend.Data;
 #if DISCORD
 import backend.Discord;
@@ -19,6 +20,9 @@ class Startup extends FlxState
 {
 	override function create():Void
 	{
+		if (Controls.instance == null)
+			Controls.instance = new Controls();
+
 		Data.load();
 
 		#if DISCORD
