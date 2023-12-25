@@ -1,6 +1,7 @@
 package states;
 
 import backend.AssetPaths;
+import backend.Controls;
 import backend.Data;
 import backend.Global;
 import flixel.addons.display.shapes.FlxShapeBox;
@@ -124,7 +125,7 @@ class Battle extends FlxTransitionableState
 		else if (FlxG.keys.justPressed.LEFT && !choiceSelected)
 			changeChoice(-1);
 
-		if (FlxG.keys.checkStatus(Data.binds.get('confirm'), JUST_PRESSED))
+		if (Controls.instance.justPressed('confirm'))
 		{
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 
@@ -168,7 +169,7 @@ class Battle extends FlxTransitionableState
 				}
 			}
 		}
-		else if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED))
+		else if (Controls.instance.justPressed('cancel'))
 		{
 			choiceSelected = false;
 

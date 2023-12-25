@@ -1,6 +1,7 @@
 package states;
 
 import backend.AssetPaths;
+import backend.Controls;
 import backend.Data;
 import flixel.input.keyboard.FlxKey;
 import flixel.text.FlxText;
@@ -42,7 +43,7 @@ class Title extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.checkStatus(Data.binds.get('confirm'), JUST_PRESSED) && titleText.alpha == 1)
+		if (Controls.instance.justPressed('confirm') && titleText.alpha == 1)
 			FlxG.switchState(new Intro());
 		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE && titleText.alpha == 1)
 		{

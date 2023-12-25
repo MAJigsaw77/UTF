@@ -1,6 +1,7 @@
 package states;
 
 import backend.AssetPaths;
+import backend.Controls;
 import backend.Data;
 import backend.Global;
 import flixel.tweens.FlxTween;
@@ -76,7 +77,7 @@ class GameOver extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.checkStatus(Data.binds.get('confirm'), JUST_PRESSED) && writer == null && bg.alpha == 1)
+		if (Controls.instance.justPressed('confirm') && writer == null && bg.alpha == 1)
 		{
 			FlxTween.tween(bg, {alpha: 0}, 1.5, {
 				onComplete: (twn:FlxTween) -> FlxG.switchState(new Room(Global.room))

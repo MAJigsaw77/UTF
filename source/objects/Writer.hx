@@ -1,6 +1,7 @@
 package objects;
 
 import backend.AssetPaths;
+import backend.Controls;
 import backend.Data;
 import flixel.addons.text.FlxTypeText;
 import flixel.FlxG;
@@ -61,7 +62,7 @@ class Writer extends FlxTypeText
 
 	override public function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED) && !finished && skippable)
+		if (Controls.instance.justPressed('cancel') && !finished && skippable)
 		{
 			page++;
 

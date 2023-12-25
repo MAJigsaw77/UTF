@@ -1,6 +1,7 @@
 package states;
 
 import backend.AssetPaths;
+import backend.Controls;
 import backend.Data;
 import backend.Global;
 import flixel.group.FlxGroup;
@@ -121,7 +122,7 @@ class Naming extends FlxState
 		else if (FlxG.keys.justPressed.LEFT)
 			changeItem(-1);
 
-		if (FlxG.keys.checkStatus(Data.binds.get('confirm'), JUST_PRESSED))
+		if (Controls.instance.justPressed('confirm'))
 		{
 			items.forEach(function(spr:FlxText)
 			{
@@ -155,7 +156,7 @@ class Naming extends FlxState
 				}
 			});
 		}
-		else if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED))
+		else if (Controls.instance.justPressed('cancel'))
 		{
 			if (name.text.length > 0)
 				name.text = name.text.substring(0, name.text.length - 1);

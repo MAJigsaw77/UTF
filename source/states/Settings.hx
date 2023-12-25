@@ -1,6 +1,7 @@
 package states;
 
 import backend.AssetPaths;
+import backend.Controls;
 import backend.Data;
 import backend.Global;
 import backend.Util;
@@ -182,7 +183,7 @@ class Settings extends FlxTransitionableState
 		else if (FlxG.keys.justPressed.DOWN)
 			changeOption(1);
 
-		if (FlxG.keys.checkStatus(Data.binds.get('confirm'), JUST_PRESSED) && (FlxG.sound.music != null && FlxG.sound.music.playing))
+		if (Controls.instance.justPressed('confirm') && (FlxG.sound.music != null && FlxG.sound.music.playing))
 		{
 			if (FlxG.sound.music.playing && options[selected] == 'Exit')
 				FlxG.sound.music.stop();

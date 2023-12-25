@@ -1,6 +1,7 @@
 package states;
 
 import backend.AssetPaths;
+import backend.Controls;
 import backend.Data;
 import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.input.keyboard.FlxKey;
@@ -83,13 +84,13 @@ class ButtonConfig extends FlxState
 
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 		}
-		else if (FlxG.keys.checkStatus(Data.binds.get('confirm'), JUST_PRESSED) && !keySelected)
+		else if (Controls.instance.justPressed('confirm') && !keySelected)
 		{
 			keySelected = true;
 
 			FlxG.sound.play(AssetPaths.sound('menuconfirm'));
 		}
-		else if (FlxG.keys.checkStatus(Data.binds.get('cancel'), JUST_PRESSED) && !keySelected)
+		else if (Controls.instance.justPressed('cancel') && !keySelected)
 		{
 			if (FlxG.sound.music.playing)
 				FlxG.sound.music.stop();

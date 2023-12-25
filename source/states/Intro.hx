@@ -1,6 +1,7 @@
 package states;
 
 import backend.AssetPaths;
+import backend.Controls;
 import backend.Data;
 import backend.Global;
 #if debug
@@ -163,7 +164,7 @@ class Intro extends FlxState
 		else if (Global.flags[0] == 1 ? FlxG.keys.justPressed.LEFT : FlxG.keys.justPressed.UP)
 			changeOption(-1);
 
-		if (FlxG.keys.checkStatus(Data.binds.get('confirm'), JUST_PRESSED))
+		if (Controls.instance.justPressed('confirm'))
 		{
 			if (FlxG.sound.music.playing && (choices[selected] != 'Reset' && choices[selected] != 'Begin Game'))
 				FlxG.sound.music.stop();
