@@ -2,6 +2,7 @@ package;
 
 #if android
 import android.content.Context;
+import android.os.Build;
 #end
 import backend.Data;
 import flixel.util.FlxColor;
@@ -45,7 +46,10 @@ class Main extends Sprite
 		super();
 
 		#if android
-		Sys.setCwd(Path.addTrailingSlash(Context.getExternalFilesDir()));
+		if (VERSION.SDK_INT > 30)
+			Sys.setCwd(Path.addTrailingSlash(Context.getObbDir()));
+		else
+			Sys.setCwd(Path.addTrailingSlash(Context.getExternalFilesDir()));
 		#elseif (ios || switch)
 		Sys.setCwd(LimeSystem.applicationStorageDirectory);
 		#end
