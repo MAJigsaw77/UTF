@@ -76,7 +76,12 @@ class Main extends Sprite
 
 		fpsOverlay = new FPS(10, 10, FlxColor.RED);
 		fpsOverlay.visible = Data.settings.get('fps-overlay');
+
+		#if !(mobile || switch)
 		addChild(fpsOverlay);
+		#else
+		FlxG.game.addChild(fpsOverlay);
+		#end
 	}
 
 	private inline function onUncaughtError(event:UncaughtErrorEvent):Void
@@ -171,7 +176,7 @@ class Main extends Sprite
 
 	private inline function onResizeGame(width:Int, height:Int):Void
 	{
-		#if mobile
+		#if (mobile || switch)
 		final scale:Float = Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height);
 
 		if (fpsOverlay != null)
