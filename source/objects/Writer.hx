@@ -73,7 +73,7 @@ class Writer extends FlxTypeText
 
 	override public function update(elapsed:Float):Void
 	{
-		if (Controls.instance.justPressed('cancel') && !finished && skippable)
+		if (Controls.instance.justPressed('confirm') && !finished && skippable)
 		{
 			page++;
 
