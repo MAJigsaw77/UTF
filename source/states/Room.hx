@@ -16,6 +16,7 @@ import haxe.xml.Access;
 import objects.Chara;
 import objects.Writer;
 import openfl.utils.Assets;
+import states.GameOver;
 
 using StringTools;
 
@@ -190,6 +191,8 @@ class Room extends FlxTransitionableState
 
 	private function playerOverlapDoors(object:Chara, group:FlxTypedGroup<FlxSprite>):Void
 	{
+		FlxG.switchState(new GameOver());
+
 		script.call('playerOverlapDoors');
 	}
 }
