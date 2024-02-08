@@ -70,7 +70,7 @@ class Main extends Sprite
 		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
 		
 		var background:Sprite = new Sprite();
-		background.addChild(new Bitmap(Assets.getBitmapData('assets/borders/fire.png'), true)
+		background.addChild(new Bitmap(Assets.getBitmapData('assets/borders/fire.png'), true));
 		background.addChild(new FlxGame(640, 480, Startup, 60, 60));
 		addChild(background);
 
