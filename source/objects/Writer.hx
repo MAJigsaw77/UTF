@@ -58,10 +58,10 @@ class Writer extends FlxTypeText
 
 		@:privateAccess
 		{
-			if (dialogue.typer.font.spacing != null)
+			if (dialogue.typer.spacing != null)
 			{
-				if (_defaultFormat.letterSpacing != dialogue.typer.font.spacing)
-					_defaultFormat.letterSpacing = dialogue.typer.font.spacing;
+				if (_defaultFormat.letterSpacing != dialogue.typer.spacing)
+					_defaultFormat.letterSpacing = dialogue.typer.spacing;
 
 				updateDefaultFormat();
 			}
