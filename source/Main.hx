@@ -68,9 +68,13 @@ class Main extends Sprite
 
 		// Run the garbage colector after the state switched...
 		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
-		
+
+		var border:Bitmap = new Bitmap(Assets.getBitmapData('assets/images/borders/fire.png'), true);
+		border.width = FlxG.stage.stageWidth;
+		border.height = FlxG.stage.stageHeight;
+
 		var background:Sprite = new Sprite();
-		background.addChild(new Bitmap(Assets.getBitmapData('assets/images/borders/fire.png'), true));
+		background.addChild(border);
 		background.addChild(new FlxGame(640, 480, Startup, 60, 60));
 		addChild(background);
 
