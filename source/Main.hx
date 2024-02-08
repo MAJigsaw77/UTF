@@ -17,6 +17,7 @@ import haxe.Log;
 import hl.Api;
 #end
 import lime.system.System as LimeSystem;
+import openfl.display.Bitmap;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.errors.Error;
@@ -68,7 +69,10 @@ class Main extends Sprite
 		// Run the garbage colector after the state switched...
 		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
 		
-		addChild(new FlxGame(640, 480, Startup, 60, 60));
+		var background:Sprite = new Sprite();
+		background.addChild(new Bitmap(Assets.getBitmapData('assets/borders/fire.png'), true)
+		background.addChild(new FlxGame(640, 480, Startup, 60, 60));
+		addChild(background);
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
@@ -76,12 +80,7 @@ class Main extends Sprite
 
 		fpsOverlay = new FPS(10, 10, FlxColor.RED);
 		fpsOverlay.visible = Data.settings.get('fps-overlay');
-
-		#if !(mobile || switch)
-		addChild(fpsOverlay);
-		#else
 		FlxG.game.addChild(fpsOverlay);
-		#end
 	}
 
 	private inline function onUncaughtError(event:UncaughtErrorEvent):Void
@@ -176,12 +175,10 @@ class Main extends Sprite
 
 	private inline function onResizeGame(width:Int, height:Int):Void
 	{
-		#if (mobile || switch)
 		final scale:Float = Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height);
 
 		if (fpsOverlay != null)
 			fpsOverlay.scaleX = fpsOverlay.scaleY = (scale > 1 ? scale : 1);
-		#end
 
 		if (FlxG.cameras != null && (FlxG.cameras.list != null && FlxG.cameras.list.length > 0))
 		{
