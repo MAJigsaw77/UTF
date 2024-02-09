@@ -9,7 +9,6 @@ import backend.Global;
 #if MODS
 import backend.Mods;
 #end
-import backend.PercentOfHeightScaleMode;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.transition.TransitionData;
 import flixel.util.FlxColor;
@@ -44,8 +43,6 @@ class Startup extends FlxState
 		#if debug
 		FlxG.log.redirectTraces = true;
 		#end
-
-		FlxG.scaleMode = new PercentOfHeightScaleMode(0.9);
 
 		if (FlxG.save.data.volume != null)
 			FlxG.sound.volume = FlxG.save.data.volume;
