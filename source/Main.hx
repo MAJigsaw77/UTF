@@ -4,6 +4,7 @@ package;
 import android.content.Context;
 import android.os.Build;
 #end
+import backend.AssetPaths;
 import backend.Data;
 import backend.PercentOfHeightScaleMode;
 import flixel.util.FlxColor;
@@ -68,7 +69,8 @@ class Main extends Sprite
 		FlxG.signals.preStateCreate.add(onPreStateCreate);
 		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
 
-		border = new Bitmap(Assets.getBitmapData('assets/images/borders/fire.png'));
+		border = new Bitmap();
+		border.bitmapData = Assets.getBitmapData(AssetPaths.border('line'));
 		addChild(border);
 
 		addChild(new FlxGame(640, 480, Startup, 60, 60));
