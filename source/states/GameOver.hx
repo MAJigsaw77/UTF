@@ -40,7 +40,7 @@ class GameOver extends FlxState
 			{
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
-					final typer:Typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 6, 0);
+					final typer:Typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 6, 2);
 
 					switch (FlxG.random.int(0, 4))
 					{
