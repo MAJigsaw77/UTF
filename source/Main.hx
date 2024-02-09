@@ -181,7 +181,7 @@ class Main extends Sprite
 		if (fps != null)
 			fps.scaleX = fps.scaleY = (scale > 1 ? scale : 1);
 
-		if (border != null)
+		if (border != null && border.bitmapData != null)
 		{
 			final scale:Float = Lib.current.stage.stageHeight / 1080;
 			border.scaleX = scale;
