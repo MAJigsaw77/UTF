@@ -1,5 +1,6 @@
 package backend;
 
+import backend.AssetPaths;
 import flixel.input.keyboard.FlxKey;
 import flixel.util.FlxSave;
 import flixel.FlxG;
@@ -25,6 +26,13 @@ class Data
 		'confirm' => FlxKey.Z, 
 		'cancel' => FlxKey.X, 
 		'menu' => FlxKey.C
+	];
+
+	public static var borders(default, null):Map<String, String> = [
+		'dynamic' = null,
+		'simple' => AssetPaths.border('line'),
+		'none' => null,
+		'beauty' => AssetPaths.border('rad'),
 	];
 
 	public static function save():Void
