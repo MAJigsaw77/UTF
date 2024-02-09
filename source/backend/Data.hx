@@ -29,10 +29,10 @@ class Data
 	];
 
 	public static var borders(default, null):Map<String, String> = [
-		'dynamic' = null,
+		'dynamic' = '',
 		'simple' => AssetPaths.border('line'),
-		'none' => null,
-		'beauty' => AssetPaths.border('rad'),
+		'none' => '',
+		'beauty' => AssetPaths.border('rad')
 	];
 
 	public static function save():Void
