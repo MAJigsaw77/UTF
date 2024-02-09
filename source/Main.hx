@@ -69,8 +69,8 @@ class Main extends Sprite
 		FlxG.signals.preStateCreate.add(onPreStateCreate);
 		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
 
-		border = new Bitmap();
-		border.bitmapData = Assets.getBitmapData(AssetPaths.border('line'));
+		border = new Bitmap(Assets.getBitmapData(AssetPaths.border('line')));
+		// border.bitmapData = Assets.getBitmapData(AssetPaths.border('line'));
 		addChild(border);
 
 		addChild(new FlxGame(640, 480, Startup, 60, 60));
