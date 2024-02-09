@@ -195,8 +195,8 @@ class Settings extends FlxTransitionableState
 				case 'FPS Overlay':
 					Data.settings.set('fps-overlay', !Data.settings.get('fps-overlay'));
 
-					if (Main.fpsOverlay != null)
-						Main.fpsOverlay.visible = Data.settings.get('fps-overlay');
+					if (Main.fps != null)
+						Main.fps.visible = Data.settings.get('fps-overlay');
 				case 'Button Config':
 					FlxG.switchState(new ButtonConfig());
 				case 'Filter':

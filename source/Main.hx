@@ -42,7 +42,7 @@ using StringTools;
 class Main extends Sprite
 {
 	public static var border:Bitmap;
-	public static var fpsOverlay:FPS;
+	public static var fps:FPS;
 
 	public function new():Void
 	{
@@ -77,9 +77,9 @@ class Main extends Sprite
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
 
-		fpsOverlay = new FPS(10, 10, FlxColor.RED);
-		fpsOverlay.visible = Data.settings.get('fps-overlay');
-		FlxG.game.addChild(fpsOverlay);
+		fps = new FPS(10, 10, FlxColor.RED);
+		fps.visible = Data.settings.get('fps-overlay');
+		FlxG.game.addChild(fps);
 	}
 
 	private inline function onUncaughtError(event:UncaughtErrorEvent):Void
@@ -176,8 +176,8 @@ class Main extends Sprite
 	{
 		final scale:Float = Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height);
 
-		if (fpsOverlay != null)
-			fpsOverlay.scaleX = fpsOverlay.scaleY = (scale > 1 ? scale : 1);
+		if (fps != null)
+			fps.scaleX = fps.scaleY = (scale > 1 ? scale : 1);
 
 		if (border != null)
 		{
