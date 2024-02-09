@@ -80,7 +80,7 @@ class Main extends Sprite
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
 
-		FlxG.scaleMode = new PercentOfHeightScaleMode(0.9);
+		FlxG.scaleMode = new PercentOfHeightScaleMode(0.88);
 
 		fpsOverlay = new FPS(10, 10, FlxColor.RED);
 		fpsOverlay.visible = Data.settings.get('fps-overlay');
