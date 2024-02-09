@@ -47,6 +47,11 @@ class AssetPaths
 		return 'assets/images/backgrounds/$key.png';
 	}
 
+	public static inline function border(key:String):String
+	{
+		return 'assets/images/borders/$key.png';
+	}
+
 	public static inline function sprite(key:String):String
 	{
 		return 'assets/images/sprites/$key.png';
