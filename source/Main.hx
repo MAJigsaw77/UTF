@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Build;
 #end
 import backend.Data;
-import backend.PercentOfHeightScaleMode;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -75,8 +74,6 @@ class Main extends Sprite
 		addChild(border);
 
 		addChild(new FlxGame(640, 480, Startup, 60, 60));
-
-		FlxG.scaleMode = new PercentOfHeightScaleMode(0.92);
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
