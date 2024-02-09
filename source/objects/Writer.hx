@@ -56,16 +56,8 @@ class Writer extends FlxTypeText
 		if (size != dialogue.typer.font.size)
 			size = dialogue.typer.font.size;
 
-		@:privateAccess
-		{
-			if (dialogue.typer.spacing != null)
-			{
-				if (_defaultFormat.letterSpacing != dialogue.typer.spacing)
-					_defaultFormat.letterSpacing = dialogue.typer.spacing;
-
-				updateDefaultFormat();
-			}
-		}
+		if (dialogue.typer.spacing != null && letterSpacing != dialogue.typer.spacing)
+			letterSpacing = dialogue.typer.spacing;
 
 		resetText(dialogue.text);
 		start(dialogue.typer.speed / 100, true);
