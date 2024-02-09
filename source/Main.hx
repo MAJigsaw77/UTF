@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Build;
 #end
 import backend.Data;
+import backend.PercentOfHeightScaleMode;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -78,6 +79,8 @@ class Main extends Sprite
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
+
+		FlxG.scaleMode = new PercentOfHeightScaleMode(0.9);
 
 		fpsOverlay = new FPS(10, 10, FlxColor.RED);
 		fpsOverlay.visible = Data.settings.get('fps-overlay');
