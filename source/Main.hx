@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Build;
 #end
 import backend.Data;
+import backend.PercentOfHeightScaleMode;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -41,6 +42,7 @@ using StringTools;
 class Main extends Sprite
 {
 	public static var fpsOverlay:FPS;
+	public static var border:Bitmap;
 
 	public function new():Void
 	{
@@ -69,14 +71,12 @@ class Main extends Sprite
 		// Run the garbage colector after the state switched...
 		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
 
-		var border:Bitmap = new Bitmap(Assets.getBitmapData('assets/images/borders/fire.png'), true);
-		border.width = FlxG.stage.stageWidth;
-		border.height = FlxG.stage.stageHeight;
+		border = new Bitmap(Assets.getBitmapData('assets/images/borders/fire.png'));
+		addChild(border);
 
-		var background:Sprite = new Sprite();
-		background.addChild(border);
-		background.addChild(new FlxGame(640, 480, Startup, 60, 60));
-		addChild(background);
+		addChild(new FlxGame(640, 480, Startup, 60, 60));
+
+		FlxG.scaleMode = new PercentOfHeightScaleMode(0.92);
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
@@ -183,6 +183,14 @@ class Main extends Sprite
 
 		if (fpsOverlay != null)
 			fpsOverlay.scaleX = fpsOverlay.scaleY = (scale > 1 ? scale : 1);
+
+		if (border != null)
+		{
+			final scale:Float = Lib.current.stage.stageHeight / 1080;
+			border.scaleX = scale;
+			border.scaleY = scale;
+			border.x = (Lib.current.stage.stageWidth - border.width) * 0.5;
+		}
 
 		if (FlxG.cameras != null && (FlxG.cameras.list != null && FlxG.cameras.list.length > 0))
 		{
