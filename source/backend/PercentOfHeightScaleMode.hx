@@ -10,7 +10,7 @@ class PercentOfHeightScaleMode extends RatioScaleMode
 	{
 		super();
 
-		this.percent = hPercent;
+		this.percent = percent;
 	}
 
 	override function updateScaleOffset():Void
