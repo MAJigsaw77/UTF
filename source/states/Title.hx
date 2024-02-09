@@ -27,7 +27,6 @@ class Title extends FlxState
 
 		titleText = new FlxText(0, 355, 0, '[PRESS Z]', 16);
 		titleText.font = AssetPaths.font('Small');
-		titleText.letterSpacing = 10;
 		titleText.color = FlxColor.GRAY;
 		titleText.alpha = 0.0001;
 		titleText.screenCenter(X);
