@@ -41,18 +41,15 @@ using StringTools;
 
 class Main extends Sprite
 {
-	public static var fpsOverlay:FPS;
 	public static var border:Bitmap;
+	public static var fpsOverlay:FPS;
 
 	public function new():Void
 	{
 		super();
 
 		#if android
-		if (VERSION.SDK_INT > 30)
-			Sys.setCwd(Path.addTrailingSlash(Context.getObbDir()));
-		else
-			Sys.setCwd(Path.addTrailingSlash(Context.getExternalFilesDir()));
+		Sys.setCwd(Path.addTrailingSlash(VERSION.SDK_INT > 30 ? Context.getObbDir() : Context.getExternalFilesDir()));
 		#elseif (ios || switch)
 		Sys.setCwd(LimeSystem.applicationStorageDirectory);
 		#end
@@ -65,10 +62,10 @@ class Main extends Sprite
 		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
 		#end
 
+		FlxG.scaleMode = new PercentOfHeightScaleMode(0.88);
+
 		FlxG.signals.gameResized.add(onResizeGame);
 		FlxG.signals.preStateCreate.add(onPreStateCreate);
-
-		// Run the garbage colector after the state switched...
 		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
 
 		border = new Bitmap(Assets.getBitmapData('assets/images/borders/fire.png'));
@@ -79,8 +76,6 @@ class Main extends Sprite
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
-
-		FlxG.scaleMode = new PercentOfHeightScaleMode(0.88);
 
 		fpsOverlay = new FPS(10, 10, FlxColor.RED);
 		fpsOverlay.visible = Data.settings.get('fps-overlay');
