@@ -9,6 +9,7 @@ import backend.Global;
 #if MODS
 import backend.Mods;
 #end
+import backend.PercentOfHeightScaleMode;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.transition.TransitionData;
 import flixel.util.FlxColor;
@@ -37,12 +38,14 @@ class Startup extends FlxState
 
 		FlxG.game.focusLostFramerate = FlxG.updateFramerate;
 
+		if (Data.settings.get('filter') != 'none' && Data.filters.exists(Data.settings.get('filter')))
+			FlxG.game.setFilters([Data.filters.get(Data.settings.get('filter'))]);
+
 		#if debug
 		FlxG.log.redirectTraces = true;
 		#end
 
-		if (Data.settings.get('filter') != 'none' && Data.filters.exists(Data.settings.get('filter')))
-			FlxG.game.setFilters([Data.filters.get(Data.settings.get('filter'))]);
+		FlxG.scaleMode = new PercentOfHeightScaleMode(0.9);
 
 		if (FlxG.save.data.volume != null)
 			FlxG.sound.volume = FlxG.save.data.volume;
