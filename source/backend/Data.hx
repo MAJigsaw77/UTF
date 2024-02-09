@@ -29,9 +29,9 @@ class Data
 	];
 
 	public static var borders(default, null):Map<String, String> = [
-		'dynamic' = '',
+		'dynamic' => null,
 		'simple' => AssetPaths.border('line'),
-		'none' => '',
+		'none' => null,
 		'beauty' => AssetPaths.border('rad')
 	];
 
