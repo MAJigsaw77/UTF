@@ -63,8 +63,6 @@ class Main extends Sprite
 		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
 		#end
 
-		FlxG.scaleMode = new PercentOfHeightScaleMode(0.88);
-
 		FlxG.signals.gameResized.add(onResizeGame);
 		FlxG.signals.preStateCreate.add(onPreStateCreate);
 		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
@@ -78,6 +76,8 @@ class Main extends Sprite
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
+
+		FlxG.scaleMode = new PercentOfHeightScaleMode(0.88);
 
 		fps = new FPS(10, 10, FlxColor.RED);
 		fps.visible = Data.settings.get('fps-overlay');
