@@ -10,7 +10,7 @@ using StringTools;
 typedef RoomData =
 {
 	file:String,
-	data:Xml
+	content:Xml
 }
 
 class Room
