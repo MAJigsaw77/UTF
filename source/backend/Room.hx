@@ -48,5 +48,7 @@ class Room
 			catch (e:Exception)
 				FlxG.log.error(e.message);
 		}
+
+		FlxG.log.notice(data);
 	}
 }
