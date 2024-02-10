@@ -13,6 +13,8 @@ typedef RoomData =
 	content:Xml
 }
 
+using StringTools;
+
 class Room
 {
 	public static var data(default, null):Map<Int, RoomData> = [];
@@ -24,7 +26,7 @@ class Room
 
 		final files:Array<String> = Assets.list(TEXT).filter(function(file:String):Bool
 		{
-			return Path.directory(file) == 'assets/data/rooms' && Path.extension(file) == 'xml';
+			return Path.directory(file).startsWith('assets/data/rooms') && Path.extension(file) == 'xml';
 		});
 
 		files.sort(function(a:String, b:String):Int
