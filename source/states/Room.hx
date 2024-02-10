@@ -2,6 +2,7 @@ package states;
 
 import backend.AssetPaths;
 import backend.Global;
+import backend.Room as RoomLoader;
 import backend.Script;
 // #if debug
 // import flixel.addons.display.FlxGridOverlay;
@@ -15,8 +16,6 @@ import haxe.io.Path;
 import haxe.xml.Access;
 import objects.Chara;
 import objects.Writer;
-import openfl.utils.Assets;
-import states.GameOver;
 
 using StringTools;
 
@@ -37,27 +36,16 @@ class Room extends FlxTransitionableState
 	{
 		super();
 
-		final files:Array<String> = Assets.list(TEXT).filter(function(file:String):Bool
+		RoomLoader.loadFiles();
+
+		if (RoomLoader.data.exists(room))
 		{
-			return Path.directory(file) == 'assets/data/rooms' && Path.extension(file) == 'xml';
-		});
+			data = RoomLoader.data.get(room).content;
 
-		files.sort(function(a:String, b:String):Int
-		{
-			return (a < b) ? -1 : (a > b) ? 1 : 0;
-		});
-
-		for (path in files)
-		{
-			file = new Path(path).file;
-
-			data = Xml.parse(Assets.getText(path)).firstElement();
-
-			if (Std.parseInt(data.get('id')) == room)
-				break;
+			file = RoomLoader.data.get(room).file;
+			
+			Global.room = Std.parseInt(data.get('id'));
 		}
-
-		Global.room = Std.parseInt(data.get('id'));
 	}
 
 	override function create():Void
