@@ -36,14 +36,14 @@ class Room extends FlxTransitionableState
 	{
 		super();
 
-		RoomLoader.loadFiles();
+		RoomLoader.reloadFiles();
 
 		if (RoomLoader.data.exists(room))
 		{
 			data = RoomLoader.data.get(room).content;
 
 			file = RoomLoader.data.get(room).file;
-			
+
 			Global.room = Std.parseInt(data.get('id'));
 		}
 	}
