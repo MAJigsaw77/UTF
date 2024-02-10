@@ -36,12 +36,12 @@ class Room
 		{
 			try
 			{
-				final data:Xml = Xml.parse(Assets.getText(file)).firstElement();
+				final parsed:Xml = Xml.parse(Assets.getText(file)).firstElement();
 
-				if (data.get('id') == null || data.get('id').length <= 0)
+				if (parsed.get('id') == null || parsed.get('id').length <= 0)
 					continue;
 
-				data.set(Std.parseInt(data.get('id')), {file: file, data: data});
+				data.set(Std.parseInt(parsed.get('id')), {file: file, data: parsed});
 			}
 			catch (e:Exception)
 				FlxG.log.error(e.message);
