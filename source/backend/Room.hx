@@ -41,7 +41,7 @@ class Room
 				if (parsed.get('id') == null || parsed.get('id').length <= 0)
 					continue;
 
-				data.set(Std.parseInt(parsed.get('id')), {file: file, data: parsed});
+				data.set(Std.parseInt(parsed.get('id')), {file: file, content: parsed});
 			}
 			catch (e:Exception)
 				FlxG.log.error(e.message);
