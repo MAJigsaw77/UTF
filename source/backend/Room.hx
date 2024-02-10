@@ -22,17 +22,7 @@ class Room
 		if (data != null && Lambda.count(data) > 0)
 			data.clear();
 
-		final files:Array<String> = Assets.list(TEXT).filter(function(file:String):Bool
-		{
-			return Path.directory(file).startsWith('assets/data/rooms') && Path.extension(file) == 'xml';
-		});
-
-		files.sort(function(a:String, b:String):Int
-		{
-			return (a < b) ? -1 : (a > b) ? 1 : 0;
-		});
-
-		for (file in files)
+		for (file in Assets.list(TEXT).filter(folder -> folder.startsWith('assets/data/rooms'))))
 		{
 			try
 			{
