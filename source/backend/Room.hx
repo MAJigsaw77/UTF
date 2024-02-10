@@ -24,6 +24,9 @@ class Room
 
 		for (file in Assets.list(TEXT).filter(folder -> folder.startsWith('assets/data/rooms'))))
 		{
+			if (Path.extension(file) != 'xml')
+				continue;
+
 			try
 			{
 				final parsed:Xml = Xml.parse(Assets.getText(file)).firstElement();
