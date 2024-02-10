@@ -13,8 +13,6 @@ typedef RoomData =
 	content:Xml
 }
 
-using StringTools;
-
 class Room
 {
 	public static var data(default, null):Map<Int, RoomData> = [];
