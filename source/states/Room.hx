@@ -179,8 +179,6 @@ class Room extends FlxTransitionableState
 
 	private function playerOverlapDoors(object:Chara, group:FlxTypedGroup<FlxSprite>):Void
 	{
-		FlxG.switchState(new GameOver());
-
 		script.call('playerOverlapDoors');
 	}
 }
