@@ -22,7 +22,7 @@ class Room
 		if (data != null && Lambda.count(data) > 0)
 			data.clear();
 
-		for (file in Assets.list(TEXT).filter(folder -> folder.startsWith('assets/data/rooms'))))
+		for (file in Assets.list(TEXT).filter(folder -> folder.startsWith('assets/data/rooms')))
 		{
 			if (Path.extension(file) != 'xml')
 				continue;
