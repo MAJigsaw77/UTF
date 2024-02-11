@@ -5,6 +5,7 @@ import backend.Controls;
 import backend.Data;
 import flixel.addons.text.FlxTypeText;
 import flixel.FlxG;
+import objects.TypeText;
 import objects.Typer;
 
 using flixel.util.FlxArrayUtil;
@@ -15,7 +16,7 @@ typedef DialogueData =
 	text:String
 }
 
-class Writer extends FlxTypeText
+class Writer extends TypeText
 {
 	public var finished(default, null):Bool = false;
 	public var skippable:Bool = true;
