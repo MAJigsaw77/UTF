@@ -20,6 +20,8 @@ class Writer extends TypeText
 {
 	public var finished(default, null):Bool = false;
 
+	public var skippable:Bool = true;
+
 	@:noCompletion
 	private var dialogueList:Array<DialogueData> = [];
 
