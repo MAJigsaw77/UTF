@@ -13,37 +13,36 @@ class TypeText extends FlxText
 	public var delay:Float = 0.05;
 	public var eraseDelay:Float = 0.02;
 	public var showCursor:Bool = false;
-	public var cursorCharacter:String = "|";
+	public var cursorCharacter:String = '|';
 	public var cursorBlinkSpeed:Float = 0.5;
-	public var prefix:String = "";
+	public var prefix:String = '';
 	public var autoErase:Bool = false;
 	public var waitTime:Float = 1.0;
 	public var paused:Bool = false;
 	public var sounds:Array<FlxSound>;
-	public var finishSounds = false;
+	public var finishSounds:Bool = false;
 	public var completeCallback:Void->Void;
 	public var eraseCallback:Void->Void;
 
 	var _trueDelay:Float = 0.05;
-	var _finalText:String = "";
+	var _finalText:String = '';
+	var _helperText:String = '';
 	var _timer:Float = 0.0;
-	var _waitTimer:Float = 0.0;
 	var _length:Int = 0;
 	var _typing:Bool = false;
 	var _erasing:Bool = false;
 	var _waiting:Bool = false;
+	var _waitTimer:Float = 0.0;
 	var _cursorTimer:Float = 0.0;
 	var _typingVariation:Bool = false;
 	var _typeVarPercent:Float = 0.5;
 
-	final _ignoreCharacters:Array<String> = ["`", "~", "!", "*", "(", ")", "-", "_", "=", "+", "{", "}", "[", "]", '"', "'", "\\", "|", ":", ";", ",", "<", ".", ">", "/", "?", "^", " "];
-	final _punctuationChars:Array<String> = [".", ",", "!", "?", ":", ";"];
-
-	static var helperString:String = "";
+	final _ignoreCharacters:Array<String> = ['`', '~', '!', '*', '(', ')', '-', '_', '=', '+', '{', '}', '[', ']', '\'', '\\', '|', ':', ';', ',', '<', '.', '>', '/', '?', '^', ' '];
+	final _punctuationChars:Array<String> = ['.', ',', '!', '?', ':', ';'];
 
 	public function new(X:Float, Y:Float, Width:Int, Text:String, Size:Int = 8, EmbeddedFont:Bool = true)
 	{
-		super(X, Y, Width, "", Size, EmbeddedFont);
+		super(X, Y, Width, '', Size, EmbeddedFont);
 
 		_finalText = Text;
 	}
@@ -60,7 +59,7 @@ class TypeText extends FlxText
 
 		if (ForceRestart)
 		{
-			text = "";
+			text = '';
 			_length = 0;
 		}
 
@@ -70,43 +69,6 @@ class TypeText extends FlxText
 			completeCallback = Callback;
 
 		insertBreakLines();
-	}
-
-	override public function applyMarkup(input:String, rules:Array<FlxTextFormatMarkerPair>):FlxText
-	{
-		super.applyMarkup(input, rules);
-		resetText(text);
-		return this;
-	}
-
-	function insertBreakLines()
-	{
-		var saveText = text;
-
-		var last = _finalText.length;
-		var n0:Int = 0;
-		var n1:Int = 0;
-
-		while (true)
-		{
-			last = _finalText.substr(0, last).lastIndexOf(" ");
-
-			if (last <= 0)
-				break;
-
-			text = prefix + _finalText;
-			n0 = textField.numLines;
-
-			var nextText = _finalText.substr(0, last) + "\n" + _finalText.substr(last + 1, _finalText.length);
-
-			text = prefix + nextText;
-			n1 = textField.numLines;
-
-			if (n0 == n1)
-				_finalText = nextText;
-		}
-
-		text = saveText;
 	}
 
 	public function erase(?Delay:Float, ForceRestart:Bool = false, ?Callback:Void->Void):Void
@@ -128,9 +90,20 @@ class TypeText extends FlxText
 		eraseCallback = Callback;
 	}
 
+	public function skip():Void
+	{
+		if (_erasing || _waiting)
+		{
+			_length = 0;
+			_waiting = false;
+		}
+		else if (_typing)
+			_length = _finalText.length;
+	}
+
 	public function resetText(Text:String):Void
 	{
-		text = "";
+		text = '';
 		_finalText = Text;
 		_typing = false;
 		_erasing = false;
@@ -146,36 +119,13 @@ class TypeText extends FlxText
 		_typeVarPercent = FlxMath.bound(Amount, 0, 1);
 	}
 
-	function onComplete():Void
+	override public function applyMarkup(input:String, rules:Array<FlxTextFormatMarkerPair>):FlxText
 	{
-		_timer = 0;
-		_typing = false;
+		super.applyMarkup(input, rules);
 
-		if (sounds != null)
-		{
-			for (sound in sounds)
-				sound.stop();
-		}
+		resetText(text);
 
-		if (completeCallback != null)
-			completeCallback();
-
-		if (autoErase && waitTime <= 0)
-			_erasing = true;
-		else if (autoErase)
-		{
-			_waitTimer = waitTime;
-			_waiting = true;
-		}
-	}
-
-	function onErased():Void
-	{
-		_timer = 0;
-		_erasing = false;
-
-		if (eraseCallback != null)
-			eraseCallback();
+		return this;
 	}
 
 	override public function update(elapsed:Float):Void
@@ -240,24 +190,22 @@ class TypeText extends FlxText
 			}
 		}
 
-		helperString = prefix + _finalText.substr(0, _length);
+		_helperText = prefix + _finalText.substr(0, _length);
 
 		if (showCursor)
 		{
 			_cursorTimer += elapsed;
 
-			final isBreakLine:Bool = (prefix + _finalText).charAt(helperString.length) == "\n";
-
-			if (_cursorTimer > cursorBlinkSpeed / 2 && !isBreakLine)
-				helperString += cursorCharacter.charAt(0);
+			if (_cursorTimer > cursorBlinkSpeed / 2 && (prefix + _finalText).charAt(_helperText.length) != '\n')
+				_helperText += cursorCharacter.charAt(0);
 
 			if (_cursorTimer > cursorBlinkSpeed)
 				_cursorTimer = 0;
 		}
 
-		if (helperString != text)
+		if (_helperText != text)
 		{
-			text = helperString;
+			text = _helperText;
 
 			if (_length >= _finalText.length && _typing && !_waiting && !_erasing)
 				onComplete();
@@ -269,14 +217,67 @@ class TypeText extends FlxText
 		super.update(elapsed);
 	}
 
-	public function skip():Void
+	function insertBreakLines():Void
 	{
-		if (_erasing || _waiting)
+		final saveText:String = text;
+
+		var last:Int = _finalText.length;
+		var n0:Int = 0;
+		var n1:Int = 0;
+
+		while (true)
 		{
-			_length = 0;
-			_waiting = false;
+			last = _finalText.substr(0, last).lastIndexOf(' ');
+
+			if (last <= 0)
+				break;
+
+			text = prefix + _finalText;
+
+			n0 = textField.numLines;
+
+			final nextText:String = _finalText.substr(0, last) + '\n' + _finalText.substr(last + 1, _finalText.length);
+
+			text = prefix + nextText;
+
+			n1 = textField.numLines;
+
+			if (n0 == n1)
+				_finalText = nextText;
 		}
-		else if (_typing)
-			_length = _finalText.length;
+
+		text = saveText;
+	}
+
+	function onComplete():Void
+	{
+		_timer = 0;
+		_typing = false;
+
+		if (sounds != null)
+		{
+			for (sound in sounds)
+				sound.stop();
+		}
+
+		if (completeCallback != null)
+			completeCallback();
+
+		if (autoErase && waitTime <= 0)
+			_erasing = true;
+		else if (autoErase)
+		{
+			_waitTimer = waitTime;
+			_waiting = true;
+		}
+	}
+
+	function onErased():Void
+	{
+		_timer = 0;
+		_erasing = false;
+
+		if (eraseCallback != null)
+			eraseCallback();
 	}
 }
