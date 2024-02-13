@@ -7,15 +7,9 @@ import openfl.utils.Assets;
 
 using StringTools;
 
-typedef RoomData =
-{
-	file:String,
-	content:Xml
-}
-
 class Room
 {
-	public static var data(default, null):Map<Int, RoomData> = [];
+	public static var data(default, null):Map<Int, {file:String, content:Xml}> = [];
 
 	public static function reloadFiles():Void
 	{
@@ -27,17 +21,12 @@ class Room
 			if (Path.extension(file) != 'xml')
 				continue;
 
-			try
-			{
-				final parsed:Xml = Xml.parse(Assets.getText(file)).firstElement();
+			final parsed:Xml = Xml.parse(Assets.getText(file)).firstElement();
 
-				if (parsed.get('id') == null || parsed.get('id').length <= 0)
-					continue;
+			if (parsed.get('id') == null || parsed.get('id').length <= 0)
+				continue;
 
-				data.set(Std.parseInt(parsed.get('id')), {file: file, content: parsed});
-			}
-			catch (e:Exception)
-				FlxG.log.error(e.message);
+			data.set(Std.parseInt(parsed.get('id')), {file: file, content: parsed});
 		}
 
 		FlxG.log.notice(data);
