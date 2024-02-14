@@ -32,9 +32,7 @@
 		},
 		{
 			"name": "polymod",
-			"type": "git",
-			"ref": "develop",
-			"url": "https://github.com/larsiusprime/polymod.git"
+			"type": "haxelib"
 		},
 		{
 			"name": "extension-androidtools",
