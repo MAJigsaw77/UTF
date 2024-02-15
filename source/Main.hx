@@ -68,7 +68,7 @@ class Main extends Sprite
 		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
 
 		border = new Bitmap();
-		border.bitmapData = Assets.getBitmapData(AssetPaths.border('line'));
+		border.bitmapData = Assets.getBitmapData(Data.borders.get('simple'));
 		addChild(border);
 
 		addChild(new FlxGame(640, 480, Startup, 60, 60));
@@ -176,17 +176,27 @@ class Main extends Sprite
 
 	private inline function onResizeGame(width:Int, height:Int):Void
 	{
-		final scale:Float = Math.min(FlxG.stage.stageWidth / FlxG.width, FlxG.stage.stageHeight / FlxG.height);
-
-		if (fps != null)
-			fps.scaleX = fps.scaleY = (scale > 1 ? scale : 1);
-
 		if (border != null && border.bitmapData != null)
 		{
-			final scale:Float = Lib.current.stage.stageHeight / 1080;
-			border.scaleX = scale;
-			border.scaleY = scale;
-			border.x = (Lib.current.stage.stageWidth - border.width) * 0.5;
+			final scale:Float = height / 1080;
+
+			border.scaleX = border.scaleY = scale;
+
+			border.x = (width - border.width) * 0.5;
+		}
+
+		if (fps != null)
+		{
+			final scale:Float = Math.min(width / FlxG.width, height / FlxG.height);
+
+			fps.scaleX = fps.scaleY = (scale > 1 ? scale : 1);
+		}
+
+		if (FlxG.debugger != null)
+		{
+			final scale:Float = Math.min(width / FlxG.width, height / FlxG.height);
+
+			FlxG.debugger.scaleX = FlxG.debugger.scaleY = (scale > 1 ? scale : 1);
 		}
 
 		if (FlxG.cameras != null && (FlxG.cameras.list != null && FlxG.cameras.list.length > 0))
