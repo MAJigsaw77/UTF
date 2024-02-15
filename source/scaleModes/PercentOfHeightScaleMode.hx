@@ -1,4 +1,4 @@
-package backend;
+package scaleModes;
 
 import flixel.system.scaleModes.RatioScaleMode;
 
