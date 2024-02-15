@@ -180,7 +180,8 @@ class Main extends Sprite
 		{
 			final scale:Float = height / 1080;
 
-			border.scaleX = border.scaleY = scale;
+			border.scaleX = scale;
+			border.scaleY = scale;
 
 			border.x = (width - border.width) * 0.5;
 		}
@@ -189,7 +190,8 @@ class Main extends Sprite
 		{
 			final scale:Float = Math.min(width / FlxG.width, height / FlxG.height);
 
-			fps.scaleX = fps.scaleY = (scale > 1 ? scale : 1);
+			fps.scaleX = (scale > 1 ? scale : 1);
+			fps.scaleY = (scale > 1 ? scale : 1);
 		}
 
 		if (FlxG.cameras != null && (FlxG.cameras.list != null && FlxG.cameras.list.length > 0))
@@ -214,13 +216,6 @@ class Main extends Sprite
 		{
 			FlxG.game.__cacheBitmap = null;
 			FlxG.game.__cacheBitmapData = null;
-
-			if (FlxG.game.debugger != null)
-			{
-				final scale:Float = Math.min(width / FlxG.width, height / FlxG.height);
-
-				FlxG.game.debugger.scaleX = FlxG.game.debugger.scaleY = (scale > 1 ? scale : 1);
-			}
 		}
 	}
 
