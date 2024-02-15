@@ -42,9 +42,16 @@ class Room extends FlxTransitionableState
 
 			if (RoomLoader.data.exists(room))
 			{
-				data = RoomLoader.data.get(room).content;
-				
 				file = RoomLoader.data.get(room).file;
+				data = RoomLoader.data.get(room).content;
+			}
+		}
+		else
+		{
+			if (RoomLoader.data.exists(Global.room))
+			{
+				file = RoomLoader.data.get(Global.room).file;
+				data = RoomLoader.data.get(Global.room).content;
 			}
 		}
 
