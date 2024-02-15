@@ -16,17 +16,24 @@ class Room
 		if (data != null && Lambda.count(data) > 0)
 			data.clear();
 
-		for (file in Assets.list(TEXT).filter(folder -> folder.startsWith('assets/data/rooms')))
+		final files:Array<String> = Assets.list(TEXT).filter(function(file:String):Bool
 		{
-			if (Path.extension(file) != 'xml')
-				continue;
+			return Path.directory(file) == 'assets/data/rooms' && Path.extension(file) == 'xml';
+		});
 
+		files.sort(function(a:String, b:String):Int
+		{
+			return (a < b) ? -1 : (a > b) ? 1 : 0;
+		});
+
+		for (file in files)
+		{
 			final parsed:Xml = Xml.parse(Assets.getText(file)).firstElement();
 
 			if (parsed.get('id') == null || parsed.get('id').length <= 0)
 				continue;
 
-			data.set(Std.parseInt(parsed.get('id')), {file: file, content: parsed});
+			data.set(Std.parseInt(parsed.get('id')), {file: new Path(file).file, content: parsed});
 		}
 
 		FlxG.log.notice(data);
