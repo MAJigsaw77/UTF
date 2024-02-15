@@ -24,7 +24,7 @@ using StringTools;
 class Settings extends FlxTransitionableState
 {
 	var selected:Int = 0;
-	final options:Array<String> = ['Exit', 'FPS Overlay', 'Button Config', 'Filter', 'Auto Pause'];
+	final options:Array<String> = ['Exit', 'FPS Overlay', 'Button Config', 'Filter'];
 	var items:FlxTypedGroup<FlxText>;
 
 	var tobdogLine:FlxText;
@@ -224,10 +224,6 @@ class Settings extends FlxTransitionableState
 						if (options[spr.ID] == 'Filter')
 							spr.text = 'Filter: ${Data.settings.get('filter')}'.toUpperCase();
 					});
-				case 'Auto Pause':
-					Data.settings.set('auto-pause', !Data.settings.get('auto-pause'));
-
-					FlxG.autoPause = Data.settings.get('auto-pause');
 			}
 
 			Data.save();
