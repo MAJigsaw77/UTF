@@ -32,20 +32,24 @@ class Room extends FlxTransitionableState
 
 	var chara:Chara;
 
-	public function new(room:Int):Void
+	public function new(room:Null<Int>):Void
 	{
 		super();
 
-		RoomLoader.reloadFiles();
-
-		if (RoomLoader.data.exists(room))
+		if (room != null)
 		{
-			data = RoomLoader.data.get(room).content;
+			RoomLoader.reloadFiles();
 
-			file = RoomLoader.data.get(room).file;
-
-			Global.room = Std.parseInt(data.get('id'));
+			if (RoomLoader.data.exists(room))
+			{
+				data = RoomLoader.data.get(room).content;
+				
+				file = RoomLoader.data.get(room).file;
+			}
 		}
+
+		if (data != null)
+			Global.room = Std.parseInt(data.get('id'));
 	}
 
 	override function create():Void
