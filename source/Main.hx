@@ -6,7 +6,7 @@ import android.os.Build;
 #end
 import backend.AssetPaths;
 import backend.Data;
-import backend.PercentOfHeightScaleMode;
+import scaleModes.PercentOfHeightScaleMode;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;

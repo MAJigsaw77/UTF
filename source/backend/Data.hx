@@ -12,8 +12,7 @@ class Data
 {
 	public static var settings(default, null):Map<String, Dynamic> = [
 		'fps-overlay' => false,
-		'filter' => 'none',
-		'auto-pause' => true
+		'filter' => 'none'
 	];
 
 	public static var filters(default, null):Map<String, BitmapFilter> = [
@@ -60,7 +59,5 @@ class Data
 		}
 
 		save.destroy();
-
-		FlxG.autoPause = settings.get('auto-pause');
 	}
 }

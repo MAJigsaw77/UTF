@@ -34,6 +34,8 @@ class Startup extends FlxState
 		#if MODS
 		Mods.load();
 		#end
+		
+		FlxG.autoPause = false;
 
 		FlxG.game.focusLostFramerate = FlxG.updateFramerate;
 
@@ -42,6 +44,10 @@ class Startup extends FlxState
 
 		#if debug
 		FlxG.log.redirectTraces = true;
+		#end
+
+		#if FLX_MOUSE
+		FlxG.mouse.useSystemCursor = true;
 		#end
 
 		if (FlxG.save.data.volume != null)
