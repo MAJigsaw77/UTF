@@ -9,8 +9,8 @@ import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
-import objects.Typer;
-import objects.Writer;
+import objects.dialogue.Typer;
+import objects.dialogue.Writer;
 import states.Room;
 
 class GameOver extends FlxState
@@ -82,6 +82,7 @@ class GameOver extends FlxState
 			FlxTween.tween(bg, {alpha: 0}, 1.5, {
 				onComplete: (twn:FlxTween) -> FlxG.switchState(new Room(272))
 			});
+
 			FlxG.sound.music.fadeOut(1.5);
 		}
 
