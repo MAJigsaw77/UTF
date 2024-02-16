@@ -71,7 +71,7 @@ class Room extends FlxTransitionableState
 
 		objects = new FlxTypedGroup<Object>();
 
-		if (access.hasNode.instances)
+		if (data.hasNode.instances)
 		{
 			final instances:NodeAccess = data.node.instances;
 
