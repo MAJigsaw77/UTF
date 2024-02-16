@@ -22,7 +22,7 @@ using StringTools;
 class Room extends FlxTransitionableState
 {
 	var file:String;
-	var data:Xml;
+	var data:Access;
 	var script:Script;
 
 	var chara:Chara;
@@ -69,9 +69,7 @@ class Room extends FlxTransitionableState
 		// add(grid);
 		// #end
 
-		final fast:Access = new Access(data);
-
-		chara = new Chara(Std.parseFloat(fast.node.chara.att.x), Std.parseFloat(fast.node.chara.att.y), fast.node.chara.att.facing);
+		chara = new Chara(Std.parseFloat(access.node.chara.att.x), Std.parseFloat(access.node.chara.att.y), access.node.chara.att.facing);
 		chara.scale.set(2, 2);
 		chara.updateHitbox();
 		add(chara);
@@ -80,7 +78,7 @@ class Room extends FlxTransitionableState
 
 		objects = new FlxTypedGroup<FlxSprite>();
 
-		for (obj in fast.nodes.obj)
+		for (obj in access.nodes.obj)
 		{
 			var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
 
@@ -109,7 +107,7 @@ class Room extends FlxTransitionableState
 
 		items.forEach(function(object:Object):Void
 		{
-			FlxG.collide(chara, objects, function(obj1:Chara, obj2:Object):Void
+			FlxG.collide(chara, object, function(obj1:Chara, obj2:Object):Void
 			{
 				script.call('playerOverlapObject', [obj1, obj2]);
 			});
