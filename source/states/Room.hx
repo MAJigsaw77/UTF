@@ -69,13 +69,6 @@ class Room extends FlxTransitionableState
 		// add(grid);
 		// #end
 
-		chara = new Chara(Std.parseFloat(access.node.chara.att.x), Std.parseFloat(access.node.chara.att.y), access.node.chara.att.facing);
-		chara.scale.set(2, 2);
-		chara.updateHitbox();
-		add(chara);
-
-		FlxG.camera.follow(chara);
-
 		objects = new FlxTypedGroup<FlxSprite>();
 
 		if (access.hasNode.instances)
@@ -84,18 +77,31 @@ class Room extends FlxTransitionableState
 
 			for (instance in instances.nodes.instance)
 			{
-			var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
+				switch (instance.att.objName)
+				{
+					case 'mainchara':
+						chara = new Chara(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), null);
 
-			if (obj.has.scaleX || obj.has.scaleY)
-			{
-				object.scale.set(obj.has.scaleX ? Std.parseFloat(obj.att.scaleX) : 1, obj.has.scaleY ? Std.parseFloat(obj.att.scaleY) : 1);
-				object.updateHitbox();
-			}
+						if (instance.has.scaleX || instance.has.scaleY)
+						{
+							chara.scale.set(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
+							chara.updateHitbox();
+						}
 
-			object.immovable = true;
-			object.solid = true;
-			object.active = false;
-			objects.add(object);
+						add(chara);
+
+						FlxG.camera.follow(chara);
+					default:
+						var object:FlxSprite = new FlxSprite(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), AssetPaths.sprite(instance.att.objName));
+				
+						if (instance.has.scaleX || instance.has.scaleY)
+						{
+							object.scale.set(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
+							object.updateHitbox();
+						}
+
+						objects.add(object);
+				}
 			}
 		}
 
