@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<room id="272" width="640" height="480">
+<room>
+	<id>272</id>
+	<width>640</width>
+	<height>480</height>
 	<instances>
 		<instance objName="mainchara" x="280" y="200" scaleX="2" scaleY="2" />
 		<instance objName="solidsmall" x="200" y="440" scaleX="2" scaleY="2" />
