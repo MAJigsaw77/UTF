@@ -2,7 +2,7 @@ package objects.room;
 
 import backend.AssetPaths;
 import backend.Script;
-import flixel.group.FlxSpriteGroup;
+import flixel.FlxSprite;
 import haxe.Json;
 import openfl.utils.Assets;
 
@@ -28,11 +28,11 @@ class Object extends FlxSprite
 		if (Assets.exists(AssetPaths.data('objects/$name')))
 			data = Json.parse(Assets.getText(AssetPaths.data('objects/$name')));
 		else
-		{
-			FlxG.log.notice('Loading default data for $name object');
+			data = {immovable: true, solid: false, active: false};
 
-			data = {immovable: true, solid: false, maxHp: active};
-		}
+		immovable = data.immovable;
+		solid = data.solid;
+		active = data.active;
 
 		script = new Script();
 		script.set('this', this);
