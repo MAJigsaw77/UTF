@@ -69,7 +69,7 @@ class Room extends FlxTransitionableState
 		// add(grid);
 		// #end
 
-		objects = new FlxTypedGroup<FlxSprite>();
+		objects = new FlxTypedGroup<Object>();
 
 		if (access.hasNode.instances)
 		{
