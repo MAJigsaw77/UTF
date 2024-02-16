@@ -73,7 +73,7 @@ class Room extends FlxTransitionableState
 
 		if (data.hasNode.instances)
 		{
-			final instances:NodeAccess = data.node.instances;
+			final instances:Access = data.node.instances;
 
 			for (instance in instances.nodes.instance)
 			{
