@@ -6,7 +6,7 @@ import flixel.FlxSprite;
 import haxe.Json;
 import openfl.utils.Assets;
 
-typedef ObjectrData =
+typedef ObjectData =
 {
 	immovable:Bool,
 	solid:Bool,
@@ -16,7 +16,7 @@ typedef ObjectrData =
 class Object extends FlxSprite
 {
 	public var name(default, null):String;
-	public var data(default, null):MonsterData;
+	public var data(default, null):ObjectData;
 	public var script(default, null):Script;
 
 	public function new(x:Float = 0, y:Float = 0, name:String):Void
