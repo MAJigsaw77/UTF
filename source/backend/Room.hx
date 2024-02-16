@@ -1,6 +1,7 @@
 package backend;
 
 import haxe.io.Path;
+import haxe.xml.Access;
 import haxe.Exception;
 import flixel.FlxG;
 import openfl.utils.Assets;
@@ -9,7 +10,7 @@ using StringTools;
 
 class Room
 {
-	public static var data(default, null):Map<Int, {file:String, content:Xml}> = [];
+	public static var data(default, null):Map<Int, {file:String, content:Access}> = [];
 
 	private static final directory:String = 'assets/data/rooms';
 
@@ -30,12 +31,12 @@ class Room
 
 		for (file in files)
 		{
-			final parsed:Xml = Xml.parse(Assets.getText(file)).firstElement();
+			final parsed:Access = new Access(Xml.parse(Assets.getText(file)).firstElement());
 
-			if (parsed.get('id') == null || parsed.get('id').length <= 0)
+			if (!parsed.hasNode.id)
 				continue;
 
-			final id:Int = Std.parseInt(parsed.get('id'));
+			final id:Int = Std.parseInt(parsed.node.id.innerData);
 
 			if (data.exists(id))
 				FlxG.log.notice('Overwriting room $id.');
