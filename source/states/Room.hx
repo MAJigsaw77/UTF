@@ -25,7 +25,7 @@ class Room extends FlxTransitionableState
 	var script:Script;
 
 	var chara:Chara;
-	var objects:FlxTypedGroup<Objects>;
+	var objects:FlxTypedGroup<Object>;
 	var tiles:FlxTypedGroup<FlxSprite>;
 
 	public function new(room:Null<Int>):Void
