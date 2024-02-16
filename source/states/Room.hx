@@ -25,12 +25,9 @@ class Room extends FlxTransitionableState
 	var data:Xml;
 	var script:Script;
 
-	var solids:FlxTypedGroup<FlxSprite>;
-	var markers:FlxTypedGroup<FlxSprite>;
-	var objects:FlxTypedGroup<FlxSprite>;
-	var doors:FlxTypedGroup<FlxSprite>;
-
 	var chara:Chara;
+	var objects:FlxTypedGroup<Objects>;
+	var tiles:FlxTypedGroup<FlxSprite>;
 
 	public function new(room:Null<Int>):Void
 	{
@@ -81,49 +78,6 @@ class Room extends FlxTransitionableState
 
 		FlxG.camera.follow(chara);
 
-		solids = new FlxTypedGroup<FlxSprite>();
-
-		for (solid in fast.nodes.solid)
-		{
-			var object:FlxSprite = new FlxSprite(Std.parseFloat(solid.att.x), Std.parseFloat(solid.att.y), AssetPaths.sprite('solid${solid.att.type}'));
-
-			if (solid.has.scaleX || solid.has.scaleY)
-			{
-				object.scale.set(solid.has.scaleX ? Std.parseFloat(solid.att.scaleX) : 1, solid.has.scaleY ? Std.parseFloat(solid.att.scaleY) : 1);
-				object.updateHitbox();
-			}
-
-			object.alpha = #if debug 0.5 #else 0 #end;
-			object.immovable = true;
-			object.solid = true;
-			object.active = false;
-			solids.add(object);
-		}
-
-		add(solids);
-
-		markers = new FlxTypedGroup<FlxSprite>();
-
-		for (marker in fast.nodes.marker)
-		{
-			var object:FlxSprite = new FlxSprite(Std.parseFloat(marker.att.x), Std.parseFloat(marker.att.y), AssetPaths.sprite('marker${marker.att.name}'));
-
-			if (marker.has.scaleX || marker.has.scaleY)
-			{
-				object.scale.set(marker.has.scaleX ? Std.parseFloat(marker.att.scaleX) : 1, marker.has.scaleY ? Std.parseFloat(marker.att.scaleY) : 1);
-				object.updateHitbox();
-			}
-
-			#if !debug
-			object.alpha = 0;
-			#end
-			object.immovable = true;
-			object.active = false;
-			markers.add(object);
-		}
-
-		add(markers);
-
 		objects = new FlxTypedGroup<FlxSprite>();
 
 		for (obj in fast.nodes.obj)
@@ -144,28 +98,6 @@ class Room extends FlxTransitionableState
 
 		add(objects);
 
-		doors = new FlxTypedGroup<FlxSprite>();
-
-		for (door in fast.nodes.door)
-		{
-			var object:FlxSprite = new FlxSprite(Std.parseFloat(door.att.x), Std.parseFloat(door.att.y), AssetPaths.sprite('door${door.att.name}'));
-
-			if (door.has.scaleX || door.has.scaleY)
-			{
-				object.scale.set(door.has.scaleX ? Std.parseFloat(door.att.scaleX) : 1, door.has.scaleY ? Std.parseFloat(door.att.scaleY) : 1);
-				object.updateHitbox();
-			}
-
-			#if !debug
-			object.alpha = 0;
-			#end
-			object.immovable = true;
-			object.active = false;
-			doors.add(object);
-		}
-
-		add(doors);
-
 		FlxG.camera.setScrollBoundsRect(0, 0, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')));
 
 		super.create();
@@ -173,23 +105,18 @@ class Room extends FlxTransitionableState
 
 	override function update(elapsed:Float):Void
 	{
-		script.call('update', [elapsed]);
+		script.call('preUpdate', [elapsed]);
 
-		FlxG.collide(chara, solids);
-		FlxG.collide(chara, objects);
-
-		FlxG.overlap(chara, doors, playerOverlapDoors);
-
-		#if debug
-		FlxG.watch.addQuick('Chara X', chara.x);
-		FlxG.watch.addQuick('Chara Y', chara.y);
-		#end
+		items.forEach(function(object:Object):Void
+		{
+			FlxG.collide(chara, objects, function(obj1:Chara, obj2:Object):Void
+			{
+				script.call('playerOverlapObject', [obj1, obj2]);
+			});
+		});
 
 		super.update(elapsed);
-	}
 
-	private function playerOverlapDoors(object:Chara, group:FlxTypedGroup<FlxSprite>):Void
-	{
-		script.call('playerOverlapDoors');
+		script.call('postUpdate', [elapsed]);
 	}
 }
