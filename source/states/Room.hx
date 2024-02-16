@@ -78,8 +78,12 @@ class Room extends FlxTransitionableState
 
 		objects = new FlxTypedGroup<FlxSprite>();
 
-		for (obj in access.nodes.obj)
+		if (access.hasNode.instances)
 		{
+			final instances:NodeAccess = data.node.instances;
+
+			for (instance in instances.nodes.instance)
+			{
 			var object:FlxSprite = new FlxSprite(Std.parseFloat(obj.att.x), Std.parseFloat(obj.att.y), AssetPaths.sprite(obj.att.name));
 
 			if (obj.has.scaleX || obj.has.scaleY)
@@ -92,6 +96,7 @@ class Room extends FlxTransitionableState
 			object.solid = true;
 			object.active = false;
 			objects.add(object);
+			}
 		}
 
 		add(objects);
