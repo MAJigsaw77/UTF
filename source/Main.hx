@@ -20,7 +20,6 @@ import hl.Api;
 #end
 import lime.system.System as LimeSystem;
 import openfl.display.Bitmap;
-import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.errors.Error;
 import openfl.events.ErrorEvent;
@@ -29,6 +28,7 @@ import openfl.system.System as OpenFLSystem;
 import openfl.utils.AssetCache;
 import openfl.utils.Assets;
 import openfl.Lib;
+import overlay.FPS;
 #if MODS
 import polymod.Polymod;
 #end
