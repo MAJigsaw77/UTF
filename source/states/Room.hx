@@ -14,8 +14,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import haxe.io.Path;
 import haxe.xml.Access;
-import objects.Chara;
-import objects.Writer;
+import objects.room.Chara;
 
 using StringTools;
 
@@ -53,7 +52,7 @@ class Room extends FlxTransitionableState
 		}
 
 		if (data != null)
-			Global.room = Std.parseInt(data.get('id'));
+			Global.room = Std.parseInt(data.node.id.innerData);
 	}
 
 	override function create():Void
@@ -116,12 +115,15 @@ class Room extends FlxTransitionableState
 	{
 		script.call('preUpdate', [elapsed]);
 
-		items.forEach(function(object:Object):Void
+		objects?.forEach(function(object:Object):Void
 		{
-			FlxG.collide(chara, object, function(obj1:Chara, obj2:Object):Void
+			if (chara != null)
 			{
-				script.call('playerOverlapObject', [obj1, obj2]);
-			});
+				FlxG.collide(chara, object, function(obj1:Chara, obj2:Object):Void
+				{
+					script.call('playerOverlapObject', [obj1, obj2]);
+				});
+			}
 		});
 
 		super.update(elapsed);
