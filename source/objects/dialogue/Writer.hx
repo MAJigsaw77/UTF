@@ -5,8 +5,8 @@ import backend.Controls;
 import backend.Data;
 import flixel.addons.text.FlxTypeText;
 import flixel.FlxG;
-import objects.TypeText;
-import objects.Typer;
+import objects.dialogue.TypeText;
+import objects.dialogue.Typer;
 
 using flixel.util.FlxArrayUtil;
 
