@@ -15,11 +15,14 @@ typedef ObjectrData =
 
 class Object extends FlxSprite
 {
+	public var name(default, null):String;
 	public var data(default, null):MonsterData;
 	public var script(default, null):Script;
 
 	public function new(x:Float = 0, y:Float = 0, name:String):Void
 	{
+		this.name = name;
+
 		super(x, y);
 
 		if (Assets.exists(AssetPaths.data('objects/$name')))
