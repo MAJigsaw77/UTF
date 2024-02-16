@@ -30,7 +30,7 @@
 		<instance objName="solidsmall" x="400" y="200" scaleX="2" scaleY="2" />
 		<instance objName="solidsmall" x="400" y="240" scaleX="2" scaleY="2" />
 		<instance objName="solidsmall" x="400" y="280" scaleX="2" scaleY="2" />
-		<instance objName="doorC" x="280" y="360" scaleX="2" scaleY="2" />
+		<instance objName="markerC" x="280" y="360" scaleX="2" scaleY="2" />
 		<instance objName="redacted_a" x="280" y="120" scaleX="2" scaleY="2" />
 		<instance objName="doorD" x="240" y="440" scaleX="2" scaleY="2" />
 		<instance objName="doorD" x="280" y="440" scaleX="2" scaleY="2" />
