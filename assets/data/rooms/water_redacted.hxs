@@ -4,7 +4,7 @@ var dist:Int = 0;
 
 // this.objects.members[0] is redacted.
 
-function update(elapsed)
+function postUpdate(elapsed)
 {
 	dist = FlxMath.distanceBetween(this.objects.members[0], this.chara);
 
@@ -23,7 +23,8 @@ function update(elapsed)
 	FlxG.watch.addQuick('Dis from Redacted', dist);
 }
 
-function playerOverlapDoors()
+function playerOverlapObject(chara, object)
 {
-	FlxG.resetState();
+	if (object.name == 'doorD')
+		FlxG.resetState();
 }
