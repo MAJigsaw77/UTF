@@ -14,9 +14,9 @@ import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import objects.dialogue.Typer;
+import objects.dialogue.Writer;
 import objects.Monster;
-import objects.Typer;
-import objects.Writer;
 import states.GameOver;
 
 class Battle extends FlxTransitionableState
