@@ -6,11 +6,11 @@ function postUpdate(elapsed)
 {
 	dist = FlxMath.distanceBetween(this.objects.members[26], this.chara);
 
-	if (dist <= 120)
+	if (dist < 120)
 	{
-		var disto:Int = Math.floor(60 / dist);
+		var disto:Float = 60 / (dist + 1);
 
-		if (disto >= 1)
+		if (disto > 1)
 			disto = 1;
 
 		this.objects.members[26].alpha = disto;
