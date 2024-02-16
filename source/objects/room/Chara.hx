@@ -1,4 +1,4 @@
-package objects;
+package objects.room;
 
 import backend.AssetPaths;
 import backend.Data;

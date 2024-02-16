@@ -1,4 +1,4 @@
-package openfl.display;
+package overlay;
 
 import backend.AssetPaths;
 #if windows

@@ -1,4 +1,4 @@
-package objects;
+package objects.dialogue;
 
 import flixel.FlxG;
 import flixel.math.FlxMath;

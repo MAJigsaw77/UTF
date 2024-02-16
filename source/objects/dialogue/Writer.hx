@@ -1,4 +1,4 @@
-package objects;
+package objects.dialogue;
 
 import backend.AssetPaths;
 import backend.Controls;
