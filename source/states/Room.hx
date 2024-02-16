@@ -15,6 +15,7 @@ import flixel.FlxSprite;
 import haxe.io.Path;
 import haxe.xml.Access;
 import objects.room.Chara;
+import objects.room.Object;
 
 using StringTools;
 
@@ -91,8 +92,8 @@ class Room extends FlxTransitionableState
 
 						FlxG.camera.follow(chara);
 					default:
-						var object:FlxSprite = new FlxSprite(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), AssetPaths.sprite(instance.att.objName));
-				
+						var object:Object = new Object(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), instance.att.objName);
+
 						if (instance.has.scaleX || instance.has.scaleY)
 						{
 							object.scale.set(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
