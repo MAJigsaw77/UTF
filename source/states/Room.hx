@@ -140,7 +140,8 @@ class Room extends FlxTransitionableState
 			{
 				if (Controls.instance.justPressed('confirm') && object.name.contains('redacted_a') && chara.overlaps(object) && !chara?.interacting)
 				{
-					chara?.interacting = true;
+					if (chara != null)
+						chara.interacting = true;
 	
 					final typer:Typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 3, 1.6);
 
@@ -151,7 +152,8 @@ class Room extends FlxTransitionableState
 
 		if (chara?.interacting && box != null && writer != null && writer.finished)
 		{
-			chara?.interacting = false;
+			if (chara != null)
+				chara.interacting = false;
 			
 			remove(box);
 			remove(writer);
