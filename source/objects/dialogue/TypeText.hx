@@ -9,6 +9,7 @@ class TypeText extends FlxText
 {
 	public var delay:Float = 0.05;
 	public var sounds:Array<FlxSound>;
+	public var finishSounds:Bool = false;
 
 	var _finalText:String = '';
 	var _helperText:String = '';
@@ -22,7 +23,7 @@ class TypeText extends FlxText
 	{
 		super(x, y, width, '', size, embeddedFont);
 
-		_finalText = Text;
+		_finalText = text;
 	}
 
 	public function start(?delay:Float):Void
