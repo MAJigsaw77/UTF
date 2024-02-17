@@ -3,7 +3,6 @@ package objects.dialogue;
 import backend.AssetPaths;
 import backend.Controls;
 import backend.Data;
-import flixel.addons.text.FlxTypeText;
 import flixel.FlxG;
 import objects.dialogue.TypeText;
 import objects.dialogue.Typer;
