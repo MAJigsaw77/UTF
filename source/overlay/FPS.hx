@@ -1,11 +1,13 @@
 package overlay;
 
 import backend.AssetPaths;
+import backend.Script;
 #if windows
 import backend.WinAPI;
 #end
 import flixel.util.FlxStringUtil;
 import flixel.FlxG;
+import haxe.Timer;
 import openfl.system.System;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
@@ -18,12 +20,7 @@ class FPS extends TextField
 	 */
 	public var currentFPS(default, null):Int = 0;
 
-	/**
-	 * Whether to show the memory usage or not.
-	 */
-	public var showMemoryUsage:Bool = #if debug true #else false #end;
-
-	@:noCompletion private var currentTime:Float = 0;
+	@:noCompletion private var deltaTimeout:Int = 0;
 	@:noCompletion private var times:Array<Float> = [];
 
 	public function new(x:Float = 10, y:Float = 10, color:Int = 0xFFFFFF)
@@ -44,17 +41,27 @@ class FPS extends TextField
 	// Overrides
 	@:noCompletion private override function __enterFrame(deltaTime:Int):Void
 	{
-		currentTime += deltaTime;
+		if (deltaTimeout > 1000)
+		{
+			deltaTimeout = 0;
+			return;
+		}
 
-		times.push(currentTime);
-		while (times[0] < (currentTime - 1000))
+		final now:Float = Timer.stamp() * 1000;
+
+		times.push(now);
+
+		while (times[0] < (now - 1000))
 			times.shift();
 
-		currentFPS = (times.length > Std.int(FlxG.stage.frameRate)) ? Std.int(FlxG.stage.frameRate) : times.length;
+		currentFPS = times.length > FlxG.updateFramerate ? FlxG.updateFramerate : times.length;
 
-		if (showMemoryUsage)
-			text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(#if windows WinAPI.getProcessMemory() #else System.totalMemory #end) + '\n';
-		else
-			text = currentFPS + 'FPS\n';
+		#if debug
+		text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(#if windows WinAPI.getProcessMemory() #else System.totalMemory #end) + '\n' + Script.count 'Scripts\n';
+		#else
+		text = currentFPS + 'FPS\n';
+		#end
+
+		deltaTimeout += deltaTime;
 	}
 }
