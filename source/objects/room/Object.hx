@@ -8,7 +8,6 @@ import openfl.utils.Assets;
 
 typedef ObjectData =
 {
-	immovable:Bool,
 	solid:Bool,
 	active:Bool
 }
@@ -25,12 +24,13 @@ class Object extends FlxSprite
 
 		super(x, y);
 
+		immovable = true;
+
 		if (Assets.exists(AssetPaths.data('objects/$name')))
 			data = Json.parse(Assets.getText(AssetPaths.data('objects/$name')));
 		else
-			data = {immovable: true, solid: false, active: false};
+			data = {solid: false, active: false};
 
-		immovable = data.immovable;
 		solid = data.solid;
 		active = data.active;
 
@@ -50,11 +50,9 @@ class Object extends FlxSprite
 
 	public override function destroy():Void
 	{
-		script.call('preDestroy');
+		script.call('destroy');
 
 		super.destroy();
-
-		script.call('postDestroy');
 
 		script.close();
 	}
