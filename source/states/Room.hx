@@ -164,7 +164,7 @@ class Room extends FlxTransitionableState
 		if (dialogue == null)
 			return;
 
-		box = new FlxShapeBox(32, 10, 608, 160), {thickness: 6, jointStyle: MITER, color: FlxColor.WHITE}, FlxColor.BLACK);
+		box = new FlxShapeBox(32, 10, 608, 160, {thickness: 6, jointStyle: MITER, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.scrollFactor.set();
 		box.cameras = [camHud];
 		box.active = false;
