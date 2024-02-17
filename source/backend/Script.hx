@@ -11,7 +11,7 @@ class Script
 	public static var properties(default, null):Map<String, Dynamic> = [
 		// Haxe Classes.
 		'Date' => Date,
-		'DateTools' => DateTools
+		'DateTools' => DateTools,
 		'Lambda' => Lambda,
 		'Math' => Math,
 		'Std' => Std,
