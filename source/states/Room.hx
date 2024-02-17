@@ -37,7 +37,6 @@ class Room extends FlxTransitionableState
 
 	var box:FlxShapeBox;
 	var writer:Writer;
-	var interacting:Bool = false;
 
 	public function new(room:Null<Int>):Void
 	{
