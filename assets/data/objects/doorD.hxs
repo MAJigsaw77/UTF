@@ -1,7 +1,4 @@
-#if debug
-this.alpha = 1;
-#else
+this.loadGraphic(AssetPaths.sprite(this.name));
+#if !debug
 this.alpha = 0;
 #end
-
-this.loadGraphic(AssetPaths.sprite(this.name));
