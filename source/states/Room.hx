@@ -83,7 +83,9 @@ class Room extends FlxTransitionableState
 
 						if (object.data.hitbox != null && object.data.hitbox.length > 0)
 						{
-							object.offset.set(object.data.hitbox[0], object.data.hitbox[1]);
+							object.width = object.data.hitbox[0];
+							object.height = object.data.hitbox[1];
+
 							object.centerOrigin();
 						}
 						else
