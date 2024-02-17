@@ -101,21 +101,13 @@ class Room extends FlxTransitionableState
 					default:
 						var object:Object = new Object(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), instance.att.objName);
 						object.scale.set(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
-
-						if (object.data.hitbox != null && object.data.hitbox.length > 0)
-						{
-							object.width = object.data.hitbox[0];
-							object.height = object.data.hitbox[1];
-							object.offset.set(-0.5 * (object.width - object.frameWidth), -0.5 * (object.height - object.frameHeight));
-							object.centerOrigin();
-						}
-						else
-							object.updateHitbox();
-
+						object.updateHitbox();
 						objects.add(object);
 				}
 			}
 		}
+		else
+			FlxG.log.notice('There are no instances to load');
 
 		FlxG.camera.setScrollBoundsRect(0, 0, Std.parseInt(data.node.width.innerData), Std.parseInt(data.node.height.innerData));
 
