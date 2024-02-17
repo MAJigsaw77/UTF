@@ -21,8 +21,8 @@ function postUpdate(elapsed)
 	FlxG.watch.addQuick('Dis from Redacted', dist);
 }
 
-function playerOverlapObject(chara, object)
+/*function playerOverlapObject(chara, object)
 {
 	if (object != null && object.name == 'doorD')
 		FlxG.resetState();
-}
+}*/
