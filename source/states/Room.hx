@@ -60,6 +60,7 @@ class Room extends FlxTransitionableState
 		script.execute(AssetPaths.script('rooms/$file'));
 
 		objects = new FlxTypedGroup<Object>();
+		add(objects);
 
 		if (data.hasNode.instances)
 		{
@@ -94,8 +95,6 @@ class Room extends FlxTransitionableState
 				}
 			}
 		}
-
-		add(objects);
 
 		FlxG.camera.setScrollBoundsRect(0, 0, Std.parseInt(data.node.width.innerData), Std.parseInt(data.node.height.innerData));
 
