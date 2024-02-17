@@ -65,6 +65,8 @@ class Script
 		'Global' => backend.Global
 	];
 
+	public static var count(default, null):Int = 0;
+
 	private var parser:Parser;
 	private var interp:Interp;
 
@@ -79,6 +81,8 @@ class Script
 		interp = new Interp();
 		for (key => value in properties)
 			set(key, value);
+
+		count++;
 	}
 
 	public function execute(file:String):Void
@@ -140,5 +144,7 @@ class Script
 	{
 		parser = null;
 		interp = null;
+
+		count--;
 	}
 }
