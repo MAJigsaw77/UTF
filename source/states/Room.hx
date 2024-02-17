@@ -1,16 +1,20 @@
 package states;
 
 import backend.AssetPaths;
+import backend.Controls;
 import backend.Global;
 import backend.Room as RoomLoader;
 import backend.Script;
+import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
+import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import haxe.io.Path;
 import haxe.xml.Access;
+import objects.dialogue.Writer;
 import objects.room.Chara;
 import objects.room.Object;
 
@@ -25,6 +29,13 @@ class Room extends FlxTransitionableState
 	var chara:Chara;
 	var objects:FlxTypedGroup<Object>;
 	var tiles:FlxTypedGroup<FlxSprite>;
+
+	var camGame:FlxCamera;
+	var camHud:FlxCamera;
+
+	var box:FlxShapeBox;
+	var writer:Writer;
+	var interacting:Bool = false;
 
 	public function new(room:Null<Int>):Void
 	{
@@ -58,6 +69,15 @@ class Room extends FlxTransitionableState
 		script = new Script();
 		script.set('this', this);
 		script.execute(AssetPaths.script('rooms/$file'));
+
+		camGame = new FlxCamera();
+		FlxG.cameras.reset(camGame);
+
+		camHud = new FlxCamera();
+		camHud.bgColor.alpha = 0;
+		FlxG.cameras.add(camHud, false);
+
+		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
 		objects = new FlxTypedGroup<Object>();
 		add(objects);
@@ -113,8 +133,48 @@ class Room extends FlxTransitionableState
 			{
 				script.call('playerCollideObjects', [obj1, obj2]);
 			});
+
+			objects.forEach(function(object:Object):Void
+			{
+				if (Controls.instance.justPressed('confirm') && object.name.contains('redacted_a') && chara.overlaps(object) && !interacting)
+				{
+					interacting = true;
+	
+					final typer:Typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 8, 1.6);
+
+					startDialogue([{typer: typer, text: '* [redacted]'}]);
+				}
+			});
+		}
+
+		if (box != null && writer != null && writer.finished)
+		{
+			remove(box);
+			remove(writer);
+
+			box = null;
+			writer = null;
 		}
 
 		script.call('postUpdate', [elapsed]);
+	}
+
+	private function startDialogue(dialogue:DialogueData):Void
+	{
+		if (dialogue == null)
+			return;
+
+		box = new FlxShapeBox(32, 10, 608, 160), {thickness: 6, jointStyle: MITER, color: FlxColor.WHITE}, FlxColor.BLACK);
+		box.scrollFactor.set();
+		box.cameras = [camHud];
+		box.active = false;
+		add(box);
+
+		writer = new Writer(box.x + 20, box.x + 10);
+		writer.scrollFactor.set();
+		writer.cameras = [camHud];
+		add(writer);
+
+		writer.startDialogue(dialogue);
 	}
 }
