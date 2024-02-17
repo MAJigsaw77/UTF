@@ -37,7 +37,7 @@ class TypeText extends FlxText
 	var _typingVariation:Bool = false;
 	var _typeVarPercent:Float = 0.5;
 
-	final _ignoreCharacters:Array<String> = ['`', '~', '!', '*', '(', ')', '-', '_', '=', '+', '{', '}', '[', ']', '\'', '\\', '|', ':', ';', ',', '<', '.', '>', '/', '?', '^', ' '];
+	final _ignoreCharacters:Array<String> = ['`', '~', '!', '*', '(', ')', '-', '_', '=', '+', '{', '}', '[', ']', '\'', '\n', '\\', '|', ':', ';', ',', '<', '.', '>', '/', '?', '^', ' '];
 	final _punctuationChars:Array<String> = ['.', ',', '!', '?', ':', ';'];
 
 	public function new(X:Float, Y:Float, Width:Int, Text:String, Size:Int = 8, EmbeddedFont:Bool = true)
