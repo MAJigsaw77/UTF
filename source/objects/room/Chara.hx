@@ -81,10 +81,17 @@ class Chara extends FlxSprite
 				#end
 			}
 		}
+		else if (!animation.finished)
+		{
+			animation.finish();
+
+			velocity.set();
+		}
 
 		if (FlxG.keys.anyJustReleased([DOWN, UP, RIGHT, LEFT]))
 		{
 			animation.finish();
+
 			velocity.set();
 		}
 
