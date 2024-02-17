@@ -166,13 +166,13 @@ class Room extends FlxTransitionableState
 		if (dialogue == null)
 			return;
 
-		box = new FlxShapeBox(32, 10, 608, 160, {thickness: 6, jointStyle: MITER, color: FlxColor.WHITE}, FlxColor.BLACK);
+		box = new FlxShapeBox(32, 10, 576, 150, {thickness: 6, jointStyle: MITER, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.scrollFactor.set();
 		box.cameras = [camHud];
 		box.active = false;
 		add(box);
 
-		writer = new Writer(box.x + 20, box.x + 10);
+		writer = new Writer(box.x + 20, box.y + 10);
 		writer.scrollFactor.set();
 		writer.cameras = [camHud];
 		add(writer);
