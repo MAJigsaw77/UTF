@@ -4,9 +4,6 @@ import backend.AssetPaths;
 import backend.Global;
 import backend.Room as RoomLoader;
 import backend.Script;
-// #if debug
-// import flixel.addons.display.FlxGridOverlay;
-// #end
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
@@ -62,13 +59,6 @@ class Room extends FlxTransitionableState
 		script.set('this', this);
 		script.execute(AssetPaths.script('rooms/$file'));
 
-		// #if debug
-		// var grid:FlxSprite = FlxGridOverlay.create(40, 40, Std.parseInt(data.get('width')), Std.parseInt(data.get('height')));
-		// grid.scrollFactor.set();
-		// grid.active = false;
-		// add(grid);
-		// #end
-
 		objects = new FlxTypedGroup<Object>();
 
 		if (data.hasNode.instances)
@@ -116,18 +106,15 @@ class Room extends FlxTransitionableState
 	{
 		script.call('preUpdate', [elapsed]);
 
-		objects?.forEach(function(object:Object):Void
-		{
-			if (chara != null)
-			{
-				FlxG.collide(chara, object, function(obj1:Chara, obj2:Object):Void
-				{
-					script.call('playerOverlapObject', [obj1, obj2]);
-				});
-			}
-		});
-
 		super.update(elapsed);
+
+		if (chara != null)
+		{
+			FlxG.collide(chara, objects, function(obj1:Chara, obj2:FlxTypedGroup<Object>):Void
+			{
+				script.call('playerCollideObjects', [obj1, obj2]);
+			});
+		}
 
 		script.call('postUpdate', [elapsed]);
 	}
