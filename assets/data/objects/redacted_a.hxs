@@ -1,2 +1,3 @@
 this.loadGraphic(AssetPaths.sprite(this.name));
 this.immovable = true;
+this.solid = true;
