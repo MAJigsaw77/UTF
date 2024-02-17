@@ -89,9 +89,11 @@ class TypeText extends FlxText
 			}
 		}
 
-		if (text?.length != _length)
+		final curText:String = _finalText.substr(0, _length);
+
+		if (text != curText)
 		{
-			text = _finalText.substr(0, _length);
+			text = curText;
 
 			if (_typing && _length >= _finalText.length)
 			{
