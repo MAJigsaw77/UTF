@@ -9,11 +9,13 @@ import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
+import flixel.util.FlxColor;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import haxe.io.Path;
 import haxe.xml.Access;
+import objects.dialogue.Typer;
 import objects.dialogue.Writer;
 import objects.room.Chara;
 import objects.room.Object;
@@ -159,7 +161,7 @@ class Room extends FlxTransitionableState
 		script.call('postUpdate', [elapsed]);
 	}
 
-	private function startDialogue(dialogue:DialogueData):Void
+	private function startDialogue(dialogue:Array<DialogueData>):Void
 	{
 		if (dialogue == null)
 			return;
