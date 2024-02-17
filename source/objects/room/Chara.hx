@@ -8,6 +8,8 @@ import flixel.FlxSprite;
 
 class Chara extends FlxSprite
 {
+	public var interacting:Bool = false;
+
 	public function new(x:Float = 0, y:Float = 0, facing:String):Void
 	{
 		super(x, y);
@@ -33,54 +35,56 @@ class Chara extends FlxSprite
 
 	override public function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.pressed.DOWN)
+		if (!interacting)
 		{
-			if (!FlxG.keys.anyPressed([RIGHT, LEFT]))
-				animation.play('down');
+			if (FlxG.keys.pressed.DOWN)
+			{
+				if (!FlxG.keys.anyPressed([RIGHT, LEFT]))
+					animation.play('down');
 
-			velocity.y = 180;
-			#if debug
-			if (FlxG.keys.checkStatus(Data.binds.get('cancel'), PRESSED))
-				velocity.y = 300;
-			#end
-		}
-		else if (FlxG.keys.pressed.UP)
-		{
-			if (!FlxG.keys.anyPressed([RIGHT, LEFT]))
-				animation.play('up');
+				velocity.y = 180;
+				#if debug
+				if (FlxG.keys.checkStatus(Data.binds.get('cancel'), PRESSED))
+					velocity.y = 300;
+				#end
+			}
+			else if (FlxG.keys.pressed.UP)
+			{
+				if (!FlxG.keys.anyPressed([RIGHT, LEFT]))
+					animation.play('up');
 
-			velocity.y = -180;
-			#if debug
-			if (FlxG.keys.checkStatus(Data.binds.get('cancel'), PRESSED))
-				velocity.y = -300;
-			#end
-		}
+				velocity.y = -180;
+				#if debug
+				if (FlxG.keys.checkStatus(Data.binds.get('cancel'), PRESSED))
+					velocity.y = -300;
+				#end
+			}
 
-		if (FlxG.keys.pressed.RIGHT)
-		{
-			animation.play('right');
+			if (FlxG.keys.pressed.RIGHT)
+			{
+				animation.play('right');
 
-			velocity.x = 180;
-			#if debug
-			if (FlxG.keys.checkStatus(Data.binds.get('cancel'), PRESSED))
-				velocity.x = 300;
-			#end
-		}
-		else if (FlxG.keys.pressed.LEFT)
-		{
-			animation.play('left');
+				velocity.x = 180;
+				#if debug
+				if (FlxG.keys.checkStatus(Data.binds.get('cancel'), PRESSED))
+					velocity.x = 300;
+				#end
+			}
+			else if (FlxG.keys.pressed.LEFT)
+			{
+				animation.play('left');
 
-			velocity.x = -180;
-			#if debug
-			if (FlxG.keys.checkStatus(Data.binds.get('cancel'), PRESSED))
-				velocity.x = -300;
-			#end
+				velocity.x = -180;
+				#if debug
+				if (FlxG.keys.checkStatus(Data.binds.get('cancel'), PRESSED))
+					velocity.x = -300;
+				#end
+			}
 		}
 
 		if (FlxG.keys.anyJustReleased([DOWN, UP, RIGHT, LEFT]))
 		{
 			animation.finish();
-
 			velocity.set();
 		}
 
