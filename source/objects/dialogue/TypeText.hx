@@ -8,11 +8,10 @@ import flixel.FlxG;
 class TypeText extends FlxText
 {
 	public var delay:Float = 0.05;
-	public var sounds:Array<FlxSound>;
+	public var sounds:Array<FlxSound> = [];
 	public var finishSounds:Bool = false;
 
 	var _finalText:String = '';
-	var _helperText:String = '';
 	var _timer:Float = 0.0;
 	var _length:Int = 0;
 	var _typing:Bool = false;
@@ -90,11 +89,9 @@ class TypeText extends FlxText
 			}
 		}
 
-		_helperText = _finalText.substr(0, _length);
-
-		if (_helperText != text)
+		if (text != _finalText.substr(0, _length))
 		{
-			text = _helperText;
+			text = _finalText.substr(0, _length);
 
 			if (_typing && _length >= _finalText.length)
 			{
