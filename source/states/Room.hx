@@ -72,24 +72,22 @@ class Room extends FlxTransitionableState
 				{
 					case 'mainchara':
 						chara = new Chara(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), null);
-
-						if (instance.has.scaleX || instance.has.scaleY)
-						{
-							chara.scale.set(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
-							chara.updateHitbox();
-						}
-
+						chara.scale.set(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
+						chara.updateHitbox();
 						add(chara);
 
 						FlxG.camera.follow(chara);
 					default:
 						var object:Object = new Object(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), instance.att.objName);
+						object.scale.set(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
 
-						if (instance.has.scaleX || instance.has.scaleY)
+						if (object.data.hitbox != null && object.data.hitbox.length > 0)
 						{
-							object.scale.set(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
-							object.updateHitbox();
+							object.offset.set(object.data.hitbox[0], object.data.hitbox[1]);
+							object.centerOrigin();
 						}
+						else
+							object.updateHitbox();
 
 						objects.add(object);
 				}
