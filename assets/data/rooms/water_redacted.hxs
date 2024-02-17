@@ -1,4 +1,7 @@
-FlxG.sound.playMusic(AssetPaths.music('star'));
+FlxG.sound.playMusic(AssetPaths.music('mysteriousroom2'), 0.8);
+
+if (FlxG.sound.music != null)
+	FlxG.sound.music.pitch = 0.5;
 
 var dist:Int = 0;
 
