@@ -67,19 +67,16 @@ class TypeText extends FlxText
 
 		if (_typing)
 		{
-			if (_typing && _timer >= delay)
+			if (_timer >= delay)
 			{
 				_length += Math.floor(_timer / delay);
 
 				if (_length > _finalText.length)
 					_length = _finalText.length;
-			}
 
-			if (_typing && _timer >= delay)
-			{
 				_timer %= delay;
 
-				if (!_ignoreCharacters.contains(_finalText.charAt(_length - 1)) && sounds != null)
+				if (sounds != null && !_ignoreCharacters.contains(_finalText.charAt(_length - 1)))
 				{
 					if (!finishSounds)
 					{
@@ -98,7 +95,7 @@ class TypeText extends FlxText
 		{
 			text = _helperText;
 
-			if (_length >= _finalText.length && _typing)
+			if (_typing && _length >= _finalText.length)
 			{
 				_timer = 0;
 				_typing = false;
