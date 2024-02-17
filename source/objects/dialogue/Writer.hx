@@ -61,7 +61,7 @@ class Writer extends TypeText
 			letterSpacing = dialogue.typer.spacing;
 
 		resetText(dialogue.text);
-		start(dialogue.typer.speed / 100);
+		start(1 / (dialogue.typer.speed * 10));
 	}
 
 	override public function update(elapsed:Float):Void
