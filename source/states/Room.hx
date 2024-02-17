@@ -138,9 +138,9 @@ class Room extends FlxTransitionableState
 
 			objects.forEach(function(object:Object):Void
 			{
-				if (Controls.instance.justPressed('confirm') && object.name.contains('redacted_a') && chara.overlaps(object) && !interacting)
+				if (Controls.instance.justPressed('confirm') && object.name.contains('redacted_a') && chara.overlaps(object) && !chara?.interacting)
 				{
-					interacting = true;
+					chara?.interacting = true;
 	
 					final typer:Typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 8, 1.6);
 
@@ -149,9 +149,9 @@ class Room extends FlxTransitionableState
 			});
 		}
 
-		if (interacting && box != null && writer != null && writer.finished)
+		if (chara?.interacting && box != null && writer != null && writer.finished)
 		{
-			interacting = false;
+			chara?.interacting = false;
 			
 			remove(box);
 			remove(writer);
