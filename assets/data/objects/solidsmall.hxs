@@ -1,5 +1,5 @@
 #if debug
-this.alpha = 0.6;
+this.alpha = 0.5;
 #else
 this.alpha = 0;
 #end
