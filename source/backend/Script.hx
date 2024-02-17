@@ -11,20 +11,22 @@ class Script
 	public static var properties(default, null):Map<String, Dynamic> = [
 		// Haxe Classes.
 		'Date' => Date,
+		'DateTools' => DateTools
 		'Lambda' => Lambda,
 		'Math' => Math,
 		'Std' => Std,
 		'StringTools' => StringTools,
+		'Type' => Type,
 
 		// OpenFL Classes.
-		#if (FLX_DRAW_QUADS && !flash)
+		#if !flash
 		'ShaderFilter' => openfl.filters.ShaderFilter,
 		#end
 		'Assets' => openfl.utils.Assets,
 		'Lib' => openfl.Lib,
 
 		// Flixel Classes.
-		#if (FLX_DRAW_QUADS && !flash)
+		#if !flash
 		'FlxRuntimeShader' => flixel.addons.display.FlxRuntimeShader,
 		#end
 		'FlxTrail' => flixel.addons.effects.FlxTrail,
