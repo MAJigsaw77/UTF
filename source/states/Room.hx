@@ -149,8 +149,10 @@ class Room extends FlxTransitionableState
 			});
 		}
 
-		if (box != null && writer != null && writer.finished)
+		if (interacting && box != null && writer != null && writer.finished)
 		{
+			interacting = false;
+			
 			remove(box);
 			remove(writer);
 
