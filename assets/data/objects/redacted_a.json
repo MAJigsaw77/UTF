@@ -1,4 +1,5 @@
 {
 	"solid": true,
-	"active": false
+	"active": false,
+	"hitbox": [50, 50]
 }
