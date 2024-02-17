@@ -101,7 +101,7 @@ class Battle extends FlxTransitionableState
 		heart.active = false;
 		add(heart);
 
-		typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 4);
+		typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 1);
 
 		writer = new Writer(box.x + 14, box.y + 14);
 		writer.startDialogue([{typer: typer, text: '* You feel like you\'re going to\n  have a bad time.'}]);
