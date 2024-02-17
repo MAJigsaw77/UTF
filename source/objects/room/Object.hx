@@ -9,7 +9,8 @@ import openfl.utils.Assets;
 typedef ObjectData =
 {
 	solid:Bool,
-	active:Bool
+	active:Bool,
+	?hitbox:Array<Float>
 }
 
 class Object extends FlxSprite
