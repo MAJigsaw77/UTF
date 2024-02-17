@@ -33,6 +33,8 @@ class Chara extends FlxSprite
 
 	override public function update(elapsed:Float):Void
 	{
+		super.update(elapsed);
+
 		if (FlxG.keys.pressed.DOWN)
 		{
 			if (!FlxG.keys.anyPressed([RIGHT, LEFT]))
@@ -83,7 +85,5 @@ class Chara extends FlxSprite
 
 			velocity.set();
 		}
-
-		super.update(elapsed);
 	}
 }
