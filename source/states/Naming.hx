@@ -12,8 +12,42 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 
+typedef Name = {
+	description:String,
+	allow:Bool
+}
+
 class Naming extends FlxState
 {
+	final characterNames:Map<Array<String>, Name> = [
+		[''] => {description: 'You must choose a name.', allow: false},
+		['aaaaaa'] => {description: 'Not very creative...?', allow: true},
+		['asgore'] => {description: 'You cannot.', allow: false},
+		['toriel'] => {description: 'I think you should\nthink of your own\nname, my child.', allow: false},
+		['sans'] => {description: 'nope.', allow: false},
+		['undyne'] => {description: 'Get your OWN name!', allow: false},
+		['flowey'] => {description: 'I already CHOSE\nthat name.', allow: false},
+		['chara'] => {description: 'The true name.', allow: true},
+		['alphys'] => {description: 'D-don\'t do that.', allow: false},
+		['alphy'] => {description: 'Uh.... OK?', allow: true},
+		['papyru'] => {description: 'I\'LL ALLOW IT!!!!', allow: true},
+		['napsta', 'blooky'] => {description: '............\n(They\'re powerless to\nstop you.)', allow: true},
+		['murder'] => {description: 'That\'s a little on-\nthe-nose, isn\'t it...?', allow: true},
+		['mercy'] => {description: 'That\'s a little on-\nthe-nose, isn\'t it...?', allow: true},
+		['asriel'] => {description: '...', allow: false},
+		['frisk'] => {description: 'WARNING: This name will\nmake your life hell.\nProceed anyway?', allow: true},
+		['catty'] => {description: 'Bratty! Bratty!\nThat\'s MY name!', allow: true},
+		['bratty'] => {description: 'Like, OK I guess.', allow: true},
+		['MTT', 'metta', 'mett'] => {description: 'OOOOH!!! ARE YOU\nPROMOTING MY BRAND?', allow: true},
+		['gerson'] => {description: 'Wah ha ha! Why not?', allow: true},
+		['shyren'] => {description: '...?', allow: true},
+		['aaron'] => {description: 'Is this name correct? ; )', allow: true},
+		['temmie'] => {description: 'hOI!', allow: true},
+		['woshua'] => {description: 'Clean name.', allow: true},
+		['jerry'] => {description: 'Jerry.', allow: true},
+		['bpants'] => {description: 'You are really scraping the\nbottom of the barrel.', allow: true}
+	];
+
 	var selected:Int = 0;
 	final choices:Array<String> = ['Quit', 'Backspace', 'Done'];
 	var items:FlxTypedGroup<FlxText>;
@@ -113,9 +147,9 @@ class Naming extends FlxState
 	override function update(elapsed:Float):Void
 	{
 		if (FlxG.keys.justPressed.DOWN)
-			changeItem(selected == 26 ? 8 : 7); // Stupid workaround
+			changeItem(7);
 		else if (FlxG.keys.justPressed.UP)
-			changeItem(selected == 26 ? -8 : -7); // Stupid workaround
+			changeItem(-7);
 
 		if (FlxG.keys.justPressed.RIGHT)
 			changeItem(1);
@@ -177,8 +211,6 @@ class Naming extends FlxState
 	private function changeItem(num:Int = 0):Void
 	{
 		selected = Math.floor(FlxMath.bound(selected + num, 0, items.length - 1));
-
-		FlxG.log.notice(selected);
 
 		items.forEach(function(spr:FlxText)
 		{
