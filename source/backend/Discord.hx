@@ -32,8 +32,8 @@ class Discord
 				#end
 				RichPresence.RunCallbacks();
 
-				// Wait 0.5 seconds until the next loop...
-				Sys.sleep(0.5);
+				// Wait 2 seconds until the next loop...
+				Sys.sleep(2);
 			}
 		});
 
