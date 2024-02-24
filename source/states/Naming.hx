@@ -146,15 +146,67 @@ class Naming extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justPressed.DOWN)
-			changeItem(7);
-		else if (FlxG.keys.justPressed.UP)
-			changeItem(-7);
-
 		if (FlxG.keys.justPressed.RIGHT)
-			changeItem(1);
+		{
+			if (selected == 25)
+				changeItem(32, true);
+			else if (selected < 60)
+				changeItem(1, false);
+		}
 		else if (FlxG.keys.justPressed.LEFT)
-			changeItem(-1);
+		{
+			if (selected == 32)
+				changeItem(25, true);
+			else if (selected > 0)
+				changeItem(-1, false);
+		}
+
+		if (FlxG.keys.justPressed.DOWN)
+		{
+			if (selected <= 57)
+			{
+				if (selected >= 21 && selected <= 25)
+					changeItem(4, false);
+				else if (selected == 19 || selected == 20)
+					changeItem(11, false);
+
+				changeItem(7, false);
+
+				if (selected >= 58)
+					changeItem(59, true);
+			}
+			else
+			{
+				if (selected == 60)
+					changeItem(5, true);
+				else
+					changeItem(selected == 59 ? 3 : 0, true);
+			}
+		}
+		else if (FlxG.keys.justPressed.UP)
+		{
+			if (selected > 6)
+			{
+				if (selected <= 57)
+				{
+					if (selected >= 32 && selected <= 36)
+						changeItem(-4, false);
+					else if (selected == 37 || selected == 38)
+						changeItem(-11, false);
+
+					changeItem(-7, false);
+				}
+				else
+					changeItem(57, true);
+			}
+			else
+			{
+				if (selected > 4)
+					changeItem(60, true);
+				else
+					changeItem(selected > 2 ? 59 : 58, true);
+			}
+		}
 
 		if (Controls.instance.justPressed('confirm'))
 		{
@@ -208,9 +260,9 @@ class Naming extends FlxState
 		});
 	}
 
-	private function changeItem(num:Int = 0):Void
+	private function changeItem(num:Int = 0, force:Bool):Void
 	{
-		selected = Math.floor(FlxMath.bound(selected + num, 0, items.length - 1));
+		selected = Math.floor(FlxMath.bound(!force ? selected + num : num, 0, items.length - 1));
 
 		items.forEach(function(spr:FlxText)
 		{
