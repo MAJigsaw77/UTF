@@ -139,7 +139,7 @@ class Naming extends FlxState
 
 		add(items);
 
-		changeItem();
+		changeItem(0, false);
 
 		super.create();
 	}
