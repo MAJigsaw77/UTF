@@ -257,8 +257,8 @@ class Naming extends FlxState
 
 			if (!choices.contains(spr.text))
 			{
-				spr.offset.x = ((spr.frameWidth - spr.width) * 0.5) + (Math.random() * 0.5);
-				spr.offset.y = ((spr.frameHeight - spr.height) * 0.5) + (Math.random() * 0.5);
+				spr.offset.x = ((spr.frameWidth - spr.width) * 0.5) + FlxG.random.float(-0.5, 0.5);
+				spr.offset.y = ((spr.frameHeight - spr.height) * 0.5) + FlxG.random.float(-0.5, 0.5);
 			}
 		});
 	}
