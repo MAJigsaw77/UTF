@@ -148,7 +148,7 @@ class Naming extends FlxState
 		{
 			if (selected == 25)
 				selected = 32;
-			else if (selected < 60)
+			else if (selected < 55)
 				selected++;
 		}
 		else if (FlxG.keys.justPressed.LEFT)
@@ -161,7 +161,7 @@ class Naming extends FlxState
 
 		if (FlxG.keys.justPressed.DOWN)
 		{
-			if (selected <= 57)
+			if (selected <= 52)
 			{
 				if (selected >= 21 && selected <= 25)
 					selected += 4;
@@ -171,39 +171,44 @@ class Naming extends FlxState
 
 				selected += 7;
 
-				if (selected >= 58)
-					selected = 59;
+				if (selected >= 53)
+					selected = 54;
 			}
 			else
 			{
-				if (selected == 60)
+				if (selected == 54)
 					selected = 5;
+				else if (selected == 53)
+					selected = 3;
 				else
-					selected = selected == 59 ? 3 : 0;
+					selected = 0;
 			}
 		}
 		else if (FlxG.keys.justPressed.UP)
 		{
 			if (selected > 6)
 			{
-				if (selected <= 57)
+				if (selected <= 52)
 				{
 					if (selected >= 32 && selected <= 36)
 						selected -= 4;
-					else if (selected == 37 || selected == 38)
+
+					if (selected == 37 || selected == 38)
 						selected -= 11;
 
 					selected -= 7;
 				}
 				else
-					selected = 57;
+					selected = 52;
 			}
 			else
 			{
 				if (selected > 4)
-					selected = 60;
+					selected = 54;
+				else if (selected > 2)
+					selected = 53;
 				else
-					selected = selected > 2 ? 59 : 58;
+					selected = 52;
 			}
 		}
 
