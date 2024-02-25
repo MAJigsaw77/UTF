@@ -164,7 +164,7 @@ class Naming extends FlxState
 			if (selected <= 52)
 			{
 				if (selected >= 21 && selected <= 25)
-					selected += (selected == 19 || selected == 20) ? 11 : 4;
+					selected += (selected == 19 || selected == 20) ? 12 : 5;
 				else
 					selected += 7;
 
@@ -188,7 +188,7 @@ class Naming extends FlxState
 				if (selected <= 52)
 				{
 					if (selected >= 32 && selected <= 36)
-						selected -= (selected == 37 || selected == 38) ? 11 : 4;
+						selected -= (selected == 37 || selected == 38) ? 12 : 5;
 					else
 						selected -= 7;
 				}
