@@ -32,8 +32,7 @@ class Naming extends FlxState
 		['alphy'] => {description: 'Uh.... OK?', allow: true},
 		['papyru'] => {description: 'I\'LL ALLOW IT!!!!', allow: true},
 		['napsta', 'blooky'] => {description: '............\n(They\'re powerless to\nstop you.)', allow: true},
-		['murder'] => {description: 'That\'s a little on-\nthe-nose, isn\'t it...?', allow: true},
-		['mercy'] => {description: 'That\'s a little on-\nthe-nose, isn\'t it...?', allow: true},
+		['murder', 'mercy'] => {description: 'That\'s a little on-\nthe-nose, isn\'t it...?', allow: true},
 		['asriel'] => {description: '...', allow: false},
 		['frisk'] => {description: 'WARNING: This name will\nmake your life hell.\nProceed anyway?', allow: true},
 		['catty'] => {description: 'Bratty! Bratty!\nThat\'s MY name!', allow: true},
@@ -59,6 +58,7 @@ class Naming extends FlxState
 		namingText.font = AssetPaths.font('DTM-Sans');
 		namingText.screenCenter(X);
 		namingText.scrollFactor.set();
+		namingText.active = false;
 		add(namingText);
 
 		name = new FlxText(280, 110, 0, '', 32);
