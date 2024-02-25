@@ -139,8 +139,6 @@ class Naming extends FlxState
 
 		add(items);
 
-		changeItem(0, false);
-
 		super.create();
 	}
 
@@ -149,16 +147,16 @@ class Naming extends FlxState
 		if (FlxG.keys.justPressed.RIGHT)
 		{
 			if (selected == 25)
-				changeItem(32, true);
+				selected = 32;
 			else if (selected < 60)
-				changeItem(1, false);
+				selected++;
 		}
 		else if (FlxG.keys.justPressed.LEFT)
 		{
 			if (selected == 32)
-				changeItem(25, true);
+				selected = 25;
 			else if (selected > 0)
-				changeItem(-1, false);
+				selected--;
 		}
 
 		if (FlxG.keys.justPressed.DOWN)
@@ -166,21 +164,22 @@ class Naming extends FlxState
 			if (selected <= 57)
 			{
 				if (selected >= 21 && selected <= 25)
-					changeItem(4, false);
-				else if (selected == 19 || selected == 20)
-					changeItem(11, false);
+					selected += 4;
 
-				changeItem(7, false);
+				if (selected == 19 || selected == 20)
+					selected += 11;
+
+				selected += 7;
 
 				if (selected >= 58)
-					changeItem(59, true);
+					selected = 59;
 			}
 			else
 			{
 				if (selected == 60)
-					changeItem(5, true);
+					selected = 5;
 				else
-					changeItem(selected == 59 ? 3 : 0, true);
+					selected = selected == 59 ? 3 : 0;
 			}
 		}
 		else if (FlxG.keys.justPressed.UP)
@@ -190,21 +189,21 @@ class Naming extends FlxState
 				if (selected <= 57)
 				{
 					if (selected >= 32 && selected <= 36)
-						changeItem(-4, false);
+						selected -= 4;
 					else if (selected == 37 || selected == 38)
-						changeItem(-11, false);
+						selected -= 11;
 
-					changeItem(-7, false);
+					selected -= 7;
 				}
 				else
-					changeItem(57, true);
+					selected = 57;
 			}
 			else
 			{
 				if (selected > 4)
-					changeItem(60, true);
+					selected = 60;
 				else
-					changeItem(selected > 2 ? 59 : 58, true);
+					selected = selected > 2 ? 59 : 58;
 			}
 		}
 
@@ -252,21 +251,16 @@ class Naming extends FlxState
 
 		items.forEach(function(spr:FlxText)
 		{
+			final color:FlxColor = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
+
+			if (spr.color != color)
+				spr.color = color;
+
 			if (!choices.contains(spr.text))
 			{
 				spr.offset.x = ((spr.frameWidth - spr.width) * 0.5) + FlxG.random.float(-0.5, 0.5);
 				spr.offset.y = ((spr.frameHeight - spr.height) * 0.5) + FlxG.random.float(-0.5, 0.5);
 			}
-		});
-	}
-
-	private function changeItem(num:Int = 0, force:Bool):Void
-	{
-		selected = Math.floor(FlxMath.bound(!force ? selected + num : num, 0, items.length - 1));
-
-		items.forEach(function(spr:FlxText)
-		{
-			spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
 		});
 	}
 }
