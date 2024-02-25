@@ -146,17 +146,17 @@ class Naming extends FlxState
 	{
 		if (FlxG.keys.justPressed.RIGHT)
 		{
-			if (selected == 25)
-				selected = 32;
-			else if (selected < 55)
-				selected++;
+			if (selected < 52)
+				selected = Math.floor(FlxMath.bound(selected + 1, 0, 51));
+			else
+				selected = FlxMath.wrap(selected + 1, 52, 54);
 		}
 		else if (FlxG.keys.justPressed.LEFT)
 		{
-			if (selected == 32)
-				selected = 25;
-			else if (selected > 0)
-				selected--;
+			if (selected < 52)
+				selected = Math.floor(FlxMath.bound(selected - 1, 0, 51));
+			else
+				selected = FlxMath.wrap(selected - 1, 52, 54);
 		}
 
 		if (FlxG.keys.justPressed.DOWN)
@@ -171,7 +171,7 @@ class Naming extends FlxState
 
 				selected += 7;
 
-				if (selected >= 53)
+				if (selected >= 54)
 					selected = 54;
 			}
 			else
