@@ -45,6 +45,7 @@ class Naming extends FlxState
 		['woshua'] => {description: 'Clean name.', allow: true},
 		['jerry'] => {description: 'Jerry.', allow: true},
 		['bpants'] => {description: 'You are really scraping the\nbottom of the barrel.', allow: true}
+		['jigsaw'] => {description: 'I want to play\na game.', allow: true},
 	];
 
 	var selected:Int = 0;
