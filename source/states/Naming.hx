@@ -5,13 +5,13 @@ import backend.Controls;
 import backend.Data;
 import backend.Global;
 import backend.Util;
-import flixel.FlxG;
-import flixel.FlxSprite;
-import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.FlxState;
 
 typedef Name =
 {
@@ -60,7 +60,14 @@ class Naming extends FlxState
 		['woshua'] => {description: 'Clean name.', allow: true},
 		['jerry'] => {description: 'Jerry.', allow: true},
 		['bpants'] => {description: 'You are really scraping the\nbottom of the barrel.', allow: true},
-		['jigsaw'] => {description: 'I want to play\na game.', allow: true},
+		['jigsaw'] => {description: 'I want to play\na game.', allow: true}
+	];
+
+	final keyMap:Map<String, DeltaMap> = [
+		'RIGHT' => {delta: 1},
+		'LEFT' => {delta: -1},
+		'DOWN' => {delta: 7, special: [{start: 21, end: 25, delta: 5}, {start: 19, end: 20, delta: 12}]},
+		'UP' => {delta: -7, special: [{start: 26, end: 30, delta: -5}, {start: 31, end: 32, delta: -12}]}
 	];
 
 	var selected:Int = 0;
@@ -138,6 +145,8 @@ class Naming extends FlxState
 			}
 		}
 
+		add(items);
+
 		// Choices.
 		for (i in 0...choiceNames.length)
 		{
@@ -160,54 +169,9 @@ class Naming extends FlxState
 			choices.add(choice);
 		}
 
-		add(items);
 		add(choices);
 
 		super.create();
-	}
-
-	var keyMap:Map<String, DeltaMap> = [
-		'RIGHT' => {delta: 1},
-		'LEFT' => {delta: -1},
-		'DOWN' => {delta: 7, special: [{start: 21, end: 25, delta: 5}, {start: 19, end: 20, delta: 12}]},
-		'UP' => {delta: -7, special: [{start: 26, end: 30, delta: -5}, {start: 31, end: 32, delta: -12}]}
-	];
-
-	function handleKeyInput(name:String)
-	{
-		var info:DeltaMap = keyMap[name];
-		var delta:Int = info.delta;
-
-		var oldSelected:Int = selected;
-
-		if (info.special != null)
-			for (sp in info.special)
-				if (sp.start <= selected && selected <= sp.end)
-					delta = sp.delta;
-
-		selected = Math.floor(FlxMath.bound(selected + delta, 0, 51));
-
-		if (name == "DOWN" && 45 <= oldSelected && oldSelected <= 51)
-		{
-			if (oldSelected >= 49)
-				selectedChoice = 1;
-			else if (oldSelected >= 47)
-				selectedChoice = 0;
-			else
-				selectedChoice = 2;
-			inItems = false;
-		}
-
-		if (name == "UP" && oldSelected <= 6)
-		{
-			if (oldSelected > 4)
-				selectedChoice = 2;
-			else if (oldSelected > 2)
-				selectedChoice = 1;
-			else
-				selectedChoice = 0;
-			inItems = false;
-		}
 	}
 
 	override function update(elapsed:Float):Void
@@ -233,6 +197,7 @@ class Naming extends FlxState
 			if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.UP)
 			{
 				selected = FlxG.keys.justPressed.UP ? [47, 50, 45][selectedChoice] : [0, 3, 5][selectedChoice];
+
 				inItems = true;
 			}
 		}
@@ -279,8 +244,10 @@ class Naming extends FlxState
 
 		super.update(elapsed);
 
+		#if debug
 		FlxG.watch.addQuick('selected', selected);
 		FlxG.watch.addQuick('selectedChoice', selectedChoice);
+		#end
 
 		items.forEach(function(spr:FlxText)
 		{
@@ -300,5 +267,47 @@ class Naming extends FlxState
 			if (spr.color != color)
 				spr.color = color;
 		});
+	}
+
+	private function handleKeyInput(name:String):Void
+	{
+		var oldSelected:Int = selected;
+		var info:DeltaMap = keyMap[name];
+		var delta:Int = info.delta;
+
+		if (info.special != null)
+		{
+			for (sp in info.special)
+			{
+				if (sp.start <= selected && selected <= sp.end)
+					delta = sp.delta;
+			}
+		}
+
+		selected = Math.floor(FlxMath.bound(selected + delta, 0, 51));
+
+		if (name == "DOWN" && 45 <= oldSelected && oldSelected <= 51)
+		{
+			if (oldSelected >= 49)
+				selectedChoice = 1;
+			else if (oldSelected >= 47)
+				selectedChoice = 0;
+			else
+				selectedChoice = 2;
+
+			inItems = false;
+		}
+
+		if (name == "UP" && oldSelected <= 6)
+		{
+			if (oldSelected > 4)
+				selectedChoice = 2;
+			else if (oldSelected > 2)
+				selectedChoice = 1;
+			else
+				selectedChoice = 0;
+
+			inItems = false;
+		}
 	}
 }
