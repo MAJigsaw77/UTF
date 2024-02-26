@@ -84,9 +84,11 @@ class Naming extends FlxState
 			items.add(letter);
 
 			line++;
+
 			if (line > 6)
 			{
 				row++;
+
 				line = 0;
 			}
 		}
@@ -111,6 +113,7 @@ class Naming extends FlxState
 			if (line > 6)
 			{
 				row++;
+
 				line = 0;
 			}
 		}
