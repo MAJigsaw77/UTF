@@ -9,6 +9,11 @@ class Util
 		return FlxG.random.float(0, Math.abs(a - b)) + Math.min(a, b);
 	}
 
+	public static inline function mod(n:Int, m:Int):Int
+	{
+		return ((n % m) + m) % m;
+	}
+
 	public static function getWeather():Int
 	{
 		final curDate:Date = Date.now();

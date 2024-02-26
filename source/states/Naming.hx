@@ -4,17 +4,32 @@ import backend.AssetPaths;
 import backend.Controls;
 import backend.Data;
 import backend.Global;
+import backend.Util;
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import flixel.FlxG;
-import flixel.FlxSprite;
-import flixel.FlxState;
 
-typedef Name = {
+typedef Name =
+{
 	description:String,
 	allow:Bool
+}
+
+typedef DeltaMap =
+{
+	delta:Int,
+	?special:Array<SpecialDelta>
+}
+
+typedef SpecialDelta =
+{
+	delta:Int,
+	start:Int,
+	end:Int
 }
 
 class Naming extends FlxState
@@ -44,14 +59,17 @@ class Naming extends FlxState
 		['temmie'] => {description: 'hOI!', allow: true},
 		['woshua'] => {description: 'Clean name.', allow: true},
 		['jerry'] => {description: 'Jerry.', allow: true},
-		['bpants'] => {description: 'You are really scraping the\nbottom of the barrel.', allow: true}
+		['bpants'] => {description: 'You are really scraping the\nbottom of the barrel.', allow: true},
 		['jigsaw'] => {description: 'I want to play\na game.', allow: true},
 	];
 
 	var selected:Int = 0;
-	final choices:Array<String> = ['Quit', 'Backspace', 'Done'];
+	var selectedChoice:Int = 0;
+	final choiceNames:Array<String> = ['Quit', 'Backspace', 'Done'];
 	var items:FlxTypedGroup<FlxText>;
+	var choices:FlxTypedGroup<FlxText>;
 	var name:FlxText;
+	var inItems:Bool = true;
 
 	override function create():Void
 	{
@@ -68,6 +86,7 @@ class Naming extends FlxState
 		add(name);
 
 		items = new FlxTypedGroup<FlxText>();
+		choices = new FlxTypedGroup<FlxText>();
 
 		final upLetters:Array<Int> = [for (i in 65...91) i];
 
@@ -120,11 +139,11 @@ class Naming extends FlxState
 		}
 
 		// Choices.
-		for (i in 0...choices.length)
+		for (i in 0...choiceNames.length)
 		{
-			var choice:FlxText = new FlxText(0, 0, 0, choices[i], 32);
+			var choice:FlxText = new FlxText(0, 0, 0, choiceNames[i], 32);
 
-			switch (choices[i])
+			switch (choiceNames[i])
 			{
 				case 'Quit':
 					choice.setPosition(120, 400);
@@ -135,78 +154,86 @@ class Naming extends FlxState
 			}
 
 			choice.font = AssetPaths.font('DTM-Sans');
-			choice.ID = (upLetters.length + lowLetters.length) + i;
+			choice.ID = i;
 			choice.scrollFactor.set();
 			choice.active = false;
-			items.add(choice);
+			choices.add(choice);
 		}
 
 		add(items);
+		add(choices);
 
 		super.create();
 	}
 
+	var keyMap:Map<String, DeltaMap> = [
+		'RIGHT' => {delta: 1},
+		'LEFT' => {delta: -1},
+		'DOWN' => {delta: 7, special: [{start: 21, end: 25, delta: 5}, {start: 19, end: 20, delta: 12}]},
+		'UP' => {delta: -7, special: [{start: 26, end: 30, delta: -5}, {start: 31, end: 32, delta: -12}]}
+	];
+
+	function handleKeyInput(name:String)
+	{
+		var info:DeltaMap = keyMap[name];
+		var delta:Int = info.delta;
+
+		var oldSelected:Int = selected;
+
+		if (info.special != null)
+			for (sp in info.special)
+				if (sp.start <= selected && selected <= sp.end)
+					delta = sp.delta;
+
+		selected = Math.floor(FlxMath.bound(selected + delta, 0, 51));
+
+		if (name == "DOWN" && 45 <= oldSelected && oldSelected <= 51)
+		{
+			if (oldSelected >= 49)
+				selectedChoice = 1;
+			else if (oldSelected >= 47)
+				selectedChoice = 0;
+			else
+				selectedChoice = 2;
+			inItems = false;
+		}
+
+		if (name == "UP" && oldSelected <= 6)
+		{
+			if (oldSelected > 4)
+				selectedChoice = 2;
+			else if (oldSelected > 2)
+				selectedChoice = 1;
+			else
+				selectedChoice = 0;
+			inItems = false;
+		}
+	}
+
 	override function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.justPressed.RIGHT)
+		if (inItems)
 		{
-			if (selected < 52)
-				selected = Math.floor(FlxMath.bound(selected + 1, 0, 51));
-			else
-				selected = FlxMath.wrap(selected + 1, 52, 54);
+			if (FlxG.keys.justPressed.RIGHT)
+				handleKeyInput("RIGHT");
+			else if (FlxG.keys.justPressed.LEFT)
+				handleKeyInput("LEFT");
+			else if (FlxG.keys.justPressed.DOWN)
+				handleKeyInput("DOWN");
+			else if (FlxG.keys.justPressed.UP)
+				handleKeyInput("UP");
 		}
-		else if (FlxG.keys.justPressed.LEFT)
+		else
 		{
-			if (selected < 52)
-				selected = Math.floor(FlxMath.bound(selected - 1, 0, 51));
-			else
-				selected = FlxMath.wrap(selected - 1, 52, 54);
-		}
+			if (FlxG.keys.justPressed.RIGHT)
+				selectedChoice = Util.mod(selectedChoice + 1, 3);
+			else if (FlxG.keys.justPressed.LEFT)
+				selectedChoice = Util.mod(selectedChoice - 1, 3);
 
-		if (FlxG.keys.justPressed.DOWN)
-		{
-			if (selected < 52)
+			if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.UP)
 			{
-				if (selected >= 19 && selected <= 25)
-					selected += (selected == 19 || selected == 20) ? 12 : 5;
-				else
-					selected += 7;
-
-				if (selected >= 54)
-					selected = 54;
-			}
-			else
-			{
-				if (selected == 54)
-					selected = 5;
-				else if (selected == 53)
-					selected = 3;
-				else
-					selected = 0;
-			}
-		}
-		else if (FlxG.keys.justPressed.UP)
-		{
-			if (selected > 6)
-			{
-				if (selected <= 52)
-				{
-					if (selected >= 26 && selected <= 32)
-						selected -= (selected == 31 || selected == 32) ? 12 : 5;
-					else
-						selected -= 7;
-				}
-				else
-					selected = 52;
-			}
-			else
-			{
-				if (selected > 4)
-					selected = 54;
-				else if (selected > 2)
-					selected = 53;
-				else
-					selected = 52;
+				selected = FlxG.keys.justPressed.UP ? [47, 50, 45][selectedChoice] : [0, 3, 5][selectedChoice];
+				inItems = true;
 			}
 		}
 
@@ -252,18 +279,26 @@ class Naming extends FlxState
 
 		super.update(elapsed);
 
+		FlxG.watch.addQuick('selected', selected);
+		FlxG.watch.addQuick('selectedChoice', selectedChoice);
+
 		items.forEach(function(spr:FlxText)
 		{
-			final color:FlxColor = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
+			final color:FlxColor = inItems && spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
 
 			if (spr.color != color)
 				spr.color = color;
 
-			if (!choices.contains(spr.text))
-			{
-				spr.offset.x = ((spr.frameWidth - spr.width) * 0.5) + FlxG.random.float(-0.5, 0.5);
-				spr.offset.y = ((spr.frameHeight - spr.height) * 0.5) + FlxG.random.float(-0.5, 0.5);
-			}
+			spr.offset.x = ((spr.frameWidth - spr.width) * 0.5) + FlxG.random.float(-0.5, 0.5);
+			spr.offset.y = ((spr.frameHeight - spr.height) * 0.5) + FlxG.random.float(-0.5, 0.5);
+		});
+
+		choices.forEach(function(spr:FlxText)
+		{
+			final color:FlxColor = !inItems && spr.ID == selectedChoice ? FlxColor.YELLOW : FlxColor.WHITE;
+
+			if (spr.color != color)
+				spr.color = color;
 		});
 	}
 }
