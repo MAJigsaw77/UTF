@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
+        with:
+          fetch-depth: '0'
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
@@ -82,6 +84,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
+        with:
+          fetch-depth: '0'
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
@@ -155,6 +159,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
+        with:
+          fetch-depth: '0'
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
@@ -228,6 +234,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
+        with:
+          fetch-depth: '0'
 
       - name: Setup Android NDK
         id: setup-ndk
