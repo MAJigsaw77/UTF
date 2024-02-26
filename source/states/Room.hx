@@ -96,8 +96,6 @@ class Room extends FlxTransitionableState
 						chara.scale.set(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
 						chara.updateHitbox();
 						add(chara);
-
-						FlxG.camera.follow(chara);
 					default:
 						var object:Object = new Object(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), instance.att.objName);
 						object.scale.set(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
@@ -109,6 +107,9 @@ class Room extends FlxTransitionableState
 		else
 			FlxG.log.notice('There are no instances to load');
 
+		if (chara != null)
+			FlxG.camera.follow(chara);
+		
 		FlxG.camera.setScrollBoundsRect(0, 0, Std.parseInt(data.node.width.innerData), Std.parseInt(data.node.height.innerData));
 
 		super.create();
@@ -138,18 +139,17 @@ class Room extends FlxTransitionableState
 					startDialogue([{typer: typer, text: '* [redacted]'}]);
 				}
 			});
-		}
 
-		if (chara?.interacting && box != null && writer != null && writer.finished)
-		{
-			if (chara != null)
+			if (chara.interacting && box != null && writer != null && writer.finished)
+			{
 				chara.interacting = false;
-			
-			remove(box);
-			remove(writer);
 
-			box = null;
-			writer = null;
+				remove(box);
+				remove(writer);
+
+				box = null;
+				writer = null;
+			}
 		}
 
 		script.call('postUpdate', [elapsed]);
