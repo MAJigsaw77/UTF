@@ -63,19 +63,23 @@ class Naming extends FlxState
 		['jigsaw'] => {description: 'I want to play\na game.', allow: true}
 	];
 
-	final keyMap:Map<String, DeltaMap> = [
+	final keyActions:Map<String, DeltaMap> = [
 		'RIGHT' => {delta: 1},
 		'LEFT' => {delta: -1},
 		'DOWN' => {delta: 7, special: [{start: 21, end: 25, delta: 5}, {start: 19, end: 20, delta: 12}]},
 		'UP' => {delta: -7, special: [{start: 26, end: 30, delta: -5}, {start: 31, end: 32, delta: -12}]}
 	];
 
+	final choiceNames:Array<String> = ['Quit', 'Backspace', 'Done'];
+
 	var selected:Int = 0;
 	var selectedChoice:Int = 0;
-	final choiceNames:Array<String> = ['Quit', 'Backspace', 'Done'];
+
+	var name:FlxText;
+
 	var items:FlxTypedGroup<FlxText>;
 	var choices:FlxTypedGroup<FlxText>;
-	var name:FlxText;
+
 	var inItems:Bool = true;
 
 	override function create():Void
@@ -100,7 +104,7 @@ class Naming extends FlxState
 		var row:Int = 0;
 		var line:Int = 0;
 
-		// UpperCase Letters.
+		// UpperCase letters.
 		for (i in 0...upLetters.length)
 		{
 			var letter:FlxText = new FlxText(120 + line * 64, 150 + row * 28, 0, String.fromCharCode(upLetters[i]), 32);
@@ -125,7 +129,7 @@ class Naming extends FlxState
 		var row:Int = 0;
 		var line:Int = 0;
 
-		// LowerCase Letters.
+		// LowerCase letters.
 		for (i in 0...lowLetters.length)
 		{
 			var letter:FlxText = new FlxText(120 + line * 64, 270 + row * 28, 0, String.fromCharCode(lowLetters[i]), 32);
@@ -179,13 +183,14 @@ class Naming extends FlxState
 		if (inItems)
 		{
 			if (FlxG.keys.justPressed.RIGHT)
-				handleKeyInput("RIGHT");
+				handleKeyInput('RIGHT');
 			else if (FlxG.keys.justPressed.LEFT)
-				handleKeyInput("LEFT");
-			else if (FlxG.keys.justPressed.DOWN)
-				handleKeyInput("DOWN");
+				handleKeyInput('LEFT');
+
+			if (FlxG.keys.justPressed.DOWN)
+				handleKeyInput('DOWN');
 			else if (FlxG.keys.justPressed.UP)
-				handleKeyInput("UP");
+				handleKeyInput('UP');
 		}
 		else
 		{
@@ -194,9 +199,15 @@ class Naming extends FlxState
 			else if (FlxG.keys.justPressed.LEFT)
 				selectedChoice = Util.mod(selectedChoice - 1, 3);
 
-			if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.UP)
+			if (FlxG.keys.justPressed.DOWN)
 			{
-				selected = FlxG.keys.justPressed.UP ? [47, 50, 45][selectedChoice] : [0, 3, 5][selectedChoice];
+				selected = [0, 3, 5][selectedChoice];
+
+				inItems = true;
+			}
+			else if (FlxG.keys.justPressed.UP)
+			{
+				selected = [47, 50, 45][selectedChoice];
 
 				inItems = true;
 			}
@@ -204,37 +215,42 @@ class Naming extends FlxState
 
 		if (Controls.instance.justPressed('confirm'))
 		{
-			items.forEach(function(spr:FlxText):Void
+			if (inItems)
 			{
-				if (spr.ID == selected)
+				items.forEach(function(spr:FlxText):Void
 				{
-					switch (spr.text)
+					if (spr.ID == selected)
 					{
-						case 'Quit':
-							FlxG.switchState(new Intro());
-						case 'Backspace':
-							if (name.text.length > 0)
-								name.text = name.text.substring(0, name.text.length - 1);
-						case 'Done':
-							if (name.text.length <= 0)
-								return;
+						if (name.text.length >= 6)
+							name.text = name.text.substring(0, 5);
 
-							Global.name = name.text;
-							Global.flags[0] = 1;
-							Global.save();
+						name.text += spr.text;
 
+						if (name.text.toLowerCase() == 'gaster')
 							FlxG.resetGame();
-						default:
-							if (name.text.length >= 6)
-								name.text = name.text.substring(0, 5);
-
-							name.text += spr.text;
-
-							if (name.text.toLowerCase() == 'gaster')
-								FlxG.resetGame();
 					}
+				});
+			}
+			else
+			{
+				switch (choiceNames[selectedChoice])
+				{
+					case 'Quit':
+						FlxG.switchState(new Intro());
+					case 'Backspace':
+						if (name.text.length > 0)
+							name.text = name.text.substring(0, name.text.length - 1);
+					case 'Done':
+						if (name.text.length <= 0)
+							return;
+
+						Global.name = name.text;
+						Global.flags[0] = 1;
+						Global.save();
+
+						FlxG.resetGame();
 				}
-			});
+			}
 		}
 		else if (Controls.instance.justPressed('cancel'))
 		{
@@ -271,8 +287,9 @@ class Naming extends FlxState
 
 	private function handleKeyInput(name:String):Void
 	{
-		var oldSelected:Int = selected;
-		var info:DeltaMap = keyMap[name];
+		final oldSelected:Int = selected;
+		final info:DeltaMap = keyActions[name];
+
 		var delta:Int = info.delta;
 
 		if (info.special != null)
@@ -286,7 +303,7 @@ class Naming extends FlxState
 
 		selected = Math.floor(FlxMath.bound(selected + delta, 0, 51));
 
-		if (name == "DOWN" && 45 <= oldSelected && oldSelected <= 51)
+		if (name == 'DOWN' && 45 <= oldSelected && oldSelected <= 51)
 		{
 			if (oldSelected >= 49)
 				selectedChoice = 1;
@@ -297,8 +314,7 @@ class Naming extends FlxState
 
 			inItems = false;
 		}
-
-		if (name == "UP" && oldSelected <= 6)
+		else if (name == 'UP' && oldSelected <= 6)
 		{
 			if (oldSelected > 4)
 				selectedChoice = 2;
