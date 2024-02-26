@@ -161,7 +161,7 @@ class Naming extends FlxState
 
 		if (FlxG.keys.justPressed.DOWN)
 		{
-			if (selected <= 52)
+			if (selected < 52)
 			{
 				if (selected >= 19 && selected <= 25)
 					selected += (selected == 19 || selected == 20) ? 12 : 5;
