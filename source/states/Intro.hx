@@ -192,7 +192,7 @@ class Intro extends FlxState
 	{
 		selected = Global.flags[0] == 1 ? FlxMath.wrap(selected + num, 0, choices.length - 1) : Math.floor(FlxMath.bound(selected + num, 0, choices.length - 1));
 
-		items.forEach(function(spr:FlxText)
+		items.forEach(function(spr:FlxText):Void
 		{
 			spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
 		});

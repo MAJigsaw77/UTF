@@ -219,7 +219,7 @@ class Settings extends FlxTransitionableState
 
 					FlxG.game.setFilters(filters);
 
-					items.forEach(function(spr:FlxText)
+					items.forEach(function(spr:FlxText):Void
 					{
 						if (options[spr.ID] == 'Filter')
 							spr.text = 'Filter: ${Data.settings.get('filter')}'.toUpperCase();
@@ -239,7 +239,7 @@ class Settings extends FlxTransitionableState
 	{
 		selected = Math.floor(FlxMath.bound(selected + num, 0, options.length - 1));
 
-		items.forEach(function(spr:FlxText)
+		items.forEach(function(spr:FlxText):Void
 		{
 			spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
 		});

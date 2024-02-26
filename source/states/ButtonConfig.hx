@@ -71,7 +71,7 @@ class ButtonConfig extends FlxState
 
 			Data.binds[getBind(selected)] = FlxG.keys.firstJustPressed();
 
-			items.forEach(function(spr:FlxText)
+			items.forEach(function(spr:FlxText):Void
 			{
 				if (spr.ID == selected)
 				{
@@ -105,7 +105,7 @@ class ButtonConfig extends FlxState
 	{
 		selected = FlxMath.wrap(selected + num, 0, Lambda.count(Data.binds) - 1);
 
-		items.forEach(function(spr:FlxText)
+		items.forEach(function(spr:FlxText):Void
 		{
 			spr.color = spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
 		});

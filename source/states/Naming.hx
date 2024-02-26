@@ -204,7 +204,7 @@ class Naming extends FlxState
 
 		if (Controls.instance.justPressed('confirm'))
 		{
-			items.forEach(function(spr:FlxText)
+			items.forEach(function(spr:FlxText):Void
 			{
 				if (spr.ID == selected)
 				{
@@ -249,7 +249,7 @@ class Naming extends FlxState
 		FlxG.watch.addQuick('selectedChoice', selectedChoice);
 		#end
 
-		items.forEach(function(spr:FlxText)
+		items.forEach(function(spr:FlxText):Void
 		{
 			final color:FlxColor = inItems && spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
 
@@ -260,7 +260,7 @@ class Naming extends FlxState
 			spr.offset.y = ((spr.frameHeight - spr.height) * 0.5) + FlxG.random.float(-0.5, 0.5);
 		});
 
-		choices.forEach(function(spr:FlxText)
+		choices.forEach(function(spr:FlxText):Void
 		{
 			final color:FlxColor = !inItems && spr.ID == selectedChoice ? FlxColor.YELLOW : FlxColor.WHITE;
 
