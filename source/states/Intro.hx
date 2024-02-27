@@ -3,6 +3,7 @@ package states;
 import backend.AssetPaths;
 import backend.Controls;
 import backend.Data;
+import backend.GitHub;
 import backend.Global;
 #if debug
 import backend.Macros;
@@ -29,6 +30,8 @@ class Intro extends FlxState
 
 	override function create():Void
 	{
+		FlxG.log.notice([for (contributor in GitHub.getContributors()) {name: contributor.login, commits: commits: contributor.contributions}]);
+
 		if (Global.flags[0] == 1)
 		{
 			FlxG.sound.playMusic(AssetPaths.music('menu1'));
