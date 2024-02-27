@@ -4,6 +4,7 @@ import flixel.FlxG;
 import haxe.Exception;
 import haxe.Http;
 import haxe.Json;
+import openfl.Lib;
 
 using StringTools;
 
@@ -41,7 +42,7 @@ class GitHub
 		try
 		{
 			var http:Http = new Http('https://api.github.com/repos/$user/$repository/contributors');
-			http.setHeader('User-Agent', 'request');
+			http.setHeader('User-Agent', 'UTF v${Lib.application.meta['version']}');
 			http.onData = function(data:String):Void
 			{
 				if (data != null && data.length > 0)
