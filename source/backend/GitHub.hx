@@ -47,17 +47,14 @@ class GitHub
 			{
 				if (status >= 300 && status < 400)
 				{
-					// Extract new URL from the Location header
-					final newUrl:String = http.responseHeaders.get('Location');
-
-					if (newUrl != null)
+					if (http.responseHeaders.exists('Location'))
 					{
-						// Redirect to the new URL
-						http.url = newUrl;
+						http.url = http.responseHeaders.get('Location');
+
 						http.request(false);
 					}
 					else
-						throw 'Redirection error: Location header missing');
+						throw 'Redirect location header missing';
 				}
 			}
 			http.onData = function(data:String):Void
