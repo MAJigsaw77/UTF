@@ -41,13 +41,14 @@ class GitHub
 		try
 		{
 			var http:Http = new Http('https://api.github.com/repos/$user/$repository/contributors');
+			http.setHeader('User-Agent', 'request');
 			http.onData = function(data:String):Void
 			{
 				if (data != null && data.length > 0)
 					contributors = Json.parse(data.trim());
 			}
 			http.onError = (message:String) -> throw message;
-			http.request();
+			http.request(false);
 		}
 		catch (e:Exception)
 			FlxG.log.error('Error while trying to get the contributors: ${e.message}');
