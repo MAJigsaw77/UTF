@@ -1,6 +1,7 @@
 package backend;
 
 import flixel.FlxG;
+import haxe.Exception;
 import haxe.Http;
 import haxe.Json;
 
@@ -28,7 +29,7 @@ typedef Contributor = {
 	contributions:Int
 }
 
-class Github
+class GitHub
 {
 	public static var user(default, null):String = 'MAJigsaw77';
 	public static var repository(default, null):String = 'UTF';
@@ -39,7 +40,7 @@ class Github
 
 		try
 		{
-			var http:Http = new Http('https://api.github.com/repos/$user/$repo/contributors');
+			var http:Http = new Http('https://api.github.com/repos/$user/$repository/contributors');
 			http.onData = function(data:String):Void
 			{
 				if (data != null && data.length > 0)
