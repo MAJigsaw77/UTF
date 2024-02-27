@@ -43,6 +43,23 @@ class GitHub
 		{
 			var http:Http = new Http('https://api.github.com/repos/$user/$repository/contributors');
 			http.setHeader('User-Agent', 'UTF v${Lib.application.meta['version']}');
+			http.onStatus = function(status:Int):Void
+			{
+				if (status >= 300 && status < 400)
+				{
+					// Extract new URL from the Location header
+					final newUrl:String = http.responseHeaders.get('Location');
+
+					if (newUrl != null)
+					{
+						// Redirect to the new URL
+						http.url = newUrl;
+						http.request(false);
+					}
+					else
+						throw 'Redirection error: Location header missing');
+				}
+			}
 			http.onData = function(data:String):Void
 			{
 				if (data != null && data.length > 0)
