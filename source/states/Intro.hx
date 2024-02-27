@@ -30,7 +30,7 @@ class Intro extends FlxState
 
 	override function create():Void
 	{
-		FlxG.log.notice([for (contributor in GitHub.getContributors()) {name: contributor.login, commits: commits: contributor.contributions}]);
+		FlxG.log.notice([for (contributor in GitHub.getContributors()) {name: contributor.login, commits: contributor.contributions}]);
 
 		if (Global.flags[0] == 1)
 		{
