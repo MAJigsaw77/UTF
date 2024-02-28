@@ -14,7 +14,7 @@ A engine for [Undertale](https://undertale.com) made with [HaxeFlixel](https://h
 
 ### Setup
 
-> Look into [here](./SETUP.md).
+> Look in [here](./SETUP.md).
 
 ### Licensing
 
