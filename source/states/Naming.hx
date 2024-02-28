@@ -219,7 +219,7 @@ class Naming extends FlxState
 			{
 				letters.forEach(function(spr:FlxText):Void
 				{
-					if (spr.ID == selected)
+					if (spr.ID == selectedLetter)
 					{
 						if (name.text.length >= 6)
 							name.text = name.text.substring(0, 5);
@@ -233,9 +233,9 @@ class Naming extends FlxState
 			}
 			else
 			{
-				letters.forEach(function(spr:FlxText):Void
+				choices.forEach(function(spr:FlxText):Void
 				{
-					if (spr.ID == selected)
+					if (spr.ID == selectedChoice)
 					{
 						switch (spr.text)
 						{
@@ -262,7 +262,7 @@ class Naming extends FlxState
 		super.update(elapsed);
 
 		#if debug
-		FlxG.watch.addQuick('selected', selected);
+		FlxG.watch.addQuick('selectedLetter', selectedLetter);
 		FlxG.watch.addQuick('selectedChoice', selectedChoice);
 		#end
 
