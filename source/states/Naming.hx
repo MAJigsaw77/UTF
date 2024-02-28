@@ -252,11 +252,6 @@ class Naming extends FlxState
 				}
 			}
 		}
-		else if (Controls.instance.justPressed('cancel'))
-		{
-			if (name.text.length > 0)
-				name.text = name.text.substring(0, name.text.length - 1);
-		}
 
 		super.update(elapsed);
 
