@@ -3,7 +3,7 @@ package states;
 import backend.AssetPaths;
 import backend.Controls;
 import backend.Data;
-import backend.GitHub;
+// import backend.GitHub;
 import backend.Global;
 #if debug
 import backend.Macros;
@@ -22,6 +22,12 @@ import states.Battle;
 import states.Room;
 import states.Settings;
 
+enum Scroll
+{
+	WRAP;
+	BOUND;
+}
+
 class Intro extends FlxState
 {
 	var selected:Int = 0;
@@ -30,7 +36,7 @@ class Intro extends FlxState
 
 	override function create():Void
 	{
-		FlxG.log.notice([for (contributor in GitHub.getContributors()) {name: contributor.login, commits: contributor.contributions}]);
+		// FlxG.log.notice([for (contributor in GitHub.getContributors()) {name: contributor.login, commits: contributor.contributions}]);
 
 		if (Global.flags[0] == 1)
 		{
@@ -162,10 +168,20 @@ class Intro extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (Global.flags[0] == 1 ? FlxG.keys.justPressed.RIGHT : FlxG.keys.justPressed.DOWN)
-			changeOption(1);
-		else if (Global.flags[0] == 1 ? FlxG.keys.justPressed.LEFT : FlxG.keys.justPressed.UP)
-			changeOption(-1);
+		if (Global.flags[0] == 1)
+		{
+			if (FlxG.keys.justPressed.RIGHT)
+				changeOption(1, WRAP);
+			else if (FlxG.keys.justPressed.LEFT)
+				changeOption(-1, WRAP);
+		}
+		else
+		{
+			if (FlxG.keys.justPressed.DOWN)
+				changeOption(1, BOUND);
+			else if (FlxG.keys.justPressed.UP)
+				changeOption(-1, BOUND);
+		}
 
 		if (Controls.instance.justPressed('confirm'))
 		{
@@ -191,9 +207,15 @@ class Intro extends FlxState
 		super.update(elapsed);
 	}
 
-	private function changeOption(num:Int = 0):Void
+	private function changeOption(num:Int = 0, scrollType:Scroll = BOUND):Void
 	{
-		selected = Global.flags[0] == 1 ? FlxMath.wrap(selected + num, 0, choices.length - 1) : Math.floor(FlxMath.bound(selected + num, 0, choices.length - 1));
+		switch (scrollType)
+		{
+			case WRAP:
+				selected = FlxMath.wrap(selected + num, 0, choices.length - 1);
+			case BOUND:
+				selected = Math.floor(FlxMath.bound(selected + num, 0, choices.length - 1));
+		}
 
 		items.forEach(function(spr:FlxText):Void
 		{
