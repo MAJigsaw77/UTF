@@ -70,17 +70,15 @@ class Naming extends FlxState
 		'UP' => {delta: -7, special: [{start: 26, end: 30, delta: -5}, {start: 31, end: 32, delta: -12}]}
 	];
 
-	final choiceNames:Array<String> = ['Quit', 'Backspace', 'Done'];
-
-	var selected:Int = 0;
-	var selectedChoice:Int = 0;
-
 	var name:FlxText;
 
-	var items:FlxTypedGroup<FlxText>;
+	var letters:FlxTypedGroup<FlxText>;
 	var choices:FlxTypedGroup<FlxText>;
 
-	var inItems:Bool = true;
+	var selectedLetter:Int = 0;
+	var selectedChoice:Int = 0;
+
+	var writingLetters:Bool = true;
 
 	override function create():Void
 	{
@@ -96,7 +94,7 @@ class Naming extends FlxState
 		name.scrollFactor.set();
 		add(name);
 
-		items = new FlxTypedGroup<FlxText>();
+		letters = new FlxTypedGroup<FlxText>();
 		choices = new FlxTypedGroup<FlxText>();
 
 		final upLetters:Array<Int> = [for (i in 65...91) i];
@@ -112,7 +110,7 @@ class Naming extends FlxState
 			letter.ID = i;
 			letter.scrollFactor.set();
 			letter.active = false;
-			items.add(letter);
+			letters.add(letter);
 
 			line++;
 
@@ -137,7 +135,7 @@ class Naming extends FlxState
 			letter.ID = lowLetters.length + i;
 			letter.scrollFactor.set();
 			letter.active = false;
-			items.add(letter);
+			letters.add(letter);
 
 			line++;
 
@@ -149,7 +147,9 @@ class Naming extends FlxState
 			}
 		}
 
-		add(items);
+		add(letters);
+
+		final choiceNames:Array<String> = ['Quit', 'Backspace', 'Done'];
 
 		// Choices.
 		for (i in 0...choiceNames.length)
@@ -180,7 +180,7 @@ class Naming extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (inItems)
+		if (writingLetters)
 		{
 			if (FlxG.keys.justPressed.RIGHT)
 				handleKeyInput('RIGHT');
@@ -201,23 +201,23 @@ class Naming extends FlxState
 
 			if (FlxG.keys.justPressed.DOWN)
 			{
-				selected = [0, 3, 5][selectedChoice];
+				selectedLetter = [0, 3, 5][selectedChoice];
 
-				inItems = true;
+				writingLetters = true;
 			}
 			else if (FlxG.keys.justPressed.UP)
 			{
-				selected = [47, 50, 45][selectedChoice];
+				selectedLetter = [47, 50, 45][selectedChoice];
 
-				inItems = true;
+				writingLetters = true;
 			}
 		}
 
 		if (Controls.instance.justPressed('confirm'))
 		{
-			if (inItems)
+			if (writingLetters)
 			{
-				items.forEach(function(spr:FlxText):Void
+				letters.forEach(function(spr:FlxText):Void
 				{
 					if (spr.ID == selected)
 					{
@@ -233,23 +233,29 @@ class Naming extends FlxState
 			}
 			else
 			{
-				switch (choiceNames[selectedChoice])
+				letters.forEach(function(spr:FlxText):Void
 				{
-					case 'Quit':
-						FlxG.switchState(new Intro());
-					case 'Backspace':
-						if (name.text.length > 0)
-							name.text = name.text.substring(0, name.text.length - 1);
-					case 'Done':
-						if (name.text.length <= 0)
-							return;
+					if (spr.ID == selected)
+					{
+						switch (spr.text)
+						{
+							case 'Quit':
+								FlxG.switchState(new Intro());
+							case 'Backspace':
+								if (name.text.length > 0)
+									name.text = name.text.substring(0, name.text.length - 1);
+							case 'Done':
+								if (name.text.length <= 0)
+									return;
 
-						Global.name = name.text;
-						Global.flags[0] = 1;
-						Global.save();
+								Global.name = name.text;
+								Global.flags[0] = 1;
+								Global.save();
 
-						FlxG.resetGame();
-				}
+								FlxG.resetGame();
+						}
+					}
+				});
 			}
 		}
 
@@ -260,9 +266,9 @@ class Naming extends FlxState
 		FlxG.watch.addQuick('selectedChoice', selectedChoice);
 		#end
 
-		items.forEach(function(spr:FlxText):Void
+		letters.forEach(function(spr:FlxText):Void
 		{
-			final color:FlxColor = inItems && spr.ID == selected ? FlxColor.YELLOW : FlxColor.WHITE;
+			final color:FlxColor = writingLetters && spr.ID == selectedLetter ? FlxColor.YELLOW : FlxColor.WHITE;
 
 			if (spr.color != color)
 				spr.color = color;
@@ -273,7 +279,7 @@ class Naming extends FlxState
 
 		choices.forEach(function(spr:FlxText):Void
 		{
-			final color:FlxColor = !inItems && spr.ID == selectedChoice ? FlxColor.YELLOW : FlxColor.WHITE;
+			final color:FlxColor = !writingLetters && spr.ID == selectedChoice ? FlxColor.YELLOW : FlxColor.WHITE;
 
 			if (spr.color != color)
 				spr.color = color;
@@ -291,12 +297,12 @@ class Naming extends FlxState
 		{
 			for (sp in info.special)
 			{
-				if (sp.start <= selected && selected <= sp.end)
+				if (sp.start <= selectedLetter && selectedLetter <= sp.end)
 					delta = sp.delta;
 			}
 		}
 
-		selected = Math.floor(FlxMath.bound(selected + delta, 0, 51));
+		selectedLetter = Math.floor(FlxMath.bound(selectedLetter + delta, 0, 51));
 
 		if (name == 'DOWN' && 45 <= oldSelected && oldSelected <= 51)
 		{
@@ -307,7 +313,7 @@ class Naming extends FlxState
 			else
 				selectedChoice = 2;
 
-			inItems = false;
+			writingLetters = false;
 		}
 		else if (name == 'UP' && oldSelected <= 6)
 		{
@@ -318,7 +324,7 @@ class Naming extends FlxState
 			else
 				selectedChoice = 0;
 
-			inItems = false;
+			writingLetters = false;
 		}
 	}
 }
