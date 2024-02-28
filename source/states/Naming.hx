@@ -288,7 +288,7 @@ class Naming extends FlxState
 
 	private function handleKeyInput(name:String):Void
 	{
-		final oldSelected:Int = selected;
+		final oldLetter:Int = selectedLetter;
 		final info:DeltaMap = keyActions[name];
 
 		var delta:Int = info.delta;
@@ -304,22 +304,22 @@ class Naming extends FlxState
 
 		selectedLetter = Math.floor(FlxMath.bound(selectedLetter + delta, 0, 51));
 
-		if (name == 'DOWN' && 45 <= oldSelected && oldSelected <= 51)
+		if (name == 'DOWN' && 45 <= oldLetter && oldLetter <= 51)
 		{
-			if (oldSelected >= 49)
+			if (oldLetter >= 49)
 				selectedChoice = 1;
-			else if (oldSelected >= 47)
+			else if (oldLetter >= 47)
 				selectedChoice = 0;
 			else
 				selectedChoice = 2;
 
 			writingLetters = false;
 		}
-		else if (name == 'UP' && oldSelected <= 6)
+		else if (name == 'UP' && oldLetter <= 6)
 		{
-			if (oldSelected > 4)
+			if (oldLetter > 4)
 				selectedChoice = 2;
-			else if (oldSelected > 2)
+			else if (oldLetter > 2)
 				selectedChoice = 1;
 			else
 				selectedChoice = 0;
