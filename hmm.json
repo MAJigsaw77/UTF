@@ -30,13 +30,13 @@
 			"name": "hscript",
 			"type": "git",
 			"ref": "master",
-			"url": "https://github.com/HaxeFoundation/hscript.git"
+			"url": "https://github.com/MAJigsaw77/hscript.git"
 		},
 		{
 			"name": "polymod",
 			"type": "git",
 			"ref": "develop",
-			"url": "https://github.com/MAJigsaw77/polymod.git"
+			"url": "https://github.com/larsiusprime/polymod.git"
 		},
 		{
 			"name": "extension-androidtools",
