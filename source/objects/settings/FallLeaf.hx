@@ -6,7 +6,7 @@ import flixel.FlxSprite;
 
 class FallLeaf extends FlxSprite
 {
-	private var rotSpeed:Int = 0
+	private var rotSpeed:Int = 0;
 	private var siner:Int = 0;
 	private var sinerFactor:Int = 0;
 
