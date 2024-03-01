@@ -1,5 +1,6 @@
 package objects.settings;
 
+import flixel.system.FlxAssets;
 import flixel.FlxG;
 import flixel.FlxSprite;
 
@@ -9,9 +10,9 @@ class FallLeaf extends FlxSprite
 	private var siner:Int = 0;
 	private var sinerFactor:Int = 0;
 
-	public function new():Void
+	public function new(LeafGraphic:FlxGraphicAsset):Void
 	{
-		super();
+		super(0, 0, LeafGraphic);
 
 		x = FlxG.random.int(0, FlxG.width);
 		alpha = 0.5;
