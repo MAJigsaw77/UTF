@@ -35,4 +35,5 @@ class FallLeaf extends FlxSprite
 		y += Math.cos(siner / 6) * sinerFactor;
 
 		angle += rotSpeed;
+	}
 }
