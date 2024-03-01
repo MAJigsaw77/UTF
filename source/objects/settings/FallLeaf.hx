@@ -25,7 +25,7 @@ class FallLeaf extends FlxSprite
 
 	override public function update(elapsed:Float):Void
 	{
-		super.update(elapsed)
+		super.update(elapsed);
 
 		if (y > 500)
 			destroy();
