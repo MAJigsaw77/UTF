@@ -9,6 +9,7 @@ import flixel.FlxSprite;
 class Chara extends FlxSprite
 {
 	public var interacting:Bool = false;
+	public var hitbox:FlxSprite;
 
 	public function new(x:Float = 0, y:Float = 0, facing:String):Void
 	{
@@ -32,8 +33,9 @@ class Chara extends FlxSprite
 
 		animation.finish();
 
-		height /= 2;
-		offset.y = height / 2;
+		hitbox = new FlxSprite(x, y);
+		hitbox.makeGraphic(width / 2, height / 2, FlxG.TRANSPARENT);
+		hitbox.offset.set(width / 4, height / 4);
 	}
 
 	override public function update(elapsed:Float):Void
@@ -94,9 +96,10 @@ class Chara extends FlxSprite
 		if (FlxG.keys.anyJustReleased([DOWN, UP, RIGHT, LEFT]))
 		{
 			animation.finish();
-
 			velocity.set();
 		}
+
+		hitbox.setPosition(x + width / 4, y + height / 4);
 
 		super.update(elapsed);
 	}
