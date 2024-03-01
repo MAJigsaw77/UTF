@@ -15,6 +15,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import objects.settings.FallLeaf;
 import openfl.filters.BitmapFilter;
 import states.ButtonConfig;
 import states.Intro;
@@ -27,6 +28,7 @@ class Settings extends FlxTransitionableState
 	final options:Array<String> = ['Exit', 'FPS Overlay', 'Button Config', 'Filter'];
 	var items:FlxTypedGroup<FlxText>;
 
+	var particles:FlxTypedGroup<FallLeaf>;
 	var tobdogLine:FlxText;
 
 	override function create():Void
@@ -49,7 +51,7 @@ class Settings extends FlxTransitionableState
 
 		if (Util.getWeather() != 3)
 		{
-			var particles:FlxEmitter = new FlxEmitter(0, 0);
+			/*var particles:FlxEmitter = new FlxEmitter(0, 0);
 			particles.loadParticles(AssetPaths.sprite(Util.getWeather() == 1 ? 'christmasflake' : 'fallleaf'), Math.floor(FlxG.height / 2));
 			particles.alpha.set(0.5, 0.5);
 			particles.scale.set(2, 2);
@@ -67,6 +69,9 @@ class Settings extends FlxTransitionableState
 			particles.acceleration.set(0.02, 0.02, 0.02, 0.02);
 			particles.velocity.set(-10, 80, 0, FlxG.height);
 			particles.start(false, 0.01);
+			add(particles);*/
+
+			particles = new FlxTypedGroup<FallLeaf>();
 			add(particles);
 		}
 
@@ -230,6 +235,13 @@ class Settings extends FlxTransitionableState
 		}
 
 		super.update(elapsed);
+
+		if (particles != null && particles.members.length < 120)
+		{
+			var leaf:FallLeaf = new FallLeaf(AssetPaths.sprite(Util.getWeather() == 1 ? 'christmasflake' : 'fallleaf'));
+			leaf.scale.set(2, 2);
+			particles.add(leaf);
+		}
 
 		tobdogLine.offset.x = ((tobdogLine.frameWidth - tobdogLine.width) * 0.5) + Math.sin(siner / 24);
 		tobdogLine.offset.y = ((tobdogLine.frameHeight - tobdogLine.height) * 0.5) + Math.cos(siner / 24);
