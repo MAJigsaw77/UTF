@@ -44,6 +44,7 @@ class FPS extends TextField
 		if (deltaTimeout > 1000)
 		{
 			deltaTimeout = 0;
+
 			return;
 		}
 
@@ -57,7 +58,7 @@ class FPS extends TextField
 		currentFPS = times.length > FlxG.updateFramerate ? FlxG.updateFramerate : times.length;
 
 		#if debug
-		text = currentFPS + 'FPS\n' + FlxStringUtil.formatBytes(#if windows WinAPI.getProcessMemory() #else System.totalMemory #end) + '\n' + Script.count + 'Scripts\n';
+		text = currentFPS + 'FPS\n${FlxStringUtil.formatBytes(System.totalMemory)}\n' + Script.count + 'Scripts\n';
 		#else
 		text = currentFPS + 'FPS\n';
 		#end
