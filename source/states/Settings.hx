@@ -33,7 +33,7 @@ class Settings extends FlxTransitionableState
 	{
 		FlxTransitionableState.skipNextTransOut = true;
 
-		persistentUpdate = true; // Mostly for particles shit.
+		persistentUpdate = true;
 
 		var weatherMusic:String = AssetPaths.music('options_fall');
 
@@ -49,7 +49,7 @@ class Settings extends FlxTransitionableState
 
 		if (Util.getWeather() != 3)
 		{
-			var particles:FlxEmitter = new FlxEmitter(0, 0, 120);
+			var particles:FlxEmitter = new FlxEmitter(0, 0);
 			particles.loadParticles(AssetPaths.sprite(Util.getWeather() == 1 ? 'christmasflake' : 'fallleaf'), 120);
 			particles.alpha.set(0.5, 0.5);
 			particles.scale.set(2, 2);
@@ -64,7 +64,7 @@ class Settings extends FlxTransitionableState
 
 			particles.width = FlxG.width;
 			particles.launchMode = SQUARE;
-			particles.acceleration.set(0.02, 0.02, 0.02, 0.02);
+			particles.acceleration.set(120, 120, 120, 120);
 			particles.velocity.set(-10, 80, 0, FlxG.height);
 			particles.start(false, 0.01);
 			add(particles);
@@ -223,8 +223,8 @@ class Settings extends FlxTransitionableState
 
 		super.update(elapsed);
 
-		tobdogLine.offset.x = ((tobdogLine.frameWidth - tobdogLine.width) * 0.5) + Math.sin(siner / 24);
-		tobdogLine.offset.y = ((tobdogLine.frameHeight - tobdogLine.height) * 0.5) + Math.cos(siner / 24);
+		tobdogLine.offset.x = ((tobdogLine.frameWidth - tobdogLine.width) * 0.5) + Math.sin(siner / 12);
+		tobdogLine.offset.y = ((tobdogLine.frameHeight - tobdogLine.height) * 0.5) + Math.cos(siner / 12);
 	}
 
 	private function changeOption(num:Int = 0):Void
