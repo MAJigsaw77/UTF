@@ -4,9 +4,9 @@ package;
 import android.content.Context;
 import android.os.Build;
 #end
+import backend.scaleModes.PercentOfHeightScaleMode;
 import backend.AssetPaths;
 import backend.Data;
-import scaleModes.PercentOfHeightScaleMode;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
