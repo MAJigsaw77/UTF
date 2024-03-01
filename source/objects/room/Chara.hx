@@ -31,6 +31,9 @@ class Chara extends FlxSprite
 		animation.play(facing);
 
 		animation.finish();
+
+		height /= 2;
+		offset.y = height / 2;
 	}
 
 	override public function update(elapsed:Float):Void
