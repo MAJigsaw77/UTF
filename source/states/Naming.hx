@@ -34,6 +34,8 @@ typedef SpecialDelta =
 
 class Naming extends FlxState
 {
+	static var curName:String = '';
+
 	final characterNames:Map<Array<String>, Name> = [
 		[''] => {description: 'You must choose a name.', allow: false},
 		['aaaaaa'] => {description: 'Not very creative...?', allow: true},
@@ -71,13 +73,11 @@ class Naming extends FlxState
 	];
 
 	var name:FlxText;
-
 	var letters:FlxTypedGroup<FlxText>;
 	var choices:FlxTypedGroup<FlxText>;
 
 	var selectedLetter:Int = 0;
 	var selectedChoice:Int = 0;
-
 	var writingLetters:Bool = true;
 
 	override function create():Void
@@ -242,13 +242,13 @@ class Naming extends FlxState
 							case 'Quit':
 								FlxG.switchState(new Intro());
 							case 'Backspace':
-								if (name.text.length > 0)
-									name.text = name.text.substring(0, name.text.length - 1);
+								if (curName.length > 0)
+									curName.text = curName.substring(0, name.text.length - 1);
 							case 'Done':
-								if (name.text.length <= 0)
+								if (curName.length <= 0)
 									return;
 
-								Global.name = name.text;
+								Global.name = curName;
 								Global.flags[0] = 1;
 								Global.save();
 
@@ -262,9 +262,13 @@ class Naming extends FlxState
 		super.update(elapsed);
 
 		#if debug
+		FlxG.watch.addQuick('currentName', curName);
 		FlxG.watch.addQuick('selectedLetter', selectedLetter);
 		FlxG.watch.addQuick('selectedChoice', selectedChoice);
 		#end
+
+		if (name != null && name.text != curName)
+			name.text = curName;
 
 		letters.forEach(function(spr:FlxText):Void
 		{
