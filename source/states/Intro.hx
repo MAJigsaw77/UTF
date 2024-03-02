@@ -89,14 +89,15 @@ class Intro extends FlxState
 		{
 			FlxG.sound.playMusic(AssetPaths.music('menu0'));
 
-			var list:Array<String> = [];
+			var list:Array<String> = new Array<String>();
 			
 			list.push(' --- Instruction --- ');
 			list.push('');
 			list.push('[${Data.binds.get('cancel')}] - Confirm');
 			list.push('[${Data.binds.get('cancel')}] - Cancel');
-			list.push('[${Data.binds.get('menu')}] - Menu (In-Game)');
-			list.push('');
+			list.push('[${Data.binds.get('menu')}] - Menu (In-game)');
+			list.push('[F4] - Fullscreen');
+			list.push('[Hold ESC] - Quit');
 			list.push('When HP is 0, you lose.');
 
 			var instructions:FlxText = new FlxText(170, 40, 0, list.join('\n'), 32);
