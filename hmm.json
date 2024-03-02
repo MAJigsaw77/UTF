@@ -28,9 +28,7 @@
 		},
 		{
 			"name": "hscript",
-			"type": "git",
-			"ref": "master",
-			"url": "https://github.com/MAJigsaw77/hscript.git"
+			"type": "haxelib"
 		},
 		{
 			"name": "polymod",
