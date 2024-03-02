@@ -3,6 +3,7 @@ package objects.room;
 import backend.AssetPaths;
 import backend.Data;
 import flixel.input.keyboard.FlxKey;
+import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
 
@@ -34,7 +35,7 @@ class Chara extends FlxSprite
 		animation.finish();
 
 		hitbox = new FlxSprite(x, y);
-		hitbox.makeGraphic(Math.floor(width / 2), Math.floor(height / 2), FlxG.TRANSPARENT);
+		hitbox.makeGraphic(Math.floor(width / 2), Math.floor(height / 2), FlxColor.TRANSPARENT);
 		hitbox.offset.set(width / 4, height / 4);
 	}
 
