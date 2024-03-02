@@ -45,6 +45,10 @@ class GitHub
 			http.setHeader('User-Agent', 'UTF v${Lib.application.meta['version']}');
 			http.onStatus = function(status:Int):Void
 			{
+				#if debug
+				FlxG.log.notice('Response status: $status');
+				#end
+
 				if (status >= 300 && status < 400)
 				{
 					if (http.responseHeaders.exists('Location'))
