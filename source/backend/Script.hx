@@ -70,12 +70,6 @@ class Script
 
 	public function new():Void
 	{
-		parser = new Parser();
-		parser.preprocesorValues = Macros.getDefines();
-		parser.allowJSON = true;
-		parser.allowTypes = true;
-		parser.allowMetadata = true;
-
 		interp = new Interp();
 
 		for (key => value in properties)
@@ -90,13 +84,27 @@ class Script
 		try
 		{
 			if (Assets.exists(file, TEXT))
+			{
+				if (parser == null)
+				{
+					parser = new Parser();
+					parser.allowJSON = true;
+					parser.allowTypes = true;
+					parser.allowMetadata = true;
+					parser.preprocesorValues = Macros.getDefines();
+				}
+
 				interp.execute(parser.parseString(Assets.getText(file), file));
+
+				parser = null;
+			}
 			else
 				throw 'script $file doesn\'t exist!';
 		}
 		catch (e:Exception)
 		{
 			FlxG.log.error(e.message);
+
 			return close();
 		}
 	}
@@ -119,19 +127,20 @@ class Script
 
 	public function call(name:String, ?args:Array<Dynamic>):Dynamic
 	{
-		if (interp == null)
-			return null;
+		if (interp != null)
+		{
+			try
+			{
+				@:privateAccess
+				if (interp.variables.exists(name) && Reflect.isFunction(interp.variables.get(name)))
+					return interp.call(null, interp.variables.get(name), args ??= []);
+			{
+			catch (e:Exception)
+			{
+				FlxG.log.error(e.message);
 
-		try
-		{
-			@:privateAccess
-			if (interp.variables.exists(name) && Reflect.isFunction(interp.variables.get(name)))
-				return interp.call(null, interp.variables.get(name), args ??= []);
-		}
-		catch (e:Exception)
-		{
-			FlxG.log.error(e.message);
-			close();
+				close();
+			}
 		}
 
 		return null;
@@ -139,7 +148,9 @@ class Script
 
 	public function close():Void
 	{
-		parser = null;
+		if (interp != null && interp.variables != null && Lambda.count(interp.variables) > 0)
+			interp.variables.clear();
+
 		interp = null;
 	}
 }
