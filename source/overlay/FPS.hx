@@ -1,10 +1,6 @@
 package overlay;
 
 import backend.AssetPaths;
-import backend.Script;
-#if windows
-import backend.WinAPI;
-#end
 import flixel.util.FlxStringUtil;
 import flixel.FlxG;
 import haxe.Timer;
@@ -58,7 +54,7 @@ class FPS extends TextField
 		currentFPS = times.length > FlxG.updateFramerate ? FlxG.updateFramerate : times.length;
 
 		#if debug
-		text = currentFPS + 'FPS\n${FlxStringUtil.formatBytes(System.totalMemory)}\n' + Script.count + 'Scripts\n';
+		text = currentFPS + 'FPS\n${FlxStringUtil.formatBytes(System.totalMemory)}\n';
 		#else
 		text = currentFPS + 'FPS\n';
 		#end
