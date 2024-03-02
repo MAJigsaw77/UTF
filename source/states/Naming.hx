@@ -89,7 +89,7 @@ class Naming extends FlxState
 		namingText.active = false;
 		add(namingText);
 
-		name = new FlxText(280, 110, 0, '', 32);
+		name = new FlxText(280, 110, 0, curName, 32);
 		name.font = AssetPaths.font('DTM-Sans');
 		name.scrollFactor.set();
 		add(name);
