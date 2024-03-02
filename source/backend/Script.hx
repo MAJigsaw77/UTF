@@ -134,7 +134,7 @@ class Script
 				@:privateAccess
 				if (interp.variables.exists(name) && Reflect.isFunction(interp.variables.get(name)))
 					return interp.call(null, interp.variables.get(name), args ??= []);
-			{
+			}
 			catch (e:Exception)
 			{
 				FlxG.log.error(e.message);
