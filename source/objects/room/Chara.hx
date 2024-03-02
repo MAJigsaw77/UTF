@@ -34,7 +34,7 @@ class Chara extends FlxSprite
 		animation.finish();
 
 		hitbox = new FlxSprite(x, y);
-		hitbox.makeGraphic(width / 2, height / 2, FlxG.TRANSPARENT);
+		hitbox.makeGraphic(Math.floor(width / 2), Math.floor(height / 2), FlxG.TRANSPARENT);
 		hitbox.offset.set(width / 4, height / 4);
 	}
 
