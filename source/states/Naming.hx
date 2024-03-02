@@ -221,12 +221,12 @@ class Naming extends FlxState
 				{
 					if (spr.ID == selectedLetter)
 					{
-						if (name.text.length >= 6)
-							name.text = name.text.substring(0, 5);
+						if (curName.length >= 6)
+							curName = curName.substring(0, 5);
 
-						name.text += spr.text;
+						curName += spr.text;
 
-						if (name.text.toLowerCase() == 'gaster')
+						if (curName.toLowerCase() == 'gaster')
 							FlxG.resetGame();
 					}
 				});
@@ -243,7 +243,7 @@ class Naming extends FlxState
 								FlxG.switchState(new Intro());
 							case 'Backspace':
 								if (curName.length > 0)
-									curName.text = curName.substring(0, name.text.length - 1);
+									curName = curName.substring(0, curName.length - 1);
 							case 'Done':
 								if (curName.length <= 0)
 									return;
