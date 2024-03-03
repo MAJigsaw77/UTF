@@ -77,6 +77,7 @@ class TypeText extends FlxText
 					if (waitTime > 0)
 					{
 						_finalText = _finalText.substring(0, _length - 1) + _finalText.substring(_length + 1);
+
 						_timer -= delay;
 
 						new FlxTimer().start(waitTime, function(tmr:FlxTimer):Void
