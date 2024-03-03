@@ -4,9 +4,10 @@ package;
 import android.content.Context;
 import android.os.Build;
 #end
-import backend.scaleModes.PercentOfHeightScaleMode;
+import backend.debug.FPS;
 import backend.AssetPaths;
 import backend.Data;
+import backend.PercentOfHeightScaleMode;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -28,7 +29,6 @@ import openfl.system.System as OpenFLSystem;
 import openfl.utils.AssetCache;
 import openfl.utils.Assets;
 import openfl.Lib;
-import overlay.FPS;
 #if MODS
 import polymod.Polymod;
 #end
