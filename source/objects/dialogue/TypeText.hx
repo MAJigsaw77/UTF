@@ -3,6 +3,7 @@ package objects.dialogue;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.sound.FlxSound;
+import flixel.util.FlxTimer;
 import flixel.FlxG;
 
 class TypeText extends FlxText
@@ -69,7 +70,25 @@ class TypeText extends FlxText
 		{
 			if (_timer >= delay)
 			{
-				_length += Math.floor(_timer / delay);
+				if (_finalText.charAt(_length - 1) == '^')
+				{
+					final waitTime:Float = Std.parseFloat(_finalText.charAt(_length));
+
+					if (waitTime > 0)
+					{
+						_finalText = _finalText.substring(0, _length - 1) + _finalText.substring(_length + 1);
+						_timer -= delay;
+
+						new FlxTimer().start(waitTime, function(tmr:FlxTimer):Void
+						{
+							_timer = 0;
+						});
+					}
+					else
+						_finalText = _finalText.substring(0, _length - 1) + _finalText.substring(_length + 2);
+				}
+				else
+					_length += Math.floor(_timer / delay);
 
 				if (_length > _finalText.length)
 					_length = _finalText.length;
