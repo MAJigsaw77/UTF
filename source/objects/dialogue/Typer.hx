@@ -20,7 +20,7 @@ class Typer
 	public var spacing:Null<Float>;
 	public var face:String;
 
-	public function new(font:TyperFont, sound:TyperSound, speed:Float, ?spacing:Null<Float>, ?portrait:String):Void
+	public function new(font:TyperFont, sound:TyperSound, speed:Float, ?spacing:Null<Float>, ?face:String):Void
 	{
 		this.font = font;
 		this.sound = sound;
