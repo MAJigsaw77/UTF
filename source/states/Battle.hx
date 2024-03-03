@@ -56,7 +56,7 @@ class Battle extends FlxTransitionableState
 		hpBar.scrollFactor.set();
 		add(hpBar);
 
-		hpInfo = new FlxText((hpBar.x + 15) + hpBar.width, hpBar.y, 0, Global.hp + ' / ' + Global.maxHp, 22);
+		hpInfo = new FlxText((hpBar.x + 15) + hpBar.width, hpBar.y, 0, '${Global.hp} / ${Global.maxHp}', 22);
 		hpInfo.font = AssetPaths.font('Small');
 		hpInfo.scrollFactor.set();
 		add(hpInfo);
@@ -183,6 +183,14 @@ class Battle extends FlxTransitionableState
 		#end
 
 		super.update(elapsed);
+
+		if (hpInfo != null)
+		{
+			final hpInfoText:String = '${Global.hp} / ${Global.maxHp}';
+
+			if (hpInfo.text != hpInfoText)
+				hpInfo.text = hpInfoText;
+		}
 	}
 
 	private function changeChoice(num:Int = 0):Void
