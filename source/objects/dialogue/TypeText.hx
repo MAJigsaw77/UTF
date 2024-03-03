@@ -13,7 +13,7 @@ class TypeText extends FlxText
 	public var finishSounds:Bool = false;
 
 	var _finalText:String = '';
-	var _timer:Float = 0.0;
+	var _timer:Float = 0;
 	var _length:Int = 0;
 	var _typing:Bool = false;
 
@@ -82,10 +82,14 @@ class TypeText extends FlxText
 					{
 						_finalText = _finalText.substring(0, _length - 1) + _finalText.substring(_length + 1);
 
+						_typing = false;
+
 						new FlxTimer().start(waitTime, function(tmr:FlxTimer):Void
 						{
-							_timer = 0;
+							_typing = true;
 						});
+
+						return;
 					}
 					else
 						_finalText = _finalText.substring(0, _length - 1) + _finalText.substring(_length + 2);
@@ -109,23 +113,17 @@ class TypeText extends FlxText
 					FlxG.random.getObject(sounds).play(!finishSounds);
 				}
 			}
-		}
 
-		final curText:String = _finalText.substr(0, _length);
+			final curText:String = _finalText.substr(0, _length);
 
-		if (text != curText)
-		{
-			text = curText;
-
-			if (_typing && _length >= _finalText.length)
+			if (text != curText)
 			{
-				_timer = 0;
-				_typing = false;
+				text = curText;
 
-				if (sounds != null)
+				if (_length >= _finalText.length)
 				{
-					for (sound in sounds)
-						sound.stop();
+					_timer = 0;
+					_typing = false;
 				}
 			}
 		}
