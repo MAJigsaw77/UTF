@@ -74,6 +74,10 @@ class TypeText extends FlxText
 				{
 					final waitTime:Float = Std.parseFloat(_finalText.charAt(_length));
 
+					#if debug
+					FlxG.log.notice('Delaying the current text by $waitTime');
+					#end
+
 					if (waitTime > 0)
 					{
 						_finalText = _finalText.substring(0, _length - 1) + _finalText.substring(_length + 1);
