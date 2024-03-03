@@ -85,15 +85,15 @@ class TypeText extends FlxText
 							_typing = true;
 						});
 
-						_length--;
+						_length -= 2;
 
 						return;
 					}
 					else
 					{
-						_finalText = _finalText.substring(0, _length - 1) + _finalText.substring(_length + 2);
+						_finalText = _finalText.substring(0, _length - 1) + _finalText.substring(_length + 1);
 
-						_length--;
+						_length -= 2;
 					}
 				}
 				else
