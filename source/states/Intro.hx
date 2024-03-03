@@ -90,7 +90,7 @@ class Intro extends FlxState
 			FlxG.sound.playMusic(AssetPaths.music('menu0'));
 
 			var list:Array<String> = new Array<String>();
-			
+
 			list.push(' --- Instruction --- ');
 			list.push('');
 			list.push('[${Data.binds.get('cancel')}] - Confirm');
@@ -202,7 +202,12 @@ class Intro extends FlxState
 
 		#if debug
 		if (FlxG.keys.justPressed.B)
+		{
+			if (FlxG.sound?.music.playing)
+				FlxG.sound?.music.stop();
+
 			FlxG.switchState(new Battle());
+		}
 		#end
 
 		super.update(elapsed);
