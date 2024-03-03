@@ -16,7 +16,7 @@ class TypeText extends FlxText
 	var _length:Int = 0;
 	var _typing:Bool = false;
 
-	final _ignoreCharacters:Array<String> = ['`', '~', '!', '*', '(', ')', '-', '_', '=', '+', '{', '}', '[', ']', '\'', '\n', '\\', '|', ':', ';', ',', '<', '.', '>', '/', '?', '^', ' '];
+	final _ignoreCharacters:Array<String> = ['`', '~', '!', '*', '(', ')', '-', '_', '=', '+', '{', '}', '[', ']', '\'', '\n', '\\', '|', ':', ';', ',', '<', '.', '>', '/', '?', '^', ' ', ''];
 
 	public function new(x:Float, y:Float, width:Int, text:String, size:Int = 8, embeddedFont:Bool = true):Void
 	{
