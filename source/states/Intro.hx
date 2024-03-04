@@ -93,7 +93,7 @@ class Intro extends FlxState
 
 			list.push(' --- Instruction --- ');
 			list.push('');
-			list.push('[${Data.binds.get('cancel')}] - Confirm');
+			list.push('[${Data.binds.get('confirm')}] - Confirm');
 			list.push('[${Data.binds.get('cancel')}] - Cancel');
 			list.push('[${Data.binds.get('menu')}] - Menu (In-game)');
 			list.push('[F4] - Fullscreen');
