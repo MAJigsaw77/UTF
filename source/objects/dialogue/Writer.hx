@@ -29,7 +29,7 @@ class Writer extends TypeText
 
 	public function new(x:Float = 0, y:Float = 0):Void
 	{
-		super(x, y, 0, '', 8, true);
+		super(x, y, 0, 8, true);
 	}
 
 	public function startDialogue(list:Array<DialogueData>):Void
