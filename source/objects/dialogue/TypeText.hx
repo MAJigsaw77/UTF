@@ -68,13 +68,13 @@ class TypeText extends FlxText
 		{
 			if (_timer >= delay)
 			{
-				if (_finalText.charAt(_length - 1) == '^')
+				if (_finalText.charAt(_length) == '^')
 				{
-					final waitTime:Float = Std.parseFloat(_finalText.charAt(_length));
+					final waitTime:Float = Std.parseFloat(_finalText.charAt(_length + 1));
 
 					if (waitTime > 0)
 					{
-						_finalText = _finalText.substring(0, _length - 1) + _finalText.substring(_length + 1);
+						_finalText = _finalText.substring(0, _length) + _finalText.substring(_length + 2);
 
 						_typing = false;
 
@@ -89,7 +89,7 @@ class TypeText extends FlxText
 					}
 					else
 					{
-						_finalText = _finalText.substring(0, _length - 1) + _finalText.substring(_length + 1);
+						_finalText = _finalText.substring(0, _length) + _finalText.substring(_length + 2);
 
 						_length -= 2;
 					}
