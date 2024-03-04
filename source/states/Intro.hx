@@ -40,7 +40,8 @@ class Intro extends FlxState
 
 		if (Global.flags[0] == 1)
 		{
-			FlxG.sound.playMusic(AssetPaths.music('menu1'));
+			if (FlxG.sound?.music.playing)
+				FlxG.sound.playMusic(AssetPaths.music('menu1'));
 
 			var bg:FlxSprite = new FlxSprite(0, -240, AssetPaths.background('floweyglow'));
 			bg.scale.set(2, 2);
@@ -87,25 +88,31 @@ class Intro extends FlxState
 		}
 		else
 		{
-			FlxG.sound.playMusic(AssetPaths.music('menu0'));
+			if (FlxG.sound?.music.playing)
+				FlxG.sound.playMusic(AssetPaths.music('menu0'));
 
-			var list:Array<String> = new Array<String>();
-
-			list.push(' --- Instruction --- ');
-			list.push('');
-			list.push('[${Data.binds.get('confirm')}] - Confirm');
-			list.push('[${Data.binds.get('cancel')}] - Cancel');
-			list.push('[${Data.binds.get('menu')}] - Menu (In-game)');
-			list.push('[F4] - Fullscreen');
-			list.push('[Hold ESC] - Quit');
-			list.push('When HP is 0, you lose.');
-
-			var instructions:FlxText = new FlxText(170, 40, 0, list.join('\n'), 32);
+			var instructions:FlxText = new FlxText(170, 40, 0, ' --- Instruction --- ', 32);
 			instructions.font = AssetPaths.font('DTM-Sans');
-			instructions.color = 0xFFC0C0C0; // Silver
+			instructions.color = 0xFFC0C0C0;
 			instructions.scrollFactor.set();
 			instructions.active = false;
 			add(instructions);
+
+			final list:Array<String> = [
+				'[${Data.binds.get('confirm')}] - Confirm',
+				'[${Data.binds.get('cancel')}] - Cancel',
+				'[${Data.binds.get('menu')}] - Menu (In-game)',
+				'[F4] - Fullscreen',
+				'[Hold ESC] - Quit',
+				'When HP is 0, you lose.'
+			];
+
+			var instructionsList:FlxText = new FlxText(170, 100, 0, list.join('\n'), 32);
+			instructionsList.font = AssetPaths.font('DTM-Sans');
+			instructionsList.color = 0xFFC0C0C0;
+			instructionsList.scrollFactor.set();
+			instructionsList.active = false;
+			add(instructionsList);
 
 			choices = ['Begin Game', 'Settings'];
 		}
@@ -186,8 +193,8 @@ class Intro extends FlxState
 
 		if (Controls.instance.justPressed('confirm'))
 		{
-			if (FlxG.sound.music.playing && (choices[selected] != 'Reset' && choices[selected] != 'Begin Game'))
-				FlxG.sound.music.stop();
+			if (FlxG.sound?.music.playing && (choices[selected] != 'Reset' && choices[selected] != 'Begin Game'))
+				FlxG.sound?.music.stop();
 
 			switch (choices[selected])
 			{
@@ -203,8 +210,8 @@ class Intro extends FlxState
 		#if debug
 		if (FlxG.keys.justPressed.B)
 		{
-			if (FlxG.sound.music.playing)
-				FlxG.sound.music.stop();
+			if (FlxG.sound?.music.playing)
+				FlxG.sound?.music.stop();
 
 			FlxG.switchState(new Battle());
 		}
