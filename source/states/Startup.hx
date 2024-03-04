@@ -20,6 +20,8 @@ class Startup extends FlxState
 {
 	override function create():Void
 	{
+		FlxG.autoPause = false;
+
 		if (Controls.instance == null)
 			Controls.instance = new Controls();
 
@@ -39,10 +41,6 @@ class Startup extends FlxState
 
 		if (Data.settings.get('filter') != 'none' && Data.filters.exists(Data.settings.get('filter')))
 			FlxG.game.setFilters([Data.filters.get(Data.settings.get('filter'))]);
-
-		#if FLX_MOUSE
-		FlxG.mouse.useSystemCursor = true;
-		#end
 
 		if (FlxG.save.data.volume != null)
 			FlxG.sound.volume = FlxG.save.data.volume;
