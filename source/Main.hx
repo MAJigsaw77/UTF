@@ -63,9 +63,15 @@ class Main extends Sprite
 		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
 		#end
 
+		FlxG.autoPause = false;
+
 		FlxG.signals.gameResized.add(onResizeGame);
 		FlxG.signals.preStateCreate.add(onPreStateCreate);
 		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
+
+		#if debug
+		FlxG.log.redirectTraces = true;
+		#end
 
 		border = new Bitmap();
 		border.bitmapData = Assets.getBitmapData(Data.borders.get('simple'));

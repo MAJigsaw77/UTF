@@ -34,17 +34,11 @@ class Startup extends FlxState
 		#if MODS
 		Mods.load();
 		#end
-		
-		FlxG.autoPause = false;
 
 		FlxG.game.focusLostFramerate = FlxG.updateFramerate;
 
 		if (Data.settings.get('filter') != 'none' && Data.filters.exists(Data.settings.get('filter')))
 			FlxG.game.setFilters([Data.filters.get(Data.settings.get('filter'))]);
-
-		#if debug
-		FlxG.log.redirectTraces = true;
-		#end
 
 		#if FLX_MOUSE
 		FlxG.mouse.useSystemCursor = true;
