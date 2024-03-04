@@ -203,8 +203,8 @@ class Intro extends FlxState
 		#if debug
 		if (FlxG.keys.justPressed.B)
 		{
-			if (FlxG.sound?.music.playing)
-				FlxG.sound?.music.stop();
+			if (FlxG.sound.music.playing)
+				FlxG.sound.music.stop();
 
 			FlxG.switchState(new Battle());
 		}
