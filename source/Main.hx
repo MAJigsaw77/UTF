@@ -63,15 +63,13 @@ class Main extends Sprite
 		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
 		#end
 
-		FlxG.autoPause = false;
+		#if debug
+		FlxG.log.redirectTraces = true;
+		#end
 
 		FlxG.signals.gameResized.add(onResizeGame);
 		FlxG.signals.preStateCreate.add(onPreStateCreate);
 		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
-
-		#if debug
-		FlxG.log.redirectTraces = true;
-		#end
 
 		border = new Bitmap();
 		border.bitmapData = Assets.getBitmapData(Data.borders.get('simple'));
@@ -81,6 +79,10 @@ class Main extends Sprite
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
+		#end
+
+		#if FLX_MOUSE
+		FlxG.mouse.useSystemCursor = true;
 		#end
 
 		FlxG.scaleMode = new PercentOfHeightScaleMode(0.88);
@@ -132,11 +134,11 @@ class Main extends Sprite
 			File.saveContent('errors/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt', msg);
 		}
 		catch (e:Exception)
-			Log.trace('Couldn\'t save error message "${e.message}"', null);
+			FlxG.log.warn('Couldn\'t save error message "${e.message}"', null);
 		#end
 
-		Log.trace(msg, null);
 		Lib.application.window.alert(msg, 'Error!');
+
 		LimeSystem.exit(1);
 	}
 
@@ -172,11 +174,11 @@ class Main extends Sprite
 			File.saveContent('errors/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt', msg);
 		}
 		catch (e:Exception)
-			Log.trace('Couldn\'t save error message "${e.message}"', null);
+			FlxG.log.warn('Couldn\'t save error message "${e.message}"', null);
 		#end
 
-		Log.trace(msg, null);
 		Lib.application.window.alert(msg, 'Error!');
+
 		LimeSystem.exit(1);
 	}
 
@@ -231,8 +233,10 @@ class Main extends Sprite
 
 		// Clear the loaded graphics if they are no longer in flixel cache...
 		for (key in cache.bitmapData.keys())
+		{
 			if (!FlxG.bitmap.checkCache(key))
 				cache.bitmapData.remove(key);
+		}
 
 		// Clear all the loaded sounds from the cache...
 		for (key in cache.sound.keys())
