@@ -12,7 +12,7 @@ class Chara extends FlxSprite
 	public var interacting:Bool = false;
 	public var hitbox:FlxSprite;
 
-	public function new(x:Float = 0, y:Float = 0, facing:String):Void
+	public function new(x:Float = 0, y:Float = 0, facing:Int = 0):Void
 	{
 		super(x, y);
 
@@ -30,7 +30,18 @@ class Chara extends FlxSprite
 		animation.addByPrefix('left', 'chara left', 6, false);
 		animation.addByPrefix('right', 'chara right', 6, false);
 		animation.addByPrefix('up', 'chara up', 6, false);
-		animation.play(facing);
+
+		switch (facing)
+		{
+			case 0:
+				animation.play('down');
+			case 1:
+				animation.play('right');
+			case 2:
+				animation.play('up');
+			case 3:
+				animation.play('left');
+		}
 
 		animation.finish();
 
