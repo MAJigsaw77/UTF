@@ -70,7 +70,7 @@ class TypeText extends FlxText
 			{
 				if (_finalText.charAt(_length) == '^')
 				{
-					final waitTime:Float = Std.parseFloat(_finalText.charAt(_length + 1));
+					final waitTime:Int = Std.parseInt(_finalText.charAt(_length + 1));
 
 					if (waitTime > 0)
 					{
