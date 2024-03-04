@@ -19,11 +19,9 @@ class TypeText extends FlxText
 
 	final _ignoreCharacters:Array<String> = ['`', '~', '!', '*', '(', ')', '-', '_', '=', '+', '{', '}', '[', ']', '\'', '\n', '\\', '|', ':', ';', ',', '<', '.', '>', '/', '?', '^', ' ', ''];
 
-	public function new(x:Float, y:Float, width:Int, text:String, size:Int = 8, embeddedFont:Bool = true):Void
+	public function new(x:Float, y:Float, width:Int, size:Int = 8, embeddedFont:Bool = true):Void
 	{
 		super(x, y, width, '', size, embeddedFont);
-
-		_finalText = text;
 	}
 
 	public function start(?delay:Float):Void
