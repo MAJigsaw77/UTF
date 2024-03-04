@@ -83,7 +83,7 @@ class TypeText extends FlxText
 							_typing = true;
 						});
 
-						_length -= 2;
+						_length--;
 
 						return;
 					}
@@ -91,7 +91,7 @@ class TypeText extends FlxText
 					{
 						_finalText = _finalText.substring(0, _length) + _finalText.substring(_length + 2);
 
-						_length -= 2;
+						_length--;
 					}
 				}
 				else
