@@ -134,7 +134,7 @@ class Main extends Sprite
 			File.saveContent('errors/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt', msg);
 		}
 		catch (e:Exception)
-			FlxG.log.warn('Couldn\'t save error message "${e.message}"', null);
+			FlxG.log.warn('Couldn\'t save error message "${e.message}"');
 		#end
 
 		Lib.application.window.alert(msg, 'Error!');
@@ -174,7 +174,7 @@ class Main extends Sprite
 			File.saveContent('errors/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt', msg);
 		}
 		catch (e:Exception)
-			FlxG.log.warn('Couldn\'t save error message "${e.message}"', null);
+			FlxG.log.warn('Couldn\'t save error message "${e.message}"');
 		#end
 
 		Lib.application.window.alert(msg, 'Error!');
