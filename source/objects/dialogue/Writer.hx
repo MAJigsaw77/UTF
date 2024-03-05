@@ -62,7 +62,7 @@ class Writer extends TypeText
 
 		resetText(dialogue.text);
 
-		start(1 / dialogue.typer.speed);
+		start(1 / (dialogue.typer.speed * 10));
 	}
 
 	override public function update(elapsed:Float):Void
