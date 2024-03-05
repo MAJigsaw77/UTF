@@ -71,29 +71,28 @@ class TypeText extends FlxText
 			{
 				if (_finalText.charAt(_length) == '^')
 				{
-					final waitTime:Int = Std.parseInt(_finalText.charAt(_length + 1));
+					final waitTime:Null<Int> = Std.parseInt(_finalText.charAt(_length + 1));
 
-					if (waitTime > 0)
+					if (waitTime != null)
 					{
 						_finalText = _finalText.substring(0, _length) + _finalText.substring(_length + 2);
 
-						_waiting = true;
-
-						new FlxTimer().start(1 / (waitTime * 10), function(tmr:FlxTimer):Void
-						{
-							_waiting = false;
-						});
-
 						_length--;
 
-						return;
+						if (waitTime > 0)
+						{
+							_waiting = true;
+
+							new FlxTimer().start(1 / (waitTime * 10), function(tmr:FlxTimer):Void
+							{
+								_waiting = false;
+							});
+
+							return;
+						}
 					}
 					else
-					{
-						_finalText = _finalText.substring(0, _length) + _finalText.substring(_length + 2);
-
-						_length--;
-					}
+						_length += Math.floor(_timer / delay);
 				}
 				else
 					_length += Math.floor(_timer / delay);
