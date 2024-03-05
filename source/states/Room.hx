@@ -134,7 +134,7 @@ class Room extends FlxTransitionableState
 				{
 					chara.interacting = true;
 	
-					final typer:Typer = new Typer({name: 'Wingdings', size: 32}, {name: 'txt2', volume: 0.86}, 3, 1.6);
+					final typer:Typer = new Typer({name: 'Wingdings', size: 24}, {name: 'txt2', volume: 0.86}, 3, 1.6);
 
 					startDialogue([{typer: typer, text: '* [redacted]'}]);
 				}
