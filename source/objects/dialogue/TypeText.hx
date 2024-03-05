@@ -16,6 +16,7 @@ class TypeText extends FlxText
 	var _timer:Float = 0;
 	var _length:Int = 0;
 	var _typing:Bool = false;
+	var _waiting:Bool = false;
 
 	final _ignoreCharacters:Array<String> = ['`', '~', '!', '*', '(', ')', '-', '_', '=', '+', '{', '}', '[', ']', '\'', '\n', '\\', '|', ':', ';', ',', '<', '.', '>', '/', '?', '^', ' ', ''];
 
@@ -61,10 +62,10 @@ class TypeText extends FlxText
 
 	override public function update(elapsed:Float):Void
 	{
-		if (_length < _finalText.length && _typing)
+		if (_length < _finalText.length && _typing && !_waiting)
 			_timer += elapsed;
 
-		if (_typing)
+		if (_typing && !_waiting)
 		{
 			if (_timer >= delay)
 			{
@@ -76,11 +77,11 @@ class TypeText extends FlxText
 					{
 						_finalText = _finalText.substring(0, _length) + _finalText.substring(_length + 2);
 
-						_typing = false;
+						_waiting = true;
 
 						new FlxTimer().start(1 / (waitTime * 10), function(tmr:FlxTimer):Void
 						{
-							_typing = true;
+							_waiting = false;
 						});
 
 						_length--;
