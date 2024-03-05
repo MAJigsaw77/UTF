@@ -206,12 +206,12 @@ class Battle extends FlxTransitionableState
 		{
 			if (spr.ID == selected)
 			{
-				spr.animation.frameIndex = 0;
+				spr.animation.frameIndex = 1;
 
 				heart.setPosition(spr.x + 8, spr.y + 14);
 			}
 			else
-				spr.animation.frameIndex = 1;
+				spr.animation.frameIndex = 0;
 		});
 	}
 }
