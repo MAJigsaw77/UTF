@@ -65,7 +65,9 @@ class Battle extends FlxTransitionableState
 
 		for (i in 0...choices.length)
 		{
-			var bt:FlxSprite = new FlxSprite(0, hpBar.y + 32, AssetPaths.sprite(choices[i].toLowerCase() + 'bt_1'));
+			var bt:FlxSprite = new FlxSprite(0, hpBar.y + 32);
+			bt.frames = AssetPaths.spritesheet(choices[i].toLowerCase() + 'bt');
+			bt.animation.frameIndex = 0;
 
 			switch (choices[i])
 			{
@@ -204,12 +206,12 @@ class Battle extends FlxTransitionableState
 		{
 			if (spr.ID == selected)
 			{
-				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_0'));
+				spr.animation.frameIndex = 0;
 
 				heart.setPosition(spr.x + 8, spr.y + 14);
 			}
 			else
-				spr.loadGraphic(AssetPaths.sprite(choices[spr.ID].toLowerCase() + 'bt_1'));
+				spr.animation.frameIndex = 1;
 		});
 	}
 }
