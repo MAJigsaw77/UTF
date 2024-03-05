@@ -42,34 +42,18 @@ class GameOver extends FlxState
 				{
 					final typer:Typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 2, 2);
 
-					switch (FlxG.random.int(0, 5))
-					{
-						case 0:
-							writer.startDialogue([
-								{typer: typer, text: '  You cannot give\n  up just yet...'},
-								{typer: typer, text: '  ${Global.name}!^1\n  Stay determined...'}
-							]);
-						case 1:
-							writer.startDialogue([
-								{typer: typer, text: '  Our fate rests\n  upon you...'},
-								{typer: typer, text: '  ${Global.name}!^1\n  Stay determined...'}
-							]);
-						case 2:
-							writer.startDialogue([
-								{typer: typer, text: '  You\'re going to\n  be alright!'},
-								{typer: typer, text: '  ${Global.name}!^1\n  Stay determined...'}
-							]);
-						case 3:
-							writer.startDialogue([
-								{typer: typer, text: '  Don\'t lose hope!'},
-								{typer: typer, text: '  ${Global.name}!^1\n  Stay determined...'}
-							]);
-						case 4:
-							writer.startDialogue([
-								{typer: typer, text: '  It cannot end\n  now!'},
-								{typer: typer, text: '  ${Global.name}!^1\n  Stay determined...'}
-							]);
-					}
+					final lines:Array<String> = [
+						'  You cannot give\n  up just yet...',
+						'  Our fate rests\n  upon you...',
+						'  You\'re going to\n  be alright!',
+						'  Don\'t lose hope!',
+						'  It cannot end\n  now!'
+					];
+
+					writer.startDialogue([
+						{typer: typer, text: FlxG.random.getObject(lines)},
+						{typer: typer, text: '  ${Global.name}!^1\n  Stay determined...'}
+					]);
 				});
 			}
 		});
