@@ -40,7 +40,7 @@ class Intro extends FlxState
 
 		if (Global.flags[0] == 1)
 		{
-			if (FlxG.sound?.music.playing)
+			if (FlxG.sound.music == null || (FlxG.sound.music != null && !FlxG.sound.music.playing))
 				FlxG.sound.playMusic(AssetPaths.music('menu1'));
 
 			var bg:FlxSprite = new FlxSprite(0, -240, AssetPaths.background('floweyglow'));
@@ -88,7 +88,7 @@ class Intro extends FlxState
 		}
 		else
 		{
-			if (FlxG.sound?.music.playing)
+			if (FlxG.sound.music == null || (FlxG.sound.music != null && !FlxG.sound.music.playing))
 				FlxG.sound.playMusic(AssetPaths.music('menu0'));
 
 			var instructions:FlxText = new FlxText(170, 40, 0, ' --- Instruction --- ', 32);
@@ -193,8 +193,8 @@ class Intro extends FlxState
 
 		if (Controls.instance.justPressed('confirm'))
 		{
-			if (FlxG.sound?.music.playing && (choices[selected] != 'Reset' && choices[selected] != 'Begin Game'))
-				FlxG.sound?.music.stop();
+			if (FlxG.sound.music != null && FlxG.sound.music.playing && (choices[selected] != 'Reset' && choices[selected] != 'Begin Game'))
+				FlxG.sound.music.stop();
 
 			switch (choices[selected])
 			{
@@ -210,8 +210,8 @@ class Intro extends FlxState
 		#if debug
 		if (FlxG.keys.justPressed.B)
 		{
-			if (FlxG.sound?.music.playing)
-				FlxG.sound?.music.stop();
+			if (FlxG.sound.music != null && FlxG.sound.music.playing)
+				FlxG.sound.music.stop();
 
 			FlxG.switchState(new Battle());
 		}
