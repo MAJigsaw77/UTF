@@ -52,7 +52,6 @@ class Intro extends FlxState
 
 			var flowey:FlxSprite = new FlxSprite(0, 348);
 			flowey.frames = AssetPaths.spritesheet('flowey');
-			flowey.animation.addByPrefix('flowey', 'flowey', 2, true);
 			flowey.animation.frameIndex = 0;
 			flowey.scale.set(2, 2);
 			flowey.updateHitbox();
