@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="slice_o.png">
+	<SubTexture name="slice_o0000" x="46" y="28" width="10" height="12" frameX="-9" frameY="-3" frameWidth="26" frameHeight="110"/>
+	<SubTexture name="slice_o0001" x="46" y="0" width="10" height="28" frameX="-7" frameY="-7" frameWidth="26" frameHeight="110"/>
+	<SubTexture name="slice_o0002" x="34" y="0" width="12" height="48" frameX="-5" frameY="-19" frameWidth="26" frameHeight="110"/>
+	<SubTexture name="slice_o0003" x="0" y="0" width="14" height="70" frameX="-5" frameY="-27" frameWidth="26" frameHeight="110"/>
+	<SubTexture name="slice_o0004" x="14" y="0" width="20" height="38" frameX="-5" frameY="-61" frameWidth="26" frameHeight="110"/>
+	<SubTexture name="slice_o0005" x="14" y="38" width="20" height="18" frameX="-7" frameY="-85" frameWidth="26" frameHeight="110"/>
+</TextureAtlas>

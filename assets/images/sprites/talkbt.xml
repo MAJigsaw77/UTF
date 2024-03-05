@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="talkbt.png">
+	<SubTexture name="talkbt0000" x="0" y="46" width="114" height="46" frameX="2" frameY="2" frameWidth="110" frameHeight="42"/>
+	<SubTexture name="talkbt0001" x="0" y="0" width="114" height="46" frameX="2" frameY="2" frameWidth="110" frameHeight="42"/>
+</TextureAtlas>
