@@ -1,19 +1,10 @@
 package backend;
 
-import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.math.FlxPoint;
 import flixel.FlxG;
 import haxe.io.Path;
 import haxe.Exception;
 import openfl.utils.Assets;
-
-typedef SheetData =
-{
-	animation:String,
-	path:String,
-	frames:Array<Int>
-}
 
 class AssetPaths
 {
@@ -86,26 +77,20 @@ class AssetPaths
 		return null;
 	}
 
-	public static function spritesheet(data:{key:String, sheet:Array<SheetData>}):FlxAtlasFrames
+	public static function spritesheet(key:String):FlxAtlasFrames
 	{
-		if (data == null)
-			return null;
+		final path:String = Path.withoutExtension(AssetPaths.sprite(key));
 
-		var atlas:FlxAtlas = new FlxAtlas(AssetPaths.sprite(data.key), FlxPoint.weak(0, 0), FlxPoint.weak(0, 0));
-
-		for (sheet in data.sheet)
+		try
 		{
-			for (frame in sheet.frames)
-			{
-				final path:String = AssetPaths.sprite(sheet.path + '_$frame');
-
-				if (Assets.exists(path, IMAGE))
-					atlas.addNode(Assets.getBitmapData(path, false), sheet.animation + frame);
-				else
-					atlas.addNode('flixel/images/logo/default.png', sheet.animation + frame);
-			}
+			if (Assets.exists(Path.withExtension(path, 'xml'), TEXT))
+				return FlxAtlasFrames.fromSparrow(AssetPaths.sprite(key), Path.withExtension(path, 'xml'));
+			else if (Assets.exists(Path.withExtension(path, 'json'), TEXT))
+				return FlxAtlasFrames.fromTexturePackerJson(AssetPaths.sprite(key), Path.withExtension(path, 'json'));
 		}
+		catch (e:Exception)
+			FlxG.log.error(e.message);
 
-		return atlas.getAtlasFrames();
+		return null;
 	}
 }

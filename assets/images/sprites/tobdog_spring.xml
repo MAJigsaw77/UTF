@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="tobdog_spring.png">
+	<SubTexture name="tobdog_spring0000" x="48" y="0" width="24" height="30" frameX="2" frameY="2" frameWidth="20" frameHeight="26"/>
+	<SubTexture name="tobdog_spring0001" x="24" y="0" width="24" height="30" frameX="2" frameY="2" frameWidth="20" frameHeight="26"/>
+	<SubTexture name="tobdog_spring0002" x="48" y="0" width="24" height="30" frameX="2" frameY="2" frameWidth="20" frameHeight="26"/>
+	<SubTexture name="tobdog_spring0003" x="0" y="0" width="24" height="30" frameX="2" frameY="2" frameWidth="20" frameHeight="26"/>
+</TextureAtlas>

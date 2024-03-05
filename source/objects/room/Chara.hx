@@ -10,26 +10,17 @@ import flixel.FlxSprite;
 class Chara extends FlxSprite
 {
 	public var interacting:Bool = false;
-	public var hitbox:FlxSprite;
 
 	public function new(x:Float = 0, y:Float = 0, facing:Int = 0):Void
 	{
 		super(x, y);
 
-		frames = AssetPaths.spritesheet({
-			key: 'f_mainchara',
-			sheet: [
-				{animation: 'chara down', path: 'f_maincharad', frames: [3, 2, 1, 0]},
-				{animation: 'chara left', path: 'f_maincharal', frames: [1, 0]},
-				{animation: 'chara right', path: 'f_maincharar', frames: [1, 0]},
-				{animation: 'chara up', path: 'f_maincharau', frames: [3, 2, 1, 0]}
-			]
-		});
+		frames = AssetPaths.spritesheet('f_mainchara');
 
-		animation.addByPrefix('down', 'chara down', 6, false);
-		animation.addByPrefix('left', 'chara left', 6, false);
-		animation.addByPrefix('right', 'chara right', 6, false);
-		animation.addByPrefix('up', 'chara up', 6, false);
+		animation.addByPrefix('down', 'f_maincharad', 6, false);
+		animation.addByPrefix('right', 'f_maincharar', 6, false);
+		animation.addByPrefix('up', 'f_maincharau', 6, false);
+		animation.addByPrefix('left', 'f_maincharal', 6, false);
 
 		switch (facing)
 		{
@@ -44,10 +35,6 @@ class Chara extends FlxSprite
 		}
 
 		animation.finish();
-
-		hitbox = new FlxSprite(x, y);
-		hitbox.makeGraphic(Math.floor(width / 2), Math.floor(height / 2), FlxColor.TRANSPARENT);
-		hitbox.offset.set(width / 4, height / 4);
 	}
 
 	override public function update(elapsed:Float):Void
@@ -60,6 +47,7 @@ class Chara extends FlxSprite
 					animation.play('down');
 
 				velocity.y = 180;
+
 				#if debug
 				if (FlxG.keys.checkStatus(Data.binds.get('cancel'), PRESSED))
 					velocity.y = 300;
@@ -71,6 +59,7 @@ class Chara extends FlxSprite
 					animation.play('up');
 
 				velocity.y = -180;
+
 				#if debug
 				if (FlxG.keys.checkStatus(Data.binds.get('cancel'), PRESSED))
 					velocity.y = -300;
@@ -82,6 +71,7 @@ class Chara extends FlxSprite
 				animation.play('right');
 
 				velocity.x = 180;
+
 				#if debug
 				if (FlxG.keys.checkStatus(Data.binds.get('cancel'), PRESSED))
 					velocity.x = 300;
@@ -92,6 +82,7 @@ class Chara extends FlxSprite
 				animation.play('left');
 
 				velocity.x = -180;
+
 				#if debug
 				if (FlxG.keys.checkStatus(Data.binds.get('cancel'), PRESSED))
 					velocity.x = -300;
@@ -110,8 +101,6 @@ class Chara extends FlxSprite
 			animation.finish();
 			velocity.set();
 		}
-
-		hitbox.setPosition(x + width / 4, y + height / 4);
 
 		super.update(elapsed);
 	}

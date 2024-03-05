@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="f_mainchara.png">
+	<SubTexture name="f_maincharad0000" x="0" y="0" width="23" height="33" frameX="2" frameY="1" frameWidth="20" frameHeight="30"/>
+	<SubTexture name="f_maincharad0001" x="0" y="33" width="23" height="33" frameX="2" frameY="2" frameWidth="20" frameHeight="30"/>
+	<SubTexture name="f_maincharad0002" x="0" y="0" width="23" height="33" frameX="2" frameY="1" frameWidth="20" frameHeight="30"/>
+	<SubTexture name="f_maincharad0003" x="23" y="0" width="23" height="33" frameX="2" frameY="2" frameWidth="20" frameHeight="30"/>
+	<SubTexture name="f_maincharar0000" x="69" y="33" width="21" height="33" frameX="1" frameY="1" frameWidth="20" frameHeight="30"/>
+	<SubTexture name="f_maincharar0001" x="90" y="32" width="21" height="32" frameX="1" frameY="0" frameWidth="20" frameHeight="30"/>
+	<SubTexture name="f_maincharau0000" x="23" y="33" width="23" height="33" frameX="2" frameY="1" frameWidth="20" frameHeight="30"/>
+	<SubTexture name="f_maincharau0001" x="46" y="0" width="23" height="33" frameX="2" frameY="2" frameWidth="20" frameHeight="30"/>
+	<SubTexture name="f_maincharau0002" x="23" y="33" width="23" height="33" frameX="2" frameY="1" frameWidth="20" frameHeight="30"/>
+	<SubTexture name="f_maincharau0003" x="46" y="33" width="23" height="33" frameX="2" frameY="2" frameWidth="20" frameHeight="30"/>
+	<SubTexture name="f_maincharal0000" x="69" y="0" width="21" height="33" frameX="1" frameY="1" frameWidth="20" frameHeight="30"/>
+	<SubTexture name="f_maincharal0001" x="90" y="0" width="21" height="32" frameX="1" frameY="0" frameWidth="20" frameHeight="30"/>
+</TextureAtlas>
