@@ -78,7 +78,7 @@ class TypeText extends FlxText
 
 						_typing = false;
 
-						new FlxTimer().start(waitTime, function(tmr:FlxTimer):Void
+						new FlxTimer().start(1 / (waitTime * 10), function(tmr:FlxTimer):Void
 						{
 							_typing = true;
 						});
