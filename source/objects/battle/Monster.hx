@@ -1,4 +1,4 @@
-package objects;
+package objects.battle;
 
 import backend.AssetPaths;
 import backend.Script;
