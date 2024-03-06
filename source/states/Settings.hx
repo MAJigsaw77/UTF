@@ -217,8 +217,8 @@ class Settings extends FlxTransitionableState
 
 		super.update(elapsed);
 
-		tobdogLine.offset.x = ((tobdogLine.frameWidth - tobdogLine.width) * 0.5) + Math.sin(siner / 12);
-		tobdogLine.offset.y = ((tobdogLine.frameHeight - tobdogLine.height) * 0.5) + Math.cos(siner / 12);
+		tobdogLine.offset.x = ((tobdogLine.frameWidth - tobdogLine.width) * 0.5) + Math.sin(siner / 6);
+		tobdogLine.offset.y = ((tobdogLine.frameHeight - tobdogLine.height) * 0.5) + Math.cos(siner / 6);
 	}
 
 	private function changeOption(num:Int = 0):Void
