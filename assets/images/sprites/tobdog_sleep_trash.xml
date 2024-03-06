@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="tobdog_sleep_trash.png">
-	<SubTexture name="tobdog_sleep_trash0000" x="0" y="0" width="31" height="16" frameX="2" frameY="2" frameWidth="27" frameHeight="12"/>
-	<SubTexture name="tobdog_sleep_trash0001" x="31" y="0" width="30" height="15" frameX="2" frameY="1" frameWidth="26" frameHeight="11"/>
+	<SubTexture name="tobdog_sleep_trash0000" x="31" y="0" width="30" height="15" frameX="2" frameY="1" frameWidth="26" frameHeight="11"/>
+	<SubTexture name="tobdog_sleep_trash0001" x="0" y="0" width="31" height="16" frameX="2" frameY="2" frameWidth="27" frameHeight="12"/>
 </TextureAtlas>

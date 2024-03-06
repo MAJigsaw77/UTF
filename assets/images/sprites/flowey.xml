@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="flowey.png">
-	<SubTexture name="flowey0000" x="25" y="0" width="25" height="25" frameX="2" frameY="2" frameWidth="21" frameHeight="21"/>
-	<SubTexture name="flowey0001" x="0" y="0" width="25" height="25" frameX="2" frameY="2" frameWidth="21" frameHeight="21"/>
+	<SubTexture name="flowey0000" x="0" y="0" width="25" height="25" frameX="2" frameY="2" frameWidth="21" frameHeight="21"/>
+	<SubTexture name="flowey0001" x="25" y="0" width="25" height="25" frameX="2" frameY="2" frameWidth="21" frameHeight="21"/>
 </TextureAtlas>
