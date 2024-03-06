@@ -67,7 +67,7 @@ class Battle extends FlxTransitionableState
 		{
 			var bt:FlxSprite = new FlxSprite(0, hpBar.y + 32);
 			bt.frames = AssetPaths.spritesheet(choices[i].toLowerCase() + 'bt');
-			bt.animation.frameIndex = 0;
+			bt.animation.frameIndex = 1;
 
 			switch (choices[i])
 			{
@@ -206,12 +206,12 @@ class Battle extends FlxTransitionableState
 		{
 			if (spr.ID == selected)
 			{
-				spr.animation.frameIndex = 1;
+				spr.animation.frameIndex = 0;
 
 				heart.setPosition(spr.x + 8, spr.y + 14);
 			}
 			else
-				spr.animation.frameIndex = 0;
+				spr.animation.frameIndex = 1;
 		});
 	}
 }
