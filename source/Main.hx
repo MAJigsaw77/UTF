@@ -19,13 +19,13 @@ import haxe.Log;
 #if hl
 import hl.Api;
 #end
-import lime.system.System as LimeSystem;
 import openfl.display.Bitmap;
 import openfl.display.Sprite;
 import openfl.errors.Error;
 import openfl.events.ErrorEvent;
 import openfl.events.UncaughtErrorEvent;
-import openfl.system.System as OpenFLSystem;
+import openfl.filesystem.File;
+import openfl.system.System;
 import openfl.utils.AssetCache;
 import openfl.utils.Assets;
 import openfl.Lib;
@@ -52,7 +52,7 @@ class Main extends Sprite
 		#if android
 		Sys.setCwd(Path.addTrailingSlash(VERSION.SDK_INT > 30 ? Context.getObbDir() : Context.getExternalFilesDir()));
 		#elseif (ios || switch)
-		Sys.setCwd(LimeSystem.applicationStorageDirectory);
+		Sys.setCwd(Path.addTrailingSlash(File.applicationStorageDirectory.nativePath));
 		#end
 
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
@@ -69,7 +69,11 @@ class Main extends Sprite
 
 		FlxG.signals.gameResized.add(onResizeGame);
 		FlxG.signals.preStateCreate.add(onPreStateCreate);
-		FlxG.signals.postStateSwitch.add(OpenFLSystem.gc);
+		FlxG.signals.postStateSwitch.add(onPreStateCreate);
+
+		#if (!mobile || !switch)
+		FlxG.signals.postUpdate.add(onPostUpdate);
+		#end
 
 		border = new Bitmap();
 		border.bitmapData = Assets.getBitmapData(Data.borders.get('simple'));
@@ -139,7 +143,7 @@ class Main extends Sprite
 
 		Lib.application.window.alert(msg, 'Error!');
 
-		LimeSystem.exit(1);
+		System.exit(1);
 	}
 
 	private inline function onCriticalError(error:Dynamic):Void
@@ -179,7 +183,7 @@ class Main extends Sprite
 
 		Lib.application.window.alert(msg, 'Error!');
 
-		LimeSystem.exit(1);
+		System.exit(1);
 	}
 
 	private inline function onResizeGame(width:Int, height:Int):Void
@@ -208,7 +212,6 @@ class Main extends Sprite
 			{
 				if (camera != null && (camera.filters != null && camera.filters.length > 0))
 				{
-					// Shout out to Ne_Eo for bringing this to my attention.
 					@:privateAccess
 					if (camera.flashSprite != null)
 					{
@@ -231,24 +234,31 @@ class Main extends Sprite
 	{
 		var cache:AssetCache = cast(Assets.cache, AssetCache);
 
-		// Clear the loaded graphics if they are no longer in flixel cache...
 		for (key in cache.bitmapData.keys())
 		{
 			if (!FlxG.bitmap.checkCache(key))
 				cache.bitmapData.remove(key);
 		}
 
-		// Clear all the loaded sounds from the cache...
 		for (key in cache.sound.keys())
 			cache.sound.remove(key);
 
-		// Clear all the loaded fonts from the cache...
 		for (key in cache.font.keys())
 			cache.font.remove(key);
 
 		#if MODS
-		// Clear the loaded assets from polymod...
 		Polymod.clearCache();
 		#end
+	}
+
+	private inline function onPreStateCreate():Void
+	{
+		System.gc();
+	}
+
+	private inline function onPostUpdate():Void
+	{
+		if (FlxG.keys.justPressed.F4)
+			FlxG.fullscreen = !FlxG.fullscreen;
 	}
 }
