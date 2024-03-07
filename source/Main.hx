@@ -69,7 +69,7 @@ class Main extends Sprite
 
 		FlxG.signals.gameResized.add(onResizeGame);
 		FlxG.signals.preStateCreate.add(onPreStateCreate);
-		FlxG.signals.postStateSwitch.add(onPreStateCreate);
+		FlxG.signals.postStateSwitch.add(onPostStateSwitch);
 
 		#if (!mobile || !switch)
 		FlxG.signals.postUpdate.add(onPostUpdate);
@@ -251,14 +251,16 @@ class Main extends Sprite
 		#end
 	}
 
-	private inline function onPreStateCreate():Void
+	private inline function onPostStateSwitch():Void
 	{
 		System.gc();
 	}
 
+	#if (!mobile || !switch)
 	private inline function onPostUpdate():Void
 	{
 		if (FlxG.keys.justPressed.F4)
 			FlxG.fullscreen = !FlxG.fullscreen;
 	}
+	#end
 }
