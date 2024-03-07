@@ -1,0 +1,4 @@
+this.loadGraphic(AssetPaths.sprite(this.name));
+this.alpha = #if debug 1 #else 0 #end;
+this.immovable = true;
+this.solid = false;
