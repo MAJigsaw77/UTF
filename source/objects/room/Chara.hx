@@ -2,6 +2,7 @@ package objects.room;
 
 import backend.AssetPaths;
 import backend.Data;
+import backend.Global;
 import flixel.input.keyboard.FlxKey;
 import flixel.util.FlxColor;
 import flixel.FlxG;
@@ -11,7 +12,7 @@ class Chara extends FlxSprite
 {
 	public var interacting:Bool = false;
 
-	public function new(x:Float = 0, y:Float = 0, facing:Int = 0):Void
+	public function new(x:Float = 0, y:Float = 0):Void
 	{
 		super(x, y);
 
@@ -22,7 +23,7 @@ class Chara extends FlxSprite
 		animation.addByPrefix('up', 'f_maincharau', 6, false);
 		animation.addByPrefix('left', 'f_maincharal', 6, false);
 
-		switch (facing)
+		switch (Global.facing)
 		{
 			case 0:
 				animation.play('down');
