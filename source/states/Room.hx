@@ -92,7 +92,7 @@ class Room extends FlxTransitionableState
 				switch (instance.att.objName)
 				{
 					case 'mainchara':
-						chara = new Chara(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), Global.facing);
+						chara = new Chara(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y));
 						chara.scale.scale(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
 						chara.updateHitbox();
 						add(chara);
