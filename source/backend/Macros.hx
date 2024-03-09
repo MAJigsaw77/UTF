@@ -1,6 +1,7 @@
 package backend;
 
 #if macro
+import haxe.macro.Compiler;
 import haxe.macro.Context;
 import haxe.macro.Expr;
 #end
@@ -45,5 +46,20 @@ class Macros
 		#else
 		return macro $v{[]};
 		#end
+	}
+
+	public static macro function includePackages():Expr
+	{
+		#if !display
+		Compiler.include('lime');
+		Compiler.include('openfl');
+		Compiler.include('flixel');
+		#if !web
+		Compiler.include('sys');
+		#end
+		Compiler.include('haxe');
+		#end
+
+		return macro $v{null};
 	}
 }
