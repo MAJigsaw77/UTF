@@ -51,7 +51,6 @@ class Macros
 	public static macro function includePackages():Expr
 	{
 		#if !display
-		Compiler.include('lime');
 		Compiler.include('openfl');
 		Compiler.include('flixel');
 		#if !web
