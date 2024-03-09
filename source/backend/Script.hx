@@ -74,6 +74,26 @@ class Script
 
 		for (key => value in properties)
 			set(key, value);
+
+		set('registerClass', function(name:String, ?as:String):Void
+		{
+			final daClass:Class<Dynamic> = Type.resolveClass(name);
+
+			if (daClass == null)
+				throw 'Type not found: $name';
+			else
+				set(as != null ? as : name.split('.').pop(), daClass);
+		});
+
+		set('registerEnum', function(name:String, ?as:String):Void
+		{
+			final daEnum:Enum<Dynamic> = Type.resolveEnum(name);
+
+			if (daEnum == null)
+				throw 'Type not found: $name';
+			else
+				set(as != null ? as : name.split('.').pop(), daEnum);
+		});
 	}
 
 	public function execute(file:String):Void
