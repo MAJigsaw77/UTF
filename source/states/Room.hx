@@ -130,26 +130,13 @@ class Room extends FlxTransitionableState
 
 			objects.forEach(function(object:Object):Void
 			{
-				if (Controls.instance.justPressed('confirm') && object.name.contains('redacted_a') && chara.overlaps(object) && !chara.interacting)
-				{
-					chara.interacting = true;
-	
-					final typer:Typer = new Typer({name: 'Wingdings', size: 24}, {name: 'txt1', volume: 1}, 3, 1.6);
+				if (Controls.instance.justPressed('confirm') && chara.overlaps(object) && !object.interacting)
+					object.interact();
 
-					startDialogue([{typer: typer, text: '* [redacted]'}]);
-				}
+				// final typer:Typer = new Typer({name: 'Wingdings', size: 24}, {name: 'txt1', volume: 1}, 3, 1.6);
+
+				// startDialogue([{typer: typer, text: '* [redacted]'}]);
 			});
-
-			if (chara.interacting && box != null && writer != null && writer.finished)
-			{
-				chara.interacting = false;
-
-				remove(box);
-				remove(writer);
-
-				box = null;
-				writer = null;
-			}
 		}
 
 		script.call('postUpdate', [elapsed]);
@@ -162,13 +149,18 @@ class Room extends FlxTransitionableState
 
 		box = new FlxShapeBox(32, (chara != null && chara.y >= 260) ? 10 : 320, 576, 150, {thickness: 6, jointStyle: MITER, color: FlxColor.WHITE}, FlxColor.BLACK);
 		box.scrollFactor.set();
-		box.cameras = [camHud];
+		box.camera = camHud;
 		box.active = false;
 		add(box);
 
 		writer = new Writer(box.x + 20, box.y + 10);
+		writer.finishCallback = function():Void
+		{
+			remove(box);
+			remove(writer);
+		}
 		writer.scrollFactor.set();
-		writer.cameras = [camHud];
+		writer.camera = camHud;
 		add(writer);
 
 		writer.startDialogue(dialogue);
