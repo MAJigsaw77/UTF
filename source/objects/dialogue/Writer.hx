@@ -9,23 +9,17 @@ import objects.dialogue.Typer;
 
 using flixel.util.FlxArrayUtil;
 
-typedef DialogueData =
-{
+typedef DialogueData = {
 	typer:Typer,
 	text:String
 }
 
 class Writer extends TypeText
 {
-	public var finished(default, null):Bool = false;
+	public var finishCallback:Void->Void = null;
 
-	public var skippable:Bool = true;
-
-	@:noCompletion
-	private var dialogueList:Array<DialogueData> = [];
-
-	@:noCompletion
-	private var page:Int = 0;
+	var list:Array<DialogueData> = [];
+	var page:Int = 0;
 
 	public function new(x:Float = 0, y:Float = 0):Void
 	{
@@ -34,14 +28,12 @@ class Writer extends TypeText
 
 	public function startDialogue(list:Array<DialogueData>):Void
 	{
-		finished = false;
-		dialogueList = list ??= [{typer: new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 4), text: 'Error!'}];
+		this.list = list ??= [{ typer: new Typer({ name: 'DTM-Mono', size: 32 }, { name: 'txt2', volume: 0.86 }, 4), text: 'Error!' }];
+
 		page = 0;
 
-		if (dialogueList[page] != null)
-			changeDialogue(dialogueList[page]);
-		else
-			FlxG.log.notice('Hey, there\'s NOTHING in here to be said!');
+		if (list[page] != null)
+			changeDialogue(list[page]);
 	}
 
 	public function changeDialogue(dialogue:DialogueData):Void
@@ -60,27 +52,31 @@ class Writer extends TypeText
 		if (dialogue.typer.spacing != null && letterSpacing != dialogue.typer.spacing)
 			letterSpacing = dialogue.typer.spacing;
 
-		resetText(dialogue.text);
-
-		start(1 / (dialogue.typer.speed * 10));
+		start(dialogue.text, 1 / (dialogue.typer.speed * 10));
 	}
 
 	override public function update(elapsed:Float):Void
 	{
-		if (Controls.instance.justPressed('confirm') && !finished && skippable)
+		if (Controls.instance.justPressed('confirm'))
 		{
-			page++;
-
-			if (page > dialogueList.indexOf(dialogueList.last()))
+			if (!finished)
 			{
-				page--;
-
-				finished = true;
+				skip();
 
 				return;
 			}
 
-			changeDialogue(dialogueList[page]);
+			if (page < list.indexOf(list.last()))
+			{
+				page++;
+
+				changeDialogue(list[page]);
+			}
+			else if (page == list.indexOf(list.last()))
+			{
+				if (finishCallback != null)
+					finishCallback();
+			}
 		}
 
 		super.update(elapsed);
