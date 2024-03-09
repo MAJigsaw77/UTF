@@ -15,6 +15,7 @@ import states.Room;
 
 class GameOver extends FlxState
 {
+	var canExit:Bool = false;
 	var bg:FlxSprite;
 	var writer:Writer;
 
@@ -30,6 +31,14 @@ class GameOver extends FlxState
 		add(bg);
 
 		writer = new Writer(120, 320);
+		writer.finishCallback = function():Void
+		{
+			canExit = true;
+
+			remove(writer);
+
+			writer = null;
+		}
 		writer.scrollFactor.set();
 		add(writer);
 
@@ -61,7 +70,7 @@ class GameOver extends FlxState
 
 	override function update(elapsed:Float):Void
 	{
-		if (Controls.instance.justPressed('confirm') && writer == null && bg.alpha == 1)
+		if (Controls.instance.justPressed('confirm') && canExit && bg.alpha == 1)
 		{
 			FlxTween.tween(bg, {alpha: 0}, 1.5, {
 				onComplete: (twn:FlxTween) -> FlxG.switchState(new Room(272))
@@ -71,11 +80,5 @@ class GameOver extends FlxState
 		}
 
 		super.update(elapsed);
-
-		if (writer != null && writer.finished)
-		{
-			remove(writer);
-			writer = null;
-		}
 	}
 }
