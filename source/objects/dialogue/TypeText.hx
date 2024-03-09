@@ -10,6 +10,7 @@ class TypeText extends FlxText
 {
 	public var delay:Float = 0.05;
 	public var sounds:Array<FlxSound> = [];
+	public var finished(get, null):Bool = false;
 	public var finishSounds:Bool = false;
 
 	var _finalText:String = '';
@@ -25,11 +26,12 @@ class TypeText extends FlxText
 		super(x, y, width, '', size, embeddedFont);
 	}
 
-	public function start(?delay:Float):Void
+	public function start(text:String, ?delay:Float):Void
 	{
 		if (delay != null)
 			this.delay = delay;
 
+		_finalText = text;
 		_typing = true;
 		_length = 0;
 
@@ -40,24 +42,6 @@ class TypeText extends FlxText
 	{
 		if (_typing)
 			_length = _finalText.length;
-	}
-
-	public function resetText(text:String):Void
-	{
-		_finalText = text;
-		_typing = false;
-		_length = 0;
-
-		this.text = '';
-	}
-
-	override public function applyMarkup(input:String, rules:Array<FlxTextFormatMarkerPair>):FlxText
-	{
-		super.applyMarkup(input, rules);
-
-		resetText(text);
-
-		return this;
 	}
 
 	override public function update(elapsed:Float):Void
@@ -129,5 +113,10 @@ class TypeText extends FlxText
 		}
 
 		super.update(elapsed);
+	}
+
+	private function get_finished():Bool
+	{
+		return !_typing && _length >= _finalText.length;
 	}
 }
