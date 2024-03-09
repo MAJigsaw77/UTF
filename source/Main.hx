@@ -79,7 +79,7 @@ class Main extends Sprite
 		border.bitmapData = Assets.getBitmapData(Data.borders.get('simple'));
 		addChild(border);
 
-		addChild(new FlxGame(640, 480, Startup, 60, 60));
+		addChild(new FlxGame(640, 480, Startup, 30, 30));
 
 		#if android
 		FlxG.android.preventDefaultKeys = [BACK];
