@@ -6,6 +6,7 @@ import flixel.FlxSprite;
 
 class Object extends FlxSprite
 {
+	public var interacting:Bool = false;
 	public var name(default, null):String;
 	public var script(default, null):Script;
 
@@ -18,6 +19,11 @@ class Object extends FlxSprite
 		script = new Script();
 		script.set('this', this);
 		script.execute(AssetPaths.script('objects/$name'));
+	}
+
+	public function interact():Void
+	{
+		script.call('interact');
 	}
 
 	public override function update(elapsed:Float):Void
