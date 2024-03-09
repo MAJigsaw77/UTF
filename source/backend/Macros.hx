@@ -53,6 +53,7 @@ class Macros
 		#if !display
 		Compiler.include('openfl');
 		Compiler.include('flixel');
+		Compiler.exclude('flixel.addons.nape');
 		#if !web
 		Compiler.include('sys');
 		#end
