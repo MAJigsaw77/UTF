@@ -49,7 +49,7 @@ class GameOver extends FlxState
 			{
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
-					final typer:Typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt1', volume: 0.86}, 2, 2);
+					final typer:Typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt1', volume: 1}, 2, 2);
 
 					final lines:Array<String> = [
 						'  You cannot give\n  up just yet...',
