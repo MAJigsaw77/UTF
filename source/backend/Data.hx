@@ -30,8 +30,7 @@ class Data
 
 	public static var borders(default, null):Map<String, String> = [
 		'dynamic' => AssetPaths.border('ruins'),
-		'simple' => AssetPaths.border('line'),
-		'none' => null,
+		'simple' => AssetPaths.border('line')
 	];
 
 	public static function save():Void
