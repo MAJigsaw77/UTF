@@ -30,7 +30,7 @@ class Writer extends TypeText
 
 	public function startDialogue(list:Array<DialogueData>):Void
 	{
-		this.list = list ?? [{ typer: new Typer({ name: 'DTM-Mono', size: 32 }, { name: 'txt1', volume: 1}, 2), text: 'Error!' }];
+		this.list = list ?? [{typer: new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt1', volume: 1}, 2), text: 'Error!'}];
 
 		page = 0;
 
