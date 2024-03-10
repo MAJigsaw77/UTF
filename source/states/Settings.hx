@@ -4,6 +4,7 @@ import backend.AssetPaths;
 import backend.Controls;
 import backend.Data;
 import backend.Global;
+import backend.PercentOfHeightScaleMode;
 import backend.Util;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.particles.FlxEmitter;
@@ -16,6 +17,7 @@ import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import openfl.filters.BitmapFilter;
+import openfl.utils.Assets;
 import states.ButtonConfig;
 import states.Intro;
 
@@ -24,7 +26,7 @@ using StringTools;
 class Settings extends FlxTransitionableState
 {
 	var selected:Int = 0;
-	final options:Array<String> = ['Exit', 'FPS Overlay', 'Button Config', 'Filter'];
+	final options:Array<String> = ['Exit', 'FPS Overlay', 'Button Config', 'Border', 'Filter'];
 	var items:FlxTypedGroup<FlxText>;
 
 	var tobdogLine:FlxText;
@@ -85,6 +87,8 @@ class Settings extends FlxTransitionableState
 
 			switch (options[i])
 			{
+					case 'Border':
+					opt.text += ': ${Data.settings.get('filter')}'.toUpperCase();
 				case 'Filter':
 					opt.text += ': ${Data.settings.get('filter')}'.toUpperCase();
 			}
@@ -93,7 +97,7 @@ class Settings extends FlxTransitionableState
 			opt.ID = i;
 			opt.scrollFactor.set();
 
-			if (options[i] != 'Filter')
+			if (options[i] != 'Border' && options[i] != 'Filter')
 				opt.active = false;
 
 			items.add(opt);
@@ -185,6 +189,31 @@ class Settings extends FlxTransitionableState
 						Main.fps.visible = Data.settings.get('fps-overlay');
 				case 'Button Config':
 					FlxG.switchState(new ButtonConfig());
+				case 'Border':
+					switch (Data.settings.get('border'))
+					{
+						case 'none':
+							Data.settings.set('border', 'dynamic');
+						case 'dynamic':
+							Data.settings.set('border', 'simple');
+						case 'simple':
+							Data.settings.set('border', 'none');
+					}
+
+					if (Data.settings.get('border') != 'none' && Data.borders.exists(Data.settings.get('border')))
+					{
+						border.bitmapData = Assets.getBitmapData(Data.borders.get(Data.settings.get('border'));
+
+						FlxG.scaleMode = new PercentOfHeightScaleMode(0.88);
+					}
+					else
+						FlxG.scaleMode = new PercentOfHeightScaleMode(1);
+
+					items.forEach(function(spr:FlxText):Void
+					{
+						if (options[spr.ID] == 'Border')
+							spr.text = 'Border: ${Data.settings.get('border')}'.toUpperCase();
+					});
 				case 'Filter':
 					switch (Data.settings.get('filter'))
 					{
