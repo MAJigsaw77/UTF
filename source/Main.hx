@@ -90,7 +90,7 @@ class Main extends Sprite
 
 		if (Data.settings.get('border') != 'none')
 		{
-			border.bitmapData = Assets.getBitmapData(Data.borders.get(Data.settings.get('border'));
+			border.bitmapData = Assets.getBitmapData(Data.borders.get(Data.settings.get('border')));
 
 			FlxG.scaleMode = new PercentOfHeightScaleMode(0.88);
 		}
