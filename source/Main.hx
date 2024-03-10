@@ -94,6 +94,8 @@ class Main extends Sprite
 
 			FlxG.scaleMode = new PercentOfHeightScaleMode(0.88);
 		}
+		else
+			FlxG.scaleMode = new PercentOfHeightScaleMode(1);
 
 		fps = new FPS(10, 10, FlxColor.RED);
 		fps.visible = Data.settings.get('fps-overlay');
