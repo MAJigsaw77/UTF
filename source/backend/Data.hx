@@ -12,6 +12,7 @@ class Data
 {
 	public static var settings(default, null):Map<String, Dynamic> = [
 		'fps-overlay' => false,
+		'border' = 'none',
 		'filter' => 'none'
 	];
 
@@ -28,10 +29,9 @@ class Data
 	];
 
 	public static var borders(default, null):Map<String, String> = [
-		'dynamic' => null,
+		'dynamic' => AssetPaths.border('ruins'),
 		'simple' => AssetPaths.border('line'),
 		'none' => null,
-		'beauty' => AssetPaths.border('rad')
 	];
 
 	public static function save():Void
