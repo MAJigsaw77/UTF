@@ -76,7 +76,7 @@ class Main extends Sprite
 		#end
 
 		border = new Bitmap();
-		border.bitmapData = Assets.getBitmapData(Data.borders.get('simple'));
+		border.bitmapData = Assets.getBitmapData(Data.settings.get('border'));
 		addChild(border);
 
 		addChild(new FlxGame(640, 480, Startup, 60, 60));
@@ -89,7 +89,8 @@ class Main extends Sprite
 		FlxG.mouse.useSystemCursor = true;
 		#end
 
-		FlxG.scaleMode = new PercentOfHeightScaleMode(0.88);
+		if (Data.settings.get('border') != 'none')
+			FlxG.scaleMode = new PercentOfHeightScaleMode(0.88);
 
 		fps = new FPS(10, 10, FlxColor.RED);
 		fps.visible = Data.settings.get('fps-overlay');
