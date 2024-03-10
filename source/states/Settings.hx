@@ -202,7 +202,7 @@ class Settings extends FlxTransitionableState
 
 					if (Data.settings.get('border') != 'none' && Data.borders.exists(Data.settings.get('border')))
 					{
-						border.bitmapData = Assets.getBitmapData(Data.borders.get(Data.settings.get('border')));
+						Main.border.bitmapData = Assets.getBitmapData(Data.borders.get(Data.settings.get('border')));
 
 						FlxG.scaleMode = new PercentOfHeightScaleMode(0.88);
 					}
