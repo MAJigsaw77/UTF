@@ -61,27 +61,24 @@ class Writer extends TypeText
 
 	override public function update(elapsed:Float):Void
 	{
-		if (Controls.instance.justPressed('confirm'))
+		if (Controls.instance.justPressed('confirm') && finished && !done)
 		{
-			if (Controls.instance.justPressed('cancel') && !finished && skippable)
-				skip();
-			else if (finished && !done)
+			if (page < list.indexOf(list.last()))
 			{
-				if (page < list.indexOf(list.last()))
-				{
-					page++;
+				page++;
 
-					changeDialogue(list[page]);
-				}
-				else if (page == list.indexOf(list.last()))
-				{
-					if (finishCallback != null)
-						finishCallback();
+				changeDialogue(list[page]);
+			}
+			else if (page == list.indexOf(list.last()))
+			{
+				if (finishCallback != null)
+					finishCallback();
 
-					done = true;
-				}
+				done = true;
 			}
 		}
+		else if (Controls.instance.justPressed('cancel') && !finished && skippable)
+			skip();
 
 		super.update(elapsed);
 	}
