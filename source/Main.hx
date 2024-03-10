@@ -147,7 +147,7 @@ class Main extends Sprite
 			FlxG.log.warn('Couldn\'t save error message "${e.message}"');
 		#end
 
-		Lib.application.window.alert(msg, 'Error!');
+		Lib.application.window.alert(msg, 'Uncaught an Error!');
 
 		System.exit(1);
 	}
@@ -187,7 +187,7 @@ class Main extends Sprite
 			FlxG.log.warn('Couldn\'t save error message "${e.message}"');
 		#end
 
-		Lib.application.window.alert(msg, 'Error!');
+		Lib.application.window.alert(msg, 'Critical Error!');
 
 		System.exit(1);
 	}
