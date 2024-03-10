@@ -69,7 +69,6 @@ class Macros
 		Compiler.include('flixel.math');
 		Compiler.include('flixel.path');
 		Compiler.include('flixel.sound');
-		Compiler.include('flixel.system');
 		Compiler.include('flixel.text');
 		Compiler.include('flixel.tile');
 		Compiler.include('flixel.tweens');
