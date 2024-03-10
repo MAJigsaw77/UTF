@@ -7,8 +7,9 @@ import flixel.input.keyboard.FlxKey;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import objects.room.Object;
 
-class Chara extends FlxSprite
+class Chara extends Object
 {
 	public var interacting:Bool = false;
 
