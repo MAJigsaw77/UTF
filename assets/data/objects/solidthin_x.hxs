@@ -1,3 +1,5 @@
+registerClass('backend.AssetPaths');
+
 this.loadGraphic(AssetPaths.sprite(this.name));
 this.alpha = #if debug 0.5 #else 0 #end;
 this.immovable = true;

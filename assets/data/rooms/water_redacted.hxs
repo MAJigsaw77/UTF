@@ -1,3 +1,7 @@
+registerClass('backend.AssetPaths');
+registerClass('flixel.math.FlxMath');
+registerClass('flixel.FlxG');
+
 FlxG.sound.playMusic(AssetPaths.music('mysteriousroom2'), 0.8);
 
 if (FlxG.sound.music != null)
