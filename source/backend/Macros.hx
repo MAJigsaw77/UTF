@@ -51,6 +51,12 @@ class Macros
 	public static macro function includePackages():Expr
 	{
 		#if !display
+		// local
+		Compiler.include('backend');
+		Compiler.include('objects');
+		Compiler.include('states');
+
+		// flixel addons
 		Compiler.include('flixel.addons.api');
 		Compiler.include('flixel.addons.display');
 		Compiler.include('flixel.addons.effects');
@@ -61,6 +67,7 @@ class Macros
 		Compiler.include('flixel.addons.ui');
 		Compiler.include('flixel.addons.util');
 
+		// flixel
 		Compiler.include('flixel.animation');
 		Compiler.include('flixel.effects');
 		Compiler.include('flixel.graphics');
@@ -75,6 +82,7 @@ class Macros
 		Compiler.include('flixel.ui');
 		Compiler.include('flixel.util');
 
+		// haxe
 		Compiler.include('haxe.crypto');
 		Compiler.include('haxe.display');
 		Compiler.include('haxe.exceptions');
