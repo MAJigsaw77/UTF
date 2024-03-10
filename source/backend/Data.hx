@@ -12,7 +12,7 @@ class Data
 {
 	public static var settings(default, null):Map<String, Dynamic> = [
 		'fps-overlay' => false,
-		'border' = 'none',
+		'border' => 'none',
 		'filter' => 'none'
 	];
 
