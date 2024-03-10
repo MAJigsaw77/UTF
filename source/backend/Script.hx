@@ -8,72 +8,12 @@ import openfl.utils.Assets;
 
 class Script
 {
-	public static var properties(default, null):Map<String, Dynamic> = [
-		// Haxe Classes.
-		'Date' => Date,
-		'DateTools' => DateTools,
-		'Lambda' => Lambda,
-		'Math' => Math,
-		'Std' => Std,
-		'StringTools' => StringTools,
-		'Type' => Type,
-
-		// OpenFL Classes.
-		#if !flash
-		'ShaderFilter' => openfl.filters.ShaderFilter,
-		#end
-		'Assets' => openfl.utils.Assets,
-		'Lib' => openfl.Lib,
-
-		// Flixel Classes.
-		#if !flash
-		'FlxRuntimeShader' => flixel.addons.display.FlxRuntimeShader,
-		#end
-		'FlxTrail' => flixel.addons.effects.FlxTrail,
-		'FlxEmitter' => flixel.effects.particles.FlxEmitter,
-		'FlxParticle' => flixel.effects.particles.FlxParticle,
-		'FlxSpriteGroup' => flixel.group.FlxSpriteGroup,
-		'FlxMath' => flixel.math.FlxMath,
-		'FlxEase' => flixel.tweens.FlxEase,
-		'FlxTween' => flixel.tweens.FlxTween,
-		'FlxColor' => {
-			TRANSPARENT: flixel.util.FlxColor.TRANSPARENT,
-			WHITE: flixel.util.FlxColor.WHITE,
-			GRAY: flixel.util.FlxColor.GRAY,
-			BLACK: flixel.util.FlxColor.BLACK,
-			GREEN: flixel.util.FlxColor.GREEN,
-			LIME: flixel.util.FlxColor.LIME,
-			YELLOW: flixel.util.FlxColor.YELLOW,
-			ORANGE: flixel.util.FlxColor.ORANGE,
-			RED: flixel.util.FlxColor.RED,
-			PURPLE: flixel.util.FlxColor.PURPLE,
-			BLUE: flixel.util.FlxColor.BLUE,
-			BROWN: flixel.util.FlxColor.BROWN,
-			PINK: flixel.util.FlxColor.PINK,
-			MAGENTA: flixel.util.FlxColor.MAGENTA,
-			CYAN: flixel.util.FlxColor.CYAN
-		},
-		'FlxTimer' => flixel.util.FlxTimer,
-		'FlxG' => flixel.FlxG,
-		'FlxSprite' => flixel.FlxSprite,
-
-		// Engine Classes.
-		'AssetPaths' => backend.AssetPaths,
-		#if DISCORD
-		'Discord' => backend.Discord,
-		#end
-		'Global' => backend.Global
-	];
-
 	private var parser:Parser;
 	private var interp:Interp;
 
 	public function new():Void
 	{
 		interp = new Interp();
-
-		for (key => value in properties)
-			set(key, value);
 
 		set('registerClass', function(name:String, ?as:String):Void
 		{
