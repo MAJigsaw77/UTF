@@ -106,6 +106,7 @@ class Battle extends FlxTransitionableState
 		typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 2);
 
 		writer = new Writer(box.x + 14, box.y + 14);
+		writer.skippable = false;
 		writer.startDialogue([{typer: typer, text: '* You feel like you\'re going to\n  have a bad time.'}]);
 		writer.scrollFactor.set();
 		add(writer);
