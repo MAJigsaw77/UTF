@@ -132,17 +132,13 @@ class Room extends FlxTransitionableState
 			{
 				if (Controls.instance.justPressed('confirm') && chara.overlaps(object) && !object.interacting)
 					object.interact();
-
-				// final typer:Typer = new Typer({name: 'Wingdings', size: 24}, {name: 'txt1', volume: 1}, 3, 1.6);
-
-				// startDialogue([{typer: typer, text: '* [redacted]'}]);
 			});
 		}
 
 		script.call('postUpdate', [elapsed]);
 	}
 
-	private function startDialogue(dialogue:Array<DialogueData>):Void
+	private function startDialogue(dialogue:Array<DialogueData>, ?finishCallback:Void->Void):Void
 	{
 		if (dialogue == null)
 			return;
@@ -156,6 +152,9 @@ class Room extends FlxTransitionableState
 		writer = new Writer(box.x + 20, box.y + 10);
 		writer.finishCallback = function():Void
 		{
+			if (finishCallback != null)
+				finishCallback();
+			
 			remove(box);
 			remove(writer);
 		}
