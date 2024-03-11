@@ -122,7 +122,7 @@ class Room extends FlxTransitionableState
 
 		if (chara != null)
 		{
-			FlxG.collide(chara, objects, function(obj1:Chara, obj2:FlxTypedGroup<Object>):Void
+			FlxG.collide(chara, objects, function(obj1:Object, obj2:FlxTypedGroup<Object>):Void
 			{
 				script.call('playerCollideObjects', [obj1, obj2]);
 			});
