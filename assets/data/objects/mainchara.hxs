@@ -30,7 +30,7 @@ function preUpdate(elapsed)
 	{
 		if (FlxG.keys.pressed.DOWN)
 		{
-			if (!FlxG.keys.anyPressed([FlxKey.RIGHT, FlxKey.LEFT]))
+			if (!FlxG.keys.anyPressed([39, 37]))
 				this.animation.play('down');
 
 			this.velocity.y = 180;
@@ -42,7 +42,7 @@ function preUpdate(elapsed)
 		}
 		else if (FlxG.keys.pressed.UP)
 		{
-			if (!FlxG.keys.anyPressed([FlxKey.RIGHT, FlxKey.LEFT]))
+			if (!FlxG.keys.anyPressed([39, 37]))
 				this.animation.play('up');
 
 			this.velocity.y = -180;
@@ -83,7 +83,7 @@ function preUpdate(elapsed)
 		this.velocity.set();
 	}
 
-	if (FlxG.keys.anyJustReleased([FlxKey.DOWN, FlxKey.UP, FlxKey.RIGHT, FlxKey.LEFT]))
+	if (FlxG.keys.anyJustReleased([40, 38, 39, 37]))
 	{
 		this.animation.finish();
 		this.velocity.set();
