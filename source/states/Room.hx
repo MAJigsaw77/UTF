@@ -17,7 +17,6 @@ import haxe.io.Path;
 import haxe.xml.Access;
 import objects.dialogue.Typer;
 import objects.dialogue.Writer;
-import objects.room.Chara;
 import objects.room.Object;
 
 using StringTools;
@@ -28,7 +27,7 @@ class Room extends FlxTransitionableState
 	var data:Access;
 	var script:Script;
 
-	var chara:Chara;
+	var chara:Object;
 	var objects:FlxTypedGroup<Object>;
 	var tiles:FlxTypedGroup<FlxSprite>;
 
@@ -92,7 +91,7 @@ class Room extends FlxTransitionableState
 				switch (instance.att.objName)
 				{
 					case 'mainchara':
-						chara = new Chara(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y));
+						chara = new Object(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), instance.att.objName);
 						chara.scale.scale(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
 						chara.updateHitbox();
 						add(chara);
