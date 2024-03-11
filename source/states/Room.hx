@@ -80,7 +80,6 @@ class Room extends FlxTransitionableState
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
 		objects = new FlxTypedGroup<Object>();
-		add(objects);
 
 		if (data.hasNode.instances)
 		{
@@ -94,7 +93,7 @@ class Room extends FlxTransitionableState
 						chara = new Object(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), instance.att.objName);
 						chara.scale.scale(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
 						chara.updateHitbox();
-						add(chara);
+						objects.add(chara);
 					default:
 						var object:Object = new Object(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), instance.att.objName);
 						object.scale.scale(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
@@ -105,6 +104,8 @@ class Room extends FlxTransitionableState
 		}
 		else
 			FlxG.log.notice('There are no instances to load');
+
+		add(objects);
 
 		if (chara != null)
 			FlxG.camera.follow(chara);
