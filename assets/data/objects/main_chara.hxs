@@ -24,7 +24,7 @@ switch (Global.facing)
 
 this.animation.finish();
 
-function update(elapsed)
+function preUpdate(elapsed)
 {
 	if (!this.interacting)
 	{
