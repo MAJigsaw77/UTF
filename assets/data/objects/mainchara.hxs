@@ -49,7 +49,7 @@ function preUpdate(elapsed)
 
 			#if debug
 			if (FlxG.keys.checkStatus(Data.binds.get('cancel'), 1))
-				velocity.y = -300;
+				this.velocity.y = -300;
 			#end
 		}
 
@@ -61,7 +61,7 @@ function preUpdate(elapsed)
 
 			#if debug
 			if (FlxG.keys.checkStatus(Data.binds.get('cancel'), 1))
-				velocity.x = 300;
+				this.velocity.x = 300;
 			#end
 		}
 		else if (FlxG.keys.pressed.LEFT)
