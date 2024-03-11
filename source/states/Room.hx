@@ -80,6 +80,7 @@ class Room extends FlxTransitionableState
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 
 		objects = new FlxTypedGroup<Object>();
+		add(objects);
 
 		if (data.hasNode.instances)
 		{
@@ -105,11 +106,9 @@ class Room extends FlxTransitionableState
 		else
 			FlxG.log.notice('There are no instances to load');
 
-		add(objects);
-
 		if (chara != null)
 			FlxG.camera.follow(chara);
-		
+
 		FlxG.camera.setScrollBoundsRect(0, 0, Std.parseInt(data.node.width.innerData), Std.parseInt(data.node.height.innerData));
 
 		super.create();
