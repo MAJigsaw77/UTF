@@ -9,7 +9,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import objects.room.Object;
 
-class Chara extends Object
+class MainChara extends Object
 {
 	public var interacting:Bool = false;
 
