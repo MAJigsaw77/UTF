@@ -98,7 +98,7 @@ class Room extends FlxTransitionableState
 						chara.updateHitbox();
 
 						// Adjust the hitbox.
-						chara.setSize(chara.width * 0.5, chara.height * 0.5);
+						chara.height *= 0.35;
 						chara.centerOffsets();
 						chara.centerOrigin();
 
