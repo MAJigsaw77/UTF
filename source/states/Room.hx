@@ -92,8 +92,16 @@ class Room extends FlxTransitionableState
 				{
 					case 'mainchara':
 						chara = new MainChara(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y));
+
+						// Make the sprite bigger.
 						chara.scale.scale(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
 						chara.updateHitbox();
+
+						// Adjust the hitbox.
+						chara.scale.scale(0.5, 0.5);
+						chara.centerOffsets();
+						chara.centerOrigin();
+
 						add(chara);
 					default:
 						var object:Object = new Object(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), instance.att.objName);
