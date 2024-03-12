@@ -1,4 +1,4 @@
-package objects.battle;
+package objects.room;
 
 import backend.AssetPaths;
 import flixel.group.FlxSpriteGroup;
