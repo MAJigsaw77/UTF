@@ -15,8 +15,8 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import haxe.io.Path;
 import haxe.xml.Access;
-import objects.dialogue.Typer;
 import objects.dialogue.Writer;
+import objects.room.Chara;
 import objects.room.Object;
 
 using StringTools;
@@ -27,7 +27,7 @@ class Room extends FlxTransitionableState
 	var data:Access;
 	var script:Script;
 
-	var chara:Object;
+	var chara:Chara;
 	var objects:FlxTypedGroup<Object>;
 	var tiles:FlxTypedGroup<FlxSprite>;
 
@@ -91,7 +91,7 @@ class Room extends FlxTransitionableState
 				switch (instance.att.objName)
 				{
 					case 'mainchara':
-						chara = new Object(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), instance.att.objName);
+						chara = new Chara(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y));
 						chara.scale.scale(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
 						chara.updateHitbox();
 						add(chara);
@@ -122,7 +122,7 @@ class Room extends FlxTransitionableState
 
 		if (chara != null)
 		{
-			FlxG.collide(chara, objects, function(obj1:Object, obj2:FlxTypedGroup<Object>):Void
+			FlxG.collide(chara, objects, function(obj1:Chara, obj2:FlxTypedGroup<Object>):Void
 			{
 				script.call('playerCollideObjects', [obj1, obj2]);
 			});
