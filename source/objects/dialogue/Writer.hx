@@ -9,7 +9,8 @@ import objects.dialogue.Typer;
 
 using flixel.util.FlxArrayUtil;
 
-typedef DialogueData = {
+typedef DialogueData =
+{
 	typer:Typer,
 	text:String
 }
@@ -30,7 +31,9 @@ class Writer extends TypeText
 
 	public function startDialogue(list:Array<DialogueData>):Void
 	{
-		this.list = list ?? [{typer: new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt1', volume: 1}, 2), text: 'Error!'}];
+		this.list = list ?? [
+			{typer: new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt1', volume: 1}, 2), text: 'Error!'}
+		];
 
 		page = 0;
 
@@ -43,7 +46,9 @@ class Writer extends TypeText
 		if (dialogue == null)
 			dialogue = {typer: new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt1', volume: 1}, 2), text: 'Error!'};
 
-		sounds = [FlxG.sound.load(AssetPaths.sound(dialogue.typer.sound.name), dialogue.typer.sound.volume)];
+		sounds = [
+			FlxG.sound.load(AssetPaths.sound(dialogue.typer.sound.name), dialogue.typer.sound.volume)
+		];
 
 		if (font != AssetPaths.font(dialogue.typer.font.name))
 			font = AssetPaths.font(dialogue.typer.font.name);

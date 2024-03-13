@@ -8,7 +8,8 @@ import openfl.Lib;
 
 using StringTools;
 
-typedef Contributor = {
+typedef Contributor =
+{
 	login:String,
 	id:Int,
 	node_id:String,
@@ -34,7 +35,7 @@ class GitHub
 {
 	public static var user(default, null):String = 'MAJigsaw77';
 	public static var repository(default, null):String = 'UTF';
-	
+
 	public static inline function getContributors():Array<Contributor>
 	{
 		var contributors:Array<Contributor> = [];

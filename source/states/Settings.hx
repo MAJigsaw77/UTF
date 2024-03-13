@@ -87,7 +87,7 @@ class Settings extends FlxTransitionableState
 
 			switch (options[i])
 			{
-					case 'Border':
+				case 'Border':
 					opt.text += ': ${Data.settings.get('filter')}'.toUpperCase();
 				case 'Filter':
 					opt.text += ': ${Data.settings.get('filter')}'.toUpperCase();

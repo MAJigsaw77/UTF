@@ -94,7 +94,8 @@ class Room extends FlxTransitionableState
 						chara = new MainChara(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y));
 
 						// Make the sprite bigger.
-						chara.scale.scale(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
+						chara.scale.scale(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1,
+							instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
 						chara.updateHitbox();
 
 						// Adjust the hitbox.
@@ -105,7 +106,8 @@ class Room extends FlxTransitionableState
 						add(chara);
 					default:
 						var object:Object = new Object(Std.parseFloat(instance.att.x), Std.parseFloat(instance.att.y), instance.att.objName);
-						object.scale.scale(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1, instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
+						object.scale.scale(instance.has.scaleX ? Std.parseFloat(instance.att.scaleX) : 1,
+							instance.has.scaleY ? Std.parseFloat(instance.att.scaleY) : 1);
 						object.updateHitbox();
 						objects.add(object);
 				}
@@ -150,7 +152,8 @@ class Room extends FlxTransitionableState
 		if (dialogue == null)
 			return;
 
-		box = new FlxShapeBox(32, (chara != null && chara.y >= 260) ? 10 : 320, 576, 150, {thickness: 6, jointStyle: MITER, color: FlxColor.WHITE}, FlxColor.BLACK);
+		box = new FlxShapeBox(32, (chara != null && chara.y >= 260) ? 10 : 320, 576, 150, {thickness: 6, jointStyle: MITER, color: FlxColor.WHITE},
+			FlxColor.BLACK);
 		box.scrollFactor.set();
 		box.camera = camHud;
 		box.active = false;
@@ -161,7 +164,7 @@ class Room extends FlxTransitionableState
 		{
 			if (finishCallback != null)
 				finishCallback();
-			
+
 			remove(box);
 			remove(writer);
 		}

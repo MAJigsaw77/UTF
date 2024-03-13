@@ -19,7 +19,7 @@ class Global
 	public static var items:Array<String> = ['Pie', 'SnowPiece', 'I. Noodles', 'SnowPiece'];
 	public static var flags:Array<Int> = [for (i in 0...512) 0]; // 512 flags with the value 0.
 	public static var facing:Int = 0;
-	
+
 	public static function save():Void
 	{
 		var save:FlxSave = new FlxSave();

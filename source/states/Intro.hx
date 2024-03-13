@@ -160,8 +160,8 @@ class Intro extends FlxState
 		var info:FlxText = new FlxText(0, FlxG.height - 40, 0,
 			'UTF v${Lib.application.meta['version']} (c) MAJigsaw77 2023\nCommit ${Macros.getCommitNumber()} (${Macros.getCommitHash()})', 16);
 		#else
- 		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta['version']} (c) MAJigsaw77 2023', 16);
- 		#end
+		var info:FlxText = new FlxText(0, FlxG.height - 20, 0, 'UTF v${Lib.application.meta['version']} (c) MAJigsaw77 2023', 16);
+		#end
 		info.alignment = CENTER;
 		info.font = AssetPaths.font('Small');
 		info.color = FlxColor.GRAY;
@@ -194,7 +194,9 @@ class Intro extends FlxState
 
 		if (Controls.instance.justPressed('confirm'))
 		{
-			if (FlxG.sound.music != null && FlxG.sound.music.playing && (choices[selected] != 'Reset' && choices[selected] != 'Begin Game'))
+			if (FlxG.sound.music != null
+				&& FlxG.sound.music.playing
+				&& (choices[selected] != 'Reset' && choices[selected] != 'Begin Game'))
 				FlxG.sound.music.stop();
 
 			switch (choices[selected])
