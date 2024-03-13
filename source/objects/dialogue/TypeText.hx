@@ -13,13 +13,13 @@ class TypeText extends FlxText
 	public var finished(get, null):Bool = false;
 	public var finishSounds:Bool = false;
 
-	var _finalText:String = '';
-	var _timer:Float = 0;
-	var _length:Int = 0;
-	var _typing:Bool = false;
-	var _waiting:Bool = false;
+	var finalText:String = '';
+	var timer:Float = 0;
+	var length:Int = 0;
+	var typing:Bool = false;
+	var waiting:Bool = false;
 
-	final _ignoreCharacters:Array<String> = ['\n', ' ', '^', '!', '.', '?', ',', ':', '/', '\\', '|', '*'];
+	final ignoreCharacters:Array<String> = ['\n', ' ', '^', '!', '.', '?', ',', ':', '/', '\\', '|', '*'];
 
 	public function new(x:Float, y:Float, width:Int, size:Int = 8, embeddedFont:Bool = true):Void
 	{
@@ -31,62 +31,63 @@ class TypeText extends FlxText
 		if (delay != null)
 			this.delay = delay;
 
-		_finalText = text;
-		_typing = true;
-		_length = 0;
+		finalText = text;
+		timer = delay;
+		typing = true;
+		length = 0;
 
 		this.text = '';
 	}
 
 	public function skip():Void
 	{
-		if (_typing)
-			_length = _finalText.length;
+		if (typing)
+			length = finalText.length;
 	}
 
 	override public function update(elapsed:Float):Void
 	{
-		if (_length < _finalText.length && _typing && !_waiting)
-			_timer += elapsed;
+		if (length < finalText.length && typing && !waiting)
+			timer += elapsed;
 
-		if (_typing && !_waiting)
+		if (typing && !waiting)
 		{
-			if (_timer >= delay)
+			if (timer >= delay)
 			{
-				if (_finalText.charAt(_length) == '^')
+				if (finalText.charAt(length) == '^')
 				{
-					final waitTime:Null<Int> = Std.parseInt(_finalText.charAt(_length + 1));
+					final waitTime:Null<Int> = Std.parseInt(finalText.charAt(length + 1));
 
 					if (waitTime != null)
 					{
-						_finalText = _finalText.substring(0, _length) + _finalText.substring(_length + 2);
+						finalText = finalText.substring(0, length) + finalText.substring(length + 2);
 
-						_length--;
+						length--;
 
 						if (waitTime > 0)
 						{
-							_waiting = true;
+							waiting = true;
 
 							new FlxTimer().start(1 / (waitTime * 10), function(tmr:FlxTimer):Void
 							{
-								_waiting = false;
+								waiting = false;
 							});
 
 							return;
 						}
 					}
 					else
-						_length += Math.floor(_timer / delay);
+						length += Math.floor(timer / delay);
 				}
 				else
-					_length += Math.floor(_timer / delay);
+					length += Math.floor(timer / delay);
 
-				if (_length > _finalText.length)
-					_length = _finalText.length;
+				if (length > finalText.length)
+					length = finalText.length;
 
-				_timer %= delay;
+				timer %= delay;
 
-				if (sounds != null && !_ignoreCharacters.contains(_finalText.charAt(_length - 1)))
+				if (sounds != null && !ignoreCharacters.contains(finalText.charAt(length - 1)))
 				{
 					if (!finishSounds)
 					{
@@ -98,16 +99,16 @@ class TypeText extends FlxText
 				}
 			}
 
-			final curText:String = _finalText.substr(0, _length);
+			final curText:String = finalText.substr(0, length);
 
 			if (text != curText)
 			{
 				text = curText;
 
-				if (_length >= _finalText.length)
+				if (length >= finalText.length)
 				{
-					_timer = 0;
-					_typing = false;
+					timer = 0;
+					typing = false;
 				}
 			}
 		}
@@ -115,8 +116,8 @@ class TypeText extends FlxText
 		super.update(elapsed);
 	}
 
-	private function get_finished():Bool
+	private function getfinished():Bool
 	{
-		return !_typing && _length >= _finalText.length;
+		return !typing && length >= finalText.length;
 	}
 }
