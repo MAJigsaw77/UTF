@@ -18,10 +18,10 @@ class MainChara extends FlxSprite
 
 		frames = AssetPaths.spritesheet('f_mainchara');
 
-		animation.addByPrefix('down', 'f_maincharad', 6, false);
-		animation.addByPrefix('right', 'f_maincharar', 6, false);
-		animation.addByPrefix('up', 'f_maincharau', 6, false);
-		animation.addByPrefix('left', 'f_maincharal', 6, false);
+		animation.addByPrefix('down', 'f_maincharad', 3, false);
+		animation.addByPrefix('right', 'f_maincharar', 3, false);
+		animation.addByPrefix('up', 'f_maincharau', 3, false);
+		animation.addByPrefix('left', 'f_maincharal', 3, false);
 
 		switch (Global.facing)
 		{
