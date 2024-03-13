@@ -97,18 +97,18 @@ class TypeText extends FlxText
 					FlxG.random.getObject(sounds).play(!finishSounds);
 				}
 			}
-		}
 
-		final curText:String = _finalText.substr(0, _length);
+			final curText:String = _finalText.substr(0, _length);
 
-		if (text != curText)
-		{
-			text = curText;
-
-			if (_length >= _finalText.length)
+			if (text != curText)
 			{
-				_timer = 0;
-				_typing = false;
+				text = curText;
+
+				if (_length >= _finalText.length)
+				{
+					_timer = 0;
+					_typing = false;
+				}
 			}
 		}
 
