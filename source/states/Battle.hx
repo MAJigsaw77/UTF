@@ -40,6 +40,10 @@ class Battle extends FlxTransitionableState
 
 	override function create():Void
 	{
+		FlxTransitionableState.skipNextTransOut = true;
+
+		persistentUpdate = true;
+
 		stats = new FlxText(30, 400, 0, Global.name + '   LV ' + Global.lv, 22);
 		stats.font = AssetPaths.font('Small');
 		stats.scrollFactor.set();
