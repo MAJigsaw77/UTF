@@ -40,6 +40,7 @@ class Battle extends FlxTransitionableState
 
 	override function create():Void
 	{
+		FlxTransitionableState.skipNextTransIn = true;
 		FlxTransitionableState.skipNextTransOut = true;
 
 		persistentUpdate = true;
