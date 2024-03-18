@@ -85,7 +85,9 @@ class Typers
 
 			if (parsed.hasNode.sounds)
 			{
-				for (sound in parsed.nodes.sounds)
+				final sounds:Access = parsed.node.sounds;
+
+				for (sound in sounds.nodes.sound)
 				{
 					var soundName:String = 'txt1';
 
