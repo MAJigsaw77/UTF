@@ -5,6 +5,7 @@ import backend.Controls;
 import backend.Global;
 import backend.Rooms;
 import backend.Script;
+import backend.Typers;
 import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
@@ -40,7 +41,7 @@ class Room extends FlxTransitionableState
 	public function new(room:Null<Int>):Void
 	{
 		super();
-
+		
 		if (room != null)
 		{
 			Rooms.reloadFiles();
@@ -66,6 +67,8 @@ class Room extends FlxTransitionableState
 
 	override function create():Void
 	{
+		Typers.reloadFiles();
+
 		script = new Script();
 		script.set('this', this);
 		script.execute(AssetPaths.script('rooms/$file'));
