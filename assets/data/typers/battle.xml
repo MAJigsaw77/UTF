@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typer>
+	<font>
+		<name>DTM-Mono</name>
+		<size>32</size>
+	</font>
+	<sounds>
+		<sound>
+			<name>txt2</name>
+			<volume>0.86</volume>
+		</sound>
+	</sounds>
+	<delay>0.05</delay>
+</typer>
