@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typer>
+	<font>
+		<name>Wingdings</name>
+		<size>24</size>
+	</font>
+	<sounds>
+		<sound>
+			<name>wngdng1</name>
+			<volume>1</volume>
+		</sound>
+		<sound>
+			<name>wngdng2</name>
+			<volume>1</volume>
+		</sound>
+		<sound>
+			<name>wngdng3</name>
+			<volume>1</volume>
+		</sound>
+		<sound>
+			<name>wngdng4</name>
+			<volume>1</volume>
+		</sound>
+		<sound>
+			<name>wngdng5</name>
+			<volume>1</volume>
+		</sound>
+		<sound>
+			<name>wngdng6</name>
+			<volume>1</volume>
+		</sound>
+		<sound>
+			<name>wngdng7</name>
+			<volume>1</volume>
+		</sound>
+	</sounds>
+	<delay>0.5</delay>
+	<spacing>1.6</spacing>
+</typer>
