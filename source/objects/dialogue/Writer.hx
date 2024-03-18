@@ -74,9 +74,10 @@ class Writer extends TypeText
 			};
 		}
 
-		sounds = [
-			FlxG.sound.load(AssetPaths.sound(dialogue.typer.sound.name), dialogue.typer.sound.volume)
-		];
+		sounds = [];
+
+		for (sound in dialogue.typer.sounds)
+			sounds.push(FlxG.sound.load(AssetPaths.sound(sound.name), sound.volume));
 
 		if (font != AssetPaths.font(dialogue.typer.font.name))
 			font = AssetPaths.font(dialogue.typer.font.name);
