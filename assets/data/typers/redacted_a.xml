@@ -34,6 +34,6 @@
 			<volume>1</volume>
 		</sound>
 	</sounds>
-	<delay>0.05</delay>
+	<delay>0.06</delay>
 	<spacing>1.6</spacing>
 </typer>
