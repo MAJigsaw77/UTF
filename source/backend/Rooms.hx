@@ -8,7 +8,7 @@ import openfl.utils.Assets;
 
 using StringTools;
 
-class Room
+class Rooms
 {
 	public static var data(default, null):Map<Int, {file:String, content:Access}> = [];
 

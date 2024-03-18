@@ -3,7 +3,7 @@ package states;
 import backend.AssetPaths;
 import backend.Controls;
 import backend.Global;
-import backend.Room as RoomLoader;
+import backend.Rooms;
 import backend.Script;
 import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.addons.transition.FlxTransitionableState;
@@ -43,20 +43,20 @@ class Room extends FlxTransitionableState
 
 		if (room != null)
 		{
-			RoomLoader.reloadFiles();
+			Rooms.reloadFiles();
 
-			if (RoomLoader.data.exists(room))
+			if (Rooms.data.exists(room))
 			{
-				file = RoomLoader.data.get(room).file;
-				data = RoomLoader.data.get(room).content;
+				file = Rooms.data.get(room).file;
+				data = Rooms.data.get(room).content;
 			}
 		}
 		else
 		{
-			if (RoomLoader.data.exists(Global.room))
+			if (Rooms.data.exists(Global.room))
 			{
-				file = RoomLoader.data.get(Global.room).file;
-				data = RoomLoader.data.get(Global.room).content;
+				file = Rooms.data.get(Global.room).file;
+				data = Rooms.data.get(Global.room).content;
 			}
 		}
 
