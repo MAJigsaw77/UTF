@@ -31,7 +31,7 @@ typedef TyperData =
 
 class Typers
 {
-	public static var data(default, null):Map<name:String, data:TyperData> = [];
+	public static var data(default, null):Map<String, TyperData> = [];
 
 	private static final directory:String = 'assets/data/typers';
 
