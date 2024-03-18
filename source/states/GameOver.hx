@@ -10,7 +10,6 @@ import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
-import objects.dialogue.Typer;
 import objects.dialogue.Writer;
 import states.Room;
 
