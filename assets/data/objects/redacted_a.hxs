@@ -1,4 +1,5 @@
 registerClass('backend.AssetPaths');
+registerClass('backend.Typers');
 registerClass('flixel.FlxG');
 registerClass('objects.dialogue.Typer');
 
@@ -10,9 +11,7 @@ function interact()
 {
 	this.interacting = true;
 
-	var typer:Typer = new Typer({name: 'Wingdings', size: 24}, {name: 'txt1', volume: 1}, 3, 1.6);
-
-	FlxG.state.startDialogue([{typer: typer, text: '* [redacted]'}], function()
+	FlxG.state.startDialogue([{typer: Typers.data.get(this.name), text: '* [redacted]'}], function()
 	{
 		this.interacting = false;
 	});
