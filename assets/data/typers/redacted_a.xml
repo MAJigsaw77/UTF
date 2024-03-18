@@ -7,27 +7,27 @@
 	<sounds>
 		<sound>
 			<name>wngdng7</name>
-			<volume>1</volume>
+			<volume>0.9</volume>
 		</sound>
 		<sound>
 			<name>wngdng6</name>
-			<volume>1</volume>
+			<volume>0.83</volume>
 		</sound>
 		<sound>
 			<name>wngdng5</name>
-			<volume>1</volume>
+			<volume>0.85</volume>
 		</sound>
 		<sound>
 			<name>wngdng4</name>
-			<volume>1</volume>
+			<volume>0.84</volume>
 		</sound>
 		<sound>
 			<name>wngdng3</name>
-			<volume>1</volume>
+			<volume>0.81</volume>
 		</sound>
 		<sound>
 			<name>wngdng2</name>
-			<volume>1</volume>
+			<volume>0.99</volume>
 		</sound>
 		<sound>
 			<name>wngdng1</name>
