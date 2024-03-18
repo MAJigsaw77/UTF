@@ -3,15 +3,15 @@ package objects.dialogue;
 import backend.AssetPaths;
 import backend.Controls;
 import backend.Data;
+import backend.Typers;
 import flixel.FlxG;
 import objects.dialogue.TypeText;
-import objects.dialogue.Typer;
 
 using flixel.util.FlxArrayUtil;
 
 typedef DialogueData =
 {
-	typer:Typer,
+	typer:TyperData,
 	text:String
 }
 
@@ -31,9 +31,21 @@ class Writer extends TypeText
 
 	public function startDialogue(list:Array<DialogueData>):Void
 	{
-		this.list = list ?? [
-			{typer: new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt1', volume: 1}, 2), text: 'Error!'}
-		];
+		this.list = list ?? [{
+			typer: {
+				font: {
+					name: 'DTM-Mono',
+					size: 32
+				},
+				sounds: [{
+					name: 'txt1',
+					volume: 1
+				}],
+				delay: 0.05,
+				spacing: null
+			},
+			text: 'Error!'
+		}];
 
 		page = 0;
 
@@ -44,7 +56,25 @@ class Writer extends TypeText
 	public function changeDialogue(dialogue:DialogueData):Void
 	{
 		if (dialogue == null)
-			dialogue = {typer: new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt1', volume: 1}, 2), text: 'Error!'};
+		{
+			dialogue = {
+				typer: {
+					font: {
+						name: 'DTM-Mono',
+						size: 32
+					},
+					sounds: [
+						{
+							name: 'txt1',
+							volume: 1
+						}
+					],
+					delay: 0.05,
+					spacing: null
+				},
+				text: 'Error!'
+			};
+		}
 
 		sounds = [
 			FlxG.sound.load(AssetPaths.sound(dialogue.typer.sound.name), dialogue.typer.sound.volume)
@@ -61,7 +91,7 @@ class Writer extends TypeText
 
 		done = false;
 
-		start(dialogue.text, 1 / (dialogue.typer.speed * 10));
+		start(dialogue.text, dialogue.typer.delay);
 	}
 
 	override public function update(elapsed:Float):Void
