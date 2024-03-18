@@ -56,9 +56,9 @@ class Typers
 
 			var typerFont:TyperFont = null;
 
-			if (data.hasNode.font)
+			if (parsed.hasNode.font)
 			{
-				final font:Access = data.node.font;
+				final font:Access = parsed.node.font;
 
 				var fontName:String = 'DTM-Mono';
 
@@ -83,9 +83,9 @@ class Typers
 
 			var typerSounds:Array<TypeSound> = [];
 
-			if (data.hasNode.sounds)
+			if (parsed.hasNode.sounds)
 			{
-				for (sound in data.node.sounds)
+				for (sound in parsed.node.sounds)
 				{
 					var soundName:String = 'txt1';
 
@@ -114,11 +114,11 @@ class Typers
 
 			var typerDelay:Float = 0.05;
 
-			if (data.hasNode.delay)
+			if (parsed.hasNode.delay)
 			{
-				if (data.node.delay.innerData != null && data.node.delay.innerData.length > 0)
+				if (parsed.node.delay.innerData != null && parsed.node.delay.innerData.length > 0)
 				{
-					final parsedNumber:Float = Std.parseFloat(data.node.delay.innerData);
+					final parsedNumber:Float = Std.parseFloat(parsed.node.delay.innerData);
 
 					if (!Math.isNaN(parsedNumber))
 						typerDelay = parsedNumber;
@@ -127,11 +127,11 @@ class Typers
 
 			var typerSpacing:Null<Float> = null;
 
-			if (data.hasNode.spacing)
+			if (parsed.hasNode.spacing)
 			{
-				if (data.node.spacing.innerData != null && data.node.spacing.innerData.length > 0)
+				if (parsed.node.spacing.innerData != null && parsed.node.spacing.innerData.length > 0)
 				{
-					final parsedNumber:Float = Std.parseFloat(data.node.spacing.innerData);
+					final parsedNumber:Float = Std.parseFloat(parsed.node.spacing.innerData);
 
 					if (!Math.isNaN(parsedNumber))
 						typerSpacing = parsedNumber;
