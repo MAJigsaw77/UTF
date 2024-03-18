@@ -4,6 +4,7 @@ import backend.AssetPaths;
 import backend.Controls;
 import backend.Data;
 import backend.Global;
+import backend.Typers;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.FlxG;
@@ -20,6 +21,8 @@ class GameOver extends FlxState
 
 	override function create():Void
 	{
+		Typers.reloadFiles();
+
 		FlxG.sound.playMusic(AssetPaths.music('gameover'));
 
 		bg = new FlxSprite(0, 30, AssetPaths.sprite('gameoverbg'));
@@ -42,8 +45,6 @@ class GameOver extends FlxState
 			{
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
-					final typer:Typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt1', volume: 1}, 2, 2);
-
 					final lines:Array<String> = [
 						'  You cannot give\n  up just yet...',
 						'  Our fate rests\n  upon you...',
@@ -53,8 +54,8 @@ class GameOver extends FlxState
 					];
 
 					writer.startDialogue([
-						{typer: typer, text: FlxG.random.getObject(lines)},
-						{typer: typer, text: '  ${Global.name}!^1\n  Stay determined...'}
+						{typer: Typers.data.get('gameover'), text: FlxG.random.getObject(lines)},
+						{typer: Typers.data.get('gameover'), text: '  ${Global.name}!^1\n  Stay determined...'}
 					]);
 				});
 			}
