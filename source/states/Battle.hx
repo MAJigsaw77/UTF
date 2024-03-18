@@ -4,6 +4,7 @@ import backend.AssetPaths;
 import backend.Controls;
 import backend.Data;
 import backend.Global;
+import backend.Typers;
 import flixel.addons.display.shapes.FlxShapeBox;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup;
@@ -33,13 +34,14 @@ class Battle extends FlxTransitionableState
 	var monster:Monster;
 	var box:FlxShapeBox;
 	var heart:FlxSprite;
-	var typer:Typer;
 	var writer:Writer;
 
 	var bullets:FlxTypedGroup<FlxSprite>;
 
 	override function create():Void
 	{
+		Typers.reloadFiles();
+
 		FlxTransitionableState.skipNextTransIn = true;
 		FlxTransitionableState.skipNextTransOut = true;
 
@@ -108,11 +110,9 @@ class Battle extends FlxTransitionableState
 		heart.active = false;
 		add(heart);
 
-		typer = new Typer({name: 'DTM-Mono', size: 32}, {name: 'txt2', volume: 0.86}, 2);
-
 		writer = new Writer(box.x + 14, box.y + 14);
 		writer.skippable = false;
-		writer.startDialogue([{typer: typer, text: '* You feel like you\'re going to\n  have a bad time.'}]);
+		writer.startDialogue([{typer: Typers.data.get('battle'), text: '* You feel like you\'re going to\n  have a bad time.'}]);
 		writer.scrollFactor.set();
 		add(writer);
 
@@ -162,7 +162,7 @@ class Battle extends FlxTransitionableState
 				switch (choices[selected])
 				{
 					case 'Fight' | 'Talk':
-						writer.startDialogue([{typer: typer, text: '* ${monster.data.name}'}]);
+						writer.startDialogue([{typer: Typers.data.get('battle'), text: '* ${monster.data.name}'}]);
 
 					/*var monsterHpBar:FlxBar = new FlxBar(box.x + 158 + (monster.data.name.length * 16), writer.y, LEFT_TO_RIGHT,
 							Std.int(monster.data.hp / monster.data.maxHp * 100), 16, monster.data, 'hp', 0, monster.data.maxHp);
@@ -171,9 +171,9 @@ class Battle extends FlxTransitionableState
 						monsterHpBar.scrollFactor.set();
 						add(monsterHpBar); */
 					case 'Item':
-						writer.startDialogue([{typer: typer, text: '* Item Selected...'}]);
+						writer.startDialogue([{typer: Typers.data.get('battle'), text: '* Item Selected...'}]);
 					case 'Spare':
-						writer.startDialogue([{typer: typer, text: '* Mercy Selected...'}]);
+						writer.startDialogue([{typer: Typers.data.get('battle'), text: '* Mercy Selected...'}]);
 				}
 			}
 		}
@@ -182,7 +182,8 @@ class Battle extends FlxTransitionableState
 			choiceSelected = false;
 
 			writer.visible = true;
-			writer.startDialogue([{typer: typer, text: '* You feel like you\'re going to\n  have a bad time.'}]);
+
+			writer.startDialogue([{typer: Typers.data.get('battle'), text: '* You feel like you\'re going to\n  have a bad time.'}]);
 		}
 
 		#if debug
