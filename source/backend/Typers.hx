@@ -81,11 +81,11 @@ class Typers
 				typerFont = {name: fontName, size: fontSize};
 			}
 
-			var typerSounds:Array<TypeSound> = [];
+			var typerSounds:Array<TyperSound> = [];
 
 			if (parsed.hasNode.sounds)
 			{
-				for (sound in parsed.node.sounds)
+				for (sound in parsed.nodes.sounds)
 				{
 					var soundName:String = 'txt1';
 
