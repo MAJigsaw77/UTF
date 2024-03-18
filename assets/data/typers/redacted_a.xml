@@ -6,23 +6,7 @@
 	</font>
 	<sounds>
 		<sound>
-			<name>wngdng1</name>
-			<volume>1</volume>
-		</sound>
-		<sound>
-			<name>wngdng2</name>
-			<volume>1</volume>
-		</sound>
-		<sound>
-			<name>wngdng3</name>
-			<volume>1</volume>
-		</sound>
-		<sound>
-			<name>wngdng4</name>
-			<volume>1</volume>
-		</sound>
-		<sound>
-			<name>wngdng5</name>
+			<name>wngdng7</name>
 			<volume>1</volume>
 		</sound>
 		<sound>
@@ -30,7 +14,23 @@
 			<volume>1</volume>
 		</sound>
 		<sound>
-			<name>wngdng7</name>
+			<name>wngdng5</name>
+			<volume>1</volume>
+		</sound>
+		<sound>
+			<name>wngdng4</name>
+			<volume>1</volume>
+		</sound>
+		<sound>
+			<name>wngdng3</name>
+			<volume>1</volume>
+		</sound>
+		<sound>
+			<name>wngdng2</name>
+			<volume>1</volume>
+		</sound>
+		<sound>
+			<name>wngdng1</name>
 			<volume>1</volume>
 		</sound>
 	</sounds>
