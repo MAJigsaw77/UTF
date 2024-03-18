@@ -16,7 +16,6 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import objects.battle.Monster;
-import objects.dialogue.Typer;
 import objects.dialogue.Writer;
 import states.GameOver;
 
