@@ -1,7 +1,6 @@
 registerClass('backend.AssetPaths');
 registerClass('backend.Typers');
 registerClass('flixel.FlxG');
-registerClass('objects.dialogue.Typer');
 
 this.loadGraphic(AssetPaths.sprite(this.name));
 this.immovable = true;
