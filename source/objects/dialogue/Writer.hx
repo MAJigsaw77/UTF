@@ -63,12 +63,10 @@ class Writer extends TypeText
 						name: 'DTM-Mono',
 						size: 32
 					},
-					sounds: [
-						{
-							name: 'txt1',
-							volume: 1
-						}
-					],
+					sounds: [{
+						name: 'txt1',
+						volume: 1
+					}],
 					delay: 0.05,
 					spacing: null
 				},
