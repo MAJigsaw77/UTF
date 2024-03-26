@@ -23,7 +23,7 @@ class Discord
 		RichPresence.Initialize("1140307809167220836", cpp.RawPointer.addressOf(handlers), 1, null);
 
 		// Daemon Thread
-		Thread.create(function()
+		Thread.create(function():Void
 		{
 			while (true)
 			{
