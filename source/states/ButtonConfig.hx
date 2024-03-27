@@ -95,7 +95,7 @@ class ButtonConfig extends FlxState
 			if (FlxG.sound.music.playing)
 				FlxG.sound.music.stop();
 
-			FlxG.switchState(new Settings());
+			FlxG.switchState(() -> new Settings());
 		}
 
 		super.update(elapsed);

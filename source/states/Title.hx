@@ -44,7 +44,7 @@ class Title extends FlxState
 	override function update(elapsed:Float):Void
 	{
 		if (Controls.instance.justPressed('confirm') && titleText.alpha == 1)
-			FlxG.switchState(new Intro());
+			FlxG.switchState(() -> new Intro());
 		else if (FlxG.keys.firstJustPressed() != FlxKey.NONE && titleText.alpha == 1)
 		{
 			final letter:String = cast(FlxG.keys.firstJustPressed(), FlxKey).toString();

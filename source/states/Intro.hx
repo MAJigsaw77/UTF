@@ -202,11 +202,11 @@ class Intro extends FlxState
 			switch (choices[selected])
 			{
 				case 'Continue':
-					FlxG.switchState(new Room(272));
+					FlxG.switchState(() -> new Room(272));
 				case 'Begin Game':
-					FlxG.switchState(new Naming());
+					FlxG.switchState(() -> new Naming());
 				case 'Settings':
-					FlxG.switchState(new Settings());
+					FlxG.switchState(() -> new Settings());
 			}
 		}
 
@@ -216,7 +216,7 @@ class Intro extends FlxState
 			if (FlxG.sound.music != null && FlxG.sound.music.playing)
 				FlxG.sound.music.stop();
 
-			FlxG.switchState(new Battle());
+			FlxG.switchState(() -> new Battle());
 		}
 		#end
 

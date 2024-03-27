@@ -240,7 +240,7 @@ class Naming extends FlxState
 						switch (spr.text)
 						{
 							case 'Quit':
-								FlxG.switchState(new Intro());
+								FlxG.switchState(() -> new Intro());
 							case 'Backspace':
 								if (curName.length > 0)
 									curName = curName.substring(0, curName.length - 1);

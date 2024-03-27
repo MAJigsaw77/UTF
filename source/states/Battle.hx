@@ -58,7 +58,7 @@ class Battle extends FlxTransitionableState
 
 		hpBar = new FlxBar(hpName.x + 35, hpName.y - 5, LEFT_TO_RIGHT, Std.int(Global.maxHp * 1.2), 20, Global, 'hp', 0, Global.maxHp);
 		hpBar.createFilledBar(FlxColor.RED, FlxColor.YELLOW);
-		hpBar.emptyCallback = () -> FlxG.switchState(new GameOver());
+		hpBar.emptyCallback = () -> FlxG.switchState(() -> new GameOver());
 		hpBar.scrollFactor.set();
 		add(hpBar);
 
