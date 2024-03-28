@@ -17,6 +17,7 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import openfl.Lib;
 #if debug
+import states.debug.RoomEditor;
 import states.Battle;
 #end
 import states.Room;
@@ -217,6 +218,14 @@ class Intro extends FlxState
 				FlxG.sound.music.stop();
 
 			FlxG.switchState(() -> new Battle());
+		}
+
+		if (FlxG.keys.justPressed.R)
+		{
+			if (FlxG.sound.music != null && FlxG.sound.music.playing)
+				FlxG.sound.music.stop();
+
+			FlxG.switchState(() -> new RoomEditor());
 		}
 		#end
 
