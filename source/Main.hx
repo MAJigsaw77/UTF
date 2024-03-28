@@ -13,6 +13,8 @@ import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
 import haxe.io.Path;
+import haxe.ui.themes.Theme;
+import haxe.ui.Toolkit;
 import haxe.CallStack;
 import haxe.Exception;
 import haxe.Log;
@@ -62,6 +64,10 @@ class Main extends Sprite
 		#elseif cpp
 		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
 		#end
+
+		Toolkit.theme = Theme.DARK;
+
+		Toolkit.init();
 
 		#if debug
 		FlxG.log.redirectTraces = true;
