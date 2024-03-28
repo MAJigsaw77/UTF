@@ -3,13 +3,16 @@ package states.debug;
 import flixel.addons.transition.FlxTransitionableState;
 import haxe.ui.components.Label;
 import haxe.ui.components.NumberStepper;
+import haxe.ui.containers.HBox;
 import haxe.ui.containers.VBox;
 
 class RoomEditor extends FlxTransitionableState
 {
 	override function create():Void
 	{
-		var box:VBox = new VBox();
+		persistentUpdate = true;
+
+		var box:HBox = new HBox();
 
 		var roomIDLabel:Label = new Label();
 		roomIDLabel.text = 'Room ID';
