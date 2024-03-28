@@ -21,6 +21,14 @@
 			"type": "haxelib"
 		},
 		{
+			"name": "haxeui-core",
+			"type": "haxelib"
+		},
+		{
+			"name": "haxeui-flixel",
+			"type": "haxelib"
+		},
+		{
 			"name": "hxdiscord_rpc",
 			"type": "haxelib"
 		},
