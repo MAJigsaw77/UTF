@@ -45,6 +45,9 @@
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 
+	<haxelib name="haxeui-core" />
+	<haxelib name="haxeui-flixel" />
+
 	<haxelib name="hscript" />
 	<haxelib name="hxdiscord_rpc" if="DISCORD" />
 	<haxelib name="polymod" if="MODS" />
