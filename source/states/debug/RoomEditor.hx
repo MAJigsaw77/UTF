@@ -11,16 +11,16 @@ class RoomEditor extends FlxTransitionableState
 	{
 		var box:VBox = new VBox();
 
+		var roomIDLabel:Label = new Label();
+		roomIDLabel.text = 'Room ID';
+		roomIDLabel.verticalAlign = 'center';
+		box.addComponent(roomIDLabel);
+
 		var roomID:NumberStepper = new NumberStepper();
 		roomID.max = Math.POSITIVE_INFINITY;
 		roomID.min = 0;
 		roomID.pos = 0;
 		box.addComponent(roomID);
-
-		var roomIDLabel:Label = new Label();
-		roomIDLabel.text = 'Room ID';
-		roomIDLabel.verticalAlign = 'center';
-		box.addComponent(roomIDLabel);
 
 		var ui:VBox = new VBox();
 		ui.x = 100;
