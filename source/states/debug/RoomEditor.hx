@@ -25,9 +25,6 @@ class RoomEditor extends FlxTransitionableState
 		var ui:VBox = new VBox();
 		ui.x = 100;
 		ui.y = 100;
-		ui.padding = 5;
-		ui.backgroundColor = 'darkslategray';
-		ui.draggable = true;
 		ui.width = 100;
 		ui.height = 100;
 		ui.addComponent(box);
