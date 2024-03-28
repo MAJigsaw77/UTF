@@ -1,8 +1,8 @@
 package states.debug;
 
 import flixel.addons.transition.FlxTransitionableState;
-import haxe.ui.containers.Label;
-import haxe.ui.containers.NumberStepper;
+import haxe.ui.components.Label;
+import haxe.ui.components.NumberStepper;
 import haxe.ui.containers.VBox;
 
 class RoomEditor extends FlxTransitionableState
